@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                         <div class="pull-left info">
                             <p><?php echo $user_login['firstname'].$user_login['lastname']; ?></p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> <?php echo lang('menu_online'); ?></a>
+                            <a href="#"><i class="fa fa-circle text-success"></i> En línea</a>
                         </div>
                     </div>
 

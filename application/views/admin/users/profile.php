@@ -22,11 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php foreach ($user_info as $user):?>
 
                                             <tr>
-                                                <th><?php echo lang('users_ip_address'); ?></th>
-                                                <td><?php echo $user->ip_address; ?></td>
-                                            </tr>
-                                            <tr>
-                                                <th><?php echo lang('users_firstname'); ?></th>
+                                                <th>Nombre </th>
                                                 <td><?php echo htmlspecialchars($user->first_name, ENT_QUOTES, 'UTF-8'); ?></td>
                                             </tr>
                                             <tr>
