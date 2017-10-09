@@ -5,8 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="content-wrapper">
                 <section class="content-header">
-                    <?php echo $pagetitle; ?>
-                    <?php echo $breadcrumb; ?>
+                <h3>Umbráculos</h3>
                 </section>
 
                 <section class="content">
@@ -14,14 +13,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Espacio en blanco nene!</h3>
+                                <h3>Hola</h3>
                                 </div>
                                 <div class="box-body">
-
-
-
-                                </div>
-                            </div>
+                                    
                          </div>
                     </div>
                 </section>

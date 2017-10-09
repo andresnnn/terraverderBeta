@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
 
 
-                        <li class="header text-uppercase">Administración</li>
+                        <li class="header text-uppercase">Administración usuarios</li>
                         <li class="<?=active_link_controller('users')?>">
                             <a href="<?php echo site_url('admin/users'); ?>">
                                 <i class="fa fa-user"></i> <span>Usuarios</span>
@@ -57,16 +57,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-shield"></i> <span>Tipos de usuario</span>
                             </a>
                         </li>
-                        <li class="treeview <?=active_link_controller('prefs')?>">
-                            <a href="#">
-                                <i class="fa fa-cogs"></i>
-                                <span>Preferencias</span>
-                                <i class="fa fa-angle-left pull-right"></i>
+                        <li class="header text-uppercase">Administración umbráculos</li>
+                        <li class="<?=active_link_controller('umbraculos')?>">
+                            <a href="<?php echo site_url('admin/umbraculos'); ?>">
+                                <i class="fa fa-legal"></i> <span>Umbráculos</span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li class="<?=active_link_function('interfaces')?>"><a href="<?php echo site_url('admin/prefs/interfaces/admin'); ?>">Interfaz</a></li>
-                            </ul>
                         </li>
+                        <li class="header text-uppercase">Resto</li>
                         <li class="<?=active_link_controller('files')?>">
                             <a href="<?php echo site_url('admin/files'); ?>">
                                 <i class="fa fa-file"></i> <span>Archivos</span>
