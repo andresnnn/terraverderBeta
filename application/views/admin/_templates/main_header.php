@@ -65,13 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <li class="user-body">
                                         <div class="row">
                                             <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo lang('header_followers'); ?></a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo lang('header_sales'); ?></a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo lang('header_friends'); ?></a>
+                                                <a href="#">Tareas Atendidas</a>
                                             </div>
                                         </div>
                                     </li>

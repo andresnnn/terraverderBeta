@@ -5,8 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="content-wrapper">
                 <section class="content-header">
-                    <?php echo $pagetitle; ?>
-                    <?php echo $breadcrumb; ?>
+                <h3>Usuarios</h3>
                 </section>
 
                 <section class="content">
@@ -14,18 +13,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><?php echo anchor('admin/users/create', '<i class="fa fa-plus"></i> '. lang('users_create_user'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                    <h3 class="box-title"><?php echo anchor('admin/users/create', '<i class="fa fa-plus"></i> Crear usuario', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                 </div>
                                 <div class="box-body">
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th><?php echo lang('users_firstname');?></th>
-                                                <th><?php echo lang('users_lastname');?></th>
-                                                <th><?php echo lang('users_email');?></th>
-                                                <th><?php echo lang('users_groups');?></th>
-                                                <th><?php echo lang('users_status');?></th>
-                                                <th><?php echo lang('users_action');?></th>
+                                                <th>Nombre</th>
+                                                <th>Apellido</th>
+                                                <th>Email</th>
+                                                <th>Tipo de usuario</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -41,8 +40,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </td>
                                                 <td><?php echo ($user->active) ? anchor('admin/users/deactivate/'.$user->id, '<span class="label label-success">'.lang('users_active').'</span>') : anchor('admin/users/activate/'. $user->id, '<span class="label label-default">'.lang('users_inactive').'</span>'); ?></td>
                                                 <td>
-                                                    <?php echo anchor('admin/users/edit/'.$user->id, lang('actions_edit')); ?>
-                                                    <?php echo anchor('admin/users/profile/'.$user->id, lang('actions_see')); ?>
+                                                    <?php echo anchor('admin/users/edit/'.$user->id, 'Editar |'); ?>
+
+                                                    <?php echo anchor('admin/users/profile/'.$user->id, '  Detalles'); ?>
                                                 </td>
                                             </tr>
 <?php endforeach;?>
