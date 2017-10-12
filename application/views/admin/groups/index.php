@@ -5,7 +5,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="content-wrapper">
                 <section class="content-header">
-                <h3>Tipos de usuario</h3>
+                    <?php echo $pagetitle; ?>
+                    <?php echo $breadcrumb; ?>
                 </section>
 
                 <section class="content">
@@ -13,16 +14,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><?php echo anchor('admin/groups/create', '<i class="fa fa-plus"></i> Crear tipo usuario', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                    <h3 class="box-title"><?php echo anchor('admin/groups/create', '<i class="fa fa-plus"></i> '. lang('groups_create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                 </div>
                                 <div class="box-body">
                                     <table class="table table-striped table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Tipo de usuario</th>
-                                                <th>Descripción</th>
-                                                <th>Color</th>
-                                                <th>Acción</th>
+                                                <th><?php echo lang('groups_name');?></th>
+                                                <th><?php echo lang('groups_description');?></th>
+                                                <th><?php echo lang('groups_color');?></th>
+                                                <th><?php echo lang('groups_action');?></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -31,7 +32,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo htmlspecialchars($values->name, ENT_QUOTES, 'UTF-8'); ?></td>
                                                 <td><?php echo htmlspecialchars($values->description, ENT_QUOTES, 'UTF-8'); ?></td>
                                                 <td><i class="fa fa-stop" style="color:<?php echo $values->bgcolor; ?>"></i></td>
-                                                <td><?php echo anchor("admin/groups/edit/".$values->id, 'Editar'); ?></td>
+                                                <td><?php echo anchor("admin/groups/edit/".$values->id, lang('actions_edit')); ?></td>
                                             </tr>
 <?php endforeach;?>
                                         </tbody>

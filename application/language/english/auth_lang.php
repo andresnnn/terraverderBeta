@@ -10,14 +10,14 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['auth_sign_session']    = 'Sign in to start your session';
+$lang['auth_sign_session']    = 'Ingrese los datos de su cuenta para acceder.';
 $lang['auth_sign_facebook']   = 'Sign in using Facebook';
 $lang['auth_sign_google']     = 'Sign in using Google+';
-$lang['auth_your_email']      = 'Your email';
-$lang['auth_your_password']   = 'Your password';
-$lang['auth_remember_me']     = 'Remember me';
+$lang['auth_your_email']      = 'Ingrese su email';
+$lang['auth_your_password']   = 'Ingrese su contraseña';
+$lang['auth_remember_me']     = 'Recordarme';
 $lang['auth_forgot_password'] = 'I forgot my password';
 $lang['auth_new_member']      = 'Register a new member';
-$lang['auth_login']           = 'Login';
+$lang['auth_login']           = 'Ingresar';
 $lang['auth_or']              = 'OR';
-$lang['error_csrf']           = 'This form post did not pass our security checks.';
+$lang['error_csrf']           = 'Este formulario no pasó nuestro chequeo de seguridad.';

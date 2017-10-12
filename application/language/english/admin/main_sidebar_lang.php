@@ -11,33 +11,33 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$lang['menu_online'] = 'Online';
-$lang['menu_search'] = 'Search';
+$lang['menu_online'] = 'En línea';
+$lang['menu_search'] = 'Buscar';
 
-/* * */$lang['menu_access_website']             = 'Access to the Web site';
+/* * */$lang['menu_access_website']             = 'Acceder al sitio principal';
 
-/* * */$lang['menu_main_navigation']            = 'Main Navigation';
-/* ****** */$lang['menu_dashboard']             = 'Dashboard';
+/* * */$lang['menu_main_navigation']            = 'Navegación';
+/* ****** */$lang['menu_dashboard']             = 'Principal';
 
 
-/* * */$lang['menu_administration']             = 'Administration';
-/* ****** */$lang['menu_users']                 = 'Users';
-/* *********** */$lang['menu_users_profile']    = 'Profile';
-/* *********** */$lang['menu_users_deactivate'] = 'Deactivate';
-/* *********** */$lang['menu_users_create']     = 'Create';
-/* *********** */$lang['menu_users_edit']       = 'Edit';
+/* * */$lang['menu_administration']             = 'Administración';
+/* ****** */$lang['menu_users']                 = 'Usuarios';
+/* *********** */$lang['menu_users_profile']    = 'Perfil';
+/* *********** */$lang['menu_users_deactivate'] = 'Desactivar';
+/* *********** */$lang['menu_users_create']     = 'Crear';
+/* *********** */$lang['menu_users_edit']       = 'Editar';
 
-/* ****** */$lang['menu_security_groups']       = 'Security groups';
-/* *********** */$lang['menu_groups_create']    = 'Create';
-/* *********** */$lang['menu_groups_edit']      = 'Edit';
+/* ****** */$lang['menu_security_groups']       = 'Tipos de usuario';
+/* *********** */$lang['menu_groups_create']    = 'Crear';
+/* *********** */$lang['menu_groups_edit']      = 'Editar';
 
-/* ****** */$lang['menu_preferences']           = 'Preferences';
-/* *********** */$lang['menu_interfaces']       = 'Interfaces';
-/* **************** */$lang['menu_int_admin']   = 'Administration';
-/* **************** */$lang['menu_int_public']  = 'Public';
+/* ****** */$lang['menu_preferences']           = 'Preferencias';
+/* *********** */$lang['menu_interfaces']       = 'Interfaz';
+/* **************** */$lang['menu_int_admin']   = 'Administración';
+/* **************** */$lang['menu_int_public']  = 'Publico';
 
-/* ****** */$lang['menu_files']                 = 'Files';
-/* ****** */$lang['menu_database_utility']      = 'Database utility';
+/* ****** */$lang['menu_files']                 = 'Archivos';
+/* ****** */$lang['menu_database_utility']      = 'Utilización base de datos';
 
 
 /* * */$lang['menu_webapp']                     = 'Web application';

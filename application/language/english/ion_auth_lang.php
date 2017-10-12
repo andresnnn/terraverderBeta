@@ -15,34 +15,34 @@
 */
 
 // Account Creation
-$lang['account_creation_successful']            = 'Account Successfully Created';
-$lang['account_creation_unsuccessful']          = 'Unable to Create Account';
-$lang['account_creation_duplicate_email']       = 'Email Already Used or Invalid';
-$lang['account_creation_duplicate_identity']    = 'Identity Already Used or Invalid';
-$lang['account_creation_missing_default_group'] = 'Default group is not set';
-$lang['account_creation_invalid_default_group'] = 'Invalid default group name set';
+$lang['account_creation_successful']            = 'Cuenta satisfactoriamente creada';
+$lang['account_creation_unsuccessful']          = 'Inhabilitado para crear cuenta';
+$lang['account_creation_duplicate_email']       = 'Email actualmente en uso o inválido';
+$lang['account_creation_duplicate_identity']    = 'Usuario ya en uso o inválido';
+$lang['account_creation_missing_default_group'] = 'El tipo de usuario no existe';
+$lang['account_creation_invalid_default_group'] = 'Tipo de usuario inválido';
 
 
 // Password
-$lang['password_change_successful']          = 'Password Successfully Changed';
-$lang['password_change_unsuccessful']        = 'Unable to Change Password';
-$lang['forgot_password_successful']          = 'Password Reset Email Sent';
-$lang['forgot_password_unsuccessful']        = 'Unable to Reset Password';
+$lang['password_change_successful']          = 'Contraseña cambiada satisfactoriamente';
+$lang['password_change_unsuccessful']        = 'No se puede cambiar la contraseña';
+$lang['forgot_password_successful']          = 'Contraseña reiniciada, chequee su casilla de email';
+$lang['forgot_password_unsuccessful']        = 'No se puede reiniciar la contraseña';
 
 // Activation
-$lang['activate_successful']                 = 'Account Activated';
-$lang['activate_unsuccessful']               = 'Unable to Activate Account';
-$lang['deactivate_successful']               = 'Account De-Activated';
-$lang['deactivate_unsuccessful']             = 'Unable to De-Activate Account';
-$lang['activation_email_successful']         = 'Activation Email Sent';
-$lang['activation_email_unsuccessful']       = 'Unable to Send Activation Email';
+$lang['activate_successful']                 = 'Cuenta activada';
+$lang['activate_unsuccessful']               = 'Inhabilitado para activar la cuenta';
+$lang['deactivate_successful']               = 'Cuenta desactivada';
+$lang['deactivate_unsuccessful']             = 'Inhabilitado para desactivar cuenta';
+$lang['activation_email_successful']         = 'Mail de activación enviado';
+$lang['activation_email_unsuccessful']       = 'No se pudo enviar el mail de activación';
 
 // Login / Logout
-$lang['login_successful']                    = 'Logged In Successfully';
-$lang['login_unsuccessful']                  = 'Incorrect Login';
-$lang['login_unsuccessful_not_active']       = 'Account is inactive';
-$lang['login_timeout']                       = 'Temporarily Locked Out.  Try again later.';
-$lang['logout_successful']                   = 'Logged Out Successfully';
+$lang['login_successful']                    = 'Acceso satisfactorio';
+$lang['login_unsuccessful']                  = 'Acceso denegado';
+$lang['login_unsuccessful_not_active']       = 'La cuenta se encuentra inactiva';
+$lang['login_timeout']                       = 'Temporalmente bloqueado. Intentar más tarde.';
+$lang['logout_successful']                   = 'Salida del sistema satisfactoria';
 
 // Account Changes
 $lang['update_successful']                   = 'Account Information Successfully Updated';

@@ -32,49 +32,53 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php endif; ?>
                     <!-- Sidebar menu -->
                     <ul class="sidebar-menu">
+                        <!-- Elemento -->
                         <li>
                             <a href="<?php echo site_url('/'); ?>">
                                 <i class="fa fa-home text-primary"></i> <span>Visitar sitio WEB</span> <!-- QUIZAS HAY QUE BORRARLO! -->
                             </a>
                         </li>
-
+                        <!-- Elemento -->
                         <li class="header text-uppercase">Navegación</li>
                         <li class="<?=active_link_controller('dashboard')?>">
                             <a href="<?php echo site_url('admin/dashboard'); ?>">
                                 <i class="fa fa-dashboard"></i> <span>Principal</span>
                             </a>
                         </li>
-
-
+                        <!-- Elemento -->
                         <li class="header text-uppercase">Administración usuarios</li>
                         <li class="<?=active_link_controller('users')?>">
                             <a href="<?php echo site_url('admin/users'); ?>">
                                 <i class="fa fa-user"></i> <span>Usuarios</span>
                             </a>
                         </li>
+                        <!-- Elemento -->
                         <li class="<?=active_link_controller('groups')?>">
                             <a href="<?php echo site_url('admin/groups'); ?>">
                                 <i class="fa fa-shield"></i> <span>Tipos de usuario</span>
                             </a>
                         </li>
+                        <!-- Elemento -->
                         <li class="header text-uppercase">Administración umbráculos</li>
                         <li class="<?=active_link_controller('umbraculos')?>">
                             <a href="<?php echo site_url('admin/umbraculos'); ?>">
                                 <i class="fa fa-legal"></i> <span>Umbráculos</span>
                             </a>
                         </li>
+                        <!-- Elemento -->
                         <li class="header text-uppercase">Resto</li>
                         <li class="<?=active_link_controller('files')?>">
                             <a href="<?php echo site_url('admin/files'); ?>">
                                 <i class="fa fa-file"></i> <span>Archivos</span>
                             </a>
                         </li>
+                        <!-- Elemento -->
                         <li class="<?=active_link_controller('database')?>">
                             <a href="<?php echo site_url('admin/database'); ?>">
                                 <i class="fa fa-database"></i> <span>Utilidades Base de datos</span>
                             </a>
                         </li>
-
+                        <!-- Elemento -->
 
                     </ul>
                 </section>
