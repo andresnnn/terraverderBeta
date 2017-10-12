@@ -10,7 +10,7 @@ class Uumbraculos extends Admin_Controller {
         /* Load :: Common */
         $this->lang->load('admin/umbraculos');
         /* Breadcrumbs :: Common */
-        $this->breadcrumbs->unshift(1, lang('menu_users'), 'admin/users');
+        $this->breadcrumbs->unshift(1, lang('menu_users'), 'admin/umbraculos');
     }
 
 
