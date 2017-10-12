@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
             <div class="login-logo">
-                <a href="#"><b>Admin</b><?php echo $title_lg; ?></a>
+                <a href="#">terra<b><?php echo $title_lg; ?></b></a>
             </div>
 
             <div class="login-box-body">
@@ -47,3 +47,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <?php echo anchor('#', lang('auth_new_member')); ?><br />
 <?php endif; ?>
             </div>
+

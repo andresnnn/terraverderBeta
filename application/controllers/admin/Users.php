@@ -57,7 +57,6 @@ class Users extends Admin_Controller {
 		$this->form_validation->set_rules('last_name', 'lang:users_lastname', 'required');
 		$this->form_validation->set_rules('email', 'lang:users_email', 'required|valid_email|is_unique['.$tables['users'].'.email]');
 		$this->form_validation->set_rules('phone', 'lang:users_phone', 'required');
-		$this->form_validation->set_rules('company', 'lang:users_company', 'required');
 		$this->form_validation->set_rules('password', 'lang:users_password', 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|max_length[' . $this->config->item('max_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', 'lang:users_password_confirm', 'required');
 
@@ -70,7 +69,6 @@ class Users extends Admin_Controller {
 			$additional_data = array(
 				'first_name' => $this->input->post('first_name'),
 				'last_name'  => $this->input->post('last_name'),
-				'company'    => $this->input->post('company'),
 				'phone'      => $this->input->post('phone'),
 			);
 		}
@@ -104,13 +102,6 @@ class Users extends Admin_Controller {
 				'type'  => 'email',
                 'class' => 'form-control',
 				'value' => $this->form_validation->set_value('email'),
-			);
-			$this->data['company'] = array(
-				'name'  => 'company',
-				'id'    => 'company',
-				'type'  => 'text',
-                'class' => 'form-control',
-				'value' => $this->form_validation->set_value('company'),
 			);
 			$this->data['phone'] = array(
 				'name'  => 'phone',
@@ -170,7 +161,6 @@ class Users extends Admin_Controller {
 		$this->form_validation->set_rules('first_name', 'lang:edit_user_validation_fname_label', 'required');
 		$this->form_validation->set_rules('last_name', 'lang:edit_user_validation_lname_label', 'required');
 		$this->form_validation->set_rules('phone', 'lang:edit_user_validation_phone_label', 'required');
-		$this->form_validation->set_rules('company', 'lang:edit_user_validation_company_label', 'required');
 
 		if (isset($_POST) && ! empty($_POST))
 		{
@@ -190,7 +180,6 @@ class Users extends Admin_Controller {
 				$data = array(
 					'first_name' => $this->input->post('first_name'),
 					'last_name'  => $this->input->post('last_name'),
-					'company'    => $this->input->post('company'),
 					'phone'      => $this->input->post('phone')
 				);
 
