@@ -9,6 +9,12 @@ header('Vary: Accept-Encoding');
 
 ?>
 <!doctype html>
+
+
+
+            <script type="text/javascript">
+                backstretch("<?php echo base_url($frameworks_dir . '/jquery/login-bg.png'); ?>", {speed: 500});
+            </script>
     <html lang="<?php echo $lang; ?>">
         <head prefix="og: http://ogp.me/ns#">
         <meta charset="<?php echo $charset; ?>">
@@ -36,9 +42,12 @@ header('Vary: Accept-Encoding');
             <h1>HOME</h1>
 <?php if ($admin_link): ?>
             <p><a href="<?php echo site_url('admin'); ?>">Admin</a></p>
+            <p>ES ADMINISTRADOR</p>
 <?php endif; ?>
 
 <?php if ($logout_link): ?>
+            <p>NO ES ADMINISTRADOR</p>
+            <p><a href="<?php echo site_url('public'); ?>">Admin</a></p>
             <p><a href="<?php echo site_url('auth/logout/public'); ?>">Logout</a></p>
 <?php else: ?>
             <p><a href="<?php echo site_url('auth/login'); ?>">Login</a></p>
