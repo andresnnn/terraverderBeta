@@ -7,6 +7,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
               <div class="row">
                   <div class="col-lg-9 main-chart">
-					           
+					        <p>HOLLLLLAA</p>
                   </div><!-- /col-lg-9 END SECTION MIDDLE -->
               </div>

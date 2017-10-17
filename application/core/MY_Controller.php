@@ -116,18 +116,24 @@ class Public_Controller extends MY_Controller
         if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin())
         {
             $this->data['admin_link'] = TRUE;
+            $this->data['user'] = FALSE;
         }
         else
         {
+            
             $this->data['admin_link'] = FALSE;
+
         }
 
         if ($this->ion_auth->logged_in())
         {
+
             $this->data['logout_link'] = TRUE;
+            $this->data['user'] = TRUE;
         }
         else
         {
+            $this->data['user'] = FALSE;
             $this->data['logout_link'] = FALSE;
         }
 	}
