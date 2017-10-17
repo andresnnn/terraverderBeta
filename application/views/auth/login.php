@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 <?php endif; ?>
 <?php if ($forgot_password == TRUE): ?>
-                <?php echo anchor('#', lang('auth_forgot_password')); ?><br />
+                <?php echo anchor('auth/forgot_password', lang('auth_forgot_password')); ?><br />
 <?php endif; ?>
 <?php if ($new_membership == TRUE): ?>
                 <?php echo anchor('#', lang('auth_new_member')); ?><br />

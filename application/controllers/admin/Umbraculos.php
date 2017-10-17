@@ -26,7 +26,7 @@ class Uumbraculos extends Admin_Controller {
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
             /* Load Template */
-            $this->template->admin_render('admin/umbraculos/index');
+            $this->template->admin_render('admin/umbraculos/');
         }
 	}
 
