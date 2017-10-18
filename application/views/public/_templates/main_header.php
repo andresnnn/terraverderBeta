@@ -4,10 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
       <header class="header black-bg">
               <div class="sidebar-toggle-box">
-                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Toggle Navigation"></div>
+                  <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Esconder navegador"></div>
               </div>
             <!--logo start-->
-            <a class="logo"><b>TERRA VERDE</b></a>
+            <a class="logo"><b>Terra</b>VERDE</a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->

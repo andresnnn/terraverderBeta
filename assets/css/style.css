@@ -416,8 +416,8 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #ffd777;
-    border-bottom: 1px solid #c9aa5f;
+    background: #C1E291;
+    border-bottom: 1px up #424a5d;
 }
 
 .wrapper {
@@ -432,11 +432,11 @@ ul.sidebar-menu li a.active i {
 
 
 a.logo {
-    font-size: 20px;
-    color: #ffffff;
+    font-size: 22px;
+    color: #424a5d;
     float: left;
     margin-top: 15px;
-    text-transform: uppercase;
+
 }
 
 a.logo b {
@@ -449,7 +449,7 @@ a.logo:hover, a.logo:focus {
 }
 
 a.logo span {
-    color: #68dff0;
+    color: #ffffff;
 }
 
 
@@ -2220,8 +2220,8 @@ label {
 
 /*footer*/
 .site-footer {
-    background: #68dff0;
-    color: #fff;
+    background: #ffffff;
+    color: #000000;
     padding: 10px 0;
 }
 
