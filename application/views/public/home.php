@@ -12,7 +12,7 @@ header('Vary: Accept-Encoding');
     <html lang="<?php echo $lang; ?>">
         <head prefix="og: http://ogp.me/ns#">
         <meta charset="<?php echo $charset; ?>">
-        <title>Bienvenido</title>
+        <title>Home</title>
         <meta name="description" content="">
 <?php if ($mobile === FALSE): ?>
         <!--[if IE 8]>
@@ -33,10 +33,10 @@ header('Vary: Accept-Encoding');
     </head>
     <body>
         <article>
-            <h1>BIENVENIDO</h1>
+            <h1>Home</h1>
 <?php if ($user): ?>
             <p><?php echo $user_login['firstname'].$user_login['lastname']; ?></p>
-            <p><a href="<?php echo site_url('public'); ?>">Acceder como empleado</a></p>
+            <p><a href="<?php echo site_url('principal'); ?>">Acceder como empleado</a></p>
 <?php endif; ?>
 
 <?php if ($admin_link): ?>
@@ -44,9 +44,9 @@ header('Vary: Accept-Encoding');
 <?php endif; ?>
 
 <?php if ($logout_link): ?>
-            <p><a href="<?php echo site_url('auth/logout/public'); ?>">Logout</a></p>
+            <p><a href="<?php echo site_url('auth/logout/public'); ?>">Salir</a></p>
 <?php else: ?>
-            <p><a href="<?php echo site_url('auth/login'); ?>">Acceder</a></p>
+            <p><a href="<?php echo site_url('auth/login'); ?>">Login</a></p>
 <?php endif; ?>
         </article>
 
