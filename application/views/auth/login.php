@@ -3,11 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 
-            <script type="text/javascript">
-                backstretch("<?php echo base_url($frameworks_dir . '/jquery/login-bg.png'); ?>", {speed: 500});
-            </script>
+
             <div class="login-logo">
-                <a href="#">terra<b><?php echo $title_lg; ?></b></a>
+                <a href="#">Terra<b><?php echo $title_lg; ?></b></a>
             </div>
 
             <div class="login-box-body">
