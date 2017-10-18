@@ -21,15 +21,13 @@ if (isset($main_sidebar))
 {
     echo $main_sidebar;
 }
-
-if (isset($center))
-{
-    echo $center;
-}
-
-if (isset($control_sidebar))
+/*if (isset($control_sidebar))
 {
     echo $control_sidebar;
+}*/
+if (isset($content))
+{
+    echo $content;
 }
 
 if (isset($footer))

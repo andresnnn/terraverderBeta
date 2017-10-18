@@ -402,6 +402,8 @@ ul.sidebar-menu li a.active i {
 }
 
 .header, .footer {
+    margin: 0px;
+    position: absolute;
     min-height: 60px;
     padding: 0 15px;
 }
