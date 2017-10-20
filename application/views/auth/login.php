@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
             <div class="login-logo">
-                <a href="#">Terra<b><?php echo $title_lg; ?></b></a>
+                <b><a href="#">TERRA<?php echo $title_lg; ?></a></b>
             </div>
 
             <div class="login-box-body">

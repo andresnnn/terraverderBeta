@@ -67,7 +67,7 @@ header('Vary: Accept-Encoding');
                 <?php if ($logout_link): ?>
                             <a class="btn btn-circle js-scroll-trigger" href="<?php echo site_url('auth/logout/public'); ?>"><i style="text-shadow: -2px -2px 1px #464646;" class="fa fa-times animated" title="Salir"></i></a>
                 <?php else: ?>
-                            <p style="text-shadow: -2px -2px 1px #464646;" class="intro-text">Bienvenido al sitema terra verde, presione el siguiente botón para continuar.</p>
+                            <p style="text-shadow: -2px -2px 1px #464646;" class="intro-text">Bienvenido.</p>
                             <a class="btn btn-circle js-scroll-trigger" href="<?php echo site_url('auth/login'); ?>"><i style="text-shadow: -2px -2px 1px #464646;" class="fa fa-unlock-alt animated" title="Pagina login"></i></a>
                 <?php endif; ?>
                 <!-- FIN BOTON LOGIN O SALIR -->
