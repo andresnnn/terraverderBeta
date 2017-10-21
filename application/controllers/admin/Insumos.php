@@ -6,6 +6,7 @@ class Insumos extends Admin_Controller {
     public function __construct()
     {
         parent::__construct();
+                /*carga del modelo*/
         $this->load->model('admin/Insumos_model');
                 /* Load :: Common */
         $this->lang->load('admin/insumos');
@@ -24,14 +25,13 @@ class Insumos extends Admin_Controller {
         }
         else
         {
-
-
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
-
+            /* insumos consulta*/
+            $this->data['insumo'] = $this->Insumos_model->get_all_insumo();
             /* Load Template */
             $this->template->admin_render('admin/insumos/index', $this->data);
+          //  $this->load->view('admin/insumos/index',$data);
         }
     }
     /* crear */
