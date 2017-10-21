@@ -61,8 +61,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración umbráculos</li>
                         <li class="<?=active_link_controller('umbraculos')?>">
+<<<<<<< HEAD
                             <a href="<?php echo site_url('common/umbraculos'); ?>">
                                 <i class="fa fa-legal"></i><span>Umbráculos</span>
+=======
+                            <a href="<?php echo site_url('admin/umbraculos'); ?>">
+                                <i class="fa fa-tree"></i><span>Umbráculos</span>
+                            </a>
+                        </li>
+                        <!-- Elemento -->
+                        <li class="header text-uppercase">Administración insumos</li>
+                        <li class="<?=active_link_controller('insumos')?>">
+                            <a href="<?php echo site_url('admin/insumos'); ?>">
+                                <i class="fa fa-shopping-basket"></i><span> Insumos </span>
+>>>>>>> giuli
                             </a>
                         </li>
                         <!-- Elemento -->
