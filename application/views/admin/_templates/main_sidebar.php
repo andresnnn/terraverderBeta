@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración umbráculos</li>
                         <li class="<?=active_link_controller('umbraculos')?>">
-                            <a href="<?php echo site_url('admin/umbraculos'); ?>">
+                            <a href="<?php echo site_url('common/umbraculos'); ?>">
                                 <i class="fa fa-legal"></i><span>Umbráculos</span>
                             </a>
                         </li>
