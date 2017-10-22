@@ -4,100 +4,135 @@
  * www.crudigniter.com
  */
  
-class Plantas extends CI_Controller{
+class Plantas extends Admin_Controller{
     function __construct()
     {
         parent::__construct();
-        $this->load->model('Plantas_model');
+                /* Load :: Common */
+        $this->lang->load('admin/plantas');
+        /* Title Page :: Common */
+        $this->page_title->push(lang('menu_plantas'));
+        $this->data['pagetitle'] = $this->page_title->show();
+        /* CARGA LA BASE DE DATOS O MODELO*/
+        $this->load->model('common/Plantas_model');
     } 
 
-    /*
-     * Listing of plantas
-     */
-    function index()
-    {
-        $data['plantas'] = $this->Plantas_model->get_all_plantas();
-        
-        $data['_view'] = 'plantas/index';
-        $this->load->view('layouts/main',$data);
-    }
 
     /*
-     * Adding a new planta
+     INDEX, LISTAR LAS PLANTAS
      */
-    function add()
+        public function index()
+        {
+            if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                /* CARGO EL LISTADO DE UMBRACULOS*/
+
+                $this->data['plantas'] = $this->Plantas_model->get_all_plantas();
+
+
+                /* Load Template */
+                $this->template->admin_render('admin/plantas/index', $this->data);
+            }
+        }
+
+    /*
+     REGISTRAR UNA NUEVA PLANTA AL SISTEMA
+     */
+    function crear()
     {   
-        $this->load->library('form_validation');
-
-		$this->form_validation->set_rules('unidadEspacioPlanta_m2','UnidadEspacioPlanta M2','required|is_natural');
-		$this->form_validation->set_rules('descripcionPlanta','DescripcionPlanta','required|max_length[255]|min_length[5]');
-		$this->form_validation->set_rules('nombreCientificoPlanta','NombreCientificoPlanta','required|max_length[50]|min_length[4]');
-		$this->form_validation->set_rules('nombrePlanta','NombrePlanta','required|max_length[50]|min_length[4]');
-		
-		if($this->form_validation->run())     
-        {   
-            $params = array(
-				'idEspecie' => $this->input->post('idEspecie'),
-				'unidadEspacioPlanta_m2' => $this->input->post('unidadEspacioPlanta_m2'),
-				'descripcionPlanta' => $this->input->post('descripcionPlanta'),
-				'nombreCientificoPlanta' => $this->input->post('nombreCientificoPlanta'),
-				'nombrePlanta' => $this->input->post('nombrePlanta'),
-            );
-            
-            $planta_id = $this->Plantas_model->add_planta($params);
-            redirect('plantas/index');
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+        {
+            redirect('auth/login', 'refresh');
         }
         else
         {
-			$this->load->model('Especies_model');
-			$data['all_especies'] = $this->Especies_model->get_all_especies();
-            
-            $data['_view'] = 'plantas/add';
-            $this->load->view('layouts/main',$data);
+
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                $this->load->library('form_validation');
+
+        		$this->form_validation->set_rules('unidadEspacioPlanta_m2','UnidadEspacioPlanta M2','required|is_natural');
+        		$this->form_validation->set_rules('descripcionPlanta','DescripcionPlanta','required|max_length[255]|min_length[5]');
+        		$this->form_validation->set_rules('nombreCientificoPlanta','NombreCientificoPlanta','required|max_length[50]|min_length[4]');
+        		$this->form_validation->set_rules('nombrePlanta','NombrePlanta','required|max_length[50]|min_length[4]');
+        		
+        		if($this->form_validation->run())     
+                {   
+                    $params = array(
+        				'idEspecie' => $this->input->post('idEspecie'),
+        				'unidadEspacioPlanta_m2' => $this->input->post('unidadEspacioPlanta_m2'),
+        				'descripcionPlanta' => $this->input->post('descripcionPlanta'),
+        				'nombreCientificoPlanta' => $this->input->post('nombreCientificoPlanta'),
+        				'nombrePlanta' => $this->input->post('nombrePlanta'),
+                    );
+                    
+                    $planta_id = $this->Plantas_model->add_planta($params);
+                    redirect('common/plantas/index');
+                }
+                else
+                {
+        			$this->load->model('common/Especies_model');
+        			$this->data['all_especies'] = $this->Especies_model->get_all_especies();
+                    $this->template->admin_render('admin/plantas/crear', $this->data);
+                }
         }
     }  
 
     /*
-     * Editing a planta
+     EDITAR UN PLANTA YA REGISTRADA
      */
-    function edit($idPlanta)
+    function editar($idPlanta)
     {   
-        // check if the planta exists before trying to edit it
-        $data['planta'] = $this->Plantas_model->get_planta($idPlanta);
-        
-        if(isset($data['planta']['idPlanta']))
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
         {
-            $this->load->library('form_validation');
-
-			$this->form_validation->set_rules('unidadEspacioPlanta_m2','UnidadEspacioPlanta M2','required|is_natural');
-			$this->form_validation->set_rules('descripcionPlanta','DescripcionPlanta','required|max_length[255]|min_length[5]');
-			$this->form_validation->set_rules('nombreCientificoPlanta','NombreCientificoPlanta','required|max_length[50]|min_length[4]');
-			$this->form_validation->set_rules('nombrePlanta','NombrePlanta','required|max_length[50]|min_length[4]');
-		
-			if($this->form_validation->run())     
-            {   
-                $params = array(
-					'idEspecie' => $this->input->post('idEspecie'),
-					'unidadEspacioPlanta_m2' => $this->input->post('unidadEspacioPlanta_m2'),
-					'descripcionPlanta' => $this->input->post('descripcionPlanta'),
-					'nombreCientificoPlanta' => $this->input->post('nombreCientificoPlanta'),
-					'nombrePlanta' => $this->input->post('nombrePlanta'),
-                );
-
-                $this->Plantas_model->update_planta($idPlanta,$params);            
-                redirect('plantas/index');
-            }
-            else
-            {
-				$this->load->model('Especies_model');
-				$data['all_especies'] = $this->Especies_model->get_all_especies();
-
-                $data['_view'] = 'plantas/edit';
-                $this->load->view('layouts/main',$data);
-            }
+            redirect('auth/login', 'refresh');
         }
         else
-            show_error('The planta you are trying to edit does not exist.');
+        {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show(); 
+                // check if the planta exists before trying to edit it
+                $this->data['planta'] = $this->Plantas_model->get_planta($idPlanta);
+                
+                if(isset($this->data['planta']['idPlanta']))
+                {
+                    $this->load->library('form_validation');
+
+        			$this->form_validation->set_rules('unidadEspacioPlanta_m2','UnidadEspacioPlanta M2','required|is_natural');
+        			$this->form_validation->set_rules('descripcionPlanta','DescripcionPlanta','required|max_length[255]|min_length[5]');
+        			$this->form_validation->set_rules('nombreCientificoPlanta','NombreCientificoPlanta','required|max_length[50]|min_length[4]');
+        			$this->form_validation->set_rules('nombrePlanta','NombrePlanta','required|max_length[50]|min_length[4]');
+        		
+        			if($this->form_validation->run())     
+                    {   
+                        $params = array(
+        					'idEspecie' => $this->input->post('idEspecie'),
+        					'unidadEspacioPlanta_m2' => $this->input->post('unidadEspacioPlanta_m2'),
+        					'descripcionPlanta' => $this->input->post('descripcionPlanta'),
+        					'nombreCientificoPlanta' => $this->input->post('nombreCientificoPlanta'),
+        					'nombrePlanta' => $this->input->post('nombrePlanta'),
+                        );
+
+                        $this->Plantas_model->update_planta($idPlanta,$params);            
+                        redirect('common/plantas/index');
+                    }
+                    else
+                    {
+        				$this->load->model('common/Especies_model');
+        				$this->data['all_especies'] = $this->Especies_model->get_all_especies();
+                        /*CARGA LA PLANTILLA CON EL FOIRMULARIO DE EDITAR */
+                        $this->template->admin_render('admin/plantas/editar', $this->data);
+                    }
+                }
+                else
+                    show_error('La planta que usted está tratando de editar no existe.');
+        }
     } 
 
     /*

@@ -72,10 +72,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-tree"></i><span>Umbráculos</span>
                             </a>-->
                              <li class="<?php echo site_url('common/especies'); ?>">
-                            <a href="<?php echo site_url('common/especies'); ?>">
-                                <i class="fa fa-pagelines"></i><span>Especies de planta</span>
-                            </a>
-                        </li>
+                                <a href="<?php echo site_url('common/especies'); ?>">
+                                    <i class="fa fa-pagelines"></i><span>Especies de planta</span>
+                                </a>
+                            </li>
+                            <li class="<?php echo site_url('common/plantas'); ?>">
+                                <a href="<?php echo site_url('common/plantas'); ?>">
+                                    <i class="fa fa-tencent-weibo"></i><span>Ver plantas registradas</span>
+                                </a>
+                            </li>
                         </li> 
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración insumos</li>

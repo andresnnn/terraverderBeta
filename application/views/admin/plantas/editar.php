@@ -1,17 +1,26 @@
-<div class="row">
-    <div class="col-md-12">
-      	<div class="box box-info">
-            <div class="box-header with-border">
-              	<h3 class="box-title">Planta Edit</h3>
-            </div>
-			<?php echo form_open('plantas/edit/'.$planta['idPlanta']); ?>
+            <div class="content-wrapper">
+                <section class="content-header">
+                    <?php echo $pagetitle; ?>
+                    <?php echo $breadcrumb; ?>
+
+                </section>
+
+                <section class="content">
+                    <div class="row">
+                        <div class="col-md-12">
+                             <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Editar planta</h3>
+                    </div>
+                                <div class="box-body">
+			<?php echo form_open('common/plantas/editar/'.$planta['idPlanta']); ?>
 			<div class="box-body">
 				<div class="row clearfix">
 					<div class="col-md-6">
 						<label for="idEspecie" class="control-label">Especie</label>
 						<div class="form-group">
 							<select name="idEspecie" class="form-control">
-								<option value="">select especie</option>
+								<option value="">Seleccionar especie</option>
 								<?php 
 								foreach($all_especies as $especie)
 								{
@@ -33,7 +42,8 @@
 					<div class="col-md-6">
 						<label for="descripcionPlanta" class="control-label"><span class="text-danger">*</span>DescripcionPlanta</label>
 						<div class="form-group">
-							<input type="text" name="descripcionPlanta" value="<?php echo ($this->input->post('descripcionPlanta') ? $this->input->post('descripcionPlanta') : $planta['descripcionPlanta']); ?>" class="form-control" id="descripcionPlanta" />
+							<textarea name="descripcionPlanta" class="form-control" id="descripcionPlanta"> <?php echo ($this->input->post('descripcionPlanta') ? $this->input->post('descripcionPlanta') : $planta['descripcionPlanta']); ?></textarea>
+
 							<span class="text-danger"><?php echo form_error('descripcionPlanta');?></span>
 						</div>
 					</div>
@@ -59,6 +69,7 @@
 				</button>
 	        </div>				
 			<?php echo form_close(); ?>
-		</div>
-    </div>
-</div>
+                         </div>
+                    </div>
+                </section>
+            </div>

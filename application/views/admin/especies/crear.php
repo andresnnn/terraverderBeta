@@ -11,9 +11,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </section>
 
                 <section class="content">
+
                     <div class="row">
                         <div class="col-md-12">
                              <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Nueva especie</h3>
+                    </div>
                                 <div class="box-body">
             <?php echo form_open('common/especies/crear'); ?>
           	<div class="box-body">

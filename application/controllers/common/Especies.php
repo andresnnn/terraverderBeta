@@ -20,7 +20,7 @@ class Especies extends Admin_Controller{
 
 
     /*
-     INDEX, LISTA LAS ESPECIES
+     INDEX, LISTAR LAS ESPECIES
      */
         public function index()
         {
