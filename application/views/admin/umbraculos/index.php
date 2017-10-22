@@ -32,23 +32,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                              </div>
                                  
-                    <table class="table table-striped">
+                    <table class="table table-striped table-hover">
                     <tr>
 
-                        <th>NombreUmbraculo</th>
-                        <th>TemperaturaUmbraculo</th>
-                        <th>LuzUmbraculo</th>
-                        <th>HumedadUmbraculo</th>
-                        <th>DescripcionSustrato</th>
-                        <th>DescripcionUmbraculo</th>
-                        <th>Actions</th>
+                        <th>Nombre</th>
+                        <th>Temperatura Operativa</th>
+                        <th>Húmedad</th>
+                        <th>Sustrato</th>
+                        <th>Descripción</th>
+                        <th>Acciones</th>
                     </tr>
                     <?php foreach($umbraculos as $u){ ?>
                     <tr>
                         <td><?php echo $u['nombreUmbraculo']; ?></td>
-                        <td><?php echo $u['temperaturaUmbraculo']; ?></td>
-                        <td><?php echo $u['luzUmbraculo']; ?></td>
-                        <td><?php echo $u['humedadUmbraculo']; ?></td>
+                        <td><?php echo $u['temperaturaUmbraculo']; ?>°</td>
+                        <td><?php echo $u['humedadUmbraculo']; ?>%</td>
                         <td><?php echo $u['descripcionSustrato']; ?></td>
                         <td><?php echo $u['descripcionUmbraculo']; ?></td>
                         <td>

@@ -31,6 +31,11 @@ $lang['menu_search'] = 'Buscar';
 /* *********** */$lang['menu_umbraculo_crear']  = 'Crear';
 /* *********** */$lang['menu_umbraculo_editar'] = 'Editar';
 
+/* ****** */$lang['menu_especies'] 			= 'Administración especies';
+/* *********** */$lang['menu_umbraculo_ver']    = 'Ver';
+/* *********** */$lang['menu_umbraculo_crear']  = 'Crear';
+/* *********** */$lang['menu_umbraculo_editar'] = 'Editar';
+
 /* ****** */$lang['menu_insumo'] 			= 'Administración Insumos';
 /* *********** */$lang['menu_insumo_ver']    = 'Ver';
 /* *********** */$lang['menu_insumo_crear']  = 'Crear';
