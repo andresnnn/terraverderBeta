@@ -89,21 +89,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-shopping-basket"></i><span>Insumos</span>
                             </a>
                         </li>
-                        <!-- Elemento -->
-                        <li class="header text-uppercase">Resto</li>
-                        <li class="<?=active_link_controller('files')?>">
-                            <a href="<?php echo site_url('admin/files'); ?>">
-                                <i class="fa fa-file"></i> <span>Archivos</span>
-                            </a>
-                        </li>
-                        <!-- Elemento -->
-                        <li class="<?=active_link_controller('database')?>">
-                            <a href="<?php echo site_url('admin/database'); ?>">
-                                <i class="fa fa-database"></i> <span>Utilidades Base de datos</span>
-                            </a>
-                        </li>
-                        <!-- Elemento -->
-
                     </ul>
                 </section>
             </aside>

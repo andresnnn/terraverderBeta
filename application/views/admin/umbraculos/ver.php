@@ -78,6 +78,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="box-body">
                                     <div class="col-lg-6">
                                              <div class="progress-group">
+                                                <span class="progress-text">Húmedad (%)</span>
+                                                <span class="progress-number"><strong><?php echo $info_umbraculo['humedadUmbraculo']; ?></strong>/100</span>
+            
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-aqua" role="progressbar" style="width: <?php echo $info_umbraculo['humedadUmbraculo']; ?>%" ></div>
+                                                </div>
+                                            </div>
+                                            <div class="progress-group">
                                                 <span class="progress-text">Espacio disponible</span>
                                                 <span class="progress-number"><strong><?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>m<sup>2</sup></strong>/<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>m<sup>2</sup></span>
             
