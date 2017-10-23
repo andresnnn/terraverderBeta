@@ -31,6 +31,21 @@ $lang['menu_search'] = 'Buscar';
 /* *********** */$lang['menu_umbraculo_crear']  = 'Crear';
 /* *********** */$lang['menu_umbraculo_editar'] = 'Editar';
 
+/* ****** */$lang['menu_especies'] 			= 'Administración especies';
+/* *********** */$lang['menu_especies_ver']    = 'Ver';
+/* *********** */$lang['menu_especies_crear']  = 'Crear';
+/* *********** */$lang['menu_especies_editar'] = 'Editar';
+
+/* ****** */$lang['menu_plantas'] 			= 'Administración plantas';
+/* *********** */$lang['menu_plantas_ver']    = 'Ver';
+/* *********** */$lang['menu_plantas_crear']  = 'Crear';
+/* *********** */$lang['menu_plantas_editar'] = 'Editar';
+
+/* ****** */$lang['menu_insumo'] 			= 'Administración Insumos';
+/* *********** */$lang['menu_insumo_ver']    = 'Ver';
+/* *********** */$lang['menu_insumo_crear']  = 'Crear';
+/* *********** */$lang['menu_insumo_editar'] = 'Editar';
+
 /* ****** */$lang['menu_security_groups']       = 'Tipos de usuario';
 /* *********** */$lang['menu_groups_create']    = 'Crear';
 /* *********** */$lang['menu_groups_edit']      = 'Editar';
