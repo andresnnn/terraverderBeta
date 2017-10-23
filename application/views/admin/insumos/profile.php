@@ -7,27 +7,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo $pagetitle;
          echo $breadcrumb; ?>
     </section>
-<section class="content">
 
-    <table border="1" width="100%">
-    <tr>
-		<th>IdInsumo</th>
-		<th>NombreInsumo</th>
-		<th>DescripcionInsumo</th>
-		<th>Cantidad</th>
-		<th>PuntoDePedido</th>
-		<th>Actions</th>
-    </tr>
 
-    <tr>
-		<td><?php echo $insumo['idInsumo']; ?></td>
-		<td><?php echo $insumo['nombreInsumo']; ?></td>
-		<td><?php echo $insumo['descripcionInsumo']; ?></td>
-		<td><?php echo $insumo['cantidad']; ?></td>
-		<td><?php echo $insumo['puntoDePedido']; ?></td>
 
-    </tr>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-10">
+                 <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Detalles Insumo</h3>
+                    </div>
+                    <div class="box-body">
+                        <table class="table table-striped">
+                            <tbody>
+                                <tr>
+                                    <th>Id Insumo</th>
+                                    <td><?php echo $insumo['idInsumo']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Nombre Insumo</th>
+                                    <td><?php echo $insumo['nombreInsumo']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Stock Insumo</th>
+                                    <td><?php echo $insumo['cantidad']; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Punto de Pedido Insumo</th>
+                                    <td><?php echo $insumo['puntoDePedido'];; ?></td>
+                                </tr>
+                                <tr>
+                                    <th>Descripción</th>
+                                    <td><textarea style="width:100%" disabled><?php echo $insumo['descripcionInsumo']; ?></textarea></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
 
-</table>
-</section>
+
+
+
+
 </div>

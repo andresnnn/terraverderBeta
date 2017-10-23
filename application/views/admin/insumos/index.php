@@ -14,42 +14,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-12">
                  <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?php echo anchor('admin/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
-
-                    </div>
-                    <div class="box-body">
-                        <table class="table table-striped table-hover">
-                            <thead>
-                                <tr>
-                                    <th><?php echo lang('insumos_name');?></th>
-                                    <th><?php echo lang('insumos_stock');?></th>
-                                    <th><?php echo lang('insumos_point');?></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-<?php foreach ($insumo as $i):?>
-                                <tr>
-                                    <td><?php echo $i['nombreInsumo']; ?></td>
-                                    <td><?php echo $i['cantidad']; ?></td>
-                                    <td><?php echo $i['puntoDePedido']; ?></td>
-                                    <td>
-                                        <?php echo anchor('admin/insumos/edit/'.$i['idInsumo'], lang('actions_edit'));
-                                        echo " | ";?>
-                                        <?php echo anchor('admin/insumos/profile/'.$i['idInsumo'], lang('actions_see'));
-                                        echo " | "?>
-                                        <?php echo anchor('admin/insumos/remove/'.$i['idInsumo'], lang('actions_delete'));
-                                      
-                                        ?>
-                                    </td>
-                                </tr>
-<?php endforeach;?>
-                            </tbody>
-                        </table>
+                        <h3 class="box-title"><?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                     </div>
 
+            </div>
+            <div class="box-body">
+                <table class="table table-striped">
+                    <tr>
+						<th>Id Insumo</th>
+						<th>Nombre Insumo</th>
+						<th>Descripcion Insumo</th>
+						<th>Cantidad</th>
+						<th>Punto De Pedido</th>
+						<th>Actions</th>
+                    </tr>
+                    <?php foreach($insumo as $i){ ?>
+                    <tr>
+						<td><?php echo $i['idInsumo']; ?></td>
+						<td><?php echo $i['nombreInsumo']; ?></td>
+						<td><?php echo $i['descripcionInsumo']; ?></td>
+						<td><?php echo $i['cantidad']; ?></td>
+						<td><?php echo $i['puntoDePedido']; ?></td>
+						<td>
+                            <a href="<?php echo site_url('common/insumos/profile/'.$i['idInsumo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
+                            <a href="<?php echo site_url('common/insumos/edit/'.$i['idInsumo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
+                            <a href="<?php echo site_url('common/insumos/remove/'.$i['idInsumo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                </table>
 
-             <div class="box-body">
-             <section class="content">
+            </div>
 
 
 
