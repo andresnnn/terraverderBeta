@@ -97,14 +97,14 @@ class Insumos extends Admin_Controller {
 
     $this->form_validation->set_rules('nombreInsumo','NombreInsumo','max_length[50]|min_length[4]|required');
     $this->form_validation->set_rules('descripcionInsumo','DescripcionInsumo','max_length[255]|min_length[10]|required');
-  //  $this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]');
+    //$this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]');
     $this->form_validation->set_rules('puntoDePedido','PuntoDePedido','is_natural');
 
     if($this->form_validation->run())
           {
               $params = array(
         'nombreInsumo' => $this->input->post('nombreInsumo'),
-      //  'cantidad' => $this->input->post('cantidad'),
+        'cantidad' => $this->input->post('cantidad'),
         'puntoDePedido' => $this->input->post('puntoDePedido'),
         'descripcionInsumo' => $this->input->post('descripcionInsumo'),
               );
