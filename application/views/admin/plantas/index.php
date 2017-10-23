@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          <div class="box-body">
                          <section class="content">
 
-                <table class="table table-striped">
+                <table class="table table-striped table-hover">
                     <tr>
                         <th>Nombre</th>
                         <th>Nombre Científico</th>

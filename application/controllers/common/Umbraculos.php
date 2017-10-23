@@ -149,6 +149,29 @@ class Umbraculos extends Admin_Controller {
         }
     } 
 
+    /* CONSULTAR INFORMACIÓN UMBRÁCULO*/
+
+
+    public function ver($idUmbraculo)
+    {
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+        {
+            redirect('auth/login', 'refresh');
+        }
+        else
+        {
+            /* Breadcrumbs */
+            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+            /* Data */
+            $idUmbraculo = (int) $idUmbraculo;
+
+             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+
+            /* Load Template */
+            $this->template->admin_render('admin/umbraculos/ver', $this->data);
+        }
+    }
     /*
      * Deleting umbraculos
 
