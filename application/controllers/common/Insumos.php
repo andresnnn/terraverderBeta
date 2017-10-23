@@ -68,7 +68,7 @@ class Insumos extends Admin_Controller {
                     );
 
                     $insumo_id = $this->Insumos_model->add_insumo($params);
-                    redirect('admin/insumos/index');
+                    redirect('common/insumos/index');
                 }
                 else
                 {
@@ -110,7 +110,7 @@ class Insumos extends Admin_Controller {
               );
 
               $this->Insumos_model->update_insumo($idInsumo,$params);
-              redirect('admin/insumos/index');
+              redirect('common/insumos/index');
           }
           else
           {
@@ -135,7 +135,7 @@ class Insumos extends Admin_Controller {
       {
           $this->Insumos_model->delete_insumo($idInsumo);
           $this->Insumos_model->delete_insumo($idInsumo);
-           redirect('admin/insumos/index');
+           redirect('common/insumos/index');
 
 
       }
@@ -154,41 +154,7 @@ class Insumos extends Admin_Controller {
 
   }
 
-  function stock($idInsumo)
-  {
-
-      /* Breadcrumbs */
-        $this->data['breadcrumb'] = $this->breadcrumbs->show();
-        // check if the insumo exists before trying to edit it
-        $this->data['insumo'] = $this->Insumos_model->get_insumo($idInsumo);
-        // ?
-      $this->template->admin_render('admin/insumos/stock', $this->data);
-
-      if(isset($this->data['insumo']['idInsumo']))
-      {
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]');
-        $this->form_validation->set_rules('incrementoCantidad','Cantidad','is_integer|required|less_than[999]');
-        if($this->form_validation->run())
-            {
-
-              $cantidad = $this->input->post('incrementoCantidad') + $this->input->post('cantidad');
-              $params = array('cantidad'=>$this->input->post('cantidad'),);
-
-              $this->Insumos_model->update_stock_insumo($idInsumo,$params);
-              redirect('admin/insumos/index');
-            }
-            else
-            {
-              //  $data['_view'] = 'insumo/edit';
-              $this->template->admin_render('admin/insumos/edit', $this->data);
-              //  $this->load->view('admin/insumos/edit',$this->data);
-            }
-      }
-      else {
-        show_error('El insumo seleccionado no existe.');# code...
-      }
-    }
+  
 
 
   }

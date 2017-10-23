@@ -39,7 +39,7 @@ document.getElementById("cantidad").value= contador--;
                       <!-- COMIENZA FORMULARIO -->
                       <?php
                       $attributes = array('name' => 'formulario');
-                      echo form_open('admin/insumos/edit/'.$insumo['idInsumo'], $attributes); ?>
+                      echo form_open('common/insumos/edit/'.$insumo['idInsumo'], $attributes); ?>
 
     	<div class="form-group">
     		<label class='col-sm-2 control-label' >*<?php echo lang('insumos_name');?>:</label>

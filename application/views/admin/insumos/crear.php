@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="box-body">
 
                       <!-- COMIENZA FORMULARIO -->
-                      <?php echo form_open('admin/insumos/crear',array('class' => 'form-horizontal', 'id')); ?>
+                      <?php echo form_open('common/insumos/crear',array('class' => 'form-horizontal', 'id')); ?>
 
                       <div class="form-group">
 
