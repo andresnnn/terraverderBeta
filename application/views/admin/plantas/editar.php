@@ -63,11 +63,10 @@
 					</div>
 				</div>
 			</div>
-			<div class="box-footer">
-            	<button type="submit" class="btn btn-success">
-					<i class="fa fa-check"></i> Save
-				</button>
-	        </div>				
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                <a href="<?php echo site_url('common/plantas'); ?>" class="btn btn-default btn-flat">Cancelar</a>
+            </div> 			
 			<?php echo form_close(); ?>
                          </div>
                     </div>

@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <tr>
                         <td><?php echo $p['nombrePlanta']; ?></td> 
                         <td><?php echo $p['nombreCientificoPlanta']; ?></td>
-                        <td><?php echo $p['unidadEspacioPlanta_m2']; ?></td>
+                        <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
                         <td><?php echo $p['descripcionPlanta']; ?></td>
                        
                         

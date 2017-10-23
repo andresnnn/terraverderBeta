@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="unidadEspacioPlanta_m2" class="control-label"><span class="text-danger">*</span>Unidades Espacio (cm2)</label>
+						<label for="unidadEspacioPlanta_m2" class="control-label"><span class="text-danger">*</span>Unidades Espacio cm<sup>2</sup></label>
 						<div class="form-group">
 							<input type="text" name="unidadEspacioPlanta_m2" value="<?php echo $this->input->post('unidadEspacioPlanta_m2'); ?>" class="form-control" id="unidadEspacioPlanta_m2" />
 							<span class="text-danger"><?php echo form_error('unidadEspacioPlanta_m2');?></span>
@@ -70,11 +70,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 				</div>
 			</div>
-          	<div class="box-footer">
-            	<button type="submit" class="btn btn-success">
-            		<i class="fa fa-check"></i> Guardar
-            	</button>
-          	</div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                <a href="<?php echo site_url('common/plantas'); ?>" class="btn btn-default btn-flat">Cancelar</a>
+            </div> 
             <?php echo form_close(); ?>
                          </div>
                     </div>

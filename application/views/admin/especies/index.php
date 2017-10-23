@@ -38,8 +38,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<td><?php echo $e['descripcionCuidados']; ?></td>
 								<td><?php echo $e['descripcionSustrato']; ?></td>
 								<td>
-		                            <a href="<?php echo site_url('common/especies/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
-		                            <a href="<?php echo site_url('especies/remove/'.$e['idEspecie']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Delete</a>
+		                            <a href="<?php echo site_url('common/especies/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> <br>
+		                            <a href="<?php echo site_url('especies/remove/'.$e['idEspecie']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
 		                        </td>
 		                    </tr>
 		                    <?php } ?>

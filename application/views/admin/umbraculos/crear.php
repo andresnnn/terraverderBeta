@@ -89,11 +89,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="box-footer">
-                                                    <button type="submit" class="btn btn-success">
-                                                        <i class="fa fa-check"></i> Guardar
-                                                    </button>
-                                                </div>
+                                                    <div class="box-footer">
+                                                        <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                                                        <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Cancelar</a>
+                                                    </div>  
                                                 <?php echo form_close(); ?>
                          </div>
                     </div>
