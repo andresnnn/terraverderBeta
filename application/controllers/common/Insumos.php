@@ -150,11 +150,11 @@ class Insumos extends Admin_Controller {
       $this->data['breadcrumb'] = $this->breadcrumbs->show();
       // check if the insumo exists before trying to edit it
       $this->data['insumo'] = $this->Insumos_model->get_insumo($idInsumo);
-    //  $this->template->admin_render('admin/insumos/profile', $this->data);
+      $this->template->admin_render('admin/insumos/profile', $this->data);
 
   }
 
-  
+
 
 
   }

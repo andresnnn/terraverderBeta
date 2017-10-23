@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <section class="content">
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-32">
                  <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">Nuevo insumo</h3>
@@ -21,40 +21,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <?php echo form_open('common/insumos/crear',array('class' => 'form-horizontal', 'id')); ?>
 
                       <div class="form-group">
+		<label for="nombreInsumo" class="col-md-3 control-label">NombreInsumo</label>
+		<div class="col-md-8">
+			<input type="text" name="nombreInsumo" value="<?php echo $this->input->post('nombreInsumo'); ?>" class="form-control" id="nombreInsumo" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="descripcionInsumo" class="col-md-3 control-label">DescripcionInsumo</label>
+		<div class="col-md-8">
+			<input type="text" name="descripcionInsumo" value="<?php echo $this->input->post('descripcionInsumo'); ?>" class="form-control" id="descripcionInsumo" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="cantidad" class="col-md-3 control-label">Cantidad</label>
+		<div class="col-md-8">
+			<input type="number" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="puntoDePedido" class="col-md-3 control-label">PuntoDePedido</label>
+		<div class="col-md-8">
+			<input type="text" name="puntoDePedido" value="<?php echo $this->input->post('puntoDePedido'); ?>" class="form-control" id="puntoDePedido" />
+		</div>
+	</div>
 
-                        <label class="col-sm-2 control-label">*Nombre del Insumo: </label>
-                        <div class="col-sm-10">
-                        <input class="col-sm-10" type="text" name="nombreInsumo" value="<?php echo
-                         $this->input->post('nombreInsumo'); ?>" />
-                        </div>
-                        <span ><?php echo form_error('nombreInsumo');?></span>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2 control-label">*Cantidad: </label>
-                        <div class="col-sm-10">
-                        <input class="col-sm-10" type="text" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" />
-                        </div>
-                        <span class="col-sm-10"><?php echo form_error('cantidad');?></span>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2 control-label">PuntoDePedido: </label>
-                        <div class="col-sm-10">
-                        <input class="col-sm-10"
-                         type="text" name="puntoDePedido" value="<?php echo $this->input->post('puntoDePedido'); ?>" />
-                       </div>
-                        <span class="col-sm-10"><?php echo form_error('puntoDePedido');?></span>
-                      </div>
-                      <div class="form-group">
-                        <label class="col-sm-2 control-label">* <?php echo lang('insumos_description')?> :</label>
-                        <div class="col-sm-10">
+  <div class="box-footer">
+      <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+      <a href="<?php echo site_url('common/insumos'); ?>" class="btn btn-default btn-flat">Cancelar</a>
+  </div>
 
-                        <textarea class = "col-sm-10" name="descripcionInsumo"><?php echo $this->input->post('descripcionInsumo'); ?></textarea>
-                        </div>
-                        <span class="col-sm-10"><?php echo form_error('descripcionInsumo');?></span>
-                      </div>
-                      <div class="btn-group">
-                      <button class='btn btn-primary btn-flat' type="submit">Guardar</button>
-                    </div>
                     <?php echo form_close(); ?>
 
                     <!--TERMINA FORMULARIO-->
