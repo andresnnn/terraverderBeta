@@ -9,6 +9,12 @@ class Tipotarea extends CI_Controller{
     {
         parent::__construct();
         $this->load->model('Tipotarea_model');
+
+        /*carga del modelo*/
+$this->load->model('admin/Tipotarea_model');
+        /* Load :: Common */
+$this->lang->load('admin/Tipotarea');
+
     }
 
     /*

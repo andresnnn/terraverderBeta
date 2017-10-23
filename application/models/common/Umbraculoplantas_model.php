@@ -9,18 +9,29 @@ class Umbraculoplantas_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->model('common/plantas_model');
     }
     
     /*
-     * Get umbraculo_plantas by idUmbraculo
+     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO
      */
     function get_umbraculo_plantas($idUmbraculo)
     {
         return $this->db->get_where('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo))->result_array();
     }
+
+     /*
+     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE
+     */
+    function get_umbraculo_plantas_nombre($idUmbraculo)
+    {
+        $query = "SELECT * FROM `umbraculo/planta` JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo;
+
+        return $this->db->query($query)->result_array();
+    }
         
     /*
-     * Get all umbraculo_plantas
+     OBTENER PLANTAS UMBRACULO
      */
     function get_all_umbraculo_plantas()
     {

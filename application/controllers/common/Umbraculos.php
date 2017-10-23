@@ -14,6 +14,7 @@ class Umbraculos extends Admin_Controller {
         /* CARGA LA BASE DE DATOS O MODELO*/
         $this->load->model('common/Umbraculos_model');
         $this->load->model('common/Umbraculoplantas_model');
+//        $this->load->model('common/plantas_model');
 
     }
 
@@ -31,10 +32,9 @@ class Umbraculos extends Admin_Controller {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
             /* CARGO EL LISTADO DE UMBRACULOS*/
-
             $this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos();
 
-            /* Load Template */
+            /* carga plantilla */
             $this->template->admin_render('admin/umbraculos/index', $this->data);
         }
     }
@@ -168,7 +168,7 @@ class Umbraculos extends Admin_Controller {
             $idUmbraculo = (int) $idUmbraculo;
 
              $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-             $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
+             $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
             /* CARGAR INFORMARCION */
            // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
 
