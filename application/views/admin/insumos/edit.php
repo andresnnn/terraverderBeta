@@ -2,6 +2,25 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
+<script language="JavaScript">
+var formulario= document.getElementById("formulario");
+contador = formulario.cantidad.value
+function incrementar() {
+if(contador==999)
+alert('Maximo permitido alcanzado: 999');
+else {
+document.formulario.cantidad.value= contador++;
+}
+}
+function decrementar() {
+if(contador<0)
+alert('Minimo permitido alcanzado: 0');
+else {
+document.formulario.cantidad.value= contador--;
+}
+}
+
+</script>
 <div class="content-wrapper">
     <section class="content-header">
         <?php echo $pagetitle;
@@ -19,7 +38,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="box-body">
 
 
-    <?php echo form_open('admin/insumos/edit/'.$insumo['idInsumo']); ?>
+
+    <?php
+$attributes = array('name' => 'formulario');
+    echo form_open('admin/insumos/edit/'.$insumo['idInsumo'], $attributes); ?>
 
     	<div>
     		<span class="text-danger">*</span>NombreInsumo :
@@ -27,11 +49,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     		<span class="text-danger"><?php echo form_error('nombreInsumo');?></span>
     	</div>
     	<div>
-    		<?php echo lang('insumos_stock');?>:
-    		<input disabled type="text" name="cantidad" value="<?php echo ($this->input->post('cantidad') ? $this->input->post('cantidad') : $insumo['cantidad']); ?>" />
+        <?php echo lang('insumos_stock');?>:
+        <input type="button" onClick="incrementar()" value="aumentar">
+    		<input type="text" name="cantidad" value = "<?php echo $insumo['cantidad'] ; ?>" />
+        <input type="button" onClick="decrementar()" value="disminuir">
+      </div>
     		<span class="text-danger"><?php echo form_error('cantidad');?></span>
-    	</div>
-      
+
+
     	<div>
     		<?php echo lang('insumos_point');?>:
     		<input type="text" name="puntoDePedido" value="<?php echo ($this->input->post('puntoDePedido') ? $this->input->post('puntoDePedido') : $insumo['puntoDePedido']); ?>" />
