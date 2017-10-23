@@ -15,5 +15,6 @@ $lang['insumos_edit_insumos']           = 'Editar insumo';
 $lang['insumos_name']           = 'Insumo';
 $lang['insumos_description']              = 'Descripcion del insumo';
 $lang['insumos_stock']              = 'Stock';
+$lang['insumos_stockNew']              = 'Incremento del Stock';
 $lang['insumos_point']              = 'Punto de pedido';
 $lang['insumos_update']              = 'Actualizar Stock insumo';

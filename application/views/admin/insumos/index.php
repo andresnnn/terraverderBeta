@@ -35,7 +35,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <td>
                                         <?php echo anchor('admin/insumos/edit/'.$i['idInsumo'], lang('actions_edit'));
                                         echo " | ";?>
-                                        <?php echo anchor('admin/insumos/profile/'.$i['idInsumo'], lang('actions_see')); ?>
+                                        <?php echo anchor('admin/insumos/profile/'.$i['idInsumo'], lang('actions_see'));
+                                        echo " | "?>
+                                        <?php echo anchor('admin/insumos/remove/'.$i['idInsumo'], lang('actions_delete'));
+                                      
+                                        ?>
                                     </td>
                                 </tr>
 <?php endforeach;?>
