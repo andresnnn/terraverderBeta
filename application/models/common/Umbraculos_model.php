@@ -18,7 +18,8 @@ class Umbraculos_model extends CI_Model
     {
         return $this->db->get_where('umbraculo',array('idUmbraculo'=>$idUmbraculo))->row_array();
     }
-        
+
+ 
     /*
      * Get all umbraculos
      */

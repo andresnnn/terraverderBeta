@@ -13,6 +13,7 @@ class Umbraculos extends Admin_Controller {
         $this->data['pagetitle'] = $this->page_title->show();
         /* CARGA LA BASE DE DATOS O MODELO*/
         $this->load->model('common/Umbraculos_model');
+        $this->load->model('common/Umbraculoplantas_model');
 
     }
 
@@ -33,11 +34,11 @@ class Umbraculos extends Admin_Controller {
 
             $this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos();
 
-
             /* Load Template */
             $this->template->admin_render('admin/umbraculos/index', $this->data);
         }
     }
+
 
     /*
      * Adding a new umbraculos
@@ -149,6 +150,32 @@ class Umbraculos extends Admin_Controller {
         }
     } 
 
+    /* CONSULTAR INFORMACIÓN UMBRÁCULO*/
+
+
+    public function ver($idUmbraculo)
+    {
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+        {
+            redirect('auth/login', 'refresh');
+        }
+        else
+        {
+            /* Breadcrumbs */
+            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+            /* Data */
+            $idUmbraculo = (int) $idUmbraculo;
+
+             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+             $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
+            /* CARGAR INFORMARCION */
+           // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
+
+            /* Load Template */
+            $this->template->admin_render('admin/umbraculos/ver', $this->data);
+        }
+    }
     /*
      * Deleting umbraculos
 

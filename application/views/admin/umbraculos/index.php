@@ -21,43 +21,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                          <div class="box-body">
                          <section class="content">
 
-                            <div class="row">
+
+                    <table class="table table-striped table-hover" >
+
+                    <?php foreach($umbraculos as $u){ ?>
+                    <tr>
+                    <div class="row">
                                 <div class="col-md-3 col-sm-6 col-xs-12">
                                     <div class="info-box">
-                                        <span class="info-box-icon bg-maroon"><i class="fa fa-legal"></i></span>
+                                        <span class="info-box-icon bg-maroon"><i class="fa fa-leaf"></i></span>
                                         <div class="info-box-content">
-                                            dfgh
+                                            <b>Nombre: </b><?php echo $u['nombreUmbraculo']; ?><br>
+                                            <b>Descripción: </b><?php echo $u['descripcionUmbraculo']; ?><br>
+                                            <b>Acciones: </b><br>
+                                            <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
+                                            <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
+                                            <a href="<?php echo site_url('umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a><br><br>
                                         </div>
                                     </div>
                                 </div>
-                             </div>
-                                 
-                    <table class="table table-striped">
-                    <tr>
+                    </div>
 
-                        <th>NombreUmbraculo</th>
-                        <th>TemperaturaUmbraculo</th>
-                        <th>LuzUmbraculo</th>
-                        <th>HumedadUmbraculo</th>
-                        <th>DescripcionSustrato</th>
-                        <th>DescripcionUmbraculo</th>
-                        <th>Actions</th>
-                    </tr>
-                    <?php foreach($umbraculos as $u){ ?>
-                    <tr>
-                        <td><?php echo $u['nombreUmbraculo']; ?></td>
-                        <td><?php echo $u['temperaturaUmbraculo']; ?></td>
-                        <td><?php echo $u['luzUmbraculo']; ?></td>
-                        <td><?php echo $u['humedadUmbraculo']; ?></td>
-                        <td><?php echo $u['descripcionSustrato']; ?></td>
-                        <td><?php echo $u['descripcionUmbraculo']; ?></td>
-                        <td>
-                            <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
-                            <a href="<?php echo site_url('umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
-                        </td>
                     </tr>
                     <?php } ?>
-                </table>   
+                </table>  
+                                 
+                    
                          </div>
                     </div>
                 </section>
