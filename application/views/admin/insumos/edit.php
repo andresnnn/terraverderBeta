@@ -3,20 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
 <script language="JavaScript">
-var formulario= document.getElementById("formulario");
-contador = formulario.cantidad.value
+var contador=  "<?php echo  $insumo['cantidad']; ?>";
 function incrementar() {
 if(contador==999)
 alert('Maximo permitido alcanzado: 999');
 else {
-document.formulario.cantidad.value= contador++;
+
+document.getElementById("cantidad").value= contador++;
 }
 }
 function decrementar() {
 if(contador<0)
 alert('Minimo permitido alcanzado: 0');
 else {
-document.formulario.cantidad.value= contador--;
+document.getElementById("cantidad").value= contador--;
 }
 }
 
@@ -40,8 +40,8 @@ document.formulario.cantidad.value= contador--;
 
 
     <?php
-$attributes = array('name' => 'formulario');
-    echo form_open('admin/insumos/edit/'.$insumo['idInsumo'], $attributes); ?>
+      $attributes = array('name' => 'formulario');
+      echo form_open('admin/insumos/edit/'.$insumo['idInsumo'], $attributes); ?>
 
     	<div>
     		<span class="text-danger">*</span>NombreInsumo :
@@ -49,10 +49,12 @@ $attributes = array('name' => 'formulario');
     		<span class="text-danger"><?php echo form_error('nombreInsumo');?></span>
     	</div>
     	<div>
-        <?php echo lang('insumos_stock');?>:
-        <input type="button" onClick="incrementar()" value="aumentar">
-    		<input type="text" name="cantidad" value = "<?php echo $insumo['cantidad'] ; ?>" />
-        <input type="button" onClick="decrementar()" value="disminuir">
+        *Stock:
+       <input type="button" onClick="incrementar()" value="+">
+        <!-- ($this->input->post('cantidad') ? $this->input->post('cantidad') : $insumo['cantidad']);
+       echo  $insumo['cantidad']; -->
+    		<input  readonly="readonly" type="number" id="cantidad" name="cantidad"  value = "<?php echo  $insumo['cantidad']; ?>" />
+         <input type="button" onClick="decrementar()" value="-">
       </div>
     		<span class="text-danger"><?php echo form_error('cantidad');?></span>
 
