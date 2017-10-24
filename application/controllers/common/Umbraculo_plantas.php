@@ -9,8 +9,8 @@ class Umbraculo_plantas extends CI_Controller{
     {
         parent::__construct();
         /* Title Page :: Common */
-        $this->page_title->push(lang('menu_plantas'));
-        $this->data['pagetitle'] = $this->page_title->show();
+       // $this->page_title->push(lang('menu_plantas'));
+        //$this->data['pagetitle'] = $this->page_title->show();
         /* CARGA LA BASE DE DATOS O MODELO*/
         $this->load->model('common/Umbraculoplantas_model');
     } 
@@ -44,34 +44,32 @@ class Umbraculo_plantas extends CI_Controller{
 
 		$this->form_validation->set_rules('idPlanta','IdPlanta','required');
 		$this->form_validation->set_rules('cantidad','Cantidad','required');
-		
+        $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');		
 		if($this->form_validation->run())     
         {   
             $params = array(
+                'idUmbraculo' => $this->input->post('idUmbraculo'),
 				'idPlanta' => $this->input->post('idPlanta'),
 				'cantidad' => $this->input->post('cantidad'),
             );
             
             $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
-            redirect('umbraculo_plantas/index');
+            redirect('common/umbraculos/index');
         }
         else
         {
-			$this->load->model('Umbraculo_model');
-			$data['all_umbraculo'] = $this->Umbraculo_model->get_all_umbraculo();
+            /* Breadcrumbs */
+            //$this->data['breadcrumb'] = $this->breadcrumbs->show();
 
-			$this->load->model('Plantas_model');
-			$data['all_plantas'] = $this->Plantas_model->get_all_plantas();
-            
-            $data['_view'] = 'umbraculoplantum/add';
-            $this->load->view('layouts/main',$data);
+                        /* Load Template */
+            $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
         }
     } 
 
     /*
      RETIRAR UNA PLANTA DEL UMBRACULO
      */
-    function remove($idUmbraculo)
+/*    function remove($idUmbraculo)
     {
         $umbraculo_plantas = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
 
@@ -83,6 +81,6 @@ class Umbraculo_plantas extends CI_Controller{
         }
         else
             show_error('The umbraculo_plantas you are trying to delete does not exist.');
-    }
+    }*/
     
 }
