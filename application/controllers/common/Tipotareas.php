@@ -123,15 +123,14 @@ class Tipotareas extends Admin_Controller{
         if(isset($tipotarea['idTipoTarea']))
         {
             $this->Tipotareas_model->delete_tipotarea($idTipoTarea);
-            redirect('common/tipotarea/index');
+            redirect('common/tipotareas/index');
         }
         else
             show_error('The tipotarea you are trying to delete does not exist.');
     }
 
-    function profile($idInsumo)
+    function profile($idTipoTarea)
     {
-
       /* Breadcrumbs */
         $this->data['breadcrumb'] = $this->breadcrumbs->show();
         // check if the insumo exists before trying to edit it

@@ -99,12 +99,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
                         <li class="<?=active_link_controller('tipotareas')?>">
                             <a href="<?php echo site_url('common/tipotareas'); ?>">
-                                <i class="fa fa-user"></i> <span>Tipo de Tareas</span>
-                            </a>
-                        </li>
-                        <li class="<?=active_link_controller('estados')?>">
-                            <a href="<?php echo site_url('common/estados'); ?>">
-                                <i class="fa fa-user"></i> <span>Estados de la tarea</span>
+                                <i class="fa fa-user"></i> <span>Tipos de Tareas</span>
                             </a>
                         </li>
                     </ul>
