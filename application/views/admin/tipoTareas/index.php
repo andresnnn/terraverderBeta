@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-12">
                  <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title"><?php echo anchor('common/tipotareas/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                        <h3 class="box-title"><?php echo anchor('common/tipotareas/add', '<i class="fa fa-plus"></i> '. lang('tipotareas_create_tipotareas'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                     </div>
 
             </div>
@@ -32,9 +32,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <td><?php echo $t['nombreTipoTarea']; ?></td>
                   <td><?php echo $t['descripcionTarea']; ?></td>
                   <td>
-                          <a href="<?php echo site_url('tipotarea/edit/'.$t['idTipoTarea']); ?>">Edit</a> |
-                          <a href="<?php echo site_url('tipotarea/remove/'.$t['idTipoTarea']); ?>">Delete</a>
-                      </td>
+                                  <a href="<?php echo site_url('common/tipotareas/profile/'.$t['idTipoTarea']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
+                                  <a href="<?php echo site_url('common/tipotareas/edit/'.$t['idTipoTarea']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
+                                  <a href="<?php echo site_url('common/tipotareas/remove/'.$t['idTipoTarea']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
+                  </td>
                   </tr>
                 <?php } ?>
                 </table>

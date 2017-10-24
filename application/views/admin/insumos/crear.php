@@ -21,11 +21,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <?php echo form_open('common/insumos/crear',array('class' => 'form-horizontal', 'id')); ?>
 
                       <div class="form-group">
-		<label for="nombreInsumo" class="col-md-3 control-label">NombreInsumo</label>
-		<div class="col-md-8">
-			<input type="text" name="nombreInsumo" value="<?php echo $this->input->post('nombreInsumo'); ?>" class="form-control" id="nombreInsumo" />
-		</div>
-	</div>
+                  		<label for="nombreInsumo" class="col-md-3 control-label">NombreInsumo</label>
+                  		<div class="col-md-8">
+                  			<input type="text" name="nombreInsumo" value="<?php echo $this->input->post('nombreInsumo'); ?>" class="form-control" id="nombreInsumo" />
+                  		</div>
+                  	</div>
 	<div class="form-group">
 		<label for="descripcionInsumo" class="col-md-3 control-label">DescripcionInsumo</label>
 		<div class="col-md-8">

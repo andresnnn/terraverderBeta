@@ -10,10 +10,10 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['tipotareas_create_tipotareas'] = 'Crear nuevo tipotarea';
-$lang['tipotareas_edit_tipotareas']           = 'Editar tipotarea';
-$lang['tipotareas_name']           = 'tipotarea';
-$lang['tipotareas_description']              = 'Descripcion del tipotarea';
+$lang['tipotareas_create_tipotareas'] = 'Crear nuevo tipo de tarea';
+$lang['tipotareas_edit_tipotareas']           = 'Editar tipo de tarea';
+$lang['tipotareas_name']           = 'tipo de tarea';
+$lang['tipotareas_description']              = 'Descripcion del tipo tarea';
 $lang['tipotareas_stock']              = 'Stock';
 $lang['tipotareas_stockNew']              = 'Incremento del Stock';
 $lang['tipotareas_point']              = 'Punto de pedido';
