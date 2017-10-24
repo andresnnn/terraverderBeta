@@ -81,15 +81,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <div class="col-lg-6">
                                            <table class="table table-striped">
                                             <tr>
-                                                <th>IdPlanta</th>
+                                                <th>Nombre</th>
                                                 <th>Cantidad</th>
                                             </tr>
-<!--                                                 <?php foreach($umbraculo_plantas as $u){ ?> -->
+                                                <?php foreach($umbraculo_plantas as $u){ ?> 
                                                 <tr>
-                                                    <td><?php echo $u['idPlanta']; ?></td>
+                                                    <td><?php echo $u['nombrePlanta']; ?></td>
                                                     <td><?php echo $u['cantidad']; ?></td>
                                                 </tr>
-<!--                                                 <?php } ?> -->
+                                                <?php } ?> 
                                         </table>
 
                                             <div>

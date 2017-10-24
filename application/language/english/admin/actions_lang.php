@@ -14,6 +14,7 @@ $lang['actions_cancel']         = 'Cancelar';
 $lang['actions_create']         = 'Crear';
 $lang['actions_default_values'] = 'Valores por defecto';
 $lang['actions_edit']           = 'Editar';
+$lang['actions_editStock']           = 'Cambiar Stock';
 $lang['actions_ok']             = 'Ok';
 $lang['actions_no']             = 'No';
 $lang['actions_reset']          = 'Borrar todo';

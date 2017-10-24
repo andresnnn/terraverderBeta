@@ -67,6 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración especies & plantas</li>
+
 <!--                         <li class="<?=active_link_controller('umbraculos')?>">
                             <a href="<?php echo site_url('common/umbraculos'); ?>">
                                 <i class="fa fa-tree"></i><span>Umbráculos</span>
@@ -81,12 +82,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <i class="fa fa-tencent-weibo"></i><span>Ver plantas registradas</span>
                                 </a>
                             </li>
-                        </li> 
+                        </li>
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración insumos</li>
                         <li class="<?=active_link_controller('insumos')?>">
-                            <a href="<?php echo site_url('admin/insumos'); ?>">
+                            <a href="<?php echo site_url('common/insumos'); ?>">
                                 <i class="fa fa-shopping-basket"></i><span>Insumos</span>
+                            </a>
+                        </li>
+                        <!-- Elemento -->
+                        <li class="header text-uppercase">Administración tarea</li>
+                        <li class="<?=active_link_controller('common/tarea')?>">
+                            <a href="<?php echo site_url('common/tarea'); ?>">
+                                <i class="fa fa-user"></i> <span>Tareas</span>
+                            </a>
+                        </li>
+                        <li class="<?=active_link_controller('common/tipoTarea')?>">
+                            <a href="<?php echo site_url('common/tipoTarea'); ?>">
+                                <i class="fa fa-user"></i> <span>Tipo de Tareas</span>
                             </a>
                         </li>
                     </ul>
