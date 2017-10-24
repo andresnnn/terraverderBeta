@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title">Detalles umbráculo</h3>
                                 </div>
                                 <div class="box-body">
-                                    <table class="table table-striped">
+                                    <table class="table table-striped table-hover">
                                         <tbody>
                                             <tr>
                                                 <th>Nombre</th>
@@ -35,7 +35,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </tbody>
                                     </table>
                                 </div>
-
+                                <div class="box-footer" style="text-align: center;" title="Volver a vista administración de umbráculos">
+                                <br>
+                                    <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Volver atrás</a>
+                                </div> 
                             </div>
                     <!--CAJA CONDICIONES-->
                             <div class="box">
@@ -44,14 +47,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                             <div class="box-body">
                                     <div class="col-lg-6">
-                                                <table>
+                                                <table class="table table-striped table-hover">
                                                 <tr><td>Temperatura <strong><?php echo $info_umbraculo['temperaturaUmbraculo']; ?>°C</strong></td></tr>
                                                 </table><br>
                                              <div class="progress-group">
                                                 <span class="progress-text">Húmedad (%)</span>
                                                 <span class="progress-number"><strong><?php echo $info_umbraculo['humedadUmbraculo']; ?></strong>/100</span>
             
-                                                <div class="progress">
+                                                <div class="progress" title="Húmedad dentro del umbráculo">
                                                     <div class="progress-bar progress-bar-aqua" role="progressbar" style="width: <?php echo $info_umbraculo['humedadUmbraculo']; ?>%" ></div>
                                                 </div>
                                             </div>
@@ -59,16 +62,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <span class="progress-text">Espacio disponible</span>
                                                 <span class="progress-number"><strong><?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>m<sup>2</sup></strong>/<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>m<sup>2</sup></span>
             
-                                                <div class="progress">
-                                                    <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="<?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>" aria-valuemin="0" aria-valuemax="<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>" style="width: <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ></div>
+                                                <div class="progress" title="Espacio disponible dentro del umbráculo">
+                                                    <div class="progress-bar progress-bar-aqua" > role="progressbar" aria-valuenow="<?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>" aria-valuemin="0" aria-valuemax="<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>" style="width: <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ></div>
                                                 </div>
                                             </div>
                                     </div>
                             </div>
                             </div>
-                                <div class="box-footer">
-                                    <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Volver</a>
-                                </div> 
                          </div>
                     <!--FIN CAJA CONDICIONES-->     
                     <!-- CAJA PLANTAS-->     
@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="box-body">
                                     <div class="col-lg-6">
-                                           <table class="table table-striped">
+                                           <table class="table table-striped table-hover">
                                             <tr>
                                                 <th>Nombre</th>
                                                 <th>Cantidad</th>
@@ -94,9 +94,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div>
                                                 <table>
-                                                    <td><h3 class="box-title"><?php echo anchor('URL', '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
+                                                    <td><h3 class="box-title"><?php echo anchor('URL', '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Ver todas las plantas dentro del umbráculo')); ?></h3></td
                                                     >
-                                                    <td><h3 class="box-title"><?php echo anchor('URL', '<i class="fa fa-plus"></i> '.'Agregar planta a umbraculo', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                      <td><h3 class="box-title">
+                                                      <?php echo anchor('common/umbraculos/agregarPlanta/'.$id, '<i class="fa fa-plus"></i> '.'Agregar planta', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Agregar una nueva planta dentro de este umbráculo')); ?>
+                                                      </h3></td>
                                                 </table>
                                             </div>
                                     </div>
