@@ -20,19 +20,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <!-- COMIENZA FORMULARIO -->
                       <?php echo form_open('common/tipotareas/edit/'.$tipotarea['idTipoTarea'],array("class"=>"form-horizontal")); ?>
 
-                      <div class="form-group">
-		<label for="nombreInsumo" class="col-md-3 control-label">NombreInsumo</label>
-		<div class="col-md-8">
-			<input type="text" name="nombreInsumo" value="<?php echo ($this->input->post('nombreInsumo') ? $this->input->post('nombreInsumo') : $insumo['nombreInsumo']); ?>" class="form-control" id="nombreInsumo" />
-		</div>
-	</div>
-	<div class="form-group">
-		<label for="descripcionInsumo" class="col-md-3 control-label">DescripcionInsumo</label>
-		<div class="col-md-8">
-			<input type="text" name="descripcionInsumo" value="<?php echo ($this->input->post('descripcionInsumo') ? $this->input->post('descripcionInsumo') : $insumo['descripcionInsumo']); ?>" class="form-control" id="descripcionInsumo" />
-		</div>
-	</div>
 
+
+<div class="form-group">
+    <label for="nombreTipoTarea" class="col-md-3 control-label">Nombre del tipo de tarea: </label>
+  <div class="col-md-8">
+    <input class="form-control" id="nombreTipoTarea" type="text" name="nombreTipoTarea" value="<?php echo ($this->input->post('nombreTipoTarea') ? $this->input->post('nombreTipoTarea') : $tipotarea['nombreTipoTarea']); ?>"  />
+  </div>
+</div>
+
+<div class="form-group">
+  <label for="descripcionTarea" class="col-md-3 control-label">Descripcion del tipo de tarea: </label>
+  <div class="col-md-8">
+    <input class="form-control" id="descripcionTarea" type="text" name="descripcionTarea" value="<?php echo ($this->input->post('descripcionTarea') ? $this->input->post('descripcionTarea') : $tipotarea['descripcionTarea']); ?>"  />
+  </div>
+</div>
 
   <div class="box-footer">
       <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
@@ -48,22 +50,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </section>
 </div>
-
-
-
-<?php echo form_open('tipotarea/edit/'.$tipotarea['idTipoTarea']); ?>
-
-	<div>
-		<span class="text-danger">*</span>NombreTipoTarea :
-		<input type="text" name="nombreTipoTarea" value="<?php echo ($this->input->post('nombreTipoTarea') ? $this->input->post('nombreTipoTarea') : $tipotarea['nombreTipoTarea']); ?>" />
-		<span class="text-danger"><?php echo form_error('nombreTipoTarea');?></span>
-	</div>
-	<div>
-		<span class="text-danger">*</span>DescripcionTarea :
-		<input type="text" name="descripcionTarea" value="<?php echo ($this->input->post('descripcionTarea') ? $this->input->post('descripcionTarea') : $tipotarea['descripcionTarea']); ?>" />
-		<span class="text-danger"><?php echo form_error('descripcionTarea');?></span>
-	</div>
-
-	<button type="submit">Save</button>
-
-<?php echo form_close(); ?>

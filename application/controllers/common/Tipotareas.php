@@ -84,9 +84,9 @@ class Tipotareas extends Admin_Controller{
       // check if the insumo exists before trying to edit it
 
         // check if the tipotarea exists before trying to edit it
-        $data['tipotarea'] = $this->Tipotareas_model->get_tipotarea($idTipoTarea);
+        $this->data['tipotarea'] = $this->Tipotareas_model->get_tipotarea($idTipoTarea);
 
-        if(isset($data['tipotarea']['idTipoTarea']))
+        if(isset($this->data['tipotarea']['idTipoTarea']))
         {
             $this->load->library('form_validation');
 
