@@ -10,17 +10,18 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['actions_cancel']         = 'Cancel';
-$lang['actions_create']         = 'Create';
-$lang['actions_default_values'] = 'Default values';
-$lang['actions_edit']           = 'Edit';
+$lang['actions_cancel']         = 'Cancelar';
+$lang['actions_create']         = 'Crear';
+$lang['actions_default_values'] = 'Valores por defecto';
+$lang['actions_edit']           = 'Editar';
+$lang['actions_editStock']           = 'Cambiar Stock';
 $lang['actions_ok']             = 'Ok';
 $lang['actions_no']             = 'No';
-$lang['actions_reset']          = 'Reset';
-$lang['actions_see']            = 'See';
-$lang['actions_submit']         = 'Submit';
-$lang['actions_yes']            = 'Yes';
-$lang['actions_delete']         = 'Delete';
+$lang['actions_reset']          = 'Borrar todo';
+$lang['actions_see']            = 'Ver';
+$lang['actions_submit']         = 'Aceptar';
+$lang['actions_yes']            = 'SI';
+$lang['actions_delete']         = 'Borrar';
 
-$lang['actions_security_error']     = 'Security error';
+$lang['actions_security_error']     = 'Error de seguridad';
 $lang['actions_file_install_exist'] = 'You must %s the installation files.';

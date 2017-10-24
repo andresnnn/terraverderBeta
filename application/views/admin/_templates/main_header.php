@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
             <header class="main-header">
                 <a href="<?php echo site_url('admin/dashboard'); ?>" class="logo">
-                    <span class="logo-mini"><b>tV</b></span>
-                    <span class="logo-lg"><b>Terra Verde</b></span>
+                    <span class="logo-mini"><?php echo $title_mini; ?></span>
+                    <span class="logo-lg"><b>Terra</b><?php echo $title_lg; ?></span>
                 </a>
 
                 <nav class="navbar navbar-static-top" role="navigation">
@@ -65,13 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <li class="user-body">
                                         <div class="row">
                                             <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo lang('header_followers'); ?></a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo lang('header_sales'); ?></a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#"><?php echo lang('header_friends'); ?></a>
+                                                <a href="#">Tareas Atendidas</a>
                                             </div>
                                         </div>
                                     </li>

@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <div class="content-wrapper">
                 <section class="content-header">
-                                    <h3 class="box-title">Página principal administración</h3>
+                    <h3 class="box-title">Página principal administración</h3>
                 </section>
 
                 <section class="content">

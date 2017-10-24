@@ -38,8 +38,8 @@ $lang['index_email_th']          = 'Email';
 $lang['index_groups_th']         = 'Groups';
 $lang['index_status_th']         = 'Status';
 $lang['index_action_th']         = 'Action';
-$lang['index_active_link']       = 'Active';
-$lang['index_inactive_link']     = 'Inactive';
+$lang['index_active_link']       = 'Activo';
+$lang['index_inactive_link']     = 'Inactivo';
 $lang['index_create_user_link']  = 'Create a new user';
 $lang['index_create_group_link'] = 'Create a new group';
 

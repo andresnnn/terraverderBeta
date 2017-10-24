@@ -13,18 +13,31 @@ class Auth extends MY_Controller {
 	}
 
 
-	function index()
-	{
-        if ( ! $this->ion_auth->logged_in())
+    // redirect if needed, otherwise display the user list
+    function index()
+    {
+
+        if (!$this->ion_auth->logged_in())
         {
+            // redirect them to the login page
             redirect('auth/login', 'refresh');
         }
+
         else
         {
-            redirect('/', 'refresh');
-        }
-	}
+            // set the flash data error message if there is one
+            $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
+            //list the users
+            $this->data['users'] = $this->ion_auth->users()->result();
+            foreach ($this->data['users'] as $k => $user)
+            {
+                $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+            }
+
+            $this->_render_page('auth/index', $this->data);
+        }
+    }
 
     function login()
 	{

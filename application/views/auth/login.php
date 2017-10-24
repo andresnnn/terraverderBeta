@@ -2,8 +2,10 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
+
+
             <div class="login-logo">
-                <a href="#"><b>Admin</b><?php echo $title_lg; ?></a>
+                <b><a href="#">TERRA<?php echo $title_lg; ?></a></b>
             </div>
 
             <div class="login-box-body">
@@ -41,9 +43,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 <?php endif; ?>
 <?php if ($forgot_password == TRUE): ?>
-                <?php echo anchor('#', lang('auth_forgot_password')); ?><br />
+                <?php echo anchor('auth/forgot_password', lang('auth_forgot_password')); ?><br />
 <?php endif; ?>
 <?php if ($new_membership == TRUE): ?>
                 <?php echo anchor('#', lang('auth_new_member')); ?><br />
 <?php endif; ?>
             </div>
+
