@@ -69,18 +69,19 @@ class Umbraculo_plantas extends CI_Controller{
     /*
      RETIRAR UNA PLANTA DEL UMBRACULO
      */
-/*    function remove($idUmbraculo)
+    function remove($idUmbraculo,$idPlanta)
     {
         $umbraculo_plantas = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
 
         // check if the umbraculo_plantas exists before trying to delete it
         if(isset($umbraculo_plantas['idUmbraculo']))
         {
-            $this->Umbraculoplantas_model->delete_umbraculo_plantas($idUmbraculo);
-            redirect('umbraculo_plantas/index');
+            $this->Umbraculoplantas_model->retirar_planta_umbraculo($idUmbraculo,$idPlanta);
+            //redirect('umbraculo_plantas/index');
+            redirect('common/umbraculos/verPlantas/'.$this->input->post('idUmbraculo'));
         }
         else
-            show_error('The umbraculo_plantas you are trying to delete does not exist.');
-    }*/
+            show_error('Usted está intentado retirar una planta, no registrada, dentro de este umbráculo.');
+    }
     
 }

@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="box-header with-border">
              <h3 class="box-title">Agregar tarea a <strong><?php echo $info_umbraculo['nombreUmbraculo']?></strong></h3>
             </div>
-            <?php echo form_open('common/tareas/add'); ?>
+            <?php echo form_open('common/tareas/add/'.$id); ?>
           	<div class="box-body">
           		<div>
 					<div class="col-md-6">
@@ -78,20 +78,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 					</div>
 					<div class="col-md-6">
-						<label for="fechaCreacion" class="control-label"><span class="text-danger">*</span>FechaCreacion</label>
+						<label for="fechaCreacion" class="control-label"><span class="text-danger">*</span>Fecha Creación</label>
 						<div class="form-group">
-							<input type="date" name="fechaCreacion" value="<?php echo $this->input->post('fechaCreacion'); ?>" class="has-datepicker form-control" id="fechaCreacion" />
+<!-- 							<input type="date" name="fechaCreacion" value="<?php echo $this->input->post('fechaCreacion'); ?>" class="has-datepicker form-control" id="fechaCreacion" /> -->
+<input type="text" name="fechaCreacion" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $y."/".$M."/".$d; ?>" class="has-datepicker form-control" id="fechaCreacion" />
+							
 							<span class="text-danger"><?php echo form_error('fechaCreacion');?></span>
 						</div>
 					</div>
 
-					<div class="col-md-6">
-						<label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>FechaHoraComienzo</label>
-						<div class="form-group">
-							<input type="date" name="fechaHoraComienzo" value="<?php echo $this->input->post('fechaHoraComienzo'); ?>" class="has-datepicker form-control" id="fechaHoraComienzo" />
-							<span class="text-danger"><?php echo form_error('fechaHoraComienzo');?></span>
-						</div>
-					</div>
+	
 				</div>
 			</div>
             <div class="box-footer" style="text-align: center;">

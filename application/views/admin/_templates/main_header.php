@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li class="dropdown user user-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <img src="<?php echo base_url($avatar_dir . '/m_001.png'); ?>" class="user-image" alt="User Image">
-                                    <span class="hidden-xs"><?php echo $user_login['username']; ?></span>
+                                    <span class="hidden-xs"><?php echo $user_login['firstname']." ".$user_login['lastname']; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li class="user-header">

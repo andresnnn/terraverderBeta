@@ -54,4 +54,11 @@ class Umbraculos_model extends CI_Model
     {
         return $this->db->delete('umbraculo',array('idUmbraculo'=>$idUmbraculo));
     }
+
+    function retirar_planta_umbraculo($idUmbraculo,$idPlanta)
+    {
+        $query="DELETE FROM `umbraculo/planta` WHERE idPlanta = ".$idPlanta." AND idUmbraculo =".$idUmbraculo;
+        return $this->db->query($query)->result_array();
+        //return $this->db->delete('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo));
+    }
 }
