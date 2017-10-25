@@ -25,7 +25,7 @@ class Umbraculoplantas_model extends CI_Model
      */
     function get_umbraculo_plantas_nombre($idUmbraculo)
     {
-        $query = "SELECT * FROM `umbraculo/planta` JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo;
+        $query = "SELECT * FROM `umbraculo/planta` JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo." LIMIT 0,3";
 
         return $this->db->query($query)->result_array();
     }
@@ -44,8 +44,8 @@ class Umbraculoplantas_model extends CI_Model
      */
     function add_umbraculo_plantas($params)
     {
-        $this->db->insert('umbraculo/planta',$params);
-        return $this->db->insert_id();
+        $query = "INSERT INTO `umbraculo/planta`(`idPlanta`, `cantidad`, `idUmbraculo`) VALUES (".$params['idPlanta'].",".$params['cantidad'].",".$params['idUmbraculo'].")";
+        $this->db->query($query);
     }
     
     /*
