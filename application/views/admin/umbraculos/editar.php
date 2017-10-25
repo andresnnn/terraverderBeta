@@ -23,28 +23,28 @@
 					<div class="col-md-6">
 						<label for="anchoUmbraculo_m" class="control-label"><span class="text-danger">*</span>Ancho (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="text" name="anchoUmbraculo_m" value="<?php echo ($this->input->post('anchoUmbraculo_m') ? $this->input->post('anchoUmbraculo_m') : $umbraculos['anchoUmbraculo_m']); ?>" class="form-control" id="anchoUmbraculo_m" />
+							<input type="number"  step="any" name="anchoUmbraculo_m" onChange="completar();" value="<?php echo ($this->input->post('anchoUmbraculo_m') ? $this->input->post('anchoUmbraculo_m') : $umbraculos['anchoUmbraculo_m']); ?>" class="form-control" id="anchoUmbraculo_m" />
 							<span class="text-danger"><?php echo form_error('anchoUmbraculo_m');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="largoUmbraculo_m" class="control-label"><span class="text-danger">*</span>Largo (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="text" name="largoUmbraculo_m" value="<?php echo ($this->input->post('largoUmbraculo_m') ? $this->input->post('largoUmbraculo_m') : $umbraculos['largoUmbraculo_m']); ?>" class="form-control" id="largoUmbraculo_m" />
+							<input type="number" step="any" name="largoUmbraculo_m" onChange="completar();" value="<?php echo ($this->input->post('largoUmbraculo_m') ? $this->input->post('largoUmbraculo_m') : $umbraculos['largoUmbraculo_m']); ?>" class="form-control" id="largoUmbraculo_m" />
 							<span class="text-danger"><?php echo form_error('largoUmbraculo_m');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="unidadEspacioTotal_m2" class="control-label"><span class="text-danger">*</span>EspacioTotal (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="text" name="unidadEspacioTotal_m2" value="<?php echo ($this->input->post('unidadEspacioTotal_m2') ? $this->input->post('unidadEspacioTotal_m2') : $umbraculos['unidadEspacioTotal_m2']); ?>" class="form-control" id="unidadEspacioTotal_m2" />
+							<input type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo ($this->input->post('unidadEspacioTotal_m2') ? $this->input->post('unidadEspacioTotal_m2') : $umbraculos['unidadEspacioTotal_m2']); ?>" class="form-control" id="unidadEspacioTotal_m2" />
 							<span class="text-danger"><?php echo form_error('unidadEspacioTotal_m2');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="unidadEspacioDisponible_m2" class="control-label">Espacio Disponible (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="text" name="unidadEspacioDisponible_m2" value="<?php echo ($this->input->post('unidadEspacioDisponible_m2') ? $this->input->post('unidadEspacioDisponible_m2') : $umbraculos['unidadEspacioDisponible_m2']); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
+							<input type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo ($this->input->post('unidadEspacioDisponible_m2') ? $this->input->post('unidadEspacioDisponible_m2') : $umbraculos['unidadEspacioDisponible_m2']); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
 						</div>
 					</div>
 					<div class="col-md-6">
@@ -93,3 +93,15 @@
                     </div>
                 </section>
             </div>
+<script>
+
+    function completar()
+    {
+        var ancho = document.getElementById('anchoUmbraculo_m').value;
+        var largo = document.getElementById('largoUmbraculo_m').value;
+        var tot = ancho * largo;
+        document.getElementById('unidadEspacioTotal_m2').value= tot.toFixed(3);
+        document.getElementById('unidadEspacioDisponible_m2').value=tot.toFixed(3);
+
+    }
+</script>

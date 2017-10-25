@@ -27,8 +27,13 @@ class Tareas_model extends CI_Model
         $this->db->order_by('idTarea', 'desc');
         return $this->db->get('tarea')->result_array();
     }
-    /*
-    OBTENER LAS TAREAS DE UN DETERMINADO UMBRACULO
+
+    /**
+     * RETORNA EL LISTADO DE LAS TAREAS (CON UN LIMITE DE TRES ELEMENTOS, PARA SU PRESENTACIÓN EN EL "VER UMBRACULO") 
+     * JUNTO CON EL JOIN DE TODOS LOS CAMPOS RELACIONADOS A UNA TAREA.
+     * @param  [type] $idUmbraculo EL UMBRACULO SELECCIONADO SOBRE EL CUAL SE REALIZA LA CONSULTA
+     * @return [type]              [description]
+     * @author SAKZEDMK
      */
     function obtener_tareas_umbraculo($idUmbraculo)
     {
@@ -38,9 +43,29 @@ class Tareas_model extends CI_Model
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
                     JOIN users u ON t.idUserCreador = u.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
-                    WHERE t.idUmbraculo=".$idUmbraculo;
+                    WHERE t.idUmbraculo=".$idUmbraculo." ORDER BY t.fechaCreacion DESC LIMIT 0,3";
         return $this->db->query($query)->result_array();
     }  
+
+    /**
+     * RETORNA EL LISTADO DE TODAS LAS TAREAS PERTENECIENTES A UM UMBRACULO
+     * JUNTO CON EL JOIN DE TODOS LOS CAMPOS RELACIONADOS A UNA TAREA.
+     * @param  [type] $idUmbraculo EL UMBRACULO SELECCIONADO SOBRE EL CUAL SE REALIZA LA CONSULTA
+     * @return [type]              [description]
+     * @author SAKZEDMK
+     */
+    function listar_tareas_umbraculo($idUmbraculo)
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE t.idUmbraculo=".$idUmbraculo." ORDER BY t.fechaCreacion DESC";
+        return $this->db->query($query)->result_array();
+    }  
+
     /*
      * function to add new tareas
      */

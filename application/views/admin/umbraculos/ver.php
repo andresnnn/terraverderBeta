@@ -36,7 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </table>
                                 </div>
                                 <div class="box-footer" style="text-align: center;" title="Volver a vista administración de umbráculos">
-                                <br>
+                                    <a href="<?php echo site_url('common/umbraculos/editar/'.$id); ?>" class="btn btn-warning btn-flat"> Editar ínfo </a>
                                     <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Volver atrás</a>
                                 </div> 
                             </div>
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title">Condiciones</h3>
                                 </div>
                             <div class="box-body">
-                                    <div class="col-lg-6">
+                                    <div class="box-body">
                                                 <table class="table table-striped table-hover">
                                                 <tr><td>Temperatura <strong><?php echo $info_umbraculo['temperaturaUmbraculo']; ?>°C</strong></td></tr>
                                                 </table><br>
@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <span class="progress-number"><strong><?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>m<sup>2</sup></strong>/<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>m<sup>2</sup></span>
             
                                                 <div class="progress" title="Espacio disponible dentro del umbráculo">
-                                                    <div class="progress-bar progress-bar-aqua" > role="progressbar" aria-valuenow="<?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>" aria-valuemin="0" aria-valuemax="<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>" style="width: <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ></div>
+                                                    <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="<?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>" aria-valuemin="0" aria-valuemax="<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>" style="width: <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ></div>
                                                 </div>
                                             </div>
                                     </div>
@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title">Plantas</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div class="col-lg-6">
+                                <div class="box-body">
                                            <table class="table table-striped table-hover">
                                             <tr>
                                                 <th>Nombre</th>
@@ -122,7 +122,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Creador</th>
                                                 <th>Fecha Creación</th>
                                                 <th>Estado</th>
-                                                <th>Acciones</th>
                                             </tr>
                                             <?php foreach($tareas as $t){ ?>
                                             <tr>
@@ -131,21 +130,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['creador']; ?></td>
                                                 <td><?php echo $t['fechaCreacion']; ?></td>
                                                 <td><?php echo $t['nombreEstado']; ?></td>
-                                                <td>
-                                                    <a href="<?php echo site_url('tareas/edit/'.$t['idTarea']); ?>">Edit</a> | 
-                                                    <a href="<?php echo site_url('tareas/remove/'.$t['idTarea']); ?>">Delete</a>
-                                                </td>
                                             </tr>
                                             <?php } ?>
                                         </table>
                                             <div>
                                                 <table>
-                                                    <td><h3 class="box-title"><?php echo anchor('URL','<i class="fa fa-eye"></i> '.'Ver tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
+                                                    <td><h3 class="box-title"><?php echo anchor('common/Umbraculos/verTareas/'.$id,'<i class="fa fa-eye"></i> '.'Ver tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
                                                     <td><h3 class="box-title"><?php echo anchor('common/Tareas/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
                                                 </table>
                                             </div>
-                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
