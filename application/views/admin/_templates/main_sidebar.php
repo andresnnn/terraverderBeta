@@ -79,7 +79,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </li>
                             <li class="<?php echo site_url('common/plantas'); ?>">
                                 <a href="<?php echo site_url('common/plantas'); ?>">
-                                    <i class="fa fa-tencent-weibo"></i><span>Ver plantas registradas</span>
+                                    <i class="fa fa-tencent-weibo"></i><span>Plantas</span>
                                 </a>
                             </li>
                         </li>
