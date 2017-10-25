@@ -46,6 +46,11 @@ $lang['menu_search'] = 'Buscar';
 /* *********** */$lang['menu_insumo_crear']  = 'Crear';
 /* *********** */$lang['menu_insumo_editar'] = 'Editar';
 
+/* ****** */$lang['menu_tipotarea'] 			= 'Administración tipo tarea';
+/* *********** */$lang['menu_tipotarea_ver']    = 'Ver';
+/* *********** */$lang['menu_tipotarea_crear']  = 'Crear';
+/* *********** */$lang['menu_tipotarea_editar'] = 'Editar';
+
 /* ****** */$lang['menu_security_groups']       = 'Tipos de usuario';
 /* *********** */$lang['menu_groups_create']    = 'Crear';
 /* *********** */$lang['menu_groups_edit']      = 'Editar';

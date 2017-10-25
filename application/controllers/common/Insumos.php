@@ -47,10 +47,7 @@ class Insumos extends Admin_Controller {
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
 
-            /* Load Template */
-          /*  $this->template->admin_render('admin/insumos/crear', $this->data);*/
-
-            /* add form*/
+            /* form validation */
             $this->load->library('form_validation');
 
         		$this->form_validation->set_rules('nombreInsumo','NombreInsumo','max_length[50]|min_length[4]|required');

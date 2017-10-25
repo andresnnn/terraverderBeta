@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div class="form-group">
 		<label for="descripcionInsumo" class="col-md-3 control-label">DescripcionInsumo</label>
 		<div class="col-md-8">
-			<input type="text" name="descripcionInsumo" value="<?php echo ($this->input->post('descripcionInsumo') ? $this->input->post('descripcionInsumo') : $insumo['descripcionInsumo']); ?>" class="form-control" id="descripcionInsumo" />
+			<input class="form-control" id="descripcionInsumo" type="text" name="descripcionInsumo" value="<?php echo ($this->input->post('descripcionInsumo') ? $this->input->post('descripcionInsumo') : $insumo['descripcionInsumo']); ?>"  />
 		</div>
 	</div>
 	<div class="form-group">

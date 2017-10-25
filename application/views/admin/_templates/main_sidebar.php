@@ -97,9 +97,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-user"></i> <span>Tareas</span>
                             </a>
                         </li>
-                        <li class="<?=active_link_controller('common/tipoTarea')?>">
-                            <a href="<?php echo site_url('common/tipoTarea'); ?>">
-                                <i class="fa fa-user"></i> <span>Tipo de Tareas</span>
+                        <li class="<?=active_link_controller('tipotareas')?>">
+                            <a href="<?php echo site_url('common/tipotareas'); ?>">
+                                <i class="fa fa-user"></i> <span>Tipos de Tareas</span>
                             </a>
                         </li>
                     </ul>
