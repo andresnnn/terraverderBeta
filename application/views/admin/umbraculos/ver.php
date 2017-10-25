@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <table>
                                                     <td><h3 class="box-title"><?php echo anchor('URL','<i class="fa fa-eye"></i> '.'Ver tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
-                                                    <td><h3 class="box-title"><?php echo anchor('URL', '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                    <td><h3 class="box-title"><?php echo anchor('common/Tareas/add', '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
                                                 </table>
                                             </div>
                                     </div>

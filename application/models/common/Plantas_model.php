@@ -9,6 +9,7 @@ class Plantas_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+         $this->load->model('common/Especies_model');
     }
     
     /*
@@ -18,7 +19,29 @@ class Plantas_model extends CI_Model
     {
         return $this->db->get_where('planta',array('idPlanta'=>$idPlanta))->row_array();
     }
-        
+
+    function get_planta_especie($idPlanta)
+    {
+        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
+        return $this->db->query($query)->result_array();
+    }
+
+    /**
+     *SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin,planta.idPlanta,planta.nombrePlanta,`umbraculo/planta`.`idUmbraculo`
+FROM `umbraculo/planta` 
+JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta 
+JOIN especie ON planta.idEspecie=especie.idEspecie
+WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo." 
+     */
+    
+    /*ESTA FUNCION ARROJARA COMO RESULTADO UN ARRAY QUE CONTIENE LA INFORMACION
+    DE LAS PLANTAS CON LA RESPECTIVA INFORMACIÓN DE SU ESPECIE, PARA REALIZAR LA COMPARACION DE CONDICIONES A LA HORA DE AGREGAR UNA PLANTA ADENTRO*/
+    function obtener_plantas_especies()
+    {
+        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin,planta.idPlanta,planta.nombrePlanta FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
+        return $this->db->query($query)->result_array();
+    }
+
     /*
      * Get all plantas
      */

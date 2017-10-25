@@ -29,7 +29,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								foreach($all_plantas as $planta)
 								{
 									$selected = ($planta['idPlanta'] == $this->input->post('idPlanta')) ? ' selected="selected"' : "";
-
 									echo '<option value="'.$planta['idPlanta'].'" '.$selected.'>'.$planta['nombrePlanta'].'</option>';
 								} 
 								?>
@@ -62,6 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo "luz".$info_umbraculo['luzUmbraculo']; ?></td>
                                                 <td><?php echo "humedad".$info_umbraculo['humedadUmbraculo']; ?></td>
                                             </tr>
+
                                         </tbody>
             </table>
 
