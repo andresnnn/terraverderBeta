@@ -18,26 +18,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
 <?php endif; ?>
-<?php if ($admin_prefs['sidebar_form'] == TRUE): ?>
-                    <!-- Search form -->
-                    <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="<?php echo lang('menu_search'); ?>...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
-                    </form>
 
-<?php endif; ?>
                     <!-- Sidebar menu -->
                     <ul class="sidebar-menu">
-                        <!-- Elemento -->
-                        <li>
-                            <a href="<?php echo site_url('/'); ?>">
-                                <i class="fa fa-home text-primary"></i> <span>Visitar sitio WEB</span> <!-- QUIZAS HAY QUE BORRARLO! -->
-                            </a>
-                        </li>
+
                         <!-- Elemento -->
                         <li class="header text-uppercase">Navegación</li>
                         <li class="<?=active_link_controller('dashboard')?>">
