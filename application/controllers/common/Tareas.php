@@ -12,8 +12,6 @@ class Tareas extends Admin_Controller{
         $this->page_title->push(lang('menu_umbraculo'));
         $this->data['pagetitle'] = $this->page_title->show();
         $this->load->model('common/Tareas_model');
-        
-                    $this->load->model('admin/Tipotareas_model');
 
     } 
 
@@ -37,10 +35,46 @@ class Tareas extends Admin_Controller{
             }
     }
 
-    /*
-     * Adding a new tareas
+    /**
+     AGREGAR TAREA DENTRO DE UMBRACULO
      */
-    function add($idUmbraculo)
+function agregarTarea($idUmbraculo)
+    {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                /* CARGA LA INFORMACION DE LAS PLANTAS DEL UMBRACULO DONDE SE QUIERE CREAR LA TAREA*/
+                    /* Data */
+                    $idUmbraculo = (int) $idUmbraculo;
+                    $this->data['id'] = $idUmbraculo; 
+
+                    /*CARGA LA INFORMACION DE LOS TIPOS DE TAREA REGISTRADAS EN EL SISTEMA*/
+                    $this->load->model('admin/Tipotareas_model');
+                    $this->data['tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();
+
+                    /*CARGA LA INFORMACION DEL UMBRACULO PARA HACER LAS COMPRACIONES NECESARIAS*/
+                    $this->load->model('common/Umbraculos_model');
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+
+                    /*CARGA EL PRIMER ESTADO 'No inciada' POR DEFECTO, YA QUE SE ESTÁ CREANDO RECIEN*/
+                    $this->load->model('common/Estado_tarea_model');
+                    $this->data['estadoDefecto'] = $this->Estado_tarea_model->get_estado_tarea(1);
+                    /*CARGA LAS PLANTAS PRESENTES DENTRO DEL UMBRACULO SOBRE EL CUAL SE ESTÁ CREANDO LA TAREA*/
+                    $this->load->model('common/Umbraculoplantas_model');
+                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
+                    
+                    /* CARGA LA PANTALLA PARA AÑADIR UNA NUEVA TAREA*/
+                    $this->template->admin_render('admin/umbraculos/umbraculo_tarea/add', $this->data);
+            }
+    }  
+    /*
+     AGREGAR CARGAR TAREA A BD
+     */
+    function add()
     {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
             {
                 redirect('auth/login', 'refresh');
@@ -76,7 +110,7 @@ class Tareas extends Admin_Controller{
                     );
                     
                     $tareas_id = $this->Tareas_model->add_tareas($params);
-                    redirect('tareas/index');
+                    redirect('common/tareas/add/'.$this->input->post('idUmbraculo'));
                 }
                 else
                 {
@@ -84,14 +118,18 @@ class Tareas extends Admin_Controller{
                     $idUmbraculo = (int) $idUmbraculo;
                     $this->data['id'] = $idUmbraculo; 
 
-                    $data['all_tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();
+                    /*CARGA LA INFORMACION DE LOS TIPOS DE TAREA REGISTRADAS EN EL SISTEMA*/
+                    $this->load->model('admin/Tipotareas_model');
+                    $this->data['tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();
 
+                    /*CARGA LA INFORMACION DEL UMBRACULO PARA HACER LAS COMPRACIONES NECESARIAS*/
+                    $this->load->model('common/Umbraculos_model');
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+
+                    /*CARGA EL PRIMER ESTADO 'No inciada' POR DEFECTO, YA QUE SE ESTÁ CREANDO RECIEN*/
                     $this->load->model('common/Estado_tarea_model');
-                    $data['all_estado_tarea'] = $this->Estado_tarea_model->get_all_estado_tarea();
-
-                    //$this->load->model('common/User_model');
-                    $data['all_users'] = $this->ion_auth->users()->result();
-
+                    $this->data['estadoDefecto'] = $this->Estado_tarea_model->get_estado_tarea(1);
+                    /*CARGA LAS PLANTAS PRESENTES DENTRO DEL UMBRACULO SOBRE EL CUAL SE ESTÁ CREANDO LA TAREA*/
                     $this->load->model('common/Umbraculoplantas_model');
                     $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
                     

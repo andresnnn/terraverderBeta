@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-6">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Detalles umbráculo</h3>
+                                    <h3 class="box-title">Detalles <strong><?php echo $info_umbraculo['nombreUmbraculo']?></h3>
                                 </div>
                                 <div class="box-body">
                                     <table class="table table-striped table-hover">
@@ -121,7 +121,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <table>
                                                     <td><h3 class="box-title"><?php echo anchor('URL','<i class="fa fa-eye"></i> '.'Ver tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
-                                                    <td><h3 class="box-title"><?php echo anchor('common/Tareas/add/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                    <td><h3 class="box-title"><?php echo anchor('common/Tareas/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
                                                 </table>
                                             </div>
                                     </div>
