@@ -101,7 +101,7 @@ class Tipotareas extends Admin_Controller{
                 );
 
                 $this->Tipotareas_model->update_tipotarea($idTipoTarea,$params);
-                redirect('common/tipotarea/index');
+                redirect('common/tipotareas/index');
             }
             else
             {
@@ -123,20 +123,19 @@ class Tipotareas extends Admin_Controller{
         if(isset($tipotarea['idTipoTarea']))
         {
             $this->Tipotareas_model->delete_tipotarea($idTipoTarea);
-            redirect('tipotarea/index');
+            redirect('common/tipotareas/index');
         }
         else
             show_error('The tipotarea you are trying to delete does not exist.');
     }
 
-    function profile($idInsumo)
+    function profile($idTipoTarea)
     {
-
       /* Breadcrumbs */
         $this->data['breadcrumb'] = $this->breadcrumbs->show();
         // check if the insumo exists before trying to edit it
-        $this->data['insumo'] = $this->Insumos_model->get_insumo($idInsumo);
-        $this->template->admin_render('admin/insumos/profile', $this->data);
+        $this->data['tipotarea'] = $this->Tipotareas_model->get_tipotarea($idTipoTarea);
+        $this->template->admin_render('admin/tipotareas/profile', $this->data);
 
     }
 

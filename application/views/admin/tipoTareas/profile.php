@@ -15,30 +15,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-10">
                  <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Detalles Insumo</h3>
+                        <h3 class="box-title">Detalles Tipo tarea </h3>
                     </div>
                     <div class="box-body">
                         <table class="table table-striped">
                             <tbody>
                                 <tr>
                                     <th>Id Insumo</th>
-                                    <td><?php echo $insumo['idInsumo']; ?></td>
+                                    <td><?php echo $tipotarea['idTipoTarea']; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Nombre Insumo</th>
-                                    <td><?php echo $insumo['nombreInsumo']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Stock Insumo</th>
-                                    <td><?php echo $insumo['cantidad']; ?></td>
-                                </tr>
-                                <tr>
-                                    <th>Punto de Pedido Insumo</th>
-                                    <td><?php echo $insumo['puntoDePedido'];; ?></td>
+                                    <td><?php echo $tipotarea['nombreTipoTarea']; ?></td>
                                 </tr>
                                 <tr>
                                     <th>Descripción</th>
-                                    <td><textarea style="width:100%" disabled><?php echo $insumo['descripcionInsumo']; ?></textarea></td>
+                                    <td><textarea style="width:100%" disabled><?php echo $tipotarea['descripcionTarea']; ?></textarea></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -47,9 +39,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
               </div>
             </section>
-
-
-
-
-
 </div>
