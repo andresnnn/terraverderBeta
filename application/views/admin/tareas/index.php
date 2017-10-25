@@ -23,18 +23,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <table class="table table-striped table-hover">
                     <tr>
-                        <th>Nombre</th>
-                        <th>Nombre Científico</th>
-                        <th>Unidades Espacio</th>
-                        <th>Descripción</th>
-                        <th>Acciones</th>
+                      <th>IdTarea</th>
+                      <th>IdTipoTarea</th>
+                      <th>IdEstado</th>
+                      <th>IdUserAtencion</th>
+                      <th>IdUserCreador</th>
+                      <th>IdPlanta</th>
+                      <th>IdUmbraculo</th>
+                      <th>FechaCreacion</th>
+                      <th>FechaAtencion</th>
+                      <th>FechaHoraComienzo</th>
+                      <th>ObservacionEspecialista</th>
+                      <th>Actions</th>
                     </tr>
-                    <?php foreach($plantas as $p){ ?>
+                    <?php foreach($tarea as $t){ ?>
                     <tr>
-                        <td><?php echo $p['nombrePlanta']; ?></td>
-                        <td><?php echo $p['nombreCientificoPlanta']; ?></td>
-                        <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
-                        <td><?php echo $p['descripcionPlanta']; ?></td>
+                      <td><?php echo $t['idTarea']; ?></td>
+                      <td><?php echo $t['idTipoTarea']; ?></td>
+                      <td><?php echo $t['idEstado']; ?></td>
+                      <td><?php echo $t['idUserAtencion']; ?></td>
+                      <td><?php echo $t['idUserCreador']; ?></td>
+                      <td><?php echo $t['idPlanta']; ?></td>
+                      <td><?php echo $t['idUmbraculo']; ?></td>
+                      <td><?php echo $t['fechaCreacion']; ?></td>
+                      <td><?php echo $t['fechaAtencion']; ?></td>
+                      <td><?php echo $t['fechaHoraComienzo']; ?></td>
+                      <td><?php echo $t['observacionEspecialista']; ?></td>
 
 
                         <td>

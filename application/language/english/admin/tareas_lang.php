@@ -9,6 +9,3 @@
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-
-$lang['plantas_create']         = 'Registrar nueva planta';

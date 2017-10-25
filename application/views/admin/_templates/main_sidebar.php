@@ -33,11 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!-- Sidebar menu -->
                     <ul class="sidebar-menu">
                         <!-- Elemento -->
-                        <li>
-                            <a href="<?php echo site_url('/'); ?>">
-                                <i class="fa fa-home text-primary"></i> <span>Visitar sitio WEB</span> <!-- QUIZAS HAY QUE BORRARLO! -->
-                            </a>
-                        </li>
+                        <
                         <!-- Elemento -->
                         <li class="header text-uppercase">Navegación</li>
                         <li class="<?=active_link_controller('dashboard')?>">
@@ -92,6 +88,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración tarea</li>
+                        <li class="<?=active_link_controller('tareas')?>">
+                            <a href="<?php echo site_url('common/tareas'); ?>">
+                                <i class="fa fa-user"></i> <span>Ver Tareas</span>
+                            </a>
+                        </li>
                         <li class="<?=active_link_controller('common/tarea')?>">
                             <a href="<?php echo site_url('common/tarea'); ?>">
                                 <i class="fa fa-user"></i> <span>Tareas</span>
