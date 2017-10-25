@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div>
                                                 <table>
-                                                    <td><h3 class="box-title"><?php echo anchor('URL', '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Ver todas las plantas dentro del umbráculo')); ?></h3></td
+                                                    <td><h3 class="box-title"><?php echo anchor('common/umbraculos/verPlantas/'.$id, '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Ver todas las plantas dentro del umbráculo')); ?></h3></td
                                                     >
                                                       <td><h3 class="box-title">
                                                       <?php echo anchor('common/umbraculos/agregarPlanta/'.$id, '<i class="fa fa-plus"></i> '.'Agregar planta', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Agregar una nueva planta dentro de este umbráculo')); ?>
@@ -115,8 +115,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title">Tareas</h3>
                                 </div>
                                 <div class="box-body">
-                                    <div class="col-lg-6">
-
+                                        <table class="table table-striped table-hover">
+                                            <tr>
+                                                <th>Tipo tarea</th>
+                                                <th>Planta</th>
+                                                <th>Creador</th>
+                                                <th>Fecha Creación</th>
+                                                <th>Estado</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                            <?php foreach($tareas as $t){ ?>
+                                            <tr>
+                                                <td><?php echo $t['nombreTipoTarea']; ?></td>
+                                                <td><?php echo $t['nombrePlanta']; ?></td>
+                                                <td><?php echo $t['creador']; ?></td>
+                                                <td><?php echo $t['fechaCreacion']; ?></td>
+                                                <td><?php echo $t['nombreEstado']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo site_url('tareas/edit/'.$t['idTarea']); ?>">Edit</a> | 
+                                                    <a href="<?php echo site_url('tareas/remove/'.$t['idTarea']); ?>">Delete</a>
+                                                </td>
+                                            </tr>
+                                            <?php } ?>
+                                        </table>
                                             <div>
                                                 <table>
                                                     <td><h3 class="box-title"><?php echo anchor('URL','<i class="fa fa-eye"></i> '.'Ver tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td

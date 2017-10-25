@@ -27,13 +27,28 @@ class Tareas_model extends CI_Model
         $this->db->order_by('idTarea', 'desc');
         return $this->db->get('tarea')->result_array();
     }
-        
+    /*
+    OBTENER LAS TAREAS DE UN DETERMINADO UMBRACULO
+     */
+    function obtener_tareas_umbraculo($idUmbraculo)
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE t.idUmbraculo=".$idUmbraculo;
+        return $this->db->query($query)->result_array();
+    }  
     /*
      * function to add new tareas
      */
     function add_tareas($params)
     {
+
         $this->db->insert('tarea',$params);
+        //$this->db->query($query);
         return $this->db->insert_id();
     }
     

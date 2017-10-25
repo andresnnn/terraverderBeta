@@ -20,8 +20,12 @@ class Umbraculoplantas_model extends CI_Model
         return $this->db->get_where('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo))->result_array();
     }
 
+    /*
+     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO
+     */
+
      /*
-     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE
+     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE LIMITE 3
      */
     function get_umbraculo_plantas_nombre($idUmbraculo)
     {
@@ -29,6 +33,16 @@ class Umbraculoplantas_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+     /*
+     OBTENER TODAS LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE 
+     */
+        function ver_plantas_umbraculo($idUmbraculo)
+    {
+        $query = "SELECT * FROM `umbraculo/planta` JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo;
+
+        return $this->db->query($query)->result_array();
+    }
+
 
     /*
      OBTENER PLANTAS UMBRACULO
@@ -58,10 +72,12 @@ class Umbraculoplantas_model extends CI_Model
     }
     
     /*
-     * function to delete umbraculo_plantas
+     * FUNCION PARA RETIRAR UNA PLANTA DENTRO DE UN DETERMINADO UMBRACULO
      */
-    function delete_umbraculo_plantas($idUmbraculo)
+    function retirar_planta_umbraculo($idUmbraculo,$idPlanta)
     {
-        return $this->db->delete('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo));
+        $query="DELETE FROM `umbraculo/planta` WHERE idPlanta = ".$idPlanta." AND idUmbraculo =".$idUmbraculo;
+        return $this->db->query($query);
+        //return $this->db->delete('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo));
     }
 }

@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <footer class="main-footer">
                 <div class="pull-right hidden-xs">
-                    <b><?php echo lang('footer_version'); ?></b> Alfa
+                    <b><?php echo lang('footer_version'); ?></b> 0.99
                 </div>
                 <strong>Terra Verde © 2017 </strong> <?php echo lang('footer_all_rights_reserved'); ?>.
             </footer>

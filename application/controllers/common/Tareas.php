@@ -65,7 +65,7 @@ function agregarTarea($idUmbraculo)
                     $this->data['estadoDefecto'] = $this->Estado_tarea_model->get_estado_tarea(1);
                     /*CARGA LAS PLANTAS PRESENTES DENTRO DEL UMBRACULO SOBRE EL CUAL SE ESTÁ CREANDO LA TAREA*/
                     $this->load->model('common/Umbraculoplantas_model');
-                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
+                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
                     
                     /* CARGA LA PANTALLA PARA AÑADIR UNA NUEVA TAREA*/
                     $this->template->admin_render('admin/umbraculos/umbraculo_tarea/add', $this->data);
@@ -74,24 +74,14 @@ function agregarTarea($idUmbraculo)
     /*
      AGREGAR CARGAR TAREA A BD
      */
-    function add()
-    {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
-            {
-                redirect('auth/login', 'refresh');
-            }
-            else
-            {
-                /* Breadcrumbs */
-                $this->data['breadcrumb'] = $this->breadcrumbs->show();
-                /* CARGA LA INFORMACION DE LAS PLANTAS DEL UMBRACULO DONDE SE QUIERE CREAR LA TAREA*/
-
-
+    function add($idUmbraculo)
+    {       
                 $this->load->library('form_validation');
 
                 $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
                 $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
                 $this->form_validation->set_rules('fechaAtencion','FechaAtencion','required');
-                $this->form_validation->set_rules('fechaHoraComienzo','FechaHoraComienzo','required');
+                $this->form_validation->set_rules('fechaHoraComienzo','FechaHoraComienzo');
                 $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
                 
                 if($this->form_validation->run())     
@@ -110,11 +100,13 @@ function agregarTarea($idUmbraculo)
                     );
                     
                     $tareas_id = $this->Tareas_model->add_tareas($params);
-                    redirect('common/tareas/add/'.$this->input->post('idUmbraculo'));
+                    redirect('common/Tareas/add');
                 }
                 else
                 {
-                    /* Data */
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                                    /* Data */
                     $idUmbraculo = (int) $idUmbraculo;
                     $this->data['id'] = $idUmbraculo; 
 
@@ -130,13 +122,11 @@ function agregarTarea($idUmbraculo)
                     $this->load->model('common/Estado_tarea_model');
                     $this->data['estadoDefecto'] = $this->Estado_tarea_model->get_estado_tarea(1);
                     /*CARGA LAS PLANTAS PRESENTES DENTRO DEL UMBRACULO SOBRE EL CUAL SE ESTÁ CREANDO LA TAREA*/
-                    $this->load->model('common/Umbraculoplantas_model');
-                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
-                    
+                                        $this->load->model('common/Umbraculoplantas_model');
+                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
                     /* CARGA LA PANTALLA PARA AÑADIR UNA NUEVA TAREA*/
                     $this->template->admin_render('admin/umbraculos/umbraculo_tarea/add', $this->data);
                 }
-            }
     }  
 
     /*
