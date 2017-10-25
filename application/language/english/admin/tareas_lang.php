@@ -9,3 +9,6 @@
  * @filesource
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+$lang['tareas_create']         = ' Crear nueva Tarea';
+$lang['menu_tarea']         = 'Administración de Tareas';
