@@ -115,7 +115,7 @@ class Umbraculos extends Admin_Controller {
 
                     $this->form_validation->set_rules('nombreUmbraculo','NombreUmbraculo','required|max_length[50]|min_length[5]');
                     $this->form_validation->set_rules('descripcionUmbraculo','DescripcionUmbraculo','required|max_length[255]|min_length[10]');
-                    $this->form_validation->set_rules('anchoUmbraculo_m','AnchoUmbraculo M','required|max_length[99]');
+                    $this->form_validation->set_rules('anchoUmbraculo_m','AnchoUmbraculo M','required');
                     $this->form_validation->set_rules('largoUmbraculo_m','LargoUmbraculo M','required|max_length[99]');
                     $this->form_validation->set_rules('unidadEspacioTotal_m2','UnidadEspacioTotal M2','required');
                     $this->form_validation->set_rules('temperaturaUmbraculo','TemperaturaUmbraculo','required|max_length[99]');
@@ -151,58 +151,104 @@ class Umbraculos extends Admin_Controller {
         }
     } 
 
-    /* CONSULTAR INFORMACIÓN UMBRÁCULO*/
+    /**
+     * SE ENCARGA DE CARGAR LA VISTA DE DETALLES DEL UMBRÁCULO SELECCIONADO, PARA QUE SE PUEDA OPERAR CON ÉL
+     * @param  [type] $idUmbraculo [description]
+     * @return [type]              [description]
+     * @author SAKZEDMK
+     */
+            public function ver($idUmbraculo)
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+                    /* Data */
+                    $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
+
+                     $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                     $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
+                     $this->data['tareas'] = $this->Tareas_model->obtener_tareas_umbraculo($idUmbraculo);
+                    /* CARGAR INFORMARCION */
+                   // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/umbraculos/ver', $this->data);
+                }
+            }
+
+            /**
+             * TIENE COMO OBJETIVO CARGAR UNA VISTA DONDE SE VISULIZARAN TODAS LAS TAREAS REGISTRADAS EN UN DETERMINADO UMBRACULO, CON TODA SU INFORMACIÓN
+             * @param  [type] $idUmbraculo [description]
+             * @return [type]              [description]
+             * @author SAKZEDMK
+             */
+            public function verTareas($idUmbraculo)
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+                    /* Data */
+                    $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
+
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                    $this->data['tareas_en_umbraculo'] = $this->Tareas_model->listar_tareas_umbraculo($idUmbraculo);
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
+                }
+
+            }
 
 
-    public function ver($idUmbraculo)
-    {
-        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
-        {
-            redirect('auth/login', 'refresh');
-        }
-        else
-        {
-            /* Breadcrumbs */
-            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+        /**
+         * LA FUNCION VER PLANTAS, LISTA TODAS LAS PLANTAS REGISTRADAS EN EL UMBRÁCULO 
+         * SELECCIONADO
+         * @param  [type] $idUmbraculo parametro para la consulta
+         * @return [type]              lista de plantas con sus respectivos nombres
+         * @author SAKZEDMK
+         */
+            public function verPlantas($idUmbraculo)
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
-            /* Data */
-            $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
+                    /* Data */
+                    $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
 
-             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-             $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
-             $this->data['tareas'] = $this->Tareas_model->obtener_tareas_umbraculo($idUmbraculo);
-            /* CARGAR INFORMARCION */
-           // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
+                     $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                     $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
+                    /* CARGAR INFORMARCION */
+                   // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
 
-            /* Load Template */
-            $this->template->admin_render('admin/umbraculos/ver', $this->data);
-        }
-    }
+                    /* Load Template */
+                    $this->template->admin_render('admin/umbraculos/umbraculos_plantas/see', $this->data);
+                }
+            }
 
-    public function verPlantas($idUmbraculo)
-    {
-        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
-        {
-            redirect('auth/login', 'refresh');
-        }
-        else
-        {
-            /* Breadcrumbs */
-            $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
-            /* Data */
-            $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
-
-             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-             $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
-            /* CARGAR INFORMARCION */
-           // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
-
-            /* Load Template */
-            $this->template->admin_render('admin/umbraculos/umbraculos_plantas/see', $this->data);
-        }
-    }
-
+    /**
+     * LA FUNCION AGREGAR PLANTA REGISTRA UNA NUEVA PLANTA, CON SU DETERMINADA CANTIDAD DENTRO DEL UMBRÁCULO PREVIAMENTE SELCCIONAD
+     * @param  [type] $idUmbraculo [description]
+     * @return [type]              [description]
+     * @author SAKZEDMK
+     */
     public function agregarPlanta($idUmbraculo)
     {
         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
@@ -256,8 +302,13 @@ class Umbraculos extends Admin_Controller {
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
         }
     } 
-        /*
-     RETIRAR UNA PLANTA DEL UMBRACULO
+
+    /**
+     * LA FUNCION SACAR PLANTA, SERÍA RETIRAR PLANTA DE UMBRÁCULO
+     * @param  [type] $idUmbraculo ENTRA COMO PARAMETRO DE LA CONSULTA
+     * @param  [type] $idPlanta    ENTRA COMO PARAMETRO PARA EL DELETE
+     * @return [type]              [description]
+     * @author SAKZEDMK
      */
     function sacar_planta($idUmbraculo,$idPlanta)
     {

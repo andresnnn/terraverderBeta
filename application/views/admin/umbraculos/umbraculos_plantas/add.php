@@ -74,3 +74,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>
+
+<script>
+    function aplicarFiltro() {
+
+var req = $.ajax({
+    url: BASE_URL+"cli/Autorizaciones/set_filtro_autorizaciones",
+    type: "POST",
+    data:
+    {
+        'conductor': $("#f-conductor").val(),
+        'patente': $("#f-patente").val(),
+        'pasajeros': $("#f-pasajeros").val(),
+        'puntaje': $("#f-puntaje").val(),
+        'autoriza': $("#f-autoriza").val(),
+        'origen': $("#f-origen").val(),
+        'destino': $("#f-destino").val(),
+        'salida': $("#f-salida").val(),
+        'arribo': $("#f-arribo").val(),
+        'telefono': $("#f-telefono").val(),
+        'imei': $("#f-imei").val(),
+        'enviado': $("#f-enviado").val(),
+        'recibido': $("#f-recibido").val(),
+        'latitud': $("#f-latitud").val(),
+        'longitud': $("#f-longitud").val()
+      },
+    dataType: "json",
+    ContentType: 'application/json; charset=utf-8',
+    traditional: true,
+    error: function(ts) { console.log(ts); },
+    success: refreshGrid
+
+});
+}
+
+function refreshGrid(resultado)
+{
+  console.log(resultado); //ASÍ PODES VER EN LA CONSOLA CÓMO ESTA LLEGANDO EL OBJETO
+  //MANIPULO resultado PARA METER LA INFO EN LA PÁGINA
+}
+</script>
