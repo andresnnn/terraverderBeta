@@ -12,6 +12,8 @@ class Tareas extends Admin_Controller{
         $this->page_title->push(lang('menu_umbraculo'));
         $this->data['pagetitle'] = $this->page_title->show();
         $this->load->model('common/Tareas_model');
+        
+                    $this->load->model('admin/Tipotareas_model');
 
     } 
 
@@ -38,7 +40,7 @@ class Tareas extends Admin_Controller{
     /*
      * Adding a new tareas
      */
-    function add()
+    function add($idUmbraculo)
     {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
             {
                 redirect('auth/login', 'refresh');
@@ -78,8 +80,11 @@ class Tareas extends Admin_Controller{
                 }
                 else
                 {
-                    $this->load->model('common/Tipotarea_model');
-                    $data['all_tipotarea'] = $this->Tipotarea_model->get_all_tipotarea();
+                    /* Data */
+                    $idUmbraculo = (int) $idUmbraculo;
+                    $this->data['id'] = $idUmbraculo; 
+
+                    $data['all_tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();
 
                     $this->load->model('common/Estado_tarea_model');
                     $data['all_estado_tarea'] = $this->Estado_tarea_model->get_all_estado_tarea();
@@ -87,11 +92,8 @@ class Tareas extends Admin_Controller{
                     //$this->load->model('common/User_model');
                     $data['all_users'] = $this->ion_auth->users()->result();
 
-                    $this->load->model('common/Plantas_model');
-                    $data['all_planta'] = $this->Plantas_model->get_all_plantas();
-
-                    $this->load->model('common/Umbraculos_model');
-                    $data['all_umbraculo'] = $this->Umbraculos_model->get_all_umbraculos();
+                    $this->load->model('common/Umbraculoplantas_model');
+                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
                     
                     /* CARGA LA PANTALLA PARA AÑADIR UNA NUEVA TAREA*/
                     $this->template->admin_render('admin/umbraculos/umbraculo_tarea/add', $this->data);
