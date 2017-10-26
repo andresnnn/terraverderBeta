@@ -100,7 +100,7 @@ function agregarTarea($idUmbraculo)
                     );
 
                     $tareas_id = $this->Tareas_model->add_tareas($params);
-                    redirect('common/Tareas/add');
+                    redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
                 }
                 else
                 {

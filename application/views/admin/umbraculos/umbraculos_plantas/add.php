@@ -30,6 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								{
 									$selected = ($planta['idPlanta'] == $this->input->post('idPlanta')) ? ' selected="selected"' : "";
 									echo '<option value="'.$planta['idPlanta'].'" '.$selected.'>'.$planta['nombrePlanta'].'</option>';
+                                    echo "<input type='' name='' value='".($planta['idPlanta'] == $this->input->post('idPlanta'))."'>";
 								} 
 								?>
 							</select>
@@ -44,6 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('cantidad');?></span>
 						</div>
 					</div>
+
 					<div class="col-md-6">
 						<div class="form-group">
 							<input type="hidden" min="0" name="idUmbraculo" value="<?php echo $id; ?>" class="form-control" id="idUmbraculo" />
@@ -53,6 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
 
+            <!-- INFORMACION VISIBLE DEL UMBRÁCULO-->
 			<table class="table table-striped table-hover">
                                         <tbody>
                                             <tr>
@@ -64,6 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                         </tbody>
             </table>
+            <!-- INFORMACION VISIBLE DEL UMBRÁCULO-->
 
             <div class="box-footer" style="text-align: center;">
                 <button type="submit" class="btn btn-primary btn-flat">Agregar</button>
