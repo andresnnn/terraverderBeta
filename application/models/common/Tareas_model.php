@@ -53,4 +53,6 @@ class Tareas_model extends CI_Model
     {
         return $this->db->delete('tarea',array('idTarea'=>$idTarea));
     }
+
+  
 }

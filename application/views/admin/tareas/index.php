@@ -32,15 +32,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                       <th>Operaciones</th>
+
+                      
                     </tr>
                     <?php foreach($tarea as $t){ ?>
                     <tr>
                       <td><?php echo $t['idTarea']; ?></td>
                       <td><?php echo $t['idTipoTarea']; ?></td>
                       <td><?php echo $t['idEstado']; ?></td>
-
                       <td><?php echo $t['idPlanta']; ?></td>
                       <td><?php echo $t['idUmbraculo']; ?></td>
+
+
+
 
 
                         <td>
