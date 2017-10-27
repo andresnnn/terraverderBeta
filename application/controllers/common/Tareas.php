@@ -99,7 +99,7 @@ function agregarTarea($idUmbraculo)
                         'horaComienzo' => $this->input->post('horaComienzo'),
                         'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     );
-                    if ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea'))==null)
+                    if ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea')))
                     {
                       $tareas_id = $this->Tareas_model->add_tareas($params);
                       redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
