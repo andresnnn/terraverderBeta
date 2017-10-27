@@ -24,7 +24,7 @@ class Tipotarea_model extends CI_Model
      */
     function get_all_tipotarea()
     {
-        $this->db->order_by('idTipoTarea', 'desc');
+        $this->db->order_by('idTipoTarea', 'asc');
         return $this->db->get('tipotarea')->result_array();
     }
 

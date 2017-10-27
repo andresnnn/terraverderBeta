@@ -14,37 +14,97 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="row">
                         <div class="col-md-12">
                              <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Creación de Tarea</h3>
+                    </div>
                                 <div class="box-body">
-                                    <?php echo form_open('common/tareas/add'); ?>
-                                                <div class="box-body">
-                                                    <div class="row clearfix">
-                                                        <div class="col-md-6">
-                                                            <label for="idTipoTarea" class="control-label"><span class="text-danger"></span>Tipo de tarea</label>
-                                                            <div class="form-group">
-                                                                <input type="text" name="idTipoTarea" value="<?php echo $this->input->post('idTipoTarea'); ?>" class="form-control" id="idTipoTarea" />
-                                                                <span class="text-danger"><?php echo form_error('idTipoTarea');?></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="idEstado" class="control-label"><span class="text-danger"></span>Estado de la tarea</label>
-                                                            <div class="form-group">
-                                                                <input type="number" name="idEstado" value="<?php echo $this->input->post('idEstado'); ?>" class="form-control" id="idEstado" />
-                                                                <span class="text-danger"><?php echo form_error('idEstado');?></span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label for="idPlanta" class="control-label"><span class="text-danger"></span>Planta</label>
-                                                            <div class="form-group">
-                                                                <input type="number" name="idPlanta" value="<?php echo $this->input->post('idPlanta'); ?>" class="form-control" id="idPlanta" />
-                                                                <span class="text-danger"><?php echo form_error('idPlanta');?></span>
-                                                            </div>
-                                                        </div>
 
-                                                    <div class="box-footer">
-                                                        <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
-                                                        <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Cancelar</a>
-                                                    </div>
-                                                <?php echo form_close(); ?>
+            <?php echo form_open('common/tareas/add'); ?>
+          	<div class="box-body">
+          			<div class="row clearfix">
+
+                  <div class="col-md-6">
+        						<label for="idUmbraculo" class="control-label">Selecciona el Umbraculo</label>
+        						<div class="form-group">
+        							<select name="idUmbraculo" class="form-control">
+        								<option value="">Selecciona el umbraculo</option>
+        								<?php
+        								foreach($infoUmbraculo as $u)
+        								{
+        									$selected = ($u['idUmbraculo'] == $this->input->post('idUmbraculo')) ? ' selected="selected"' : "";
+
+        									echo '<option value="'.$u['idUmbraculo'].'" '.$selected.'>'.$u['nombreUmbraculo'].'</option>';
+        								}
+        								?>
+        							</select>
+
+        						</div>
+        					</div>
+
+                  <div class="col-md-6">
+        						<label for="idPlanta" class="control-label">Selecciona la Planta</label>
+        						<div class="form-group">
+        							<select name="idPlanta" class="form-control">
+        								<option value="">Selecciona la planta</option>
+        								<?php
+        								foreach($planta as $p)
+        								{
+        									$selected = ($p['idPlanta'] == $this->input->post('idPlanta')) ? ' selected="selected"' : "";
+
+        									echo '<option value="'.$p['idPlanta'].'" '.$selected.'>'.$p['nombrePlanta'].'</option>';
+        								}
+        								?>
+        							</select>
+
+        						</div>
+        					</div>
+
+
+
+
+                  <div class="col-md-6">
+                    <label for="idTipoTarea" class="control-label">Selecciona el tipo de tarea</label>
+                    <div class="form-group">
+                      <select name="idTipoTarea" class="form-control">
+                        <option value="">Selecciona el tipo</option>
+                        <?php
+                        foreach($tipotarea as $tp)
+                        {
+                          $selected = ($tp['idTipoTarea'] == $this->input->post('idTipoTarea')) ? ' selected="selected"' : "";
+
+                          echo '<option value="'.$tp['idTipoTarea'].'" '.$selected.'>'.$tp['nombreTipoTarea'].'</option>';
+                        }
+                        ?>
+                      </select>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="fechaHoraComienzo" class="control-label">Selecciona la fecha limite de atencion</label>
+                    <div class="form-group">
+                      <input type="date" name="dia" id="dia">
+                    </div>
+                  </div>
+
+
+
+
+					<div class="col-md-12">
+						<label for="observacionCreador" class="control-label"><span class="text-danger">*</span>Observaciones para la tarea</label>
+						<div class="form-group">
+							<textarea name="observacionCreador" class="form-control" id="observacionCreador"> </textarea>
+							<span class="text-danger"><?php echo form_error('observacionCreador');?></span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+            <div class="box-footer">
+                <button type="submit" class="btn btn-primary btn-flat btn-block">Guardar</button>
+                <a href="<?php echo site_url('common/plantas'); ?>" class="btn btn-warning btn-flat btn-block">Cancelar</a>
+            </div>
+            <?php echo form_close(); ?>
                          </div>
                     </div>
                 </section>

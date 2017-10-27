@@ -18,22 +18,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title"><?php echo anchor('common/tareas/add', '<i class="fa fa-envira"></i> '. lang('tareas_create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                 </div>
 
-                         <div class="box-body">
+                         <div class="box-body" style="overflow-y:scroll;">
                          <section class="content">
 
                 <table class="table table-striped table-hover">
                     <tr>
-                      <th>IdTarea</th>
-                      <th>IdTipoTarea</th>
-                      <th>IdEstado</th>
+                      <th>Id Tarea</th>
+                      <th>Tipo de Tarea</th>
+                      <th>Estado</th>
 
-                      <th>IdPlanta</th>
-                      <th>IdUmbraculo</th>
+                      <th>Planta</th>
+                      <th>Umbraculo</th>
 
 
-                      <th>Operaciones</th>
 
-                      
+
+
                     </tr>
                     <?php foreach($tarea as $t){ ?>
                     <tr>
@@ -48,9 +48,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                         <td>
+                              <a href="<?php echo site_url('common/tareas/atender/'.$t['idTarea']); ?>" class="btn btn-default btn-xs"><span class="fa fa-envira"></span>Atender</a>
                             <a href="<?php echo site_url('common/tareas/profile/'.$t['idTarea']); ?>" class="btn btn-primary btn-xs"><span class="fa fa-eye"></span> Ver Tarea</a>
                             <a href="<?php echo site_url('common/tareas/edit/'.$t['idTarea']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-pencil"></span> Modificar</a>
                             <a href="<?php echo site_url('common/tareas/remove/'.$t['idTarea']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span>Eliminar</a>
+
                         </td>
                     </tr>
                     <?php } ?>

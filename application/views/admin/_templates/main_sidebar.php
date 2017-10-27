@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
             <aside class="main-sidebar"  >
-                <section class="sidebar"> 
+                <section class="sidebar">
 <?php if ($admin_prefs['user_panel'] == TRUE): ?>
                     <!-- Sidebar user panel -->
                     <div class="user-panel" >
@@ -21,12 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php if ($admin_prefs['sidebar_form'] == TRUE): ?>
                     <!-- Search form -->
                     <form action="#" method="get" class="sidebar-form">
-                        <div class="input-group">
-                            <input type="text" name="q" class="form-control" placeholder="<?php echo lang('menu_search'); ?>...">
-                            <span class="input-group-btn">
-                                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                            </span>
-                        </div>
+
                     </form>
 
 <?php endif; ?>
@@ -90,17 +85,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="header text-uppercase">Administración tarea</li>
                         <li class="<?=active_link_controller('tareas')?>">
                             <a href="<?php echo site_url('common/tareas'); ?>">
-                                <i class="fa fa-user"></i> <span>Ver Tareas</span>
+                                <i class="fa fa-envira"></i> <span>Ver Tareas</span>
                             </a>
                         </li>
-                        <li class="<?=active_link_controller('common/tarea')?>">
-                            <a href="<?php echo site_url('common/tarea'); ?>">
-                                <i class="fa fa-user"></i> <span>Tareas</span>
-                            </a>
-                        </li>
+
                         <li class="<?=active_link_controller('common/tipoTarea')?>">
                             <a href="<?php echo site_url('common/tipoTarea'); ?>">
-                                <i class="fa fa-user"></i> <span>Tipo de Tareas</span>
+                                <i class="fa fa-envira"></i> <span>Tipo de Tareas</span>
                             </a>
                         </li>
                     </ul>

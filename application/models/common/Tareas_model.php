@@ -9,6 +9,8 @@ class Tareas_model extends CI_Model
     function __construct()
     {
         parent::__construct();
+        $this->load->model('common/plantas_model');
+        $this->load->model('common/Plantas_model');
     }
 
     /*
@@ -24,7 +26,7 @@ class Tareas_model extends CI_Model
      */
     function get_all_tarea()
     {
-        $this->db->order_by('idTarea', 'desc');
+        $this->db->order_by('idTarea', 'asc');
         return $this->db->get('tarea')->result_array();
     }
 
@@ -54,5 +56,23 @@ class Tareas_model extends CI_Model
         return $this->db->delete('tarea',array('idTarea'=>$idTarea));
     }
 
-  
+  /*  function get_nombre_planta($idTarea)
+    {
+
+      $query = "SELECT descripcionPlanta FROM `tarea` JOIN planta ON planta.idPlanta = `tarea`.idPlanta WHERE `tarea`.idTarea=".$idTarea;
+
+      return $this->db->get($query);
+
+    }*/
+
+    function get_nombre_planta($idTarea)
+    {
+      $this->db->select('planta.nombrePlanta');
+$this->db->from('planta');
+$this->db->join('tarea', 'tarea.idPlanta = planta.idPlanta');
+$this->db->where('tarea.idTarea=',$idTarea);
+$query = $this->db->get();
+    }
+
+
 }

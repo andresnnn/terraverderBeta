@@ -61,12 +61,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $tarea['observacionEspecialista']; ?></td>
                                             </tr>
 
+                                            <tr>
+                                                <th>Observaciones del especialista</th>
+                                                <td><?php echo $planta['nombrePlanta']; ?></td>
+                                            </tr>
+
+
+
                                         </tbody>
                                     </table>
                                 </div>
                                 <div>
                                    <a href="<?php echo site_url('common/tareas/edit/'.$tarea['idTarea']); ?>" class="btn btn-warning btn-xl btn-block"><span class="fa fa-pencil"></span> Modificar</a>
                                   <a href="<?php echo site_url('common/tareas/remove/'.$tarea['idTarea']); ?>" class="btn btn-danger btn-xl btn-block"><span class="fa fa-trash"></span>Eliminar</a>
+  <a href="<?php echo site_url('common/tareas/atender/'.$tarea['idTarea']); ?>" class="btn btn-primary btn-xl btn-block"><span class="fa fa-envira"></span>Atender</a>
                                 </div>
                             </div>
 

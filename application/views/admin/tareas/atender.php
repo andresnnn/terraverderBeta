@@ -13,7 +13,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-32">
                  <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Modificar la tarea nro. <?php echo $tarea['idTarea']; ?></h3>
+                        <h3 class="box-title">Atender la tarea nro. <?php echo $tarea['idTarea']; ?></h3>
                     </div>
                     <div class="box-body">
 
@@ -32,19 +32,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<input type="text" name="idTipoTarea" value="<?php echo ($this->input->post('idTipoTarea') ? $this->input->post('idTipoTarea') : $tarea['idTipoTarea']); ?>" class="form-control" id="idTipoTarea" />
 		</div>
 	</div>
-
-
-
-  
-
-
-
-
-
-
-
-
-
 
 
   <div class="box-footer">

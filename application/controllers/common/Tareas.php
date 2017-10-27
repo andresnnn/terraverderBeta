@@ -22,6 +22,7 @@ class Tareas extends Admin_Controller{
         $this->load->model('common/Umbraculos_model');
         $this->load->model('common/Estadotarea_model');
         $this->load->model('common/Plantas_model');
+        $this->load->model('common/plantas_model');
         $this->load->model('common/Tipotarea_model');
 
 
@@ -53,7 +54,10 @@ class Tareas extends Admin_Controller{
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
             /* CARGO EL LISTADO DE UMBRACULOS*/
 
+
+
             $this->data['tarea'] = $this->Tareas_model->get_all_tarea();
+
 
 
 
@@ -112,6 +116,18 @@ class Tareas extends Admin_Controller{
              }
              else
              {
+
+               $this->load->model('common/Plantas_model');
+         			$this->data['planta'] = $this->Plantas_model->get_all_plantas();
+              $this->load->model('common/Tipotarea_model');
+             $this->data['tipotarea'] = $this->Tipotarea_model->get_all_tipotarea();
+
+             $this->load->model('common/Umbraculos_model');
+            $this->data['infoUmbraculo'] = $this->Umbraculos_model->get_all_umbraculos();
+
+            $this->load->model('common/Umbraculoplantas_model');
+           $this->data['infoUmbraculoplanta'] = $this->Umbraculoplantas_model->get_all_umbraculo_plantas();
+
                  $this->template->admin_render('admin/tareas/add', $this->data);
              }
          }
@@ -178,7 +194,9 @@ class Tareas extends Admin_Controller{
                  /* Breadcrumbs */
                  $this->data['breadcrumb'] = $this->breadcrumbs->show();
                  // check if the umbraculos exists before trying to edit it
+                  $this->data['tarea'] = $this->Tipotarea_model->get_all_tipotarea();/*guarda*/
                  $this->data['tarea'] = $this->Tareas_model->get_tarea($idTarea);
+
 
                  if(isset($this->data['tarea']['idTarea']))
                  {
@@ -217,6 +235,64 @@ class Tareas extends Admin_Controller{
                      else
                      {
                          $this->template->admin_render('admin/tareas/edit', $this->data);
+                     }
+                 }
+                 else
+                     show_error(' no existe.');
+         }
+     }
+
+     function atender($idTarea)
+     {
+         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+         {
+             redirect('auth/login', 'refresh');
+         }
+         else
+         {
+
+                 /* Breadcrumbs */
+                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                 // check if the umbraculos exists before trying to edit it
+                 $this->data['tarea'] = $this->Tareas_model->get_tarea($idTarea);
+
+                 if(isset($this->data['tarea']['idTarea']))
+                 {
+                     $this->load->library('form_validation');
+
+                     $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required|max_length[50]|min_length[5]');
+                     $this->form_validation->set_rules('idEstado','IdEstado','required|max_length[255]|min_length[10]');
+                     $this->form_validation->set_rules('idUserAtencion','IdUserAtencion','required|max_length[99]');
+                     $this->form_validation->set_rules('idUserCreador','IdUserCreador','required|max_length[99]');
+                     $this->form_validation->set_rules('idPlanta','IdPlanta','required');
+                     $this->form_validation->set_rules('idUmbraculo','IdUmbraculo','required|max_length[99]');
+                     $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
+                     $this->form_validation->set_rules('fechaAtencion','FechaAtencion','required');
+                     $this->form_validation->set_rules('fechaHoraComienzo','FechaHoraComienzo','max_length[50]');
+                     $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
+
+                     if($this->form_validation->run())
+                     {
+                         $params = array(
+                           'idTipoTarea' => $this->input->post('idTipoTarea'),
+                           'idEstado' => $this->input->post('idEstado'),
+                           'idUserAtencion' => $this->input->post('idUserAtencion'),
+                           'idUserCreador' => $this->input->post('idUserCreador'),
+                           'idPlanta' => $this->input->post('idPlanta'),
+                           'idUmbraculo' => $this->input->post('idUmbraculo'),
+                           'fechaCreacion' => $this->input->post('fechaCreacion'),
+                           'fechaAtencion' => $this->input->post('fechaAtencion'),
+                           'fechaHoraComienzo' => $this->input->post('fechaHoraComienzo'),
+                           'observacionEspecialista' => $this->input->post('observacionEspecialista'),
+
+                         );
+
+                         $this->Tareas_model->update_tarea($idTarea,$params);
+                         redirect('common/tareas/index');
+                     }
+                     else
+                     {
+                         $this->template->admin_render('admin/tareas/atender', $this->data);
                      }
                  }
                  else
@@ -307,7 +383,12 @@ class Tareas extends Admin_Controller{
             /* Data */
             $idTarea = (int) $idTarea;
 
+
+
              $this->data['tarea'] = $this->Tareas_model->get_tarea($idTarea);
+             $this->data['planta'] = $this->Plantas_model->get_nombre_planta($idTarea);
+              /*$this->data['planta'] = $this->Plantas_model->get_planta($idTarea);*/
+
 
             /* CARGAR INFORMARCION */
            // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
