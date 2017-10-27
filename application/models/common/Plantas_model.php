@@ -38,7 +38,7 @@ WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo."
     DE LAS PLANTAS CON LA RESPECTIVA INFORMACIÓN DE SU ESPECIE, PARA REALIZAR LA COMPARACION DE CONDICIONES A LA HORA DE AGREGAR UNA PLANTA ADENTRO*/
     function obtener_plantas_especies()
     {
-        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin,especie.nombreEspecie,planta.idPlanta,planta.nombrePlanta,planta.unidadEspacioPlanta_m2 FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
+        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMin,especie.temperaturaMax,especie.temperaturaMin,especie.nombreEspecie,planta.idPlanta,planta.nombrePlanta,planta.unidadEspacioPlanta_m2 FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
     }
 
