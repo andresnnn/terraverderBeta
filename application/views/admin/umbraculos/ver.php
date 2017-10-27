@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="box-footer" style="text-align: center;" title="Volver a vista administración de umbráculos">
                                     <a href="<?php echo site_url('common/umbraculos/editar/'.$id); ?>" class="btn btn-warning btn-flat"> Editar ínfo </a>
                                     <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Volver atrás</a>
-                                </div> 
+                                </div>
                             </div>
                     <!--CAJA CONDICIONES-->
                             <div class="box">
@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                              <div class="progress-group">
                                                 <span class="progress-text">Húmedad (%)</span>
                                                 <span class="progress-number"><strong><?php echo $info_umbraculo['humedadUmbraculo']; ?></strong>/100</span>
-            
+
                                                 <div class="progress" title="Húmedad dentro del umbráculo">
                                                     <div class="progress-bar progress-bar-aqua" role="progressbar" style="width: <?php echo $info_umbraculo['humedadUmbraculo']; ?>%" ></div>
                                                 </div>
@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="progress-group">
                                                 <span class="progress-text">Espacio disponible</span>
                                                 <span class="progress-number"><strong><?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>m<sup>2</sup></strong>/<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>m<sup>2</sup></span>
-            
+
                                                 <div class="progress" title="Espacio disponible dentro del umbráculo">
                                                     <div class="progress-bar progress-bar-aqua" role="progressbar" aria-valuenow="<?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>" aria-valuemin="0" aria-valuemax="<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>" style="width: <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ></div>
                                                 </div>
@@ -70,8 +70,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             </div>
                          </div>
-                    <!--FIN CAJA CONDICIONES-->     
-                    <!-- CAJA PLANTAS-->     
+                    <!--FIN CAJA CONDICIONES-->
+                    <!-- CAJA PLANTAS-->
                         <div class="col-md-6">
                              <div class="box">
                                 <div class="box-header with-border">
@@ -84,12 +84,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Nombre</th>
                                                 <th>Cantidad</th>
                                             </tr>
-                                                <?php foreach($umbraculo_plantas as $u){ ?> 
+                                                <?php foreach($umbraculo_plantas as $u){ ?>
                                                 <tr>
                                                     <td><?php echo $u['nombrePlanta']; ?></td>
                                                     <td><?php echo $u['cantidad']; ?></td>
                                                 </tr>
-                                                <?php } ?> 
+                                                <?php } ?>
                                         </table>
 
                                             <div>
@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Tipo tarea</th>
                                                 <th>Planta</th>
                                                 <th>Creador</th>
-                                                <th>Fecha Creación</th>
+                                                <th>Fecha Prevista</th>
                                                 <th>Estado</th>
                                             </tr>
                                             <?php foreach($tareas as $t){ ?>
@@ -128,7 +128,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['nombreTipoTarea']; ?></td>
                                                 <td><?php echo $t['nombrePlanta']; ?></td>
                                                 <td><?php echo $t['creador']; ?></td>
-                                                <td><?php echo $t['fechaCreacion']; ?></td>
+                                                <td><?php echo $t['fechaComienzo']; ?></td>
                                                 <td><?php echo $t['nombreEstado']; ?></td>
                                             </tr>
                                             <?php } ?>
@@ -147,6 +147,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!--FIN CAJA TAREAS-->
                 </section>
             </div>
-
-
-

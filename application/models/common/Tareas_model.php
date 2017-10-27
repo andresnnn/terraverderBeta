@@ -37,7 +37,7 @@ class Tareas_model extends CI_Model
      */
     function obtener_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
@@ -49,10 +49,17 @@ class Tareas_model extends CI_Model
 
     function comprobar_existencia_tarea($id1, $id2, $id3,$id4)
     {
-//AND (fechaCreacion='".$id2."')
-
-        $query ="SELECT * FROM `tarea` WHERE (idUmbraculo=".$id1.")  AND (idPlanta= ".$id3.") AND (idTipoTarea= ".$id4." )";
+//AND (fechaComienzo=".$id2.")
+        $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];
+        echo $id2;
+        if ($id2==null){
+        $query ="SELECT * FROM `tarea` WHERE (idUmbraculo=".$id1.")  AND (idPlanta= ".$id3.") AND (fechaComienzo='.$id2.') AND (idTipoTarea= ".$id4." )";
         return $this->db->query($query)->row_array();
+        }
+        else {
+          return null;
+        }
+
     }
 
 

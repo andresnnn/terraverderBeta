@@ -81,7 +81,7 @@ function agregarTarea($idUmbraculo)
                 $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
                 $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
                 $this->form_validation->set_rules('fechaAtencion','FechaAtencion');
-                $this->form_validation->set_rules('fechaHoraComienzo','FechaHoraComienzo');
+                $this->form_validation->set_rules('fechaComienzo','FechaComienzo');
                 $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
 
                 if($this->form_validation->run())
@@ -95,10 +95,11 @@ function agregarTarea($idUmbraculo)
                         'idUmbraculo' => $this->input->post('idUmbraculo'),
                         'fechaCreacion' => $this->input->post('fechaCreacion'),
                         'fechaAtencion' => $this->input->post('fechaAtencion'),
-                        'fechaHoraComienzo' => $this->input->post('fechaHoraComienzo'),
+                        'fechaComienzo' => $this->input->post('fechaComienzo'),
+                        'horaComienzo' => $this->input->post('horaComienzo'),
                         'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     );
-                    if ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaCreacion'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea'))==null)
+                    if ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea'))==null)
                     {
                       $tareas_id = $this->Tareas_model->add_tareas($params);
                       redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
@@ -153,7 +154,7 @@ function agregarTarea($idUmbraculo)
             $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
             $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
             $this->form_validation->set_rules('fechaAtencion','FechaAtencion','required');
-            $this->form_validation->set_rules('fechaHoraComienzo','FechaHoraComienzo','required');
+            $this->form_validation->set_rules('fechaComienzo','fechaComienzo','required');
             $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
 
             if($this->form_validation->run())
@@ -167,7 +168,7 @@ function agregarTarea($idUmbraculo)
                     'idUmbraculo' => $this->input->post('idUmbraculo'),
                     'fechaCreacion' => $this->input->post('fechaCreacion'),
                     'fechaAtencion' => $this->input->post('fechaAtencion'),
-                    'fechaHoraComienzo' => $this->input->post('fechaHoraComienzo'),
+                    'fechaComienzo' => $this->input->post('fechaComienzo'),
                     'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                 );
 
