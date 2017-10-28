@@ -76,28 +76,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<input type="hidden" name="idUmbraculo" value="<?php echo $id; ?>" class="has-datepicker form-control" id="idUmbraculo" />
 						</div>
 
-            <!-- <div class="col-md-6">
-  						<div class="form-group">
-  						<input type="hidden" name="idUserAtencion" value=0 id="idUserAtencion" />
-  						</div> -->
+
 
 					</div>
 					<div class="col-md-6">
 						<label for="fechaCreacion" class="control-label"><span class="text-danger">*</span>Fecha Creación</label>
+            <div class="form-group">
+              <input  readonly type="text" name="fechaActual" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $d."-".$M."-".$y; ?>" class="has-datepicker form-control" id="fechaCreacion" />
+							<span class="text-danger"><?php echo form_error('fechaCreacion');?></span>
+						</div>
 						<div class="form-group">
-              <input readonly type="text" name="fechaCreacion" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $y."-".$M."-".$d; ?>" class="has-datepicker form-control" id="fechaCreacion" />
+              <input  type="hidden" name="fechaCreacion" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $y."-".$M."-".$d; ?>" class="has-datepicker form-control" id="fechaCreacion" />
 							<span class="text-danger"><?php echo form_error('fechaCreacion');?></span>
 						</div>
 					</div>
 
         </div>
         <div class="col-md-6">
-          <label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>Fecha de la Tarea</label>
+          <label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>Fecha y hora Prevista para la Tarea</label>
           <div class="form-group">
-            <input class="has-datepicker form-control" type="date" name="fechaHoraComienzo" id="fechaHoraComienzo" value="<?php echo $this->input->post(date('Y-m-d', strtotime('fechaHoraComienzo'))); ?>" />
-            <span class="text-danger"><?php echo form_error('fechaHoraComienzo');?></span>
+            <input class="has-datepicker form-control" type="date" name="fechaComienzo" id="fechaComienzo" value="<?php echo $this->input->post(date('Y-m-d', strtotime('fechaComienzo'))); ?>" />
+            <span class="text-danger"><?php echo form_error('fechaComienzo');?></span>
+          </div>
+
+          <div class="form-group">
+            <input class="has-datepicker form-control" type="time" name="horaComienzo" id="horaComienzo" value="<?php echo $this->input->post(('horaComienzo')); ?>"/>
+            <span class="text-danger"><?php echo form_error('horaComienzo');?></span>
           </div>
         </div>
+
+
+
+
 
 
 				</div>
