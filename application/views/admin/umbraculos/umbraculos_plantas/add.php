@@ -241,8 +241,6 @@ function cargarDatos(id) {
         }
 
         /*SI LA CANTIDAD INGRESA*/
-
-
             
     }
 
