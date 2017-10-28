@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
 
                                 <div class="box-body">
-            <?php echo form_open('common/umbraculos/add'); ?>
+            <?php echo form_open('common/umbraculos/agregar_planta_umbraculo'); ?>
           	<div class="box-body">
           		<div class="row clearfix">
 					<div class="col-md-6">

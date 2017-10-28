@@ -243,7 +243,7 @@ class Umbraculos extends Admin_Controller {
             }
 
     /**
-     * LA FUNCION AGREGAR PLANTA REGISTRA UNA NUEVA PLANTA, CON SU DETERMINADA CANTIDAD DENTRO DEL UMBRÁCULO PREVIAMENTE SELCCIONAD
+     * CARGA LA VISTA CON LOS RECURSOS NECESARIOS PARA LA FUNCION AGREGAR
      * @param  [type] $idUmbraculo [description]
      * @return [type]              [description]
      * @author SAKZEDMK
@@ -273,8 +273,13 @@ class Umbraculos extends Admin_Controller {
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
         }
     }
-
-    function add()
+    /**
+     * LA FUNCION AGREGAR PLANTA REGISTRA UNA NUEVA PLANTA, CON SU DETERMINADA CANTIDAD DENTRO DEL UMBRÁCULO PREVIAMENTE SELCCIONAD
+     * @param  [type] $idUmbraculo [description]
+     * @return [type]              [description]
+     * @author SAKZEDMK
+     */
+    function agregar_planta_umbraculo()
     {   
         $this->load->library('form_validation');
 
