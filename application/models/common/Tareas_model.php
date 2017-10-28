@@ -4,6 +4,8 @@
  * www.crudigniter.com
  */
 
+
+
 class Tareas_model extends CI_Model
 {
     function __construct()
@@ -52,6 +54,12 @@ class Tareas_model extends CI_Model
 //AND (fechaComienzo=".$id2.")
       $query ="SELECT * FROM `tarea` WHERE (idUmbraculo=".$id1.")  AND (idPlanta= ".$id3.")  AND (idTipoTarea= ".$id4." )";
       $comparacion1 = $this->db->query($query)->result_array();
+
+echo "<script>";
+
+echo "echo $id2;";
+
+echo "</script>";
         if (( $comparacion1==null) ){
         return true;
         }
