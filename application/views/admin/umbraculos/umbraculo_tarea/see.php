@@ -24,6 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Creador</th>
                                                 <th>Fecha Creación</th>
                                                 <th>Estado</th>
+                                                <th>Acciones</th>
                                             </tr>
                                             <?php foreach($tareas_en_umbraculo as $t){ ?>
                                             <tr>
@@ -32,6 +33,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['creador']; ?></td>
                                                 <td><?php echo $t['fechaCreacion']; ?></td>
                                                 <td><?php echo $t['nombreEstado']; ?></td>
+                                                <td>
+                                                <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
+                                                <?php if ($t['idEstado'] == 1) {
+                                                    echo "<a href='URL' class='btn btn-danger btn-xs'><span class='fa fa-sign-language'></span> Atender</a>";
+                                                } ?>
+                                                </td>
                                             </tr>
                                             <?php } ?>
                                     </table>

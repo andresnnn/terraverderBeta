@@ -48,7 +48,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <div class="box-body">
                                     <div class="box-body">
                                                 <table class="table table-striped table-hover">
-                                                <tr><td>Temperatura <strong><?php echo $info_umbraculo['temperaturaUmbraculo']; ?>°C</strong></td></tr>
+                                                <tr>
+                                                    <td>Temperatura <strong><?php echo $info_umbraculo['temperaturaUmbraculo']; ?>°C</strong></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Iluminación <strong><?php echo $info_umbraculo['luzUmbraculo']; ?> lx.</strong></td>
+                                                </tr>
                                                 </table><br>
                                              <div class="progress-group">
                                                 <span class="progress-text">Húmedad (%)</span>

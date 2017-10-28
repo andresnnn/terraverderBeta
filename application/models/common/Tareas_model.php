@@ -51,12 +51,11 @@ class Tareas_model extends CI_Model
      * RETORNA EL LISTADO DE TODAS LAS TAREAS PERTENECIENTES A UM UMBRACULO
      * JUNTO CON EL JOIN DE TODOS LOS CAMPOS RELACIONADOS A UNA TAREA.
      * @param  [type] $idUmbraculo EL UMBRACULO SELECCIONADO SOBRE EL CUAL SE REALIZA LA CONSULTA
-     * @return [type]              [description]
      * @author SAKZEDMK
      */
     function listar_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado

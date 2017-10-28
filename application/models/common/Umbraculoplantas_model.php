@@ -12,20 +12,34 @@ class Umbraculoplantas_model extends CI_Model
         $this->load->model('common/plantas_model');
     }
     
-    /*
-     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO
+
+    /**
+     * OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE LIMITE 3
+     * @param  [type] $idUmbraculo EL ID DEL UMBRACULO SOBRE EL CUAL SE ESTÁ TRABAJANDO.
+     * @author SAKZEDMK
      */
     function get_umbraculo_plantas($idUmbraculo)
     {
         return $this->db->get_where('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo))->result_array();
     }
 
-    /*
-     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO
+    /**
+     * SI UNA PLANTA DEL MISMO ID YA SE ENCUENTRA REGISTRADA DENTRO DEL UMBRÁCULO, RETORNA LA FILA
+     * SI NO LO ESTÁ, RETORNARÁ 'NULL'
+     * @param  [type] $idUmbraculo EL ID DEL UMBRACULO SOBRE EL CUAL SE ESTÁ TRABAJANDO.
+     * @param  [type] $idPlanta    EL ID DE LA PLANTA QUE SE ESTÁ INTENTADO REGISTRAR.
+     * @author SAKZEDMK
      */
+     function esta_registrada($params)
+     {
+        $query="SELECT * FROM `umbraculo/planta` WHERE `umbraculo/planta`.`idPlanta`=".$params['idPlanta']." AND `umbraculo/planta`.`idUmbraculo`=".$params['idUmbraculo'];
+        return $this->db->query($query)->row_array();
+     }
 
-     /*
-     OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE LIMITE 3
+    /**
+     * OBTENER LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE LIMITE 3
+     * @param  [type] $idUmbraculo EL ID DEL UMBRACULO SOBRE EL CUAL SE ESTÁ TRABAJANDO.
+     * @author SAKZEDMK
      */
     function get_umbraculo_plantas_nombre($idUmbraculo)
     {
@@ -33,10 +47,13 @@ class Umbraculoplantas_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
-     /*
-     OBTENER TODAS LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE 
+
+    /**
+     * OBTENER TODAS LAS PLANTAS QUE ESTAN ALOJADAS EN UN DETERMINADO UMBRÁCULO, CON SU RESPECTIVO NOMBRE 
+     * @param  [type] $idUmbraculo EL ID DEL UMBRACULO SOBRE EL CUAL SE ESTÁ TRABAJANDO.
+     * @author SAKZEDMK
      */
-        function ver_plantas_umbraculo($idUmbraculo)
+    function ver_plantas_umbraculo($idUmbraculo)
     {
         $query = "SELECT * FROM `umbraculo/planta` JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo;
 

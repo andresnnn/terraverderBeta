@@ -21,7 +21,7 @@ class Umbraculos extends Admin_Controller {
 
 
 /** CARGA EL INDEX DE LA SECCION ADMINISTRACIÓN DE UMBRACULOS*/
-	public function index()
+    public function index()
     {
         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
         {
@@ -39,7 +39,6 @@ class Umbraculos extends Admin_Controller {
 
         }
     }
-
 
     /*
      * Adding a new umbraculos
@@ -290,13 +289,20 @@ class Umbraculos extends Admin_Controller {
                 'cantidad' => $this->input->post('cantidad'),
             );
             
-            $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
-            redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
+            /**COMPROBACIÓN SI EXISTE UNA MISMA PLANTA REGISTRADA**/
+            if ($this->Umbraculoplantas_model->esta_registrada($params) == NULL) {
+                $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
+                redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
+            }else{
+                show_error('La planta ya se encuentra registrada dentro del umbráculo');
+                sleep(3);
+                redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
+            }
         }
         else
         {
             /* Breadcrumbs */
-            //$this->data['breadcrumb'] = $this->breadcrumbs->show();
+            $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
             /* CARGA VISTA CON PLANTILLA */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
@@ -310,19 +316,19 @@ class Umbraculos extends Admin_Controller {
      * @return [type]              [description]
      * @author SAKZEDMK
      */
-    function sacar_planta($idUmbraculo,$idPlanta)
+    function sacar_planta_umbraculo($idUmbraculo,$idPlanta)
     {
         $umbraculo_plantas = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
 
-        // check if the umbraculo_plantas exists before trying to delete it
+/*        // check if the umbraculo_plantas exists before trying to delete it
         if(isset($umbraculo_plantas['idUmbraculo']))
-        {
+        {*/
             $this->Umbraculoplantas_model->retirar_planta_umbraculo($idUmbraculo,$idPlanta);
             //redirect('umbraculo_plantas/index');
-            redirect('common/umbraculos/verPlantas/'.$this->input->post('idUmbraculo'));
-        }
+            redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
+/*        }
         else
-            show_error('Usted está intentado retirar una planta, no registrada, dentro de este umbráculo.');
+            show_error('Usted está intentado retirar una planta, no registrada, dentro de este umbráculo.');*/
     }
     /*
      * Deleting umbraculos

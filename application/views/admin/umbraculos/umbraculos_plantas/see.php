@@ -29,7 +29,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td><?php echo $u['cantidad']; ?></td>
                                             <td>
                                                 <a href="<?php echo site_url('umbraculo_plantas/edit/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-plus"></span> Actualizar Cantidad</a> 
-                                                <a href="<?php echo site_url('common/umbraculos/sacar_planta/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-minus"></span> Quitar planta</a>
+                                                <a href="<?php echo site_url('common/umbraculos/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-minus"></span> Quitar planta</a>
                                             </td>
                                         </tr>
                                         <?php } ?>
