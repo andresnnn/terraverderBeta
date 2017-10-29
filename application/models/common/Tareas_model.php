@@ -53,27 +53,17 @@ class Tareas_model extends CI_Model
     {
 //AND (fechaComienzo=".$id2.")
 //STR_TO_DATE(fechaComienzo,'%m/%d/%Y')  = id4()
-      $vector = $this->db->get_where('tarea',array('fechaComienzo'=>$id2))->row_array();
-      $query ="SELECT * FROM `tarea` WHERE (idUmbraculo=".$id1.")  AND (idPlanta= ".$id3.")  AND (idTipoTarea= ".$id4.")  ";
-      $comparacion1 = $this->db->query($query)->result_array();
+      $vector = $this->db->get_where('tarea',array('idUmbraculo'=>$id1,'fechaComienzo'=>$id2,'idPlanta'=>$id3, 'idTipoTarea'=>$id4))->row_array();
+
+      if (  ($vector==null)){
+      return true;
+      }
+      else {
+        return false;}
+      }
 
 
-        if ( ($vector==null) AND  ($comparacion1==null)){
-        return true;
-        }
-        else {
-          return false;
-        //  $condcion = true;
-        //  foreach ($comparacion1 as $i ) { # code..
-        //     if (($i['fechaComienzo'])==($id2)) {
-        //       # code...
-        //       $condicion = false;
-        //     }
-          }
-          // return $condicion;
-          // }
 
-    }
 
 
     /**
