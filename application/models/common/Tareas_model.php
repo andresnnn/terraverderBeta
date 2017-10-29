@@ -52,27 +52,26 @@ class Tareas_model extends CI_Model
     function comprobar_existencia_tarea($id1, $id2, $id3,$id4)
     {
 //AND (fechaComienzo=".$id2.")
-      $query ="SELECT * FROM `tarea` WHERE (idUmbraculo=".$id1.")  AND (idPlanta= ".$id3.")  AND (idTipoTarea= ".$id4." )";
+//STR_TO_DATE(fechaComienzo,'%m/%d/%Y')  = id4()
+      $vector = $this->db->get_where('tarea',array('fechaComienzo'=>$id2))->row_array();
+      $query ="SELECT * FROM `tarea` WHERE (idUmbraculo=".$id1.")  AND (idPlanta= ".$id3.")  AND (idTipoTarea= ".$id4.")  ";
       $comparacion1 = $this->db->query($query)->result_array();
 
-echo "<script>";
 
-echo "echo $id2;";
-
-echo "</script>";
-        if (( $comparacion1==null) ){
+        if ( ($vector==null) AND  ($comparacion1==null)){
         return true;
         }
         else {
-          $condcion = true;
-         foreach ($comparacion1 as $i ) { # code..
-            if (($i['fechaComienzo'])==($id2)) {
-              # code...
-              $condicion = false;
-            }
+          return false;
+        //  $condcion = true;
+        //  foreach ($comparacion1 as $i ) { # code..
+        //     if (($i['fechaComienzo'])==($id2)) {
+        //       # code...
+        //       $condicion = false;
+        //     }
           }
-          return $condicion;
-          }
+          // return $condicion;
+          // }
 
     }
 
