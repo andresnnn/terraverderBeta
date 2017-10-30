@@ -126,6 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Planta</th>
                                                 <th>Creador</th>
                                                 <th>Fecha creación</th>
+                                                <th>Fecha prevista</th>
                                                 <th>Estado</th>
                                             </tr>
                                             <?php foreach($tareas as $t){ ?>
@@ -134,6 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['nombrePlanta']; ?></td>
                                                 <td><?php echo $t['creador']; ?></td>
                                                 <td><?php echo $t['fechaCreacion']; ?></td>
+                                                <td><?php echo $t['fechaComienzo']; ?></td>
                                                 <td><?php echo $t['nombreEstado']; ?></td>
                                             </tr>
                                             <?php } ?>

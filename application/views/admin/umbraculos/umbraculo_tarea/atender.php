@@ -52,71 +52,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="idUserAtencion" class="control-label">User</label>
-						<div class="form-group">
-							<select name="idUserAtencion" class="form-control">
-								<option value="">select user</option>
-								<?php
-								foreach($all_users as $user)
-								{
-									$selected = ($user['id'] == $tarea['idUserAtencion']) ? ' selected="selected"' : "";
-
-									echo '<option value="'.$user['id'].'" '.$selected.'>'.$user['id'].'</option>';
-								}
-								?>
-							</select>
+						<label for="idUserAtencion" class="control-label">Usuario Actual: </label>
+            <div class="form-group">
+						<?php echo $user_login['firstname']." ".$user_login['lastname']; ?>
+						<input type="hidden" name="idUserAtencion" value="<?php echo $user_login['id']; ?>" class="has-datepicker form-control" id="idUserAtencion" />
 						</div>
 					</div>
-					<div class="col-md-6">
-						<label for="idUserCreador" class="control-label">User</label>
-						<div class="form-group">
-							<select name="idUserCreador" class="form-control">
-								<option value="">select user</option>
-								<?php
-								foreach($all_users as $user)
-								{
-									$selected = ($user['id'] == $tarea['idUserCreador']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$user['id'].'" '.$selected.'>'.$user['id'].'</option>';
-								}
-								?>
-							</select>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<label for="idUmbraculo" class="control-label">Umbraculo</label>
-						<div class="form-group">
-							<select name="idUmbraculo" class="form-control">
-								<option value="">select umbraculo</option>
-								<?php
-								foreach($all_umbraculo as $umbraculo)
-								{
-									$selected = ($umbraculo['idUmbraculo'] == $tarea['idUmbraculo']) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$umbraculo['idUmbraculo'].'" '.$selected.'>'.$umbraculo['idUmbraculo'].'</option>';
-								}
-								?>
-							</select>
-						</div>
-					</div>
 					<div class="col-md-6">
-						<label for="fechaCreacion" class="control-label">FechaCreacion</label>
+						<label for="fechaCreacion" class="control-label">Fecha Creacion</label>
 						<div class="form-group">
 							<input type="text" name="fechaCreacion" value="<?php echo ($this->input->post('fechaCreacion') ? $this->input->post('fechaCreacion') : $tarea['fechaCreacion']); ?>" class="has-datepicker form-control" id="fechaCreacion" />
 						</div>
 					</div>
+
 					<div class="col-md-6">
-						<label for="fechaAtencion" class="control-label">FechaAtencion</label>
+						<label for="fechaAtencion" class="control-label">Fecha Atencion</label>
 						<div class="form-group">
 							<input class="has-datepicker form-control" type="date" id="fechaAtencion"  name="fechaAtencion" value="<?php echo ($this->input->post('fechaAtencion') ? $this->input->post('fechaAtencion') : $tarea['fechaAtencion']); ?>" class="has-datepicker form-control" id="fechaAtencion" />
 						</div>
 					</div>
+
 					<div class="col-md-6">
 						<label for="fechaHoraComienzo" class="control-label">FechaComienzo</label>
 						<div class="form-group">
 							<input type="text" name="fechaComienzo" value="<?php echo ($this->input->post('fechaComienzo') ? $this->input->post('fechaComienzo') : $tarea['fechaComienzo']); ?>" class="has-datepicker form-control" id="fechaComienzo" />
 						</div>
 					</div>
+
 					<div class="col-md-6">
 						<label for="idPlanta" class="control-label">IdPlanta</label>
 						<div class="form-group">

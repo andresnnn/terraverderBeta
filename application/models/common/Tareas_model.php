@@ -39,7 +39,7 @@ class Tareas_model extends CI_Model
      */
     function obtener_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
@@ -74,11 +74,14 @@ class Tareas_model extends CI_Model
      */
     function listar_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
                     JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
                     WHERE t.idUmbraculo=".$idUmbraculo." ORDER BY t.fechaCreacion DESC";
         return $this->db->query($query)->result_array();
