@@ -104,12 +104,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <span class="text-danger"><?php echo form_error('horaComienzo');?></span>
           </div>
         </div>
-
-
-
-
-
-
 				</div>
 			</div>
             <div class="box-footer" style="text-align: center;">

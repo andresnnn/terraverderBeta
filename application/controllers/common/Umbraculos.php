@@ -44,7 +44,7 @@ class Umbraculos extends Admin_Controller {
      * Adding a new umbraculos
      */
     function crear()
-    {   
+    {
         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
         {
             redirect('auth/login', 'refresh');
@@ -54,7 +54,7 @@ class Umbraculos extends Admin_Controller {
 
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
-            
+
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('nombreUmbraculo','NombreUmbraculo','required|max_length[50]|min_length[5]');
@@ -66,9 +66,9 @@ class Umbraculos extends Admin_Controller {
             $this->form_validation->set_rules('luzUmbraculo','LuzUmbraculo','required');
             $this->form_validation->set_rules('humedadUmbraculo','HumedadUmbraculo','required');
             $this->form_validation->set_rules('descripcionSustrato','DescripcionSustrato','max_length[50]');
-            
-            if($this->form_validation->run())     
-            {   
+
+            if($this->form_validation->run())
+            {
                 $params = array(
                     'nombreUmbraculo' => $this->input->post('nombreUmbraculo'),
                     'anchoUmbraculo_m' => $this->input->post('anchoUmbraculo_m'),
@@ -81,21 +81,21 @@ class Umbraculos extends Admin_Controller {
                     'descripcionSustrato' => $this->input->post('descripcionSustrato'),
                     'descripcionUmbraculo' => $this->input->post('descripcionUmbraculo'),
                 );
-                
+
                 $umbraculos_id = $this->Umbraculos_model->add_umbraculos($params);
                 redirect('common/umbraculos/index');
             }
             else
-            {            
+            {
                 $this->template->admin_render('admin/umbraculos/crear', $this->data);
             }
         }
-    }  
+    }
 
     /*EDITAR UN UMBRÁCULO*/
 
     function editar($idUmbraculo)
-    {   
+    {
         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
         {
             redirect('auth/login', 'refresh');
@@ -107,7 +107,7 @@ class Umbraculos extends Admin_Controller {
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
                 // check if the umbraculos exists before trying to edit it
                 $this->data['umbraculos'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-                
+
                 if(isset($this->data['umbraculos']['idUmbraculo']))
                 {
                     $this->load->library('form_validation');
@@ -121,9 +121,9 @@ class Umbraculos extends Admin_Controller {
                     $this->form_validation->set_rules('luzUmbraculo','LuzUmbraculo','required');
                     $this->form_validation->set_rules('humedadUmbraculo','HumedadUmbraculo','required');
                     $this->form_validation->set_rules('descripcionSustrato','DescripcionSustrato','max_length[50]');
-                
-                    if($this->form_validation->run())     
-                    {   
+
+                    if($this->form_validation->run())
+                    {
                         $params = array(
                             'nombreUmbraculo' => $this->input->post('nombreUmbraculo'),
                             'anchoUmbraculo_m' => $this->input->post('anchoUmbraculo_m'),
@@ -137,7 +137,7 @@ class Umbraculos extends Admin_Controller {
                             'descripcionUmbraculo' => $this->input->post('descripcionUmbraculo'),
                         );
 
-                        $this->Umbraculos_model->update_umbraculos($idUmbraculo,$params);            
+                        $this->Umbraculos_model->update_umbraculos($idUmbraculo,$params);
                         redirect('common/umbraculos/index');
                     }
                     else
@@ -148,7 +148,7 @@ class Umbraculos extends Admin_Controller {
                 else
                     show_error('El umbráculo que esta intentando editar no existe.');
         }
-    } 
+    }
 
     /**
      * SE ENCARGA DE CARGAR LA VISTA DE DETALLES DEL UMBRÁCULO SELECCIONADO, PARA QUE SE PUEDA OPERAR CON ÉL
@@ -195,6 +195,8 @@ class Umbraculos extends Admin_Controller {
                 }
                 else
                 {
+
+
                     /* Breadcrumbs */
                     $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
@@ -206,13 +208,31 @@ class Umbraculos extends Admin_Controller {
 
                     /* Load Template */
                     $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
-                }
 
+                }
+            }
+            function atender($idTarea)
+            {      if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+              {
+                  redirect('auth/login', 'refresh');
+              }
+              else
+              {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+                /* Data */
+                $this->data['id'] = $idTarea = (int) $idTarea;
+                $this->data['tarea'] = $this->Tareas_model->get_tareas($idTarea);
+                /* Load Template */
+                $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender', $this->data);
+
+              }
             }
 
 
         /**
-         * LA FUNCION VER PLANTAS, LISTA TODAS LAS PLANTAS REGISTRADAS EN EL UMBRÁCULO 
+         * LA FUNCION VER PLANTAS, LISTA TODAS LAS PLANTAS REGISTRADAS EN EL UMBRÁCULO
          * SELECCIONADO
          * @param  [type] $idUmbraculo parametro para la consulta
          * @return [type]              lista de plantas con sus respectivos nombres
@@ -261,14 +281,14 @@ class Umbraculos extends Admin_Controller {
 
             /* Data */
             $idUmbraculo = (int) $idUmbraculo;
-            $this->data['id'] = $idUmbraculo; 
+            $this->data['id'] = $idUmbraculo;
 
             /*CARGA LA INFORMACION DEL UMBRACULO PARA HACER LAS COMPRACIONES NECESARIAS*/
             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
 
             /* CARGAR INFORMARCION DE LAS PLANTAS REGISTRADAS*/
             $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();
-            
+
             /* Load Template */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
         }
@@ -280,20 +300,20 @@ class Umbraculos extends Admin_Controller {
      * @author SAKZEDMK
      */
     function agregar_planta_umbraculo()
-    {   
+    {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('idPlanta','IdPlanta','required');
         $this->form_validation->set_rules('cantidad','Cantidad','required');
-        $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');      
-        if($this->form_validation->run())     
-        {   
+        $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');
+        if($this->form_validation->run())
+        {
             $params = array(
                 'idUmbraculo' => $this->input->post('idUmbraculo'),
                 'idPlanta' => $this->input->post('idPlanta'),
                 'cantidad' => $this->input->post('cantidad'),
             );
-            
+
             /**COMPROBACIÓN SI EXISTE UNA MISMA PLANTA REGISTRADA**/
             if ($this->Umbraculoplantas_model->esta_registrada($params) == NULL) {
                 $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
@@ -312,7 +332,7 @@ class Umbraculos extends Admin_Controller {
             /* CARGA VISTA CON PLANTILLA */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
         }
-    } 
+    }
 
     /**
      * LA FUNCION SACAR PLANTA, SERÍA RETIRAR PLANTA DE UMBRÁCULO
@@ -351,6 +371,6 @@ class Umbraculos extends Admin_Controller {
         else
             show_error('The umbraculos you are trying to delete does not exist.');
     }*/
-    
+
 
 }

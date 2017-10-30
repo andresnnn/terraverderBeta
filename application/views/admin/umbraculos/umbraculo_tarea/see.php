@@ -16,7 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Tareas <strong><?php echo $info_umbraculo['nombreUmbraculo']?></strong></h3>
                                 </div>
-                                    <div class="box-body">   
+                                    <div class="box-body">
                                     <table class="table table-striped table-hover">
                                             <tr>
                                                 <th>Tipo tarea</th>
@@ -36,7 +36,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td>
                                                 <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
                                                 <?php if ($t['idEstado'] == 1) {
-                                                    echo "<a href='URL' class='btn btn-danger btn-xs'><span class='fa fa-sign-language'></span> Atender</a>";
+                                                //echo " <a href= 'atender/'.$u['idTarea'];"
+
+                                                    echo "<a href= atender/"; echo $t['idTarea'];
+
+                                                  echo" class='btn btn-danger btn-xs'><span class='fa fa-sign-language'></span> Atender</a>";
                                                 } ?>
                                                 </td>
                                             </tr>
@@ -47,5 +51,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </section>
             <div class="box-footer" style="text-align: center;">
                 <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Volver</a>
-            </div>  
+            </div>
             </div>
