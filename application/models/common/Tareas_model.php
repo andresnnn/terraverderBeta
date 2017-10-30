@@ -10,7 +10,13 @@ class Tareas_model extends CI_Model
     {
         parent::__construct();
         $this->load->model('common/plantas_model');
-        $this->load->model('common/Plantas_model');
+        $this->load->model('common/Umbraculos_model');
+        $this->load->model('common/Tipotarea_model');        /* carga de modelos en general*/
+        $this->load->model('common/Estadotarea_model');
+        $this->load->model('common/Insumotarea_model');
+        $this->load->model('common/Insumos_model');
+        $this->load->model('common/Umbraculoplantas_model');/*ultimo*/
+
     }
 
     /*
@@ -26,9 +32,33 @@ class Tareas_model extends CI_Model
      */
     function get_all_tarea()
     {
-        $this->db->order_by('idTarea', 'asc');
+        $this->db->order_by('idEstado', 'asc');
         return $this->db->get('tarea')->result_array();
     }
+    /*get_all modificado para mostrar los nombres*/
+    function get_all_tarea_nombres()
+    {
+          $this->db->select('*');
+          $this->db->from('tarea t');
+          $this->db->join('planta p', 'p.idPlanta=t.idPlanta','left');
+          $this->db->join('umbraculo u', 'u.idUmbraculo=t.idUmbraculo','left');
+          $this->db->join('tipotarea tt', 'tt.idTipoTarea=t.idTipoTarea','left');
+          $this->db->join('estado_tarea et', 'et.idEstado=t.idEstado','left');
+          /*$this->db->join('insumo/tarea it', 'it.idTarea=t.idTarea','left');
+          /*$this->db->join('insumo i', 'i.idInsumo=it.idInsumo','left');*/
+          /*$this->db->where('c.album_id',$id);*/
+          /*$this->db->order_by('c.track_title','asc');         */
+          $query = $this->db->get();
+            return $query->result_array();
+      }
+
+
+
+        /*$this->db->order_by('idEstado', 'asc');
+        $this->db->join('tarea', 'planta.idPlanta = tarea.idPlanta');
+        return $this->db->get('tarea')->result_array();
+    }
+    /*get_all modificado para mostrar los nombres*/
 
     /*
      * function to add new tarea
@@ -65,13 +95,34 @@ class Tareas_model extends CI_Model
 
     }*/
 
-    function get_nombre_planta($idTarea)
+    /*de aca hacia abajo hago joins de tablas para sacar otros atributos*/
+    function get_plantas_nombre($idTarea)
     {
-      $this->db->select('planta.nombrePlanta');
-$this->db->from('planta');
-$this->db->join('tarea', 'tarea.idPlanta = planta.idPlanta');
-$this->db->where('tarea.idTarea=',$idTarea);
-$query = $this->db->get();
+        $query = "SELECT planta.nombrePlanta FROM `tarea` JOIN planta ON planta.idPlanta = `tarea`.idPlanta WHERE `tarea`.idTarea=".$idTarea;
+
+        return $this->db->query($query)->row_array();
+    }
+
+
+    function get_umbraculo_nombre($idTarea)
+    {
+        $query = "SELECT umbraculo.nombreUmbraculo FROM `tarea` JOIN umbraculo ON umbraculo.idUmbraculo = `tarea`.idUmbraculo WHERE `tarea`.idTarea=".$idTarea;
+
+        return $this->db->query($query)->row_array();
+    }
+
+    function get_tipotarea_nombre($idTarea)
+    {
+        $query = "SELECT tipotarea.nombreTipoTarea FROM `tarea` JOIN tipotarea ON tipotarea.idTipoTarea = `tarea`.idTipoTarea WHERE `tarea`.idTarea=".$idTarea;
+
+        return $this->db->query($query)->row_array();
+    }
+
+    function get_estadoTarea_nombre($idTarea)
+    {
+        $query = "SELECT estado_tarea.nombreEstado FROM `tarea` JOIN estado_tarea ON estado_tarea.idEstado = `tarea`.idEstado WHERE `tarea`.idTarea=".$idTarea;
+
+        return $this->db->query($query)->row_array();
     }
 
 

@@ -56,16 +56,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <div class="col-md-12">
         						<label for="idUmbraculo" class="control-label">Selecciona el Umbraculo</label>
         						<div class="form-group">
-                      <select name="provincia" id="provincia">
-                      <?php
-                      foreach($infoUmbraculo as $fila)
-                      {
+        							<select name="idUmbraculo" class="form-control">
+        								<option value="">Selecciona el umbraculo</option>
+        								<?php
+        								foreach($infoUmbraculo as $u)
+        								{
+        									$selected = ($u['idUmbraculo'] == $this->input->post('idUmbraculo')) ? ' selected="selected"' : "";
 
-                      echo '<option value="'.$fila['idUmbraculo'].'" '.$selected.'>'.$fila['nombreUmbraculo'].'</option>';
+        									echo '<option value="'.$u['idUmbraculo'].'" '.$selected.'>'.$u['nombreUmbraculo'].'</option>';
 
-                      }
-                      ?>
-                      </select>
+        								}
+        								?>
+        							</select>
 
         						</div>
         					</div>
@@ -76,10 +78,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <div class="col-md-12">
         						<label for="idPlanta" class="control-label">Selecciona la Planta</label>
         						<div class="form-group">
-                      <select name="localidad" id="localidad">
-                     <option value="">Selecciona tu provincía</option>
-                    </select>
+        							<select name="idPlanta" class="form-control">
+        								<option value="">Selecciona la planta</option>
+        								<?php
+        								foreach($planta as $p) /*$planta*/
+        								{
+        									$selected = ($p['idPlanta'] == $this->input->post('idPlanta')) ? ' selected="selected"' : "";
 
+        									echo '<option value="'.$p['idPlanta'].'" '.$selected.'>'.$p['nombrePlanta'].'</option>';
+        								}
+        								?>
+        							</select>
 
         						</div>
 
@@ -183,13 +192,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
+          <select name="provincia" id="provincia">
+          <?php
+          foreach($infoUmbraculo as $fila)
+          {
+
+          echo '<option value="'.$fila['idUmbraculo'].'" '.$selected.'>'.$fila['idUmbraculo'].'</option>';
+
+          }
+          ?>
+          </select>
+
+          <select name="localidad" id="localidad">
+         <option value="">Selecciona tu provincía</option>
+        </select>
 
 
 
 
 
 
-
+				
 			</div>
             <div class="box-footer">
                 <button type="submit" class="btn btn-primary btn-flat btn-block">Guardar Tarea</button>

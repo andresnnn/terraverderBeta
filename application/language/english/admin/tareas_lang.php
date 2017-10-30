@@ -10,5 +10,6 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['tareas_create']         = ' Crear nueva Tarea';
+$lang['tareas_create']         = ' Crear una nueva Tarea';
 $lang['menu_tarea']         = 'Administración de Tareas';
+$lang['insumos_link']         = ' Ir a Insumos';

@@ -26,11 +26,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </tr>
                                             <tr>
                                                 <th>Tipo de tarea</th>
-                                                <td><?php echo $tarea['idTipoTarea']; ?></td>
+                                                <td><?php echo $tipo['nombreTipoTarea']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Estado de la tarea</th>
-                                                <td><?php echo $tarea['idEstado']; ?></td>
+                                                <td><?php echo $estado['nombreEstado']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Creo la tarea</th>
@@ -42,11 +42,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </tr>
                                             <tr>
                                                 <th>Planta intervenida</th>
-                                                <td><?php echo $tarea['idPlanta']; ?></td>
+                                                <td><?php echo $planta['nombrePlanta']; ?></td><!--esto lo traigo de la consulta y lo ejecuta el controlador-->
                                             </tr>
                                             <tr>
                                                 <th>Umbraculo donde se realizo</th>
-                                                <td><?php echo $tarea['idUmbraculo']; ?></td>
+                                                <td><?php echo $umbraculo['nombreUmbraculo']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Insumo a utilizar</th>
+                                                <td><?php echo $insumo['nombreInsumo']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Fecha de creacion</th>
@@ -60,21 +64,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Observaciones del especialista</th>
                                                 <td><?php echo $tarea['observacionEspecialista']; ?></td>
                                             </tr>
-
                                             <tr>
-                                                <th>Observaciones del especialista</th>
-                                                <td><?php echo $planta['nombrePlanta']; ?></td>
+                                                <th>Observaciones del planificador</th>
+                                                <td><?php echo $tarea['observacionCreador']; ?></td>
                                             </tr>
-
-
 
                                         </tbody>
                                     </table>
                                 </div>
                                 <div>
-                                   <a href="<?php echo site_url('common/tareas/edit/'.$tarea['idTarea']); ?>" class="btn btn-warning btn-xl btn-block"><span class="fa fa-pencil"></span> Modificar</a>
-                                  <a href="<?php echo site_url('common/tareas/remove/'.$tarea['idTarea']); ?>" class="btn btn-danger btn-xl btn-block"><span class="fa fa-trash"></span>Eliminar</a>
-  <a href="<?php echo site_url('common/tareas/atender/'.$tarea['idTarea']); ?>" class="btn btn-primary btn-xl btn-block"><span class="fa fa-envira"></span>Atender</a>
+                                  <a href="<?php echo site_url('common/tareas/atender/'.$tarea['idTarea']); ?>" class="btn btn-primary btn-xl btn-block"><span class="fa fa-envira"></span>Atender la tarea <?php echo $tarea['idTarea']; ?></a>
+                                   <a href="<?php echo site_url('common/tareas/edit/'.$tarea['idTarea']); ?>" class="btn btn-warning btn-xl btn-block"><span class="fa fa-pencil"></span> Modificar la tarea <?php echo $tarea['idTarea']; ?></a>
+                                  <a href="<?php echo site_url('common/tareas/remove/'.$tarea['idTarea']); ?>" class="btn btn-danger btn-xl btn-block"><span class="fa fa-trash"></span>Eliminar la tarea <?php echo $tarea['idTarea']; ?></a>
+
                                 </div>
                             </div>
 

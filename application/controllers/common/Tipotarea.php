@@ -14,7 +14,7 @@ class Tipotarea extends Admin_Controller{
 
             $this->page_title->push(lang('menu'));
             $this->data['pagetitle'] = $this->page_title->show();
-        $this->load->model('common/Tipotarea_model');
+
 
         /*carga del modelo*/
 $this->load->model('common/Tipotarea_model');
@@ -57,7 +57,46 @@ $this->load->model('common/Tipotarea_model');
     /*
      * Adding a new tipotarea
      */
-    function add()
+     function add()
+     {
+         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+         {
+             redirect('auth/login', 'refresh');
+         }
+         else
+         {
+
+             /* Breadcrumbs */
+             $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+             $this->load->library('form_validation');
+
+             /*$this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required|max_length[50]|min_length[5]');*/
+             $this->form_validation->set_rules('nombreTipoTarea','NombreTipoTarea','required|max_length[255]|min_length[5]');
+             $this->form_validation->set_rules('descripcionTarea','DescripcionTarea','required|max_length[99]');
+
+
+             if($this->form_validation->run())
+             {
+                 $params = array(
+                     /*'idTipoTarea' => $this->input->post('idTipoTarea'),*/
+                     'nombreTipoTarea' => $this->input->post('nombreTipoTarea'),
+                     'descripcionTarea' => $this->input->post('descripcionTarea'),
+
+                 );
+
+                 $id_tipotarea = $this->Tipotarea_model->add_tipotarea($params); /*fijate aca que capaz por eso no carga*/
+                 redirect('common/tipotarea/index');/*tipoTarea*/
+             }
+             else
+             {
+
+                 $this->template->admin_render('admin/tipotareas/add', $this->data);
+             }
+         }
+     }
+
+    /*function addes()
     {
         $this->load->library('form_validation');
 
@@ -127,10 +166,10 @@ $this->load->model('common/Tipotarea_model');
         if(isset($tipotarea['idTipoTarea']))
         {
             $this->Tipotarea_model->delete_tipotarea($idTipoTarea);
-            redirect('tipotarea/index');
+            redirect('common/tipotarea/index');
         }
         else
-            show_error('The tipotarea you are trying to delete does not exist.');
+            show_error('El tipo de tarea que queres borrar no existe.');
     }
 
 }

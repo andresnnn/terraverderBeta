@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><?php echo anchor('common/tipotareas/add', '<i class="fa fa-envira"></i> '. lang('tareas_create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                    <h3 class="box-title"><?php echo anchor('common/tipotarea/add', '<i class="fa fa-envira"></i> '. lang('tareas_create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                 </div>
 
                          <div class="box-body" style="overflow-y:scroll;">
@@ -38,7 +38,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <td>
 
                           <a href="<?php echo site_url('common/tipotareas/edit/'.$t['idTipoTarea']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-pencil"></span> Modificar</a>
-                          <a href="<?php echo site_url('common/tipotareas/remove/'.$t['idTipoTarea']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span>Eliminar</a>
+                          <a href="<?php echo site_url('common/tipotarea/remove/'.$t['idTipoTarea']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span>Eliminar</a>
+
+                          
 
                       </td>
 

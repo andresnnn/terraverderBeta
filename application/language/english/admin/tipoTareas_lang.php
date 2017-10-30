@@ -11,5 +11,5 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 
-$lang['menu']         = 'Menu de tipos de tareas';
+$lang['menu']         = 'Administración de tipos de tareas';
 $lang['tareas_create']         = ' Crear nuevo Tipo de Tarea';

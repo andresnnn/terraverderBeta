@@ -2,6 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
+
 <div class="content-wrapper">
     <section class="content-header">
         <?php echo $pagetitle; ?>
@@ -13,30 +14,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-32">
                  <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Atender la tarea nro. <?php echo $tarea['idTarea']; ?></h3>
+                        <h3 class="box-title fa fa-envira"> Atender la tarea nro. <?php echo $tarea['idTarea']; ?></h3>
                     </div>
                     <div class="box-body">
 
                       <!-- COMIENZA FORMULARIO -->
                       <?php echo form_open('common/tareas/edit/'.$tarea['idTarea'],array("class"=>"form-horizontal")); ?>
 
-                      <div class="form-group">
-		<label for="idTarea" class="col-md-3 control-label">idTarea</label>
-		<div class="col-md-8">
+                      <div class="box-body ">
+                        
+                          <table class="table table-striped">
+                              <tbody>
+                                  <tr>
+                                      <th >Id de la tarea</th>
+                                      <td ><?php echo $tarea['idTarea']; ?></td>
+                                  </tr>
+                                  <tr>
+                                      <th>Tipo de tarea</th>
+                                      <td><?php echo $tipo['nombreTipoTarea']; ?></td>
+                                  </tr>
+                                  <tr>
+                                      <th>Estado de la tarea</th>
+                                      <td><?php echo $estado['nombreEstado']; ?></td>
+                                  </tr>
+                                  <tr>
+                                      <th>Umbraculo a tratar</th>
+                                      <td><?php echo $umbraculo['nombreUmbraculo']; ?></td>
+                                  </tr>
+                                  <tr>
+                                      <th>Insumo a utilizar</th>
+                                      <td><?php echo $insumo['nombreInsumo']; ?></td>
+                                  </tr>
+
+                                  <tr>
+                                      <th>Planta a tratar</th>
+                                      <td><?php echo $planta['nombrePlanta']; ?></td><!--esto lo traigo de la consulta y lo ejecuta el controlador-->
+                                  </tr>
+                                  <tr>
+                                      <th>Fecha de creacion</th>
+                                      <td><?php echo $tarea['fechaCreacion']; ?></td>
+                                  </tr>
+                                  <tr>
+                                      <th>Observaciones del Planificador</th>
+                                      <td><?php echo $tarea['observacionCreador']; ?></td>
+                                  </tr>
+
+
+                              </tbody>
+                          </table>
+                      </div>
+
+
+
+
+
+
+
+	<!--<div class="col-md-8">
 			<input type="text" name="idTarea" value="<?php echo ($this->input->post('idTarea') ? $this->input->post('idTarea') : $tarea['idTarea']); ?>" class="form-control" id="idTarea" />
 		</div>
 	</div>
+
 	<div class="form-group">
 		<label for="idTipoTarea" class="col-md-3 control-label">tipo de tarea</label>
 		<div class="col-md-8">
 			<input type="text" name="idTipoTarea" value="<?php echo ($this->input->post('idTipoTarea') ? $this->input->post('idTipoTarea') : $tarea['idTipoTarea']); ?>" class="form-control" id="idTipoTarea" />
 		</div>
-	</div>
+	</div>-->
 
 
   <div class="box-footer">
-      <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
-      <a href="<?php echo site_url('common/tareas'); ?>" class="btn btn-default btn-flat">Cancelar</a>
+      <button type="submit" class="btn btn-primary btn-flat btn-block fa fa-envira"> Atender la tarea</button>
+      <a href="<?php echo site_url('common/tareas'); ?>" class="btn btn-warning btn-flat btn-block fa fa-envira"> Cancelar la atención de la tarea</a>
   </div>
 
                     <?php echo form_close(); ?>
