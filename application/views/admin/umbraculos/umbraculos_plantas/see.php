@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
             <div class="content-wrapper">
                 <section class="content-header">
                     <?php echo $pagetitle; ?>
@@ -68,8 +67,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <input type="hidden" value="" name="idUmbraculo" id="idUmbraculo">
-                                                    <input type="hidden" value="" name="idPlanta" id="idPlanta">
+                                                    <input type="hidden" value="" name="idUmbraculo" id="idUmbraculo"> <!--LE ENVIO COMO OCULTO-->
+                                                    <input type="hidden" value="" name="idPlanta" id="idPlanta"> <!--LE ENVIO COMO OCULTO-->
                                                 </div>
                                                 </div>
                                                 <div class="box-footer">
@@ -78,8 +77,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     </button>
                                                 </div>              
                                             <?php echo form_close(); ?>
-
-
                                         </div>
                                         <div class="modal-footer">
                                         </div>
