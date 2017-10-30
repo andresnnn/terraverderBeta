@@ -41,12 +41,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<label for="idPlanta" class="control-label"><span class="text-danger">*</span>Planta</label>
 						<div class="form-group">
-                                <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>                            
+                                <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>     
+                                <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar planta</button>                       
                                 <span class="text-danger"><?php echo form_error('idPlanta');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                                 <span id="estadoT" class="text-danger"></span><br>
                                 <span id="estadoL" class="text-danger"></span><br>
                                 <span id="estadoH" class="text-danger"></span><br>
-                                <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar planta</button>
                                 <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idPlanta'); ?>" class="form-control" id="idPlanta" />
 						</div>
 					</div>

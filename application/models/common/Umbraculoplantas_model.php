@@ -79,15 +79,19 @@ class Umbraculoplantas_model extends CI_Model
         $this->db->query($query);
     }
     
-    /*
-     * function to update umbraculo_plantas
+    /**
+     * OBJETIVO : Actualizar la cantidad de una planta dentro de un umbraculo
+     * @param  [type] $idUmbraculo Umbraculo seleccionad
+     * @param  [type] $idPlanta    Planta seleccionada
+     * @param  [type] $cantidad      Nueva cantidad
+     * @author SAKZEDMK
      */
-    function update_umbraculo_plantas($idUmbraculo,$params)
+    function actualizar_cantidad_planta($idUmbraculo,$idPlanta,$cantidad)
     {
-        $this->db->where('idUmbraculo',$idUmbraculo);
-        return $this->db->update('umbraculo/planta',$params);
+        $query="UPDATE `umbraculo/planta` SET `cantidad`=".$cantidad." WHERE `idPlanta`=".$idPlanta." AND `idUmbraculo`=".$idUmbraculo;
+        $this->db->query($query);
     }
-    
+
     /*
      * FUNCION PARA RETIRAR UNA PLANTA DENTRO DE UN DETERMINADO UMBRACULO
      */

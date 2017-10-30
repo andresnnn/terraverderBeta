@@ -249,15 +249,12 @@ class Umbraculos extends Admin_Controller {
                     /* Breadcrumbs */
                     $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
-                    /* Data */
+                    /* INFORMACIÓN QUE LLEGA A LA VISTA */
                     $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
-
-                     $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-                     $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
-                    /* CARGAR INFORMARCION */
-                   // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
-
-                    /* Load Template */
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                    $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
+                    
+                    /* CARGAR PLANTILLA */
                     $this->template->admin_render('admin/umbraculos/umbraculos_plantas/see', $this->data);
                 }
             }
@@ -344,17 +341,52 @@ class Umbraculos extends Admin_Controller {
     function sacar_planta_umbraculo($idUmbraculo,$idPlanta)
     {
         $umbraculo_plantas = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
-
-/*        // check if the umbraculo_plantas exists before trying to delete it
-        if(isset($umbraculo_plantas['idUmbraculo']))
-        {*/
-            $this->Umbraculoplantas_model->retirar_planta_umbraculo($idUmbraculo,$idPlanta);
-            //redirect('umbraculo_plantas/index');
-            redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
-/*        }
-        else
-            show_error('Usted está intentado retirar una planta, no registrada, dentro de este umbráculo.');*/
+        $this->Umbraculoplantas_model->retirar_planta_umbraculo($idUmbraculo,$idPlanta);
+        redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
     }
+
+    /**
+     * FUNCION PARA ACTUALIZAR LA CANTIDAD DE UNA PLANTA DENTRO DE UN DETERMINADO UMBRACULO
+     * SOBRE LA TABLA UMBRACULO/PLANTA
+     * Y ACTUALIZA EL NUEVO ESPACIO DISPONIBLE DENTRO DEL UMBRACULO (suma o resta espacio segun la acción)
+     * @param  $idUmbraculo 
+     * @return [type] 
+     * @author SAKZEDMK      
+     */
+    function actalizar_cantidad()
+    {   
+            $this->load->library('form_validation');
+            /**VALIDACION DE LOS CAMPOS QUE ENVIO**/
+            /** validacion del campo espacio */
+            $this->form_validation->set_rules('cantidad','Cantidad','required|numeric|decimal');
+            $this->form_validation->set_rules('unidadEspacioDisponible_m2');
+            $planta = $this->input->post('idPlanta');
+            $umbraculo = $this->input->post('idUmbraculo');
+            $cantidad = $this->input->post('cantidad');
+            $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad); /*NUEVA CANTIDAD DE UMBRACULO/PLANTA*/
+            redirect('common/umbraculos/verPlantas/'.$umbraculo);
+        
+/*            if($this->form_validation->run())     
+            {   
+                $params = array(
+                    'cantidad' => $this->input->post('cantidad'),
+                );
+                // $nuevo_espacio = array(
+                //     'unidadEspacioDisponible_m2' => $this->input->post('unidadEspacioDisponible_m2'),
+                // );
+                /*ACTUALIZO EL CAMPO DENTRO DE LA BD
+                //$this->Umbraculoplantas_model->update_umbraculo_plantas($idUmbraculo,$planta,$params); /*NUEVA CANTIDAD DE UMBRACULO/PLANTA
+                //$this->Umbraculos_model->update_umbraculos($idUmbraculo,$nuevo_espacio);/*NUEVA CANTIDAD ESPACIO DISPONIBLE DENTRO DEL UMBRACULO
+
+            redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
+            }
+            else
+            {
+
+                redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
+            }*/
+    }
+
     /*
      * Deleting umbraculos
 
