@@ -299,7 +299,6 @@ class Umbraculos extends Admin_Controller {
     function agregar_planta_umbraculo()
     {
         $this->load->library('form_validation');
-
         $this->form_validation->set_rules('idPlanta','IdPlanta','required');
         $this->form_validation->set_rules('cantidad','Cantidad','required');
         $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');
@@ -310,7 +309,6 @@ class Umbraculos extends Admin_Controller {
                 'idPlanta' => $this->input->post('idPlanta'),
                 'cantidad' => $this->input->post('cantidad'),
             );
-
             /**COMPROBACIÓN SI EXISTE UNA MISMA PLANTA REGISTRADA**/
             if ($this->Umbraculoplantas_model->esta_registrada($params) == NULL) {
                 $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
@@ -325,7 +323,6 @@ class Umbraculos extends Admin_Controller {
         {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
             /* CARGA VISTA CON PLANTILLA */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
         }
@@ -356,35 +353,16 @@ class Umbraculos extends Admin_Controller {
     function actalizar_cantidad()
     {   
             $this->load->library('form_validation');
-            /**VALIDACION DE LOS CAMPOS QUE ENVIO**/
-            /** validacion del campo espacio */
+
             $this->form_validation->set_rules('cantidad','Cantidad','required|numeric|decimal');
             $this->form_validation->set_rules('unidadEspacioDisponible_m2');
             $planta = $this->input->post('idPlanta');
             $umbraculo = $this->input->post('idUmbraculo');
             $cantidad = $this->input->post('cantidad');
-            $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad); /*NUEVA CANTIDAD DE UMBRACULO/PLANTA*/
+            /*NUEVA CANTIDAD DE UMBRACULO/PLANTA*/
+            $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad); 
+
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
-        
-/*            if($this->form_validation->run())     
-            {   
-                $params = array(
-                    'cantidad' => $this->input->post('cantidad'),
-                );
-                // $nuevo_espacio = array(
-                //     'unidadEspacioDisponible_m2' => $this->input->post('unidadEspacioDisponible_m2'),
-                // );
-                /*ACTUALIZO EL CAMPO DENTRO DE LA BD
-                //$this->Umbraculoplantas_model->update_umbraculo_plantas($idUmbraculo,$planta,$params); /*NUEVA CANTIDAD DE UMBRACULO/PLANTA
-                //$this->Umbraculos_model->update_umbraculos($idUmbraculo,$nuevo_espacio);/*NUEVA CANTIDAD ESPACIO DISPONIBLE DENTRO DEL UMBRACULO
-
-            redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
-            }
-            else
-            {
-
-                redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
-            }*/
     }
 
     /*
