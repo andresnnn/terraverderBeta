@@ -39,11 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['nombreEstado']; ?></td>
 
                                                 <td>
-                                                    <a href="<?php echo site_url('common/tarea/profile/'.$t['idTarea']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
+                                                    <a href="<?php echo site_url('common/tarea/profile/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
                                                 <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
                                                 <?php if ($t['idEstado'] == 1) {
                                                 //echo " <a href= 'atender/'.$u['idTarea'];"
-                                                echo anchor('common/umbraculos/atender/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-block btn-primary btn-xs','title'=>'(?) Atender tarea'));
+                                                echo anchor('common/umbraculos/atenderTarea/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));
                                                     //echo "<a href= atender/"; echo $t['idTarea'];
 
                                                   // echo" class='btn btn-danger btn-xs'><span class='fa fa-sign-language'></span> Atender</a>";
@@ -54,6 +54,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </table>
                                     </div>
                                 </div>
+                              </div>
+                            </div>
                 </section>
             <div class="box-footer" style="text-align: center;">
                 <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Volver</a>

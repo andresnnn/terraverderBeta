@@ -49,10 +49,23 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    function get_tareas_join($idTarea)
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS atencion
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserAtencion = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE t.idTarea=".$idTarea." ORDER BY t.fechaCreacion DESC LIMIT 0,3";
+        return $this->db->query($query)->result_array();
+    }
+
+
+
     function comprobar_existencia_tarea($id1, $id2, $id3,$id4)
     {
-//AND (fechaComienzo=".$id2.")
-//STR_TO_DATE(fechaComienzo,'%m/%d/%Y')  = id4()
+      //consulta de tareas en el umbraculo y en la misma planta con la misma fecha ingresada
       $vector = $this->db->get_where('tarea',array('idUmbraculo'=>$id1,'fechaComienzo'=>$id2,'idPlanta'=>$id3, 'idTipoTarea'=>$id4))->row_array();
 
       if (  ($vector==null)){

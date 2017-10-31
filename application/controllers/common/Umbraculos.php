@@ -211,7 +211,7 @@ class Umbraculos extends Admin_Controller {
 
                 }
             }
-            function atender($idTarea)
+            function atenderTarea($idTarea)
             {      if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
               {
                   redirect('auth/login', 'refresh');
@@ -223,7 +223,8 @@ class Umbraculos extends Admin_Controller {
 
                 /* Data */
                 $this->data['id'] = $idTarea = (int) $idTarea;
-                $this->data['tarea'] = $this->Tareas_model->get_tareas($idTarea);
+              //  $this->data['tarea'] = $this->Tareas_model->get_tareas_join($idTarea);
+              //  $this->data['otros'] = $this->Tareas_model->get_tareas($idTarea);
                 /* Load Template */
                 $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender', $this->data);
 
@@ -253,7 +254,7 @@ class Umbraculos extends Admin_Controller {
                     $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
                     $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
                     $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
-                    
+
                     /* CARGAR PLANTILLA */
                     $this->template->admin_render('admin/umbraculos/umbraculos_plantas/see', $this->data);
                 }
@@ -346,12 +347,12 @@ class Umbraculos extends Admin_Controller {
      * FUNCION PARA ACTUALIZAR LA CANTIDAD DE UNA PLANTA DENTRO DE UN DETERMINADO UMBRACULO
      * SOBRE LA TABLA UMBRACULO/PLANTA
      * Y ACTUALIZA EL NUEVO ESPACIO DISPONIBLE DENTRO DEL UMBRACULO (suma o resta espacio segun la acción)
-     * @param  $idUmbraculo 
-     * @return [type] 
-     * @author SAKZEDMK      
+     * @param  $idUmbraculo
+     * @return [type]
+     * @author SAKZEDMK
      */
     function actalizar_cantidad()
-    {   
+    {
             $this->load->library('form_validation');
 
             $this->form_validation->set_rules('cantidad','Cantidad','required|numeric|decimal');
@@ -360,7 +361,7 @@ class Umbraculos extends Admin_Controller {
             $umbraculo = $this->input->post('idUmbraculo');
             $cantidad = $this->input->post('cantidad');
             /*NUEVA CANTIDAD DE UMBRACULO/PLANTA*/
-            $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad); 
+            $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad);
 
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
     }
