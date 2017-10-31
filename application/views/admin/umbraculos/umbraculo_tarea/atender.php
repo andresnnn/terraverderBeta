@@ -49,7 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
 
 
-      <div class="row">
+  <div class="row">
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
@@ -76,7 +76,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 
-
 					<div class="col-md-6">
 						<label for="idUserAtencion" class="control-label">Usuario Actual: </label>
             <div class="form-group">
@@ -92,22 +91,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
-
-					<div class="col-md-6">
-						<label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>
-						<div class="form-group">
-							<textarea name="observacionEspecialista" class="form-control" id="observacionEspecialista"><?php echo ($this->input->post('observacionEspecialista') ? $this->input->post('observacionEspecialista') : $tarea['observacionEspecialista']); ?></textarea>
-							<span class="text-danger"><?php echo form_error('observacionEspecialista');?></span>
-						</div>
-					</div>
-
 				</div>
 			</div>
 
-        <div class="box-footer" style="text-align: center;">
-            <button type="submit" class="btn btn-primary btn-flat">Agregar</button>
-            <a href="<?php echo site_url('common/umbraculos/verTareas/'.$idUmbraculo); ?>" class="btn btn-default btn-flat">Cancelar</a>
-        </div>
+      <div class="box-footer">
+          <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+          <a href="<?php echo site_url('common/umbraculos/verTareas/'.$idUmbraculo); ?>" class="btn btn-default btn-flat">Cancelar</a>
+      </div>
+
 
 			<?php echo form_close(); ?>
 		</div>
