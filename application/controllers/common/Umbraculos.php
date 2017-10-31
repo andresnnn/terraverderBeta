@@ -211,7 +211,8 @@ class Umbraculos extends Admin_Controller {
 
                 }
             }
-            function atender($idTarea)
+
+            function atender($idTarea,$idUmbraculo)
             {      if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
               {
                   redirect('auth/login', 'refresh');
@@ -223,6 +224,7 @@ class Umbraculos extends Admin_Controller {
 
                 /* Data */
                 $this->data['id'] = $idTarea = (int) $idTarea;
+                $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
                 $this->data['tarea'] = $this->Tareas_model->get_tareas($idTarea);
                 /* Load Template */
                 $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender', $this->data);
