@@ -67,14 +67,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<?php
 								foreach($estados as $estado_tarea)
 								{
-									$selected = ($estado_tarea['idEstado'] ) ? ' selected="selected"' : "";
+									$selected = ($estado_tarea['nombreEstado'] ) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$estado_tarea['idEstado'].'" '.$selected.'>'.$estado_tarea['idEstado'].'</option>';
+									echo '<option value="'.$estado_tarea['nombreEstado'].'" '.$selected.'>'.$estado_tarea['nombreEstado'].'</option>';
 								}
 								?>
 							</select>
 						</div>
+
 					</div>
+
+
 
 					<div class="col-md-6">
 						<label for="idUserAtencion" class="control-label">Usuario Actual: </label>
@@ -84,6 +87,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 
+
           <div class="col-md-6">
 						<label for="fechaAtencion" class="control-label"><span class="text-danger">*</span>Fecha Atención</label>
             <div class="form-group">
@@ -91,8 +95,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
-				</div>
+
+      <div class="col-md-6">
+            <label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>
+            <div class="form-group">
+              <input type="text" name="observacionEspecialista" value="<?php echo ($this->input->post('observacionEspecialista') ? $this->input->post('observacionEspecialista') : $tarea2['observacionEspecialista']); ?>" class="form-control" id="observacionEspecialista" />
+            </div>
+          </div>
+
+        </div>
 			</div>
+
 
       <div class="box-footer">
           <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
