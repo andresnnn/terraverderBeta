@@ -63,6 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<div class="form-group">
 							<input type="hidden" min="0" name="idUmbraculo" value="<?php echo $id; ?>" class="form-control" id="idUmbraculo" />
+                            <input type="hidden" name="nuevoEspacioDisponible" id="nuevoEspacioDisponible">
 							<span class="text-danger"><?php echo form_error('idUmbraculo');?></span>
 						</div>
 					</div>
@@ -234,6 +235,7 @@ function cargarDatos(id) {
         {
             /*SI LA CANTIDAD QUE SE DESEA INGRESAR ES VÁLIDA*/
             /*LIMPIO MENSAJE ERROR & HABILITO BOTÓN*/
+            document.getElementById('nuevoEspacioDisponible').value = $eppDisponible - $eppCT;
             document.getElementById('estadoEPP').innerHTML = '';
             document.getElementById('bnAdd').disabled=false;
             $eppDisponible=-$eppCT;

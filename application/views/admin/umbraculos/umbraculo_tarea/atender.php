@@ -126,7 +126,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         <div class="box-footer" style="text-align: center;">
             <button type="submit" class="btn btn-primary btn-flat">Agregar</button>
-            <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Cancelar</a>
+            <a href="<?php echo site_url('common/umbraculos/verTareas/'.$idUmbraculo); ?>" class="btn btn-default btn-flat">Cancelar</a>
         </div>
 
 			<?php echo form_close(); ?>
