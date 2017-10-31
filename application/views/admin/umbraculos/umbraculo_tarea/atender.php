@@ -14,31 +14,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col-md-12">
                <div class="box">
                   <div class="box-header with-border">
-                      <h3 class="box-title">Tareas <strong><?php echo $info_umbraculo['nombreUmbraculo']?></strong></h3>
+                      <h3 class="box-title">Tareas <strong></strong></h3>
                   </div>
                       <div class="box-body">
                       <table class="table table-striped table-hover">
                               <tr>
+                                  <th>nro de tarea</th>
                                   <th>Tipo tarea</th>
                                   <th>Planta</th>
+                                  <th>Umbraculo</th>
                                   <th>Creador</th>
 
                                   <th>Fecha Creación</th>
                                   <th>Fecha Prevista</th>
-                                  <th>Estado</th>
+                                  <th>Estado Actual </th>
 
                               </tr>
-                              <?php foreach($tareas_en_umbraculo as $t){ ?>
+                              <?php foreach($tarea as $t){ ?>
                               <tr>
+                                  <td><?php echo $t['idTarea']; ?></td>
                                   <td><?php echo $t['nombreTipoTarea']; ?></td>
                                   <td><?php echo $t['nombrePlanta']; ?></td>
+                                  <td><?php echo $t['nombreUmbraculo']; ?></td>
                                   <td><?php echo $t['creador']; ?></td>
-
                                   <td><?php echo $t['fechaCreacion']; ?></td>
                                   <td><?php echo $t['fechaComienzo']; ?></td>
                                   <td><?php echo $t['nombreEstado']; ?></td>
-
-
                               </tr>
                               <?php } ?>
                       </table>

@@ -222,8 +222,9 @@ class Umbraculos extends Admin_Controller {
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
                 /* Data */
-                $this->data['id'] = $idTarea = (int) $idTarea;
-              //  $this->data['tarea'] = $this->Tareas_model->get_tareas_join($idTarea);
+                $this->data['tipotarea'] = $this->Tareas_model->all_tipo_tareas();
+                $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
+                $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
               //  $this->data['otros'] = $this->Tareas_model->get_tareas($idTarea);
                 /* Load Template */
                 $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender', $this->data);
@@ -303,7 +304,6 @@ class Umbraculos extends Admin_Controller {
         $this->form_validation->set_rules('idPlanta','IdPlanta','required');
         $this->form_validation->set_rules('cantidad','Cantidad','required');
         $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');
-        $nvo_disponible = $this->input->post('nuevoEspacioDisponible'); //PARA ACTUALIZAR CANTIDAD
         if($this->form_validation->run())
         {
             $params = array(
@@ -314,7 +314,6 @@ class Umbraculos extends Admin_Controller {
             /**COMPROBACIÓN SI EXISTE UNA MISMA PLANTA REGISTRADA**/
             if ($this->Umbraculoplantas_model->esta_registrada($params) == NULL) {
                 $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
-                $this->Umbraculos_model->actualizar_espacio_disponible($this->input->post('idUmbraculo'),$nvo_disponible); //PARA ACTUALIZAR CANTIDAD
                 redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
             }else{
                 show_error('La planta ya se encuentra registrada dentro del umbráculo');
@@ -362,7 +361,6 @@ class Umbraculos extends Admin_Controller {
             $planta = $this->input->post('idPlanta');
             $umbraculo = $this->input->post('idUmbraculo');
             $cantidad = $this->input->post('cantidad');
-            $nvo_disponible = $this->input->post('dipoActualizada');
             /*NUEVA CANTIDAD DE UMBRACULO/PLANTA*/
             $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad);
 
