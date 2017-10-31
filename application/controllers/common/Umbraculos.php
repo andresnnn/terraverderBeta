@@ -222,7 +222,8 @@ class Umbraculos extends Admin_Controller {
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
                 /* Data */
-                $this->data['tipotarea'] = $this->Tareas_model->all_tipo_tareas();
+                $this->data['id'] = $idTarea = (int) $idTarea;
+                // $this->data['tipotarea'] = $this->Tareas_model->all_tipo_tareas();
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
               //  $this->data['otros'] = $this->Tareas_model->get_tareas($idTarea);

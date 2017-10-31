@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-header with-border">
               	<h3 class="box-title">Tarea Edit</h3>
             </div>
-			<?php echo form_open('tareas/edit/'.$tarea['idTarea']); ?>
+			<?php echo form_open('umbraculos/atenderTarea/'.$id); ?>
 			<div class="box-body">
 				<div class="row clearfix">
 
@@ -65,9 +65,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<select name="idEstado" class="form-control">
 								<option value="">select estado_tarea</option>
 								<?php
-								foreach($all_estado_tarea as $estado_tarea)
+								foreach($estados as $estado_tarea)
 								{
-									$selected = ($estado_tarea['idEstado'] == $tarea['idEstado']) ? ' selected="selected"' : "";
+									$selected = ($estado_tarea['idEstado'] ) ? ' selected="selected"' : "";
 
 									echo '<option value="'.$estado_tarea['idEstado'].'" '.$selected.'>'.$estado_tarea['idEstado'].'</option>';
 								}
@@ -75,26 +75,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							</select>
 						</div>
 					</div>
-          <div class="col-md-6">
-						<label for="idPlanta" class="control-label">IdPlanta</label>
-						<div class="form-group">
-							<input type="text" name="idPlanta" value="<?php echo ($this->input->post('idPlanta') ? $this->input->post('idPlanta') : $tarea['idPlanta']); ?>" class="form-control" id="idPlanta" />
-						</div>
-					</div>
+
+
 					<div class="col-md-6">
 						<label for="idUserAtencion" class="control-label">Usuario Actual: </label>
             <div class="form-group">
 						<?php echo $user_login['firstname']." ".$user_login['lastname']; ?>
 						<input type="hidden" name="idUserAtencion" value="<?php echo $user_login['id']; ?>" class="has-datepicker form-control" id="idUserAtencion" />
-						</div>
-					</div>
-
-
-
-					<div class="col-md-6">
-						<label for="fechaCreacion" class="control-label">Fecha Creacion</label>
-						<div class="form-group">
-							<input type="text" name="fechaCreacion" value="<?php echo ($this->input->post('fechaCreacion') ? $this->input->post('fechaCreacion') : $tarea['fechaCreacion']); ?>" class="has-datepicker form-control" id="fechaCreacion" />
 						</div>
 					</div>
 
@@ -106,15 +93,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
           </div>
 
-
-					<div class="col-md-6">
-						<label for="fechaHoraComienzo" class="control-label">Fecha Prevista</label>
-						<div class="form-group">
-							<input type="text" name="fechaComienzo" value="<?php echo ($this->input->post('fechaComienzo') ? $this->input->post('fechaComienzo') : $tarea['fechaComienzo']); ?>" class="has-datepicker form-control" id="fechaComienzo" />
-						</div>
-					</div>
-
-
 					<div class="col-md-6">
 						<label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>
 						<div class="form-group">
@@ -122,6 +100,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('observacionEspecialista');?></span>
 						</div>
 					</div>
+
 				</div>
 			</div>
 
