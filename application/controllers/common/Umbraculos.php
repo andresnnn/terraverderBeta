@@ -226,7 +226,8 @@ class Umbraculos extends Admin_Controller {
                 $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
-            
+                $this->data['tarea2'] = $this->Tareas_model->get_tarea($idTarea);
+
                 /* Load Template */
                 $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender', $this->data);
 
