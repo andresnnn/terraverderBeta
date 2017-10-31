@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <input style="text-align: center;" onChange="verificarEspacio();" min="0" type="number" name="cantidad" value="" class="form-control" id="cantidad" />
+                                                                <input style="text-align: center;" onChange="comprobarEspacio();" min="0" type="number" name="cantidad" value="" class="form-control" id="cantidad" />
                                                             </td>
                                                         </tr>
                                                     </table>
@@ -74,15 +74,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <input type="hidden" value="" name="idUmbraculo" id="idUmbraculo"> 
                                                     <input type="hidden" value="" name="idPlanta" id="idPlanta"> 
                                                     <input type="hidden" name="ocupaPlanta" id="ocupaPlanta">
-                                                    <!--Espacio disponible en umbráculo-->
-                                                    <input type="hidden" name="disponibleU" id="disponibleU">
-                                                    <!--Cantidad usada como punto de comparación-->
-                                                    <input type="hidden" name="cantiActualPlanta" id="cantiActualPlanta">
+                                                    <input type="text" name="disponibleU" id="disponibleU">
+                                                    <input type="text" name="cantiActualPlanta" id="cantiActualPlanta">
 
                                                     <!-- CAMPOS QUE LLEGAN AL CONTROLADOR PARA SUBIR A LA 'BD' -->
-                                                    <input type="hidden" name="dipoActualizada" id="dipoActualizada"> <!--Nuevo espacio para almacenar en BD-->
-                                                    
-                                                    <!--FIN CAMPOS OCULTOS <input type="text" name="resu" id="resu" value="">-->
+                                                    <input type="text" name="dipoActualizada" id="dipoActualizada">
+                                                    <input type="text" name="resu" id="resu" value="">
+                                                    <!--FIN CAMPOS OCULTOS-->
                                                 </div>
                                                 </div>
                                                 <div align="center" class="box-footer">
@@ -132,78 +130,20 @@ function crearFormulario(cantidad,umbraculo,planta,dimPlanta,dispU)
     document.getElementById('ocupaPlanta').value = dimPlanta;
     document.getElementById('disponibleU').value = dispU;
     document.getElementById('cantiActualPlanta').value = cantidad;
-    document.getElementById('msjError').innerHTML = ""; 
 }
 
-function verificarEspacio() 
-{ 
+function comprobarEspacio()
+{
+    //var actual = document.getElementById('cantiActualPlanta').value; //Usado como 'bandera' o punto de comparación.-
+    var disponibleEU = document.getElementById('disponibleU').value; //'EU' = En umbraculo
+    var canti = document.getElementById('cantidad').value; //Campo del formulario
+    var ePP = document.getElementById('ocupaPlanta').value; //'EPP' = Espacio por planta
 
-    var disponibleActual = document.getElementById('disponibleU').value; 
-    var canti = document.getElementById('cantidad').value; 
-    var ePP = document.getElementById('ocupaPlanta').value; 
-    var cantiActual = document.getElementById('cantiActualPlanta').value;
- 
-    var espacioTotal= (canti * ePP)/10000; /* ESPACIO QUE OCUPA LA PLANTA, CONVERTIDO A mtr2*/
- 
- /*document.getElementById('resu').value = espacioTotal.toFixed(4); */
-    
-    
-    /**
-     SI EL ESPACIO QUE OCUPA EL CJTO DE PLANTAS ES MAYOR QUE EL DISPONIBLE Y SE QUIEREN AÑADIR PLANTAS
-     SE MUESTRA ERROR, Y DESHABILITA EL BOTON 'Agregar'
-     */
-    if (espacioTotal > disponibleActual && canti > cantiActual)  
-    { 
-        document.getElementById('msjError').innerHTML = "El espacio dentro del umbráculo es insuficiente"; 
-        document.getElementById('guardar').disabled=true; 
-    }
-        /**
-     SI EL ESPACIO QUE OCUPA EL CJTO DE PLANTAS ES MAYOR QUE EL DISPONIBLE Y SE QUIEREN AÑADIR PLANTAS
-     SE MUESTRA ERROR, Y DESHABILITA EL BOTON 'Agregar'
-     */
-    if (espacioTotal > disponibleActual && canti <= cantiActual)  
-    { 
-        document.getElementById('msjError').innerHTML = ""; 
-        document.getElementById('guardar').disabled=false; 
-        var diferencia = cantiActual - canti;
-        var liberado = (diferencia*ePP)/10000; 
-        /*document.getElementById('resu').value =liberado;*/
-        var newValor = parseFloat(disponibleActual) + parseFloat(liberado);
-        document.getElementById('dipoActualizada').value = newValor.toFixed(4);
-    }
-    /*
-    SI HAY ESPACIO DISPONIBLE, Y LA SE AÑADEN PLANTAS.
-      SE RESTA ESPACIO DISPONIBLE EN EL UMBRÁCULO
-     */
-    if (espacioTotal < disponibleActual && canti > cantiActual)  
-    { 
-        var ocupado = parseFloat(disponibleActual) - parseFloat(espacioTotal);
-        document.getElementById('dipoActualizada').value = ocupado.toFixed(4);
-        document.getElementById('msjError').innerHTML = ""; 
-        document.getElementById('guardar').disabled=false; 
-    } 
+    var espacioTotal= (canti * ePP)/10000; //Conversión de cm2 a mtr2
 
-    /*
-    SI HAY ESPACIO DISPONIBLE Y SE QUITAN PLANTAS.
-     SE SUMA EL ESPACIO LIBERADO POR TAL ACCIÓN
-     */
-    if (espacioTotal < disponibleActual && canti <= cantiActual)  
-    { 
-        var diferencia = cantiActual - canti;
-        var liberado = (diferencia*ePP)/10000; 
-        /*document.getElementById('resu').value =liberado;*/
-        var newValor = parseFloat(disponibleActual) + parseFloat(liberado);
-        document.getElementById('dipoActualizada').value = newValor.toFixed(4);
-        document.getElementById('msjError').innerHTML = ""; 
-        document.getElementById('guardar').disabled=false; 
-    } 
-    if (espacioTotal == disponibleActual || canti == cantiActual)  
-    { 
-        document.getElementById('msjError').innerHTML = ""; 
-        document.getElementById('guardar').disabled=false; 
-    } 
- 
- 
-} 
+    document.getElementById('resu').value = espacioTotal;
+
+
+}
 
 </script>

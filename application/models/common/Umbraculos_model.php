@@ -60,4 +60,10 @@ class Umbraculos_model extends CI_Model
         $query="DELETE FROM `umbraculo/planta` WHERE idPlanta = ".$idPlanta." AND idUmbraculo =".$idUmbraculo;
         return $this->db->query($query)->result_array();
     }
+
+    function actualizar_espacio_disponible($idUmbraculo,$newEspacio)
+    {
+        $query = "UPDATE `umbraculo` SET `unidadEspacioDisponible_m2`=".$newEspacio." WHERE `umbraculo`.`idUmbraculo`=".$idUmbraculo;
+        $this->db->query($query);
+    }
 }
