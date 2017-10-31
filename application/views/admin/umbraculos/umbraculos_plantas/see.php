@@ -2,7 +2,6 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
             <div class="content-wrapper">
                 <section class="content-header">
                     <?php echo $pagetitle; ?>
@@ -28,10 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td><?php echo $u['nombrePlanta']; ?></td>
                                             <td><?php echo $u['cantidad']; ?></td>
                                             <td>
-                                            <!--"crearFormulario(<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['nombrePlanta'];?>,<?php echo $u['cantidad'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>)"
-                                            -->
-
-                                                <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"></span>Actualizar Cantidad</button>
+                                                <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"></span>Actualizar Cantidad</button>
                                                 <a href="<?php echo site_url('common/umbraculos/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-minus"></span> Borrar planta umbráculo</a>
                                             </td>
                                         </tr>
@@ -64,22 +60,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         </tr>
                                                         <tr>
                                                             <td>
-                                                                <input style="text-align: center;" min="0" type="number" name="cantidad" value="" class="form-control" id="cantidad" />
+                                                                <input style="text-align: center;" onChange="verificarEspacio();" min="0" type="number" name="cantidad" value="" class="form-control" id="cantidad" />
                                                             </td>
                                                         </tr>
                                                     </table>
-                                                    <input type="hidden" value="" name="idUmbraculo" id="idUmbraculo">
-                                                    <input type="hidden" value="" name="idPlanta" id="idPlanta">
+                                                    <span style="text-align: center"  class="text-danger" id="msjError"></span>
+                                                    <!--CAMPOS OCULTOS-->
+                                                    <input type="hidden" value="" name="idUmbraculo" id="idUmbraculo"> 
+                                                    <input type="hidden" value="" name="idPlanta" id="idPlanta"> 
+                                                    <input type="hidden" name="ocupaPlanta" id="ocupaPlanta">
+                                                    <input type="hidden" name="disponibleU" id="disponibleU">
+                                                    <input type="text" id="resu" value="">
+                                                    <!--FIN CAMPOS OCULTOS-->
                                                 </div>
                                                 </div>
-                                                <div class="box-footer">
-                                                    <button type="submit" class="btn btn-success btn-flat">
-                                                        <i class="fa fa-check"></i> Guardar
+                                                <div align="center" class="box-footer">
+                                                    <button id="guardar" type="submit" class="btn btn-success btn-flat">
+                                                        <i class="fa fa-save"></i> Guardar
+                                                    </button>
+                                                    <button type="close" data-dismiss="modal" class="btn btn-flat">
+                                                        <i class="fa fa-cancel"></i> Cancelar
                                                     </button>
                                                 </div>              
                                             <?php echo form_close(); ?>
-
-
                                         </div>
                                         <div class="modal-footer">
                                         </div>
@@ -118,11 +121,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     });
 
 
-function crearFormulario(cantidad,umbraculo,planta)
+function crearFormulario(cantidad,umbraculo,planta,dimPlanta,dispU)
 {
     document.getElementById('cantidad').value = cantidad;
     document.getElementById('idUmbraculo').value = umbraculo;
     document.getElementById('idPlanta').value = planta;
+    document.getElementById('ocupaPlanta').value = dimPlanta;
+    document.getElementById('disponibleU').value = dispU;
+}
+
+function verificarEspacio()
+{
+    var actual = document.getElementById('disponibleU').value;
+    var canti = document.getElementById('cantidad').value;
+    var ePP = document.getElementById('ocupaPlanta').value;
+
+    var espacioTotal= (canti * ePP)/10000;
+
+    document.getElementById('resu').value = espacioTotal;
+    if (espacioTotal > actual) 
+    {
+        document.getElementById('msjError').innerHTML = "El espacio dentro del umbráculo es insuficiente";
+        document.getElementById('guardar').disabled=true;
+    }
+    if (espacioTotal < actual) 
+    {
+        document.getElementById('msjError').innerHTML = "";
+        document.getElementById('guardar').disabled=false;
+    }
+    if (espacioTotal == actual) 
+    {
+        document.getElementById('msjError').innerHTML = "";
+        document.getElementById('guardar').disabled=false;
+    }
+
+
 }
 
 </script>
