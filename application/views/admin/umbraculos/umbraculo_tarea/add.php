@@ -96,7 +96,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-6">
           <label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>Fecha y hora Prevista para la Tarea</label>
           <div class="form-group">
-            <input class="has-datepicker form-control" type="date" name="fechaComienzo" id="fechaComienzo" value="<?php echo $this->input->post(date('Y-m-d', strtotime('fechaComienzo'))); ?>" />
+            <input class="has-datepicker form-control" type="date" name="fechaComienzo" id="fechaComienzo" value="<?php echo $this->input->post(date('Y-m-d', strtotime('fechaComienzo'))); ?>" min="<?php echo date('Y-m-d');?>"/>
             <span class="text-danger"><?php echo form_error('fechaComienzo');?></span>
           </div>
 

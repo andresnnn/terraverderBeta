@@ -153,6 +153,31 @@ class Especies extends Admin_Controller{
         }
     } 
 
+    /**
+     * Desactiva la especie, para que esta no pueda utilizarse utilizarse en cualquier otro modulo.
+     * Ej.- 'Ya no se trabaja con dicha planta'
+     * @param  [type] $idEspecie 
+     * @return [type]           [description]
+     * @author SAKZEDMK
+     */
+    function borrado_logico ($idEspecie)
+    {
+        $this->Especies_model->desactivar_especie($idEspecie);
+        redirect('common/especies/index');
+    }
+
+    /**
+     * Activa la especie, para que pueda utilizarse en cualquier otro modulo.
+     * @param  [type] $idEspecie [description]
+     * @return [type]           [description]
+     * @author SAKZEDMK
+     */
+    function activado_logico($idEspecie)
+    {
+        $this->Especies_model->activar_especie($idEspecie);
+        redirect('common/especies/index');
+    } 
+
     /*
      * Deleting especie
      */

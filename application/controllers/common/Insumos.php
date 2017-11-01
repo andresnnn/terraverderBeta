@@ -150,8 +150,29 @@ class Insumos extends Admin_Controller {
       $this->template->admin_render('admin/insumos/profile', $this->data);
 
   }
+  
+  /**
+   * DESACTIVA UN INSUMO, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN INSUMO, SE MUESTRA SU INFORMACIÓN
+   * @param  [type] $idInsumo COMO ÚNICO PARAMETRO DE ENTRADA
+   * @return [type]           [description]
+   * @author SAKZEDMK
+   */
+  function borrado_logico($idInsumo)
+  {
+    $this->Insumos_model->desactivar_insumo($idInsumo);
+    redirect('common/insumos/index');
+  }
 
-
-
+  /**
+   * DESACTIVA UN INSUMO, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN INSUMO, SE MUESTRA SU INFORMACIÓN
+   * @param  [type] $idInsumo COMO ÚNICO PARAMETRO DE ENTRADA
+   * @return [type]           [description]
+   * @author SAKZEDMK
+   */
+  function activado_logico($idInsumo)
+  {
+    $this->Insumos_model->activar_insumo($idInsumo);
+    redirect('common/insumos/index');
+  }
 
   }

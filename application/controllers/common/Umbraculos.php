@@ -326,6 +326,7 @@ class Umbraculos extends Admin_Controller {
         $this->form_validation->set_rules('idPlanta','IdPlanta','required');
         $this->form_validation->set_rules('cantidad','Cantidad','required');
         $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');
+        
         if($this->form_validation->run())
         {
             $params = array(
@@ -336,6 +337,7 @@ class Umbraculos extends Admin_Controller {
             /**COMPROBACIÓN SI EXISTE UNA MISMA PLANTA REGISTRADA**/
             if ($this->Umbraculoplantas_model->esta_registrada($params) == NULL) {
                 $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
+                $this->Umbraculos_model->actualizar_espacio_disponible($this->input->post('idUmbraculo'),$this->input->post('nuevoEspacioDisponible'));
                 redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
             }else{
                 show_error('La planta ya se encuentra registrada dentro del umbráculo');
@@ -386,7 +388,9 @@ class Umbraculos extends Admin_Controller {
             $cantidad = $this->input->post('cantidad');
             /*NUEVA CANTIDAD DE UMBRACULO/PLANTA*/
             $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad);
-
+            /*NUEVA ESPACIO DISPONIBLE DEL UMBRACULO*/
+            $this->Umbraculos_model->actualizar_espacio_disponible($umbraculo,$this->input->post('dipoActualizada'));
+            
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
     }
 
