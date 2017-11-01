@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td>
                                                     <a href="<?php echo site_url('common/tarea/profile/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
                                                 <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
-                                                <?php if ($t['idEstado'] == 1) {
+                                                <?php if ($t['idEstado'] == 1 || $t['idEstado'] == 3) {
                                                 //echo " <a href= 'atender/'.$u['idTarea'];"
                                                 echo anchor('common/umbraculos/atenderTarea/'.$info_umbraculo['idUmbraculo'].'/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));
                                                     //echo "<a href= atender/"; echo $t['idTarea'];
