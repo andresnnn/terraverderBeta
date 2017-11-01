@@ -16,16 +16,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title">Plantas dentro de <strong><?php echo $info_umbraculo['nombreUmbraculo']?></strong></h3>
                                 </div>
                                     <div class="box-body">                       
-                                    <table class="table table-striped table-hover">
+                                    <table style="text-align: center;" class="table table-striped table-hover">
                                         <tr>
                                             <th>Nombre</th>
+                                            <th>Nombre Científico</th>
+                                            <th>Espacio Unitario Aprox.</th>
                                             <th>Cantidad</th>
+                                            <th>Espacio Total Aprox.</th>
                                             <th>Acciones</th>
                                         </tr>
                                         <?php foreach($umbraculo_plantas as $u){ ?>
                                         <tr>
                                             <td><?php echo $u['nombrePlanta']; ?></td>
+                                            <td><?php echo $u['nombreCientificoPlanta']; ?></td>
+                                            <td><?php echo $u['unidadEspacioPlanta_m2']; ?> cm<sup>2</sup></td>
                                             <td><?php echo $u['cantidad']; ?></td>
+                                            <td><?php echo ($u['unidadEspacioPlanta_m2']*$u['cantidad'])/10000;?> m<sup>2</sup></td>
                                             <td>
                                                 <!-- BOTON QUE LLAMA AL CONTROLADOR Y CAPTURA LA NUEVA CANTIDAD DE PLANTAS CON SU RESPECTIVO 
                                                 ESPACIO OCUPADO, Y LA ACTUALIZA DENTRO DE LA 'BD' -->
@@ -33,7 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                 <!-- ELIMINA UNA PLANTA DENTRO DEL UMBRACULO Y DEBE DE REESTABLECER EL ESPACIO QUE SE DESOCUPA 
                                                 DENTRO DEL MISMO -->
-                                                <a href="<?php echo site_url('common/umbraculos/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-minus"> </span> Borrar planta umbráculo</a>
+                                                <?php echo form_open('common/umbraculos/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>
+                                                <input type="hidden" id="nuevaCantidad" name="nuevaCantidad" value="<?php echo $info_umbraculo['unidadEspacioDisponible_m2']+($u['unidadEspacioPlanta_m2']*$u['cantidad'])/10000;?>"> 
+                                                <!--ESTE ES EL CAMPO QUE LLEVA EL VALOR CON EL ESPACIO REESTABLECIDO-->
+                                                <button type="submit" class="btn btn-danger btn-xs"><span class="fa fa-minus"> </span> Borrar planta umbráculo</button>
+                                                 <?php echo form_close(); ?>
                                             </td>
                                         </tr>
                                         <?php } ?>
@@ -191,7 +201,6 @@ function verificarEspacio()
     { 
         var diferencia = cantiActual - canti;
         var liberado = (diferencia*ePP)/10000; 
-        /*document.getElementById('resu').value =liberado;*/
         var newValor = parseFloat(disponibleActual) + parseFloat(liberado);
         document.getElementById('dipoActualizada').value = newValor.toFixed(4);
         document.getElementById('msjError').innerHTML = ""; 

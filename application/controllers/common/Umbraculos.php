@@ -364,6 +364,7 @@ class Umbraculos extends Admin_Controller {
     {
         $umbraculo_plantas = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
         $this->Umbraculoplantas_model->retirar_planta_umbraculo($idUmbraculo,$idPlanta);
+        $this->Umbraculos_model->actualizar_espacio_disponible($idUmbraculo,$this->input->post('nuevaCantidad'));
         redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
     }
 

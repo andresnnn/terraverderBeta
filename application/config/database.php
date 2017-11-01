@@ -92,5 +92,8 @@ $db['default'] = array(
 	'compress' => FALSE,
 	'stricton' => FALSE,
 	'failover' => array(),
-	'save_queries' => TRUE
+	'save_queries' => TRUE,
+	'date_default_timezone_set' => 'America/Argentina/Buenos_Aires'
 );
+
+/* ULTIMO CAMPO VER SI CAUSA PROBLEMA*/
