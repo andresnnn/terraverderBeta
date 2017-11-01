@@ -145,9 +145,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           <?php foreach($insumos as $p){ ?>
                               <?php if ($p['active'] == 1): ?>
                                   <tr id="<?php echo 'fila'.$p['idInsumo'];?>">
-                                      <td id="numero"><?php echo $p['nombreInsumo']; ?></td>
+                                      <td id="nombreInsumo"><?php echo $p['nombreInsumo']; ?></td>
                                       <td><?php echo $p['cantidad']; ?></td>
-                                      <td> <input  type="number" name="cantidadUtilizada"  /></td>
+                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  /></td>
                                       <td class="boton">
                                           <button onClick="javascript:cargarDatos(<?php echo $p['idInsumo'];?>);comprobarCantidad();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
                                       </td>
@@ -155,7 +155,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <?php endif; ?>
                           <?php } ?>
                       </table>
-                      <?php echo anchor('common/plantas/crear', '<i class="fa fa-plus"> Agregar nueva planta</i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nueva planta')); ?>
+                      <?php echo anchor('common/insumos/add', '<i class="fa fa-plus"> Agregar nuevo Insumo </i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nueva planta')); ?>
               </div>
               <div class="modal-footer">
               </div>
@@ -219,11 +219,9 @@ function cargarDatos(id) {
     function comprobarCantidad(){
 
         /* SI LAS CONDICIONES SON CORRECTAS NO APARECE NINGUN MENSAJE, Y EL BOTON DE AGREGAR ESTA HABILITADO*/
-        // document.getElementById('estadoT').innerHTML = '';
-        // document.getElementById('estadoL').innerHTML = '';
-        // document.getElementById('estadoH').innerHTML = '';
+        document.getElementById('estadoT').innerHTML = '';
         // document.getElementById('bnAdd').disabled=false;
-
+        
         /*SI ALGUNA DE LAS CONDICIONES NO ES COMPATIBLE CON LAS DEL UMBRÁCULO, APARECE ALGUNO DE LOS MENSAJES*/
         /*Y EL BOTON DE AGREGAR ESTARÁ DESHABILITADO*/
 
@@ -233,28 +231,13 @@ function cargarDatos(id) {
 
         /**/
 
-        if ($tempU < $tMn || $tempU > $tMx) {
-            document.getElementById('estadoT').innerHTML = 'La temperatura del umbráculo, no es la indicada para la especie.';
+        if ($stock > $cantidadUtilizada) {
+            document.getElementById('estadoT').innerHTML = 'La cantidad requerida, es mayor al sotck del insumo.';
             document.getElementById('bnAdd').disabled=true;
         }
 
-        /*PARA COMPROBAR QUE LA ILUMINACIÓN DEL UMBRACULO SEA CORRECTA*/
-        var $luzU = document.getElementById('luz').value;
-        var $lMx = document.getElementById('lMax').value;
-        var $lMn = document.getElementById('lMin').value;
-        /**/
-        if ($luzU<$lMn || $luzU > $lMx) {
-            document.getElementById('estadoL').innerHTML = 'La iluminación del umbráculo, no es la adecuada para esta especie.';
-            document.getElementById('bnAdd').disabled=true;
-        }
-        /*PARA COMPROBAR QUE LA HUMEDAD DEL UMBRACULO SEA CORRECTA*/
-        var $humU = document.getElementById('humedad').value;
-        var $hMx = document.getElementById('hMax').value;
-        var $hMn = document.getElementById('hMin').value;
-        if ($humU<$hMn || $humU > $hMx) {
-            document.getElementById('estadoH').innerHTML = 'La humedad dentro del umbráculo, no es la adecuada para esta especie.';
-            document.getElementById('bnAdd').disabled=true;
-        }
+
+
     }
 
 
