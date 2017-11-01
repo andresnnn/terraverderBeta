@@ -14,6 +14,14 @@ class Tareas_model extends CI_Model
     }
 
     /*
+     * Get tarea by idTarea
+     */
+
+    function get_tarea($idTarea)
+     {
+         return $this->db->get_where('tarea',array('idTarea'=>$idTarea))->row_array();
+     }
+    /*
      * Get tareas by idTarea
      */
     function get_tareas($idTarea)
@@ -39,7 +47,7 @@ class Tareas_model extends CI_Model
      */
     function obtener_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
@@ -49,10 +57,34 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+
+
+    function all_estado_tareas()
+    {
+        $query ="SELECT *
+                    FROM estado_tarea";
+        return $this->db->query($query)->result_array();
+    }
+
+    function get_tarea_join($idTarea)
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,umb.nombreUmbraculo,umb.idUmbraculo,t.observacionEspecialista
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    JOIN umbraculo umb ON t.idUmbraculo = umb.idUmbraculo
+                    WHERE t.idTarea=".$idTarea."";
+
+        return $this->db->query($query)->result_array();
+    }
+
+
+
     function comprobar_existencia_tarea($id1, $id2, $id3,$id4)
     {
-//AND (fechaComienzo=".$id2.")
-//STR_TO_DATE(fechaComienzo,'%m/%d/%Y')  = id4()
+      //consulta de tareas en el umbraculo y en la misma planta con la misma fecha ingresada
       $vector = $this->db->get_where('tarea',array('idUmbraculo'=>$id1,'fechaComienzo'=>$id2,'idPlanta'=>$id3, 'idTipoTarea'=>$id4))->row_array();
 
       if (  ($vector==null)){
@@ -74,11 +106,14 @@ class Tareas_model extends CI_Model
      */
     function listar_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
                     JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
                     WHERE t.idUmbraculo=".$idUmbraculo." ORDER BY t.fechaCreacion DESC";
         return $this->db->query($query)->result_array();

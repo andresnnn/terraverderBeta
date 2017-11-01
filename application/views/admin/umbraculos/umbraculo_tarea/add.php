@@ -79,13 +79,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 					</div>
-					<div class="col-md-6">
+		<div class="col-md-6">
 						<label for="fechaCreacion" class="control-label"><span class="text-danger">*</span>Fecha Creación</label>
-            <div class="form-group">
+           	<div class="form-group">
               <input  readonly type="text" name="fechaActual" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $d."-".$M."-".$y; ?>" class="has-datepicker form-control" id="fechaCreacion" />
 							<span class="text-danger"><?php echo form_error('fechaCreacion');?></span>
-						</div>
-						<div class="form-group">
+		</div>
+
+		<div class="form-group">
               <input  type="hidden" name="fechaCreacion" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $y."-".$M."-".$d; ?>" class="has-datepicker form-control" id="fechaCreacion" />
 							<span class="text-danger"><?php echo form_error('fechaCreacion');?></span>
 						</div>
