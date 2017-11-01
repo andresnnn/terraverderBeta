@@ -112,7 +112,7 @@ class Plantas extends Admin_Controller{
         			if($this->form_validation->run())     
                     {   
                         $params = array(
-        					'idEspecie' => $this->input->post('idEspecie'),
+
         					'unidadEspacioPlanta_m2' => $this->input->post('unidadEspacioPlanta_m2'),
         					'descripcionPlanta' => $this->input->post('descripcionPlanta'),
         					'nombreCientificoPlanta' => $this->input->post('nombreCientificoPlanta'),
@@ -134,6 +134,31 @@ class Plantas extends Admin_Controller{
                     show_error('La planta que usted está tratando de editar no existe.');
         }
     } 
+
+    /**
+     * Desactiva la planta, para que esta no pueda utilizarse utilizarse en cualquier otro modulo.
+     * Ej.- 'Ya no se trabaja con dicha planta'
+     * @param  [type] $idPlanta 
+     * @return [type]           [description]
+     * @author SAKZEDMK
+     */
+    function borrado_logico ($idPlanta)
+    {
+        $this->Plantas_model->desactivar_planta($idPlanta);
+        redirect('common/plantas/index');
+    }
+
+    /**
+     * Activa la planta, para que pueda utilizarse en cualquier otro modulo.
+     * @param  [type] $idPlanta [description]
+     * @return [type]           [description]
+     * @author SAKZEDMK
+     */
+    function activado_logico($idPlanta)
+    {
+        $this->Plantas_model->activar_planta($idPlanta);
+        redirect('common/plantas/index'); 
+    }
 
     /*
      * Deleting planta

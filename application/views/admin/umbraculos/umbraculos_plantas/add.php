@@ -104,20 +104,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Acciones</th>
                     </tr>
                     <?php foreach($all_plantas as $p){ ?>
-                    <tr id="<?php echo 'fila'.$p['idPlanta'];?>">
-                        <td id="numero"><?php echo $p['nombrePlanta']; ?></td> 
-                        <td><?php echo $p['nombreEspecie']; ?></td>
-                        <td><?php echo $p['unidadEspacioPlanta_m2']; ?></td>
-                        <td><?php echo $p['luzMax']; ?></td>
-                        <td><?php echo $p['luzMin']; ?></td>
-                        <td><?php echo $p['humedadMax']; ?></td>
-                        <td><?php echo $p['humedadMin']; ?></td>
-                        <td><?php echo $p['temperaturaMax']; ?></td>
-                        <td><?php echo $p['temperaturaMin']; ?></td>
-                        <td class="boton">
-                            <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);comprobarCondiciones();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
-                        </td>
-                    </tr>
+                        <?php if ($p['active'] == 1): ?>
+                            <tr id="<?php echo 'fila'.$p['idPlanta'];?>">
+                                <td id="numero"><?php echo $p['nombrePlanta']; ?></td> 
+                                <td><?php echo $p['nombreEspecie']; ?></td>
+                                <td><?php echo $p['unidadEspacioPlanta_m2']; ?></td>
+                                <td><?php echo $p['luzMax']; ?></td>
+                                <td><?php echo $p['luzMin']; ?></td>
+                                <td><?php echo $p['humedadMax']; ?></td>
+                                <td><?php echo $p['humedadMin']; ?></td>
+                                <td><?php echo $p['temperaturaMax']; ?></td>
+                                <td><?php echo $p['temperaturaMin']; ?></td>
+                                <td class="boton">
+                                    <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);comprobarCondiciones();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
+                                </td>
+                            </tr>
+                        <?php endif; ?>
                     <?php } ?>
                 </table>
                 <?php echo anchor('common/plantas/crear', '<i class="fa fa-plus"> Agregar nueva planta</i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nueva planta')); ?>

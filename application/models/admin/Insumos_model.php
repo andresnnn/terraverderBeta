@@ -53,6 +53,24 @@ class Insumos_model extends CI_Model
 
     }
 
+    /**
+    * DESACTIVAR UN INSUMO QUE NO ESTÉ SIENDO UTILIZADO.
+    */
+      function desactivar_insumo($idInsumo)
+      {
+        $query="UPDATE `insumo` SET `active`=0 WHERE idInsumo=".$idInsumo;
+        $this->db->query($query);
+      }
+
+    /**
+    * ACTIVAR UN INSUMO QUE NO ESTÉ SIENDO UTILIZADO.
+    */
+        function activar_insumo($idInsumo)
+        {
+          $query="UPDATE `insumo` SET `active`=1 WHERE idInsumo=".$idInsumo;
+          $this->db->query($query);
+        }
+
     /*
      * function to delete insumo
      */

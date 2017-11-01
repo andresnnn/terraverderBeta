@@ -26,7 +26,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<th>Descripcion Insumo</th>
 						<th>Cantidad</th>
 						<th>Punto De Pedido</th>
-						<th>Actions</th>
+                        <th>Estado</th>
+						<th>Acciones</th>
                     </tr>
                     <?php foreach($insumo as $i){ ?>
                     <tr>
@@ -35,10 +36,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?php echo $i['descripcionInsumo']; ?></td>
 						<td><?php echo $i['cantidad']; ?></td>
 						<td><?php echo $i['puntoDePedido']; ?></td>
+                        <td title="El estado determina, el poder utilizar o no, determinado insumoi en otros módulos">
+                        <?php 
+                        if ($i['active'] == 1) {
+                            echo "<a href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
+                        }else{
+                            echo "<a href='".site_url('common/insumos/activado_logico/'.$i['idInsumo'])."'><span class='label label-default'>Inactivo</span></a>";
+                        }
+                        ?>
+                        </td>
 						<td>
                             <a href="<?php echo site_url('common/insumos/profile/'.$i['idInsumo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                             <a href="<?php echo site_url('common/insumos/edit/'.$i['idInsumo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                            <a href="<?php echo site_url('common/insumos/remove/'.$i['idInsumo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
+<!--                             <a href="<?php echo site_url('common/insumos/remove/'.$i['idInsumo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> -->
                         </td>
                     </tr>
                     <?php } ?>

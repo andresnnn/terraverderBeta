@@ -9,6 +9,9 @@
                     <div class="row">
                         <div class="col-md-12">
                              <div class="box">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Editar Umbráculo</h3>
+                    </div>
                                 <div class="box-body">
 			<?php echo form_open('common/umbraculos/editar/'.$umbraculos['idUmbraculo']); ?>
 			<div class="box-body">
@@ -23,28 +26,28 @@
 					<div class="col-md-6">
 						<label for="anchoUmbraculo_m" class="control-label"><span class="text-danger">*</span>Ancho (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="number"  step="any" name="anchoUmbraculo_m" onChange="completar();" value="<?php echo ($this->input->post('anchoUmbraculo_m') ? $this->input->post('anchoUmbraculo_m') : $umbraculos['anchoUmbraculo_m']); ?>" class="form-control" id="anchoUmbraculo_m" />
+							<input disabled type="number"  step="any" name="anchoUmbraculo_m" onChange="completar();" value="<?php echo ($this->input->post('anchoUmbraculo_m') ? $this->input->post('anchoUmbraculo_m') : $umbraculos['anchoUmbraculo_m']); ?>" class="form-control" id="anchoUmbraculo_m" />
 							<span class="text-danger"><?php echo form_error('anchoUmbraculo_m');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<label for="largoUmbraculo_m" class="control-label"><span class="text-danger">*</span>Largo (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="number" step="any" name="largoUmbraculo_m" onChange="completar();" value="<?php echo ($this->input->post('largoUmbraculo_m') ? $this->input->post('largoUmbraculo_m') : $umbraculos['largoUmbraculo_m']); ?>" class="form-control" id="largoUmbraculo_m" />
+							<input disabled type="number" step="any" name="largoUmbraculo_m" onChange="completar();" value="<?php echo ($this->input->post('largoUmbraculo_m') ? $this->input->post('largoUmbraculo_m') : $umbraculos['largoUmbraculo_m']); ?>" class="form-control" id="largoUmbraculo_m" />
 							<span class="text-danger"><?php echo form_error('largoUmbraculo_m');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="unidadEspacioTotal_m2" class="control-label"><span class="text-danger">*</span>EspacioTotal (m<sup>2</sup>)</label>
+						<label disabled for="unidadEspacioTotal_m2" class="control-label"><span class="text-danger">*</span>EspacioTotal (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo ($this->input->post('unidadEspacioTotal_m2') ? $this->input->post('unidadEspacioTotal_m2') : $umbraculos['unidadEspacioTotal_m2']); ?>" class="form-control" id="unidadEspacioTotal_m2" />
+							<input disabled type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo ($this->input->post('unidadEspacioTotal_m2') ? $this->input->post('unidadEspacioTotal_m2') : $umbraculos['unidadEspacioTotal_m2']); ?>" class="form-control" id="unidadEspacioTotal_m2" />
 							<span class="text-danger"><?php echo form_error('unidadEspacioTotal_m2');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">
-						<label for="unidadEspacioDisponible_m2" class="control-label">Espacio Disponible (m<sup>2</sup>)</label>
+						<label disabled for="unidadEspacioDisponible_m2" class="control-label">Espacio Disponible (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo ($this->input->post('unidadEspacioDisponible_m2') ? $this->input->post('unidadEspacioDisponible_m2') : $umbraculos['unidadEspacioDisponible_m2']); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
+							<input disabled type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo ($this->input->post('unidadEspacioDisponible_m2') ? $this->input->post('unidadEspacioDisponible_m2') : $umbraculos['unidadEspacioDisponible_m2']); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
 						</div>
 					</div>
 					<div class="col-md-6">
