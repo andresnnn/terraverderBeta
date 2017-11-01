@@ -226,7 +226,8 @@ class Umbraculos extends Admin_Controller {
                 $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
-            //    $this->data['tarea2'] = $this->Tareas_model->get_tarea($idTarea);
+                $this->data['insumos'] = $this->Tareas_model->get_all_insumo();
+
               /* libreria formulario*/
                   $this->load->library('form_validation');
                   $this->form_validation->set_rules('observacionEspecialista','observacionEspecialista','max_length[50]');
@@ -235,7 +236,7 @@ class Umbraculos extends Admin_Controller {
                           	/* datos para actualizar */
                   $params = array(
                     'fechaAtencion' => $this->input->post('fechaAtencion'),
-                  //  'idEstado' => $this->input->post('idEstado'),
+                    'idEstado' => $this->input->post('idEstado'),
                     'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     'idUserAtencion' => $this->input->post('idUserAtencion'),
                           );
@@ -326,7 +327,7 @@ class Umbraculos extends Admin_Controller {
         $this->form_validation->set_rules('idPlanta','IdPlanta','required');
         $this->form_validation->set_rules('cantidad','Cantidad','required');
         $this->form_validation->set_rules('idUmbraculo','idUmbraculo','required');
-        
+
         if($this->form_validation->run())
         {
             $params = array(
@@ -390,7 +391,7 @@ class Umbraculos extends Admin_Controller {
             $this->Umbraculoplantas_model->actualizar_cantidad_planta($umbraculo,$planta,$cantidad);
             /*NUEVA ESPACIO DISPONIBLE DEL UMBRACULO*/
             $this->Umbraculos_model->actualizar_espacio_disponible($umbraculo,$this->input->post('dipoActualizada'));
-            
+
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
     }
 
