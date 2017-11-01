@@ -85,13 +85,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <input type="hidden" value="" name="idPlanta" id="idPlanta"> 
                                                     <input type="hidden" name="ocupaPlanta" id="ocupaPlanta">
                                                     <!--Espacio disponible en umbráculo-->
-                                                    <input type="text" name="disponibleU" id="disponibleU">
+                                                    <input type="hidden" name="disponibleU" id="disponibleU">
                                                     <!--Cantidad usada como punto de comparación-->
                                                     <input type="hidden" name="cantiActualPlanta" id="cantiActualPlanta">
 
                                                     <!-- CAMPOS QUE LLEGAN AL CONTROLADOR PARA SUBIR A LA 'BD' -->
-                                                    <input type="text" name="dipoActualizada" id="dipoActualizada"> <!--Nuevo espacio para almacenar en BD-->
-                                                    <input type="text" name="dipoSumaActualizada" id="dipoSumaActualizada"> <!--Nuevo espacio para almacenar en BD-->
+                                                    <input type="hidden" name="dipoActualizada" id="dipoActualizada"> <!--Nuevo espacio para almacenar en BD-->
+                                                    <input type="hidden" name="dipoSumaActualizada" id="dipoSumaActualizada"> <!--Nuevo espacio para almacenar en BD-->
                                                     <!--FIN CAMPOS OCULTOS <input type="text" name="resu" id="resu" value="">-->
                                                 </div>
                                                 </div>
