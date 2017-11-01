@@ -79,5 +79,10 @@ class Insumos_model extends CI_Model
         return $this->db->delete('insumo',array('idInsumo'=>$idInsumo));
     }
 
+    function agregar_insumo_tarea($idInsumo,$idTarea,$cantidad)
+    {
+      $query="INSERT INTO `insumo/tarea` (`idInsumo`, `idTarea`, `cantidadUtilizado`) VALUES ('".$idInsumo."', '".$idTarea."', '".$cantidad."')";
+      $this->db->query($query);
+    }
 
 }
