@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-header with-border">
               	<h3 class="box-title">Tarea Edit</h3>
             </div>
-			<?php echo form_open('umbraculos/atenderTarea/'.$id); ?>
+			<?php echo form_open('common/umbraculos/atenderTarea/'.$idTarea.'/'.$idUmbraculo); ?>
 			<div class="box-body">
 				<div class="row clearfix">
 
@@ -95,14 +95,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
-
+<?php foreach($tarea as $t){ ?>
       <div class="col-md-6">
             <label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>
             <div class="form-group">
-              <input type="text" name="observacionEspecialista" value="<?php echo ($this->input->post('observacionEspecialista') ? $this->input->post('observacionEspecialista') : $tarea2['observacionEspecialista']); ?>" class="form-control" id="observacionEspecialista" />
+              <input type="text" name="observacionEspecialista" value="<?php echo ($this->input->post('observacionEspecialista') ? $this->input->post('observacionEspecialista') : $t['observacionEspecialista']); ?>" class="form-control" id="observacionEspecialista" />
             </div>
           </div>
-
+<?php } ?>
         </div>
 			</div>
 

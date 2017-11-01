@@ -14,14 +14,6 @@ class Tareas_model extends CI_Model
     }
 
     /*
-     * Get tarea by idTarea
-     */
-
-    function get_tarea($idTarea)
-     {
-         return $this->db->get_where('tarea',array('idTarea'=>$idTarea))->row_array();
-     }
-    /*
      * Get tareas by idTarea
      */
     function get_tareas($idTarea)
