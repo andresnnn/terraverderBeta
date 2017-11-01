@@ -250,7 +250,7 @@ class Umbraculos extends Admin_Controller {
                   /* Breadcrumbs */
                       $this->data['breadcrumb'] = $this->breadcrumbs->show();
                   /* Load Template */
-                  $this->template->admin_render('common/umbraculos/atenderTarea',$this->data['idUmbraculo'],$this->data['id']);
+                  $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender',$this->data);
                 }
               }}
 
