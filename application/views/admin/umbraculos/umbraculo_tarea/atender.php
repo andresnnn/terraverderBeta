@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-header with-border">
               	<h3 class="box-title">Tarea Edit</h3>
             </div>
-			<?php echo form_open('common/umbraculos/atenderTarea/'.$idTarea.'/'.$idUmbraculo); ?>
+			<?php echo form_open('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea); ?>
 			<div class="box-body">
 				<div class="row clearfix">
 
@@ -116,6 +116,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <span id="estadoH" class="text-danger"></span><br>
                                   <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
+                                    <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
+                      <input type="text" name="idInsumo" id="idInsumo">
+                      <input type="text" name="cantidad" id="cantidad">
+                      <input type="hidden" name="nuevo_stock" id="nuevo_stock">
+                      <!--FIN DE CAMPOS OCULTOS-->
             </div>
 
         </div>
@@ -131,7 +136,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Seleccionar Insumos </h4>
+                <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Seleccionar Insumos</h4>
               </div>
               <div class="modal-body">
                       <table class="table table-striped table-hover">
@@ -144,12 +149,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                           </tr>
                           <?php foreach($insumos as $p){ ?>
                               <?php if ($p['active'] == 1): ?>
-                                  <tr id="<?php echo 'fila'.$p['idInsumo'];?>">
+                                  <tr id="<?php echo 'insumo'.$p['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $p['nombreInsumo']; ?></td>
                                       <td><?php echo $p['cantidad']; ?></td>
                                       <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  /></td>
+                                      <td><input type="hidden" name="identificador" value="<?php echo $p['idInsumo'];?>"></td>
                                       <td class="boton">
-                                          <button onClick="javascript:cargarDatos(<?php echo $p['idInsumo'];?>);comprobarCantidad();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
+                                          <button onClick="javascript:llenarFormulario(<?php echo $p['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
                                       </td>
                                   </tr>
                               <?php endif; ?>
@@ -210,37 +216,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @return {[type]}    [description]
  * @author SAKZEDMK
  */
-function cargarDatos(id) {
-    document.getElementById('nombre').value = document.getElementById('fila'+id).cells[0].innerHTML;
-    document.getElementById('cantidad').value = document.getElementById('fila'+id).cells[0].innerHTML;
-    document.getElementById('idInsumo').value = id;
+function llenarFormulario(id) {
+    document.getElementById('cantidad').value = document.getElementById('fila'+id).cells[2].innerHTML;
+    document.getElementById('identificador').value = document.getElementById('fila'+id).cells[3].innerHTML;
 }
-
-    function comprobarCantidad(){
-
-        /* SI LAS CONDICIONES SON CORRECTAS NO APARECE NINGUN MENSAJE, Y EL BOTON DE AGREGAR ESTA HABILITADO*/
-        document.getElementById('estadoT').innerHTML = '';
-        // document.getElementById('bnAdd').disabled=false;
-        
-        /*SI ALGUNA DE LAS CONDICIONES NO ES COMPATIBLE CON LAS DEL UMBRÁCULO, APARECE ALGUNO DE LOS MENSAJES*/
-        /*Y EL BOTON DE AGREGAR ESTARÁ DESHABILITADO*/
-
-        /*PARA COMPROBAR QUE LA TEMPERATURA DEL UMBRACULO SEA CORRECTA*/
-        var $stock = document.getElementById('cantidad').value;
-        var $cantidadUtilizada = document.getElementById('cantidad').value;
-
-        /**/
-
-        if ($stock > $cantidadUtilizada) {
-            document.getElementById('estadoT').innerHTML = 'La cantidad requerida, es mayor al sotck del insumo.';
-            document.getElementById('bnAdd').disabled=true;
-        }
-
-
-
-    }
-
-
-
 
 </script>

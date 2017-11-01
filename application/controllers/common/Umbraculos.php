@@ -243,7 +243,7 @@ class Umbraculos extends Admin_Controller {
 
 
                   $this->Tareas_model->update_tareas($idTarea,$params);
-                  redirect('common/umbraculos/ver/'.$this->data['idUmbraculo']);
+                  redirect('common/umbraculos/verTareas/'.$idUmbraculo);
 
                 }
                 else {
