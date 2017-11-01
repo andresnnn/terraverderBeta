@@ -68,7 +68,7 @@ class Tareas_model extends CI_Model
 
     function get_tarea_join($idTarea)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador, umb.nombreUmbraculo,umb.idUmbraculo
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,umb.nombreUmbraculo,umb.idUmbraculo,t.observacionEspecialista
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado

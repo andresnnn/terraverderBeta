@@ -212,7 +212,8 @@ class Umbraculos extends Admin_Controller {
                 }
             }
             function atenderTarea($idUmbraculo,$idTarea)
-            {      if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+              if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
               {
                   redirect('auth/login', 'refresh');
               }
@@ -227,12 +228,32 @@ class Umbraculos extends Admin_Controller {
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
                 $this->data['tarea2'] = $this->Tareas_model->get_tarea($idTarea);
+              /* libreria formulario*/
+                  $this->load->library('form_validation');
 
-                /* Load Template */
-                $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender', $this->data);
+                  $this->form_validation->set_rules('observacionEspecialista','observacionEspecialista','max_length[50]');
+                  if($this->form_validation->run())
+                        {
+                          	/* datos ah actualizar */
+                  $params = array(
+                    'fechaAtencion' => $this->input->post('fechaAtencion'),
+                    'idEstado' => $this->input->post('idEstado'),
+                    'observacionEspecialista' => $this->input->post('observacionEspecialista'),
+                    'idUserAtencion' => $this->input->post('idUserAtencion'),
+                          );
+                          $this->Insumos_model->update_insumo($idInsumo,$params);
 
-              }
-            }
+                  $this->Tareas_model->update_tarea($idTarea,$params);
+                  redirect('common/umbraculos');
+                }
+                else {
+                  /* Breadcrumbs */
+                      $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                  /* Load Template */
+                  $this->template->admin_render('common/umbraculos/atenderTarea',$this->data['idUmbraculo'],$this->data['id']);
+                }
+              }}
+
 
 
         /**

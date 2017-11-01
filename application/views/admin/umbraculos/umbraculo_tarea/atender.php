@@ -67,7 +67,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<?php
 								foreach($estados as $estado_tarea)
 								{
-									$selected = ($estado_tarea['nombreEstado'] ) ? ' selected="selected"' : "";
+									$selected = ($estado_tarea['idEstado'] ) ? ' selected="selected"' : "";
 
 									echo '<option value="'.$estado_tarea['nombreEstado'].'" '.$selected.'>'.$estado_tarea['nombreEstado'].'</option>';
 								}
