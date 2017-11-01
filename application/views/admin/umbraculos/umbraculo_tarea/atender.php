@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col-md-6">
 						<label for="fechaAtencion" class="control-label"><span class="text-danger">*</span>Fecha Atención</label>
             <div class="form-group">
-              <input  readonly type="text" name="fechaAtencion" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $d."-".$M."-".$y; ?>" class="has-datepicker form-control" id="fechaAtencion" />
+              <input  readonly type="text" name="fechaAtencion" value="<?php echo date('Y-m-d'); ?>" class="has-datepicker form-control" id="fechaAtencion" />
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <tr id="<?php echo 'fila'.$p['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $p['nombreInsumo']; ?></td>
                                       <td><?php echo $p['cantidad']; ?></td>
-                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  /></td>
+                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  onchange="comprobarCantidad();"/></td>
                                       <td class="boton">
                                           <button onClick="javascript:cargarDatos(<?php echo $p['idInsumo'];?>);comprobarCantidad();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
                                       </td>
@@ -220,14 +220,14 @@ function cargarDatos(id) {
 
         /* SI LAS CONDICIONES SON CORRECTAS NO APARECE NINGUN MENSAJE, Y EL BOTON DE AGREGAR ESTA HABILITADO*/
         document.getElementById('estadoT').innerHTML = '';
-        // document.getElementById('bnAdd').disabled=false;
-        
+        /* document.getElementById('bnAdd').disabled=false;*/
+
         /*SI ALGUNA DE LAS CONDICIONES NO ES COMPATIBLE CON LAS DEL UMBRÁCULO, APARECE ALGUNO DE LOS MENSAJES*/
         /*Y EL BOTON DE AGREGAR ESTARÁ DESHABILITADO*/
 
         /*PARA COMPROBAR QUE LA TEMPERATURA DEL UMBRACULO SEA CORRECTA*/
         var $stock = document.getElementById('cantidad').value;
-        var $cantidadUtilizada = document.getElementById('cantidad').value;
+        var $cantidadUtilizada = document.getElementById('cantidadUtilizada').value;
 
         /**/
 
