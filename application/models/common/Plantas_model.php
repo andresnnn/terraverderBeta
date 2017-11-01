@@ -38,7 +38,7 @@ WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo."
     DE LAS PLANTAS CON LA RESPECTIVA INFORMACIÓN DE SU ESPECIE, PARA REALIZAR LA COMPARACION DE CONDICIONES A LA HORA DE AGREGAR UNA PLANTA ADENTRO*/
     function obtener_plantas_especies()
     {
-        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMin,especie.temperaturaMax,especie.temperaturaMin,especie.nombreEspecie,planta.idPlanta,planta.nombrePlanta,planta.unidadEspacioPlanta_m2 FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
+        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMin,especie.temperaturaMax,especie.temperaturaMin,especie.nombreEspecie,planta.idPlanta,planta.nombrePlanta,planta.unidadEspacioPlanta_m2,planta.active FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
     }
 
@@ -76,4 +76,24 @@ WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo."
     {
         return $this->db->delete('planta',array('idPlanta'=>$idPlanta));
     }
+
+    /**
+     * Desactiva una planta, para que ya no pueda ser utilizada, por 'x' motivo
+     * @param  [type] $idInsumo [description]
+     * @return [type]           [description]
+     */
+    function desactivar_planta($idPlanta)
+      {
+        $query="UPDATE `planta` SET `active`=0 WHERE `planta`.`idPlanta`=".$idPlanta;
+        $this->db->query($query);
+      }
+
+    /**
+    * ACTIVAR UN INSUMO QUE NO ESTÉ SIENDO UTILIZADO.
+    */
+        function activar_planta($idPlanta)
+        {
+          $query="UPDATE `planta` SET `active`=1 WHERE `planta`.`idPlanta`=".$idPlanta;
+          $this->db->query($query);
+        }
 }

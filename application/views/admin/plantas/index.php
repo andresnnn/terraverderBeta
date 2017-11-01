@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Nombre Científico</th>
                         <th>Unidades Espacio</th>
                         <th>Descripción</th>
+                        <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
                     <?php foreach($plantas as $p){ ?>
@@ -35,11 +36,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $p['nombreCientificoPlanta']; ?></td>
                         <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
                         <td><?php echo $p['descripcionPlanta']; ?></td>
-                       
-                        
+                        <td title="El estado determina, el poder utilizar o no, determinada planta en otros módulos">
+                            <?php 
+                                if ($p['active'] == 1) {
+                                    echo "<a href='".site_url('common/plantas/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
+                                }else{
+                                    echo "<a href='".site_url('common/plantas/activado_logico/'.$p['idPlanta'])."'><span class='label label-default'>Inactivo</span></a>";
+                                }
+                            ?>
+                        </td>
                         <td>
                             <a href="<?php echo site_url('common/plantas/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
-                            <a href="<?php echo site_url('plantas/remove/'.$p['idPlanta']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a>
                         </td>
                     </tr>
                     <?php } ?>

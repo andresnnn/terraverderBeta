@@ -53,4 +53,24 @@ class Especies_model extends CI_Model
     {
         return $this->db->delete('especie',array('idEspecie'=>$idEspecie));
     }
+
+    /**
+     * Desactiva una especie, para que ya no pueda ser utilizada, por 'x' motivo
+     * @param  [type] $idInsumo [description]
+     * @return [type]           [description]
+     */
+    function desactivar_especie($idEspecie)
+      {
+        $query="UPDATE `especie` SET `active`=0 WHERE idEspecie=".$idEspecie;
+        $this->db->query($query);
+      }
+
+    /**
+    * ACTIVAR UN INSUMO QUE NO ESTÉ SIENDO UTILIZADO.
+    */
+        function activar_especie($idEspecie)
+        {
+          $query="UPDATE `especie` SET `active`=1 WHERE idEspecie=".$idEspecie;
+          $this->db->query($query);
+        }
 }

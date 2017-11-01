@@ -43,11 +43,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<option value="">Seleccionar especie</option>
 								<?php 
 								foreach($all_especies as $especie)
-								{
-									$selected = ($especie['idEspecie'] == $this->input->post('idEspecie')) ? ' selected="selected"' : "";
+								{	if ($especie['active'] ==1) 
+										{
+											$selected = ($especie['idEspecie'] == $this->input->post('idEspecie')) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$especie['idEspecie'].'" '.$selected.'>'.$especie['nombreEspecie'].'</option>';
-								} 
+											echo '<option value="'.$especie['idEspecie'].'" '.$selected.'>'.$especie['nombreEspecie'].'</option>';
+										} 
+								}
 								?>
 							</select>
 							<?php echo anchor('common/especies/crear', '<i class="fa fa-plus"></i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nueva especie')); ?>
