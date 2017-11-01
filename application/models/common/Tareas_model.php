@@ -14,14 +14,6 @@ class Tareas_model extends CI_Model
     }
 
     /*
-     * Get tarea by idTarea
-     */
-
-    function get_tarea($idTarea)
-     {
-         return $this->db->get_where('tarea',array('idTarea'=>$idTarea))->row_array();
-     }
-    /*
      * Get tareas by idTarea
      */
     function get_tareas($idTarea)
@@ -63,6 +55,13 @@ class Tareas_model extends CI_Model
     {
         $query ="SELECT *
                     FROM estado_tarea";
+        return $this->db->query($query)->result_array();
+    }
+
+    function get_all_insumo()
+    {
+        $query ="SELECT *
+                    FROM insumo";
         return $this->db->query($query)->result_array();
     }
 
