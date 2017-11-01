@@ -131,37 +131,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="modal-content">
               <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Seleccionar planta</h4>
+                <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Seleccionar Insumos </h4>
               </div>
               <div class="modal-body">
                       <table class="table table-striped table-hover">
                           <tr>
                           <div></div>
                               <th>Nombre</th>
-                              <th>Especie</th>
-                              <th>Unidades Espacio cm<sup>2</sup></th>
-                              <th>Máx lx.</th>
-                              <th>Min lx.</th>
-                              <th>Máx húmedad</th>
-                              <th>Min húmedad</th>
-                              <th>Máx temp.</th>
-                              <th>Mín temp.</th>
+                              <th>Stock</th>
+                              <th>Cantidad Requerida</th>
                               <th>Acciones</th>
                           </tr>
                           <?php foreach($insumos as $p){ ?>
                               <?php if ($p['active'] == 1): ?>
                                   <tr id="<?php echo 'fila'.$p['idInsumo'];?>">
                                       <td id="numero"><?php echo $p['nombreInsumo']; ?></td>
-                                      <td><?php echo $p['nombreEspecie']; ?></td>
-                                      <td><?php echo $p['unidadEspacioPlanta_m2']; ?></td>
-                                      <td><?php echo $p['luzMax']; ?></td>
-                                      <td><?php echo $p['luzMin']; ?></td>
-                                      <td><?php echo $p['humedadMax']; ?></td>
-                                      <td><?php echo $p['humedadMin']; ?></td>
-                                      <td><?php echo $p['temperaturaMax']; ?></td>
-                                      <td><?php echo $p['temperaturaMin']; ?></td>
+                                      <td><?php echo $p['cantidad']; ?></td>
+                                      <td> <input  type="number" name="cantidadUtilizada"  /></td>
                                       <td class="boton">
-                                          <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);comprobarCondiciones();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
+                                          <button onClick="javascript:cargarDatos(<?php echo $p['idInsumo'];?>);comprobarCantidad();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
                                       </td>
                                   </tr>
                               <?php endif; ?>
@@ -224,32 +212,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  */
 function cargarDatos(id) {
     document.getElementById('nombre').value = document.getElementById('fila'+id).cells[0].innerHTML;
-    document.getElementById('nomC').value = document.getElementById('fila'+id).cells[1].innerHTML;
-    document.getElementById('tam').value = document.getElementById('fila'+id).cells[2].innerHTML;
-    document.getElementById('lMax').value = document.getElementById('fila'+id).cells[3].innerHTML;
-    document.getElementById('lMin').value = document.getElementById('fila'+id).cells[4].innerHTML;
-    document.getElementById('hMax').value = document.getElementById('fila'+id).cells[5].innerHTML;
-    document.getElementById('hMin').value = document.getElementById('fila'+id).cells[6].innerHTML;
-    document.getElementById('tMax').value = document.getElementById('fila'+id).cells[7].innerHTML;
-    document.getElementById('tMin').value = document.getElementById('fila'+id).cells[8].innerHTML;
-    document.getElementById('idPlanta').value = id;
+    document.getElementById('cantidad').value = document.getElementById('fila'+id).cells[0].innerHTML;
+    document.getElementById('idInsumo').value = id;
 }
 
-    function comprobarCondiciones(){
+    function comprobarCantidad(){
 
         /* SI LAS CONDICIONES SON CORRECTAS NO APARECE NINGUN MENSAJE, Y EL BOTON DE AGREGAR ESTA HABILITADO*/
-        document.getElementById('estadoT').innerHTML = '';
-        document.getElementById('estadoL').innerHTML = '';
-        document.getElementById('estadoH').innerHTML = '';
-        document.getElementById('bnAdd').disabled=false;
+        // document.getElementById('estadoT').innerHTML = '';
+        // document.getElementById('estadoL').innerHTML = '';
+        // document.getElementById('estadoH').innerHTML = '';
+        // document.getElementById('bnAdd').disabled=false;
 
         /*SI ALGUNA DE LAS CONDICIONES NO ES COMPATIBLE CON LAS DEL UMBRÁCULO, APARECE ALGUNO DE LOS MENSAJES*/
         /*Y EL BOTON DE AGREGAR ESTARÁ DESHABILITADO*/
 
         /*PARA COMPROBAR QUE LA TEMPERATURA DEL UMBRACULO SEA CORRECTA*/
-        var $tempU = document.getElementById('temperatura').value;
-        var $tMx = document.getElementById('tMax').value;
-        var $tMn = document.getElementById('tMin').value;
+        var $stock = document.getElementById('cantidad').value;
+        var $cantidadUtilizada = document.getElementById('cantidad').value;
+
         /**/
 
         if ($tempU < $tMn || $tempU > $tMx) {
