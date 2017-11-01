@@ -29,9 +29,9 @@ class Tareas extends Admin_Controller{
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
                 $data['tareas'] = $this->Tareas_model->get_all_tareas();
+                /* Load Template */
+                $this->template->admin_render('admin/tareas/index', $this->data);
 
-                $data['_view'] = 'tarea/index';
-                $this->load->view('layouts/main',$data);
             }
     }
 

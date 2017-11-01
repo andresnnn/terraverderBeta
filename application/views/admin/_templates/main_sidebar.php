@@ -76,8 +76,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración tarea</li>
-                        <li class="<?=active_link_controller('common/tarea')?>">
-                            <a href="<?php echo site_url('common/tarea'); ?>">
+                        <li class="<?=active_link_controller('common/tareas')?>">
+                            <a href="<?php echo site_url('common/tareas'); ?>">
                                 <i class="fa fa-user"></i> <span>Tareas</span>
                             </a>
                         </li>

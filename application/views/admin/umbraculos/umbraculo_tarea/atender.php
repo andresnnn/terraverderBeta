@@ -112,8 +112,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar Insumo</button>
                                   <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                                   <span id="estadoT" class="text-danger"></span><br>
-                                  <span id="estadoL" class="text-danger"></span><br>
-                                  <span id="estadoH" class="text-danger"></span><br>
+                                  <!-- <span id="estadoL" class="text-danger"></span><br> -->
+                                  <!-- <span id="estadoH" class="text-danger"></span><br> -->
                                   <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
             </div>
@@ -147,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <tr id="<?php echo 'fila'.$p['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $p['nombreInsumo']; ?></td>
                                       <td><?php echo $p['cantidad']; ?></td>
-                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  onchange="comprobarCantidad();"/></td>
+                                      <td> <input  id="cantidadUtilizada".$p['idInsumo'] type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  onchange="comprobarCantidad();"/></td>
                                       <td class="boton">
                                           <button onClick="javascript:cargarDatos(<?php echo $p['idInsumo'];?>);comprobarCantidad();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
                                       </td>
