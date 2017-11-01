@@ -75,7 +75,8 @@ class Tareas_model extends CI_Model
                     JOIN users u ON t.idUserCreador = u.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
                     JOIN umbraculo umb ON t.idUmbraculo = umb.idUmbraculo
-                    WHERE t.idTarea=".$idTarea."";
+                    WHERE t.idTarea=".$idTarea."
+                    LIMIT 0,1";
 
         return $this->db->query($query)->result_array();
     }
