@@ -21,7 +21,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-body">
                 <table class="table table-striped">
                     <tr>
-						<th>Id Insumo</th>
 						<th>Nombre Insumo</th>
 						<th>Descripcion Insumo</th>
 						<th>Cantidad</th>
@@ -31,7 +30,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     <?php foreach($insumo as $i){ ?>
                     <tr>
-						<td><?php echo $i['idInsumo']; ?></td>
 						<td><?php echo $i['nombreInsumo']; ?></td>
 						<td><?php echo $i['descripcionInsumo']; ?></td>
 						<td><?php echo $i['cantidad']; ?></td>
