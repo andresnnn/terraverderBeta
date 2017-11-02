@@ -14,14 +14,6 @@ class Tareas_model extends CI_Model
     }
 
     /*
-     * Get tarea by idTarea
-     */
-
-    function get_tarea($idTarea)
-     {
-         return $this->db->get_where('tarea',array('idTarea'=>$idTarea))->row_array();
-     }
-    /*
      * Get tareas by idTarea
      */
     function get_tareas($idTarea)
@@ -66,6 +58,13 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    function get_all_insumo()
+    {
+        $query ="SELECT *
+                    FROM insumo";
+        return $this->db->query($query)->result_array();
+    }
+
     function get_tarea_join($idTarea)
     {
         $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,umb.nombreUmbraculo,umb.idUmbraculo,t.observacionEspecialista
@@ -75,7 +74,8 @@ class Tareas_model extends CI_Model
                     JOIN users u ON t.idUserCreador = u.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
                     JOIN umbraculo umb ON t.idUmbraculo = umb.idUmbraculo
-                    WHERE t.idTarea=".$idTarea."";
+                    WHERE t.idTarea=".$idTarea."
+                    LIMIT 0,1";
 
         return $this->db->query($query)->result_array();
     }
