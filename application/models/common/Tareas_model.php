@@ -95,6 +95,14 @@ class Tareas_model extends CI_Model
         return false;}
       }
 
+      //agrego nuevo elemento en insumo/tarea
+
+      function add_insumoTarea($params)
+  {
+      $this->db->insert('insumo/tarea',$params);
+      return $this->db->insert_id();
+  }
+
 
 
 

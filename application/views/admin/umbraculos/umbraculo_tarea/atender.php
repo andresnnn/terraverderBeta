@@ -41,6 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <td><?php echo $t['fechaComienzo']; ?></td>
                                   <td><?php echo $t['nombreEstado']; ?></td>
                               </tr>
+                              <input type="hidden" name="idTareaBD" id="idTareaBD" value="<?php echo $t['idTarea']; ?>">
                               <?php } ?>
                       </table>
                       </div>
@@ -116,10 +117,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <!-- <span id="estadoH" class="text-danger"></span><br> -->
                                   <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
-                                    <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
-                      <input type="text" name="idInsumo" id="idInsumo">
-                      <input type="text" name="cantidad" id="cantidad">
-                      <input type="hidden" name="nuevo_stock" id="nuevo_stock">
+<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
+                      <input type="text" name="idInsumoBD" id="idInsumoBD">
+                      <input type="text" name="cantidadBD" id="cantidadBD">
+                      <input type="hidden" name="stockBD" id="stockBD">
+
                       <!--FIN DE CAMPOS OCULTOS-->
             </div>
 
@@ -147,21 +149,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <th>Cantidad Requerida</th>
                               <th>Acciones</th>
                           </tr>
-                          <?php foreach($insumos as $p){ ?>
-                              <?php if ($p['active'] == 1): ?>
-                                  <tr id="<?php echo 'insumo'.$p['idInsumo'];?>">
-                                      <td id="nombreInsumo"><?php echo $p['nombreInsumo']; ?></td>
-                                      <td><?php echo $p['cantidad']; ?></td>
-                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $p['cantidad']; ?>" name="cantidadUtilizada"  /></td>
-                                      <td><input type="hidden" name="identificador" value="<?php echo $p['idInsumo'];?>"></td>
+                          <?php foreach($insumos as $i){ ?>
+                            <div id="insumosSeleccionados">
+                              <?php if ($i['active'] == 1): ?>
+                                  <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
+                                      <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
+                                      <td > <?php echo $i['cantidad']; ?> </td>
+                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada"  /></td>
+
                                       <td class="boton">
-                                          <button onClick="javascript:llenarFormulario(<?php echo $p['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
+                                          <button onClick="javascript:cargarDatos(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
                                       </td>
                                   </tr>
                               <?php endif; ?>
+                            </div>
                           <?php } ?>
                       </table>
-                      <?php echo anchor('common/insumos/add', '<i class="fa fa-plus"> Agregar nuevo Insumo </i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nueva planta')); ?>
+                      <?php echo anchor('common/insumos/add', '<i class="fa fa-plus"> Agregar nuevo Insumo </i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nuevo insumo')); ?>
               </div>
               <div class="modal-footer">
               </div>
@@ -169,9 +173,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
           </div>
         </div>
-
       </div>
-
+<!-- pie de pagina -->
       <div class="box-footer">
           <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
           <a href="<?php echo site_url('common/umbraculos/verTareas/'.$idUmbraculo); ?>" class="btn btn-default btn-flat">Cancelar</a>
@@ -210,15 +213,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         });
     });
 
+
+
 /**
  * [cargarDatos description]
  * @param  {[type]} id ES EL ID DE LA PLANTA DENTRO DE LA BD
  * @return {[type]}    [description]
  * @author SAKZEDMK
  */
-function llenarFormulario(id) {
-    document.getElementById('cantidad').value = document.getElementById('fila'+id).cells[2].innerHTML;
-    document.getElementById('identificador').value = document.getElementById('fila'+id).cells[3].innerHTML;
+function cargarDatos(id) {
+
+    document.getElementById('cantidadBD').value = document.getElementById('fila'+id).cells[2].value;
+    document.getElementById('idInsumoBD').value = id;
 }
 
 </script>
