@@ -95,6 +95,21 @@ class Tareas_model extends CI_Model
         return false;}
       }
 
+      /**
+       * Consultar las tareas para el área de notificaciones
+       * @param  [type] $fecha [description]
+       * @return [type]        [description]
+       */
+      function consultar_tareas($fecha)
+      {
+        $query="SELECT  tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,umbraculo.nombreUmbraculo,tarea.fechaComienzo,tarea.horaComienzo,planta.nombrePlanta,tarea.idUmbraculo,tarea.idTarea
+                FROM `tarea`
+                JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
+                JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
+                JOIN planta ON planta.idPlanta = tarea.idPlanta
+                WHERE tarea.fechaComienzo=('".$fecha."') AND tarea.idEstado = 1 OR tarea.idEstado= 3";
+        return $this->db->query($query)->result_array();
+      }
       //agrego nuevo elemento en insumo/tarea
 
       function add_insumoTarea($params)
@@ -102,7 +117,22 @@ class Tareas_model extends CI_Model
       $this->db->insert('insumo/tarea',$params);
       return $this->db->insert_id();
   }
+      /**
+       * Retorna la cantidad de tareas, para el día de la fecha
+       * @param  [type] $fecha [description]
+       * @return [type]        [description]
+       */
+      function nro_tareas ($fecha)
+      {
+        $query="SELECT  tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,umbraculo.nombreUmbraculo,tarea.fechaComienzo,tarea.horaComienzo
+                FROM `tarea`
+                JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
+                JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
+                WHERE tarea.fechaComienzo=('".$fecha."') AND tarea.idEstado = 1 OR tarea.idEstado= 3";
+        
+        return $this->db->query($query)->num_rows();
 
+      }
 
 
 

@@ -15,8 +15,6 @@ class Tareas extends Admin_Controller{
                 /* Title Page :: Common */
                 $this->page_title->push(lang('menu_tarea'));
                 $this->data['pagetitle'] = $this->page_title->show();
-
-
     }
 
     /*
