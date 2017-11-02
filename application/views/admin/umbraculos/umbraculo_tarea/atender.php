@@ -24,11 +24,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <th>Planta</th>
                                   <th>Umbraculo</th>
                                   <th>Creador</th>
-
                                   <th>Fecha Creación</th>
                                   <th>Fecha Prevista</th>
                                   <th>Estado Actual </th>
-
                               </tr>
                               <?php foreach($tarea as $t){ ?>
                               <tr>
@@ -49,18 +47,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
               </div>
 
-
   <div class="row">
     <div class="col-md-12">
       	<div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Tarea Edit</h3>
+              	<h3 class="box-title">Atender Tarea</h3>
             </div>
 			<?php echo form_open('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea); ?>
 			<div class="box-body">
 				<div class="row clearfix">
 
-					<div class="col-md-6">
+					<div class="col-md-3">
 						<label for="idEstado" class="control-label">Estado Tarea</label>
 						<div class="form-group">
 							<select name="idEstado" class="form-control">
@@ -75,7 +72,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								?>
 							</select>
 						</div>
-
 					</div>
 
 
@@ -96,6 +92,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
+
 <?php foreach($tarea as $t){ ?>
       <div class="col-md-6">
             <label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>
@@ -127,12 +124,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         </div>
 			</div>
+            <!-- seleccionar insumo -->
+            <div class="form-group">
+                                 <form name="add_name" id="add_name">
+                                      <div class="table-responsive">
+                                           <table class="table table-bordered" id="dynamic_field">
+                                                <tr>
+                                                     <td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td>
+                                                     <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                                                </tr>
+                                           </table>
+                                           <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+                                      </div>
+                                 </form>
+                            </div>
 
-      <!-- probando modal-->
-      <div class="container">
-        <!-- Modal -->
-        <div class="modal fade" id="myModal" role="dialog">
-          <div style="overflow-x:auto;" class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
