@@ -8,30 +8,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="wrapper">
                 <section id="main-content" class="content-header">
                  <h3 class="box-title">Logueado como empleado</h3>
-
-                
-
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-maroon"><i class="fa fa-legal"></i></span>
-                                <div class="info-box-content">
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 col-xs-12">
-                            <div class="info-box">
-                                <span class="info-box-icon bg-green"><i class="fa fa-check"></i></span>
-                                <div class="info-box-content">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="clearfix visible-sm-block"></div>
-
-                    </div>
-
+                 
                     <div class="row">
                         <div class="col-md-12">
                     </div>
@@ -45,8 +22,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                 </div>
                                 <div class="box-body">
-                                    SDFGHJMGNFDHJMK
+                                    
+                                    <!-- CONTENIDO -->
 
+
+                                    <!-- FIN CONTENIDO-->
+                                        
                                 </div>
                             </div>
                         </div>

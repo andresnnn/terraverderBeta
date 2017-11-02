@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                         <li >
-                            <a class="active" href="">
+                            <a href="<?php echo site_url('principal'); ?>">
                                 <i class="fa fa-dashboard"></i> <span>Principal</span>
                             </a>
                         </li>
@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="text-uppercase">Insumos</li>
                         <!-- Botones links-->
                         <li >
-                            <a href="">
+                            <a href="<?php echo site_url('user/insumos_pla'); ?>">
                                 <i class="fa fa-dashboard"></i> <span>Consultar Insumos</span>
                             </a>
                         </li>
