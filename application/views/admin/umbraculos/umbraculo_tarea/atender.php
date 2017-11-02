@@ -103,39 +103,48 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
 			</div>
             <!-- seleccionar insumo -->
-
+            <div class="form-group">
+                                 <form name="add_name" id="add_name">
+                                      <div class="table-responsive">
+                                           <table class="table table-bordered" id="dynamic_field">
+                                                <tr>
+                                                     <td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td>
+                                                     <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
+                                                </tr>
+                                           </table>
+                                           <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
+                                      </div>
+                                 </form>
+                            </div>
 
 
 <!-- script tabla dinamica -->
 
 <script>
-    $(document).ready(function(){
-        var i = 1;
-        $('#add').click(function(){
-            i++;
-            $('#dynamic_field').append('<tr id="row'+i+'"><td><div class="field-wrap"><label>Company<span class="req">*</span></label><input type="text" required autocomplete="off" name="company[]"/></div><div class="field-wrap"><label>Project<span class="req">*</span></label><input type="text"required autocomplete="off" name="project[]"/></div><div class="field-wrap"><label>Duration<span class="req">*</span></label><input type="text"required autocomplete="off" name="duration[]"/></div><div class="field-wrap"><label>Key Learning<span class="req">*</span></label><input type="text"required autocomplete="off" name="key_learning[]"/></div></td></td><td><button name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
-        });
-
-        $(document).on('click','.btn_remove', function(){
-            var button_id = $(this).attr("id");
-            $("#row"+button_id+"").remove();
-        });
-
-        $('#submit').click(function(){
-            $.ajax({
-                async: true,
-                url: "internship_details.php",
-                method: "POST",
-                data: $('#internship_details').serialize(),
-                success:function(rt)
+ $(document).ready(function(){
+      var i=1;
+      $('#add').click(function(){
+           i++;
+           $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td><td><button type="button" name="remove" id="'+i+'" class="btn btn-danger btn_remove">X</button></td></tr>');
+      });
+      $(document).on('click', '.btn_remove', function(){
+           var button_id = $(this).attr("id");
+           $('#row'+button_id+'').remove();
+      });
+      $('#submit').click(function(){
+           $.ajax({
+                url:"name.php",
+                method:"POST",
+                data:$('#add_name').serialize(),
+                success:function(data)
                 {
-                    alert(rt);
-                    $('#internship_details')[0].reset();
+                     alert(data);
+                     $('#add_name')[0].reset();
                 }
-            });
-        });
-    });
-</script>
+           });
+      });
+ });
+ </script>
 
       <!-- pie de paginal-->
       <div class="box-footer">
@@ -150,25 +159,3 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 </section>
 </div>
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-    var maxField = 10; //Input fields increment limitation
-    var addButton = $('.add_button'); //Add button selector
-    var wrapper = $('.field_wrapper'); //Input field wrapper
-    var fieldHTML = '<div><input type="text" name="field_name[]" value=""/><a href="javascript:void(0);" class="remove_button" title="Remove field"><img src="remove-icon.png"/></a></div>'; //New input field html
-    var x = 1; //Initial field counter is 1
-    $(addButton).click(function(){ //Once add button is clicked
-        if(x < maxField){ //Check maximum number of input fields
-            x++; //Increment field counter
-            $(wrapper).append(fieldHTML); // Add field html
-        }
-    });
-    $(wrapper).on('click', '.remove_button', function(e){ //Once remove button is clicked
-        e.preventDefault();
-        $(this).parent('div').remove(); //Remove field html
-        x--; //Decrement field counter
-    });
-});
-</script>
