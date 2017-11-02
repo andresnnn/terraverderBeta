@@ -9,9 +9,13 @@ class Tareas extends Admin_Controller{
     {
         parent::__construct();
                 /* Title Page :: Common */
-        $this->page_title->push(lang('menu_umbraculo'));
-        $this->data['pagetitle'] = $this->page_title->show();
-        $this->load->model('common/Tareas_model');
+                $this->load->model('common/Tareas_model');
+                /* Load :: Common */
+                $this->lang->load('admin/tareas');
+                /* Title Page :: Common */
+                $this->page_title->push(lang('menu_tarea'));
+                $this->data['pagetitle'] = $this->page_title->show();
+
 
     }
 
@@ -27,8 +31,12 @@ class Tareas extends Admin_Controller{
             {
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                // $data['tarea'] = $this->Tareas_model->get_all_tarea();
 
-                $data['tareas'] = $this->Tareas_model->get_all_tareas();
+        // $data['_view'] = 'tareas/index';
+        // $this->load->view('layouts/main',$data);
+
+                $data['tarea'] = $this->Tareas_model->get_all_tareas();
                 /* Load Template */
                 $this->template->admin_render('admin/tareas/index', $this->data);
 

@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Tareas <strong><?php echo $info_umbraculo['nombreUmbraculo']?></strong></h3>
+                                    <h3 class="box-title">Tareas </h3>
                                 </div>
                                     <div class="box-body">
                                     <table class="table table-striped table-hover">
@@ -28,7 +28,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Estado</th>
                                                 <th>Acciones</th>
                                             </tr>
-                                            <?php foreach($tareas as $t){ ?>
+                                            <?php foreach($tarea as $t){ ?>
                                             <tr>
                                                 <td><?php echo $t['nombreTipoTarea']; ?></td>
                                                 <td><?php echo $t['nombrePlanta']; ?></td>
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
                                                 <?php if ($t['idEstado'] == 1) {
                                                 //echo " <a href= 'atender/'.$u['idTarea'];"
-                                                echo anchor('common/umbraculos/atenderTarea/'.$info_umbraculo['idUmbraculo'].'/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));
+                                                echo anchor('common/tareas/atenderTarea/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));
                                                     //echo "<a href= atender/"; echo $t['idTarea'];
 
                                                   // echo" class='btn btn-danger btn-xs'><span class='fa fa-sign-language'></span> Atender</a>";
@@ -58,6 +58,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                 </section>
             <div class="box-footer" style="text-align: center;">
-                <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Volver</a>
+                <a href="<?php echo site_url('common/tareas'); ?>" class="btn btn-default btn-flat">Volver</a>
             </div>
             </div>

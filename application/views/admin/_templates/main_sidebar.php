@@ -76,14 +76,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </li>
                         <!-- Elemento -->
                         <li class="header text-uppercase">Administración tarea</li>
-                        <li class="<?=active_link_controller('common/tareas')?>">
+                        <li class="<?=active_link_controller('tareas/index')?>">
                             <a href="<?php echo site_url('common/tareas'); ?>">
-                                <i class="fa fa-user"></i> <span>Tareas</span>
+                                <i class="fa fa-sign-language"></i> <span>Tareas</span>
                             </a>
                         </li>
                         <li class="<?=active_link_controller('tipotareas')?>">
                             <a href="<?php echo site_url('common/tipotareas'); ?>">
-                                <i class="fa fa-user"></i> <span>Tipos de Tareas</span>
+                                <i class="fa fa-sign-language"></i> <span>Tipos de Tareas</span>
                             </a>
                         </li>
                     </ul>
