@@ -16,8 +16,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     
                     <ul class="sidebar-menu" style="margin: 2%;">
-
-
                         <li >
                             <a href="<?php echo site_url('principal'); ?>">
                                 <i class="fa fa-dashboard"></i> <span>Principal</span>
@@ -48,15 +46,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </a>
                         </li>
                         <!-- TITULO ELEMENTO-->
-                        <li class="text-uppercase">Plantas</li>
+                        <li class="text-uppercase">Especies & Plantas</li>
                         <!-- Botones links-->
                         <li>
-                            <a href="">
-                                <i class="fa fa-tasks"></i> <span>Consultar Plantas</span>
+                            <a href="<?php echo site_url('user/plantas_pla'); ?>">
+                                <i class="fa fa-tasks"></i> <span>Plantas</span>
                             </a>
                         </li>
-    
-
+                        <li>
+                            <a href="<?php echo site_url('user/especies_pla'); ?>">
+                                <i class="fa fa-tasks"></i> <span>Especies de planta</span>
+                            </a>
+                        </li>
                     </ul>
                 </section>
             </aside>

@@ -2,12 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>      
-
-
-
             <div class="wrapper">
                 <section id="main-content" class="content-header">
-                 <h3 class="box-title">Administración Insumos</h3>
+                 <h3 class="box-title">Administración Especies</h3>
                  
                     <div class="row">
                         <div class="col-md-12">
@@ -19,12 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title">Bienvenido</h3>
                                 </div>
                                 <div class="box-body">
-                                    
                                     <!-- CONTENIDO -->
 
 
                                     <!-- FIN CONTENIDO-->
-                                        
                                 </div>
                             </div>
                         </div>
