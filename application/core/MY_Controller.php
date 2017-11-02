@@ -15,6 +15,8 @@ class MY_Controller extends CI_Controller
         $this->load->library(array('form_validation', 'ion_auth', 'template', 'common/mobile_detect'));
         $this->load->helper(array('array', 'language', 'url'));
         $this->load->model('common/prefs_model');
+        /* Title Page :: Common */
+        $this->load->model('common/Tareas_model');
 
         /* Data */
         $this->data['lang']           = element($this->config->item('language'), $this->config->item('language_abbr'));
@@ -22,6 +24,8 @@ class MY_Controller extends CI_Controller
         $this->data['frameworks_dir'] = $this->config->item('frameworks_dir');
         $this->data['plugins_dir']    = $this->config->item('plugins_dir');
         $this->data['avatar_dir']     = $this->config->item('avatar_dir');
+        $this->data['notificacion'] = $this->Tareas_model->consultar_tareas(date('Y-m-d'));
+        $this->data['nro_noti'] = $this->Tareas_model->nro_tareas(date('Y-m-d'));
 
         /* Any mobile device (phones or tablets) */
         if ($this->mobile_detect->isMobile())

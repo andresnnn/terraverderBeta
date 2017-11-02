@@ -27,22 +27,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li class="dropdown tasks-menu">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="fa fa-flag-o"></i>
-                                    <span class="label label-danger">0</span>
+                                    <span class="label label-danger"><?php echo $nro_noti; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="header"><?php echo lang('header_you_have'); ?> 0 <?php echo lang('header_task'); ?></li>
+                                    <li class="header">Hay (<?php echo $nro_noti; ?>) nuevas tareas para hoy</li>
                                     <li>
                                         <ul class="menu">
-                                            <li><!-- start task -->
-                                                <a href="#">
-                                                    <h3>Design some buttons<small class="pull-right">20%</small></h3>
-                                                    <div class="progress xs">
-                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="sr-only">20% <?php echo lang('header_complete'); ?></span>
-                                                        </div>
-                                                    </div>
+                                            <!-- start task -->
+                                            <?php foreach($notificacion as $noti){ ?>
+                                            <li>
+                                            <!-- <?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?> -->
+                                                <a href="<?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?>">
+                                                    <strong><?php echo $noti['nombreTipoTarea'].": ".$noti['descripcionTarea'];; ?></strong>
+                                                    Umbráculo: <?php echo $noti['nombreUmbraculo']; ?><br>
+                                                    Sobre planta: <?php echo $noti['nombrePlanta']; ?><br>
+                                                    Hora de comienzo prevista: <?php echo $noti['horaComienzo']; ?>
                                                 </a>
-                                            </li><!-- end task -->
+                                            </li>
+                                            <?php } ?>
+                                            <!-- end task -->
                                         </ul>
                                     </li>
                                     <li class="footer"><a href="#"><?php echo lang('header_view_all'); ?></a></li>

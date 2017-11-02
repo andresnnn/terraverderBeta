@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<label for="idPlanta" class="control-label"><span class="text-danger">*</span>Planta</label>
 						<div class="form-group">
-                                <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>     
+                                <input onChange="habilitarAgregar();" disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>     
                                 <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar planta</button>                       
                                 <span class="text-danger"><?php echo form_error('idPlanta');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                                 <span id="estadoT" class="text-danger"></span><br>
@@ -52,9 +52,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 
 					<div class="col-md-6">
-						<label for="cantidad" class="control-label"><span class="text-danger">*</span>Cantidad</label>
+						<label class="control-label"><span class="text-danger">*</span>Cantidad</label>
 						<div class="form-group">
-							<input onChange="comprobarEspacio();" type="number" min="1" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
+							<input onChange="comprobarEspacio(); habilitarAgregar();" type="number" min="1" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
 							<span class="text-danger"><?php echo form_error('cantidad');?></span>
                             <span id="estadoEPP" class="text-danger"></span>
 						</div>
@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				</div>
 			</div>
             <div class="box-footer" style="text-align: center;">
-                <button id="bnAdd" type="submit" class="btn btn-primary btn-flat">Agregar</button>
+                <button disabled id="bnAdd" type="submit" class="btn btn-primary btn-flat">Agregar</button>
                 <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Cancelar</a>
             </div>  
             <?php echo form_close(); ?>
@@ -183,7 +183,6 @@ function cargarDatos(id) {
         document.getElementById('estadoT').innerHTML = '';
         document.getElementById('estadoL').innerHTML = '';
         document.getElementById('estadoH').innerHTML = '';
-        document.getElementById('bnAdd').disabled=false;
 
         /*SI ALGUNA DE LAS CONDICIONES NO ES COMPATIBLE CON LAS DEL UMBRÁCULO, APARECE ALGUNO DE LOS MENSAJES*/
         /*Y EL BOTON DE AGREGAR ESTARÁ DESHABILITADO*/
@@ -246,6 +245,16 @@ function cargarDatos(id) {
 
         /*SI LA CANTIDAD INGRESA*/
             
+    }
+
+    function habilitarAgregar()
+    {
+        
+        if (document.getElementById('').value != ' ' && document.getElementById('cantidad').value != ' ') 
+        {
+            document.getElementById('bnAdd').disabled=false;
+        }
+        
     }
 
 
