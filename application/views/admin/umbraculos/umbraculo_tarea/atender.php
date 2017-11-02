@@ -117,10 +117,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <!-- <span id="estadoH" class="text-danger"></span><br> -->
                                   <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
-<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
-                      <input type="text" name="idInsumoBD" id="idInsumoBD">
-                      <input type="text" name="cantidadBD" id="cantidadBD">
-                      <input type="hidden" name="stockBD" id="stockBD">
+
+
 
                       <!--FIN DE CAMPOS OCULTOS-->
             </div>
@@ -182,7 +180,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 			<?php echo form_close(); ?>
-		</div>
+      <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
+      <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea)?>
+      <input type="text" name="idInsumoBD" id="idInsumoBD">
+      <input type="text" name="cantidadBD" id="cantidadBD">
+      <input type="hidden" name="stockBD" id="stockBD">
+      <button type="submit"> ADD </button>
+      <?php echo form_close(); ?>
+    </div>
     </div>
 </div>
 </section>
