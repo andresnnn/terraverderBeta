@@ -30,6 +30,7 @@ class Tareas_model extends CI_Model
         return $this->db->get('tarea')->result_array();
     }
 
+
     /**
      * RETORNA EL LISTADO DE LAS TAREAS (CON UN LIMITE DE TRES ELEMENTOS, PARA SU PRESENTACIÓN EN EL "VER UMBRACULO")
      * JUNTO CON EL JOIN DE TODOS LOS CAMPOS RELACIONADOS A UNA TAREA.

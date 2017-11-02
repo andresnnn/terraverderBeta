@@ -91,7 +91,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col-md-6">
 						<label for="fechaAtencion" class="control-label"><span class="text-danger">*</span>Fecha Atención</label>
             <div class="form-group">
-              <input  readonly type="text" name="fechaAtencion" value="<?php $hoy = getdate(); $d = $hoy['mday']; $M = $hoy['mon']; $y = $hoy['year'];echo $d."-".$M."-".$y; ?>" class="has-datepicker form-control" id="fechaAtencion" />
+              <input  readonly type="text" name="fechaAtencion" value="<?php echo date('Y-m-d'); ?>" class="has-datepicker form-control" id="fechaAtencion" />
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
@@ -112,8 +112,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar Insumo</button>
                                   <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                                   <span id="estadoT" class="text-danger"></span><br>
-                                  <span id="estadoL" class="text-danger"></span><br>
-                                  <span id="estadoH" class="text-danger"></span><br>
+                                  <!-- <span id="estadoL" class="text-danger"></span><br> -->
+                                  <!-- <span id="estadoH" class="text-danger"></span><br> -->
                                   <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
                                     <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->

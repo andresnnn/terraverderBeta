@@ -51,6 +51,11 @@ $lang['menu_search'] = 'Buscar';
 /* *********** */$lang['menu_tipotarea_crear']  = 'Crear';
 /* *********** */$lang['menu_tipotarea_editar'] = 'Editar';
 
+/* ****** */$lang['menu_tarea'] 			= 'Administración tarea';
+/* *********** */$lang['menu_tarea_ver']    = 'Ver';
+/* *********** */$lang['menu_tarea_crear']  = 'Crear';
+/* *********** */$lang['menu_tarea_editar'] = 'Editar';
+
 /* ****** */$lang['menu_security_groups']       = 'Tipos de usuario';
 /* *********** */$lang['menu_groups_create']    = 'Crear';
 /* *********** */$lang['menu_groups_edit']      = 'Editar';
