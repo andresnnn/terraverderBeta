@@ -21,14 +21,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-body">
                 <table class="table table-striped">
                   <tr>
-                  <th>IdTipoTarea</th>
-                  <th>NombreTipoTarea</th>
-                  <th>DescripcionTarea</th>
-                  <th>Actions</th>
+                  <th>Nombre</th>
+                  <th>Descripción</th>
+                  <th>Acciones</th>
                   </tr>
                   <?php foreach($tipotarea as $t){ ?>
                   <tr>
-                  <td><?php echo $t['idTipoTarea']; ?></td>
                   <td><?php echo $t['nombreTipoTarea']; ?></td>
                   <td><?php echo $t['descripcionTarea']; ?></td>
                   <td>
