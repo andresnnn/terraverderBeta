@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<label class="control-label"><span class="text-danger">*</span>Cantidad</label>
 						<div class="form-group">
-							<input disabled onChange="comprobarEspacio();" type="number" min="1" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
+							<input onChange="comprobarEspacio(); habilitarAgregar();" type="number" min="1" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
 							<span class="text-danger"><?php echo form_error('cantidad');?></span>
                             <span id="estadoEPP" class="text-danger"></span>
 						</div>
@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?php echo $p['temperaturaMax']; ?></td>
                                 <td><?php echo $p['temperaturaMin']; ?></td>
                                 <td class="boton">
-                                    <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);comprobarCondiciones(); habilitarCampo();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
+                                    <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);comprobarCondiciones();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
                                 </td>
                             </tr>
                         <?php endif; ?>
@@ -183,7 +183,6 @@ function cargarDatos(id) {
         document.getElementById('estadoT').innerHTML = '';
         document.getElementById('estadoL').innerHTML = '';
         document.getElementById('estadoH').innerHTML = '';
-        document.getElementById('bnAdd').disabled=false;
 
         /*SI ALGUNA DE LAS CONDICIONES NO ES COMPATIBLE CON LAS DEL UMBRÁCULO, APARECE ALGUNO DE LOS MENSAJES*/
         /*Y EL BOTON DE AGREGAR ESTARÁ DESHABILITADO*/
@@ -250,13 +249,13 @@ function cargarDatos(id) {
 
     function habilitarAgregar()
     {
-        document.getElementById('bnAdd').disabled=false;
+        
+        if (document.getElementById('').value != ' ' && document.getElementById('cantidad').value != ' ') 
+        {
+            document.getElementById('bnAdd').disabled=false;
+        }
         
     }
 
-    function habilitarCampo()
-    {
-        document.getElementById('cantidad').disabled=false;
-    }
 
 </script>
