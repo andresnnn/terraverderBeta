@@ -180,14 +180,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 			<?php echo form_close(); ?>
-      <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
-      <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea)?>
-      <input type="text" name="idInsumoBD" id="idInsumoBD">
-      <input type="text" name="cantidadBD" id="cantidadBD">
-      <input type="hidden" name="stockBD" id="stockBD">
-      <button type="submit"> ADD </button>
-      <?php echo form_close(); ?>
+
+
     </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="box box-info">
+          <div class="box-header with-border">
+              <h3 class="box-title">Tarea Edit</h3>
+          </div>
+<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
+
+          <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea)?>
+          <div class="box-body">
+    				<div class="row clearfix">
+    					<div class="col-md-6">
+          <input type="text" name="idInsumoBD" id="idInsumoBD">
+          <input type="text" name="cantidadBD" id="cantidadBD">
+          <input type="hidden" name="stockBD" id="stockBD">
+          <button type="submit"> ADD </button>
+              </div>
+              </div>
+              </div>
+          <?php echo form_close(); ?>
+      </div>
     </div>
 </div>
 </section>
