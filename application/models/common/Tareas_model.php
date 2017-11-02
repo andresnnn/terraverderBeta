@@ -110,7 +110,13 @@ class Tareas_model extends CI_Model
                 WHERE tarea.fechaComienzo=('".$fecha."') AND tarea.idEstado = 1 OR tarea.idEstado= 3";
         return $this->db->query($query)->result_array();
       }
+      //agrego nuevo elemento en insumo/tarea
 
+      function add_insumoTarea($params)
+  {
+      $this->db->insert('insumo/tarea',$params);
+      return $this->db->insert_id();
+  }
       /**
        * Retorna la cantidad de tareas, para el día de la fecha
        * @param  [type] $fecha [description]
@@ -127,6 +133,8 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->num_rows();
 
       }
+
+
 
 
     /**

@@ -227,9 +227,10 @@ class Umbraculos extends Admin_Controller {
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
                 $this->data['insumos'] = $this->Tareas_model->get_all_insumo();
-
               /* libreria formulario*/
                   $this->load->library('form_validation');
+                  // $this->load->library('form_validation_insumo_tarea');
+                  // validaciones
                   $this->form_validation->set_rules('observacionEspecialista','observacionEspecialista','max_length[50]');
                   if($this->form_validation->run())
                         {
@@ -239,10 +240,19 @@ class Umbraculos extends Admin_Controller {
                     'idEstado' => $this->input->post('idEstado'),
                     'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     'idUserAtencion' => $this->input->post('idUserAtencion'),
-                          );
-
-
+                          );                // actualizar tarea
                   $this->Tareas_model->update_tareas($idTarea,$params);
+
+                  // if (isset(('idInsumoBD'))) {
+                    # code...
+                    $params2 = array(
+                      'idInsumo' => $this->input->post('idInsumoBD'),
+                      'idTarea' => $this->input->post('idTareaBD'),
+                      'cantidad' => $this->input->post('cantidadBD'),
+                                    );
+                    $this->Tareas_model->add_insumoTarea($params2);
+                  // }
+
                   redirect('common/umbraculos/verTareas/'.$idUmbraculo);
 
                 }
