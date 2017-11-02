@@ -9,10 +9,9 @@ class Insumos_pla extends Public_Controller {
         parent::__construct();
                         /*carga del modelo*/
         $this->load->model('admin/Insumos_model');
-
-         if (!$this->ion_auth->logged_in() )
+        if (!$this->ion_auth->logged_in() )
         {
-
+          redirect('auth/login', 'refresh');
         }
         else
         {
