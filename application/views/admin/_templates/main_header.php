@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <span class="label label-danger">0</span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="header"><?php echo lang('header_you_have'); ?> 0 <?php echo lang('header_task'); ?></li>
+                                    <li class="header"><?php echo "Hay "; ?> 0 <?php echo " nuevas tareas"; ?></li>
                                     <li>
                                         <ul class="menu">
                                             <li><!-- start task -->
