@@ -114,10 +114,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <span id="estadoT" class="text-danger"></span><br>
                 <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
+
+
             </div>
-            <!-- <div id="resultado">-->
-            <!-- <?php include('consulta.php');?> -->
-          <!-- </div> -->
         </div>
 			</div>
 
@@ -187,22 +186,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="box-header with-border">
               <h3 class="box-title">Insumo para agregar</h3>
           </div>
-
 <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
-<!-- common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea -->
-          <form name="insumo_tarea" action="" onsubmit="enviarDatosInsumos(); return false">
+
+          <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea)?>
           <div class="box-body">
     				<div class="row clearfix">
     					<div class="col-md-6">
           <input type="text" name="idInsumoBD" id="idInsumoBD">
           <input type="text" name="cantidadBD" id="cantidadBD">
-          <input type="hidden" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>">
           <input type="hidden" name="stockBD" id="stockBD">
           <button type="submit"> Agregar </button>
               </div>
               </div>
               </div>
-          </form>
+          <?php echo form_close(); ?>
       </div>
     </div>
 </div>
@@ -222,56 +219,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }
 </style>
 
-<!-- script ajax -->
+
 <script>
-// Función para recoger los datos de PHP según el navegador, se usa siempre.
-function objetoAjax(){
-	var xmlhttp=false;
-	try {
-		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-	} catch (e) {
 
-	try {
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	} catch (E) {
-		xmlhttp = false;
-	}
+var cont;
+var data;
+function onLoad()
+{
+  cont = document.getElementById("cont");
+  data = new Array();
 }
+function prueba(){
+  var request = new requestAjax();
+  request.onreadystatechange = function()
+  {
+  if (request.readyState==4 && request.status==200) {
+    if (request.responseXML != null) {
+      data[0]= request.responseXML.getElementsByTagName("cantidad").item(0);
+      cont.innerHTML+="cantidad";
+    }
 
-if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-	  xmlhttp = new XMLHttpRequest();
-	}
-	return xmlhttp;
+  }
+  }
 }
+function requestAjax()
+{
+  try{
+    var request = new XMLHttpRequest();
+  }catch(error1)
+  {
+    try {
+      var request = ActiveXObject("Msxm12.XMLHTTP")
+    } catch (error2) {
+      try {
+        var request = ActiveXObject("Microsft.XMLHTTP")
+      } catch (error3) {
+        var request = false;
+      }
+    }
+  }
 
-//Función para recoger los datos del formulario y enviarlos por post
-function enviarDatosInsumos(){
-
-  //div donde se mostrará lo resultados
-  // divResultado = document.getElementById('resultado');
-  //recogemos los valores de los inputs
-  cantidad=document.getElementById('cantidadBD').value ;
-  idInsumo=document.getElementById('idInsumoBD').value;
-  idTarea=document.getElementById('idTarea').value;
-  //instanciamos el objetoAjax
-  ajax=objetoAjax();
-  //uso del medotod POST
-  //archivo que realizará la operacion
-  //registro.php
-  ajax.open("POST", "common/umbraculos/agregarInsumoTarea",true);
-  //cuando el objeto XMLHttpRequest cambia de estado, la función se inicia
-  ajax.onreadystatechange=function() {
-	  //la función responseText tiene todos los datos pedidos al servidor
-  	if (ajax.readyState==4) {
-  		//mostrar resultados en esta capa
-		divResultado.innerHTML = ajax.responseText
-  		//llamar a funcion para limpiar los inputs
-		LimpiarCampos();
-	}
- }
-	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	//enviando los valores a registro.php para que inserte los datos
-	ajax.send("cantidad="+cantidad+"&idInsumo="+idInsumo+"&idTarea="+idTarea)
+  return request;
 }
 </script>
 
