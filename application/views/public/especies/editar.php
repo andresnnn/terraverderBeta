@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </div>
                                 <div class="box-body">
                                     <!-- CONTENIDO -->
-                                    <?php echo form_open('common/especies/editar/'.$especie['idEspecie']); ?>
+                                    <?php echo form_open('user/especies_pla/editar/'.$especie['idEspecie']); ?>
                                         <div class="box-body">
                                             <div class="row clearfix">
                                                 <div class="col-md-6">
@@ -94,7 +94,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                         <div class="box-footer">
                                             <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
-                                            <a href="<?php echo site_url('common/especies'); ?>" class="btn btn-default btn-flat">Cancelar</a>
+                                            <a href="<?php echo site_url('user/especies_pla'); ?>" class="btn btn-default btn-flat">Cancelar</a>
                                         </div>              
                                         <?php echo form_close(); ?>
                                     <!-- FIN CONTENIDO-->

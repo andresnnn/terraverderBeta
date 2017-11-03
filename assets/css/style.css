@@ -416,7 +416,7 @@ ul.sidebar-menu li a.active i {
 }
 
 .black-bg {
-    background: #C1E291;
+    background:url(img-bg.png) no-repeat bottom center scroll;
     border-bottom: 1px up #424a5d;
 }
 

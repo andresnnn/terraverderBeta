@@ -7,7 +7,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <div class="fa fa-bars tooltips" data-placement="right" data-original-title="Esconder navegador"></div>
               </div>
             <!--logo start-->
-            <a class="logo"><b>Terra</b>VERDE</a>
+            <a class="logo"><b>Terra</b>VERDE<img src="<?php echo base_url('assets/favicon/logo.png'); ?>"></a>
             <!--logo end-->
             <div class="nav notify-row" id="top_menu">
                 <!--  notification start -->
