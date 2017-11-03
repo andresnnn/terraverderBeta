@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <td><?php echo $t['fechaComienzo']; ?></td>
                                   <td><?php echo $t['nombreEstado']; ?></td>
                               </tr>
-                              
+
                               <?php } ?>
                       </table>
                       </div>
@@ -220,7 +220,44 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 
 
+<script>
 
+var cont;
+var data;
+function onLoad()
+{
+  cont = document.getElementById("cont");
+  data = new Array();
+}
+function prueba(){
+  var request = new requestAjax();
+  request.onreadystatechange = function()
+  {
+  if (request.readyState==4 && request.status==200) {
+
+  }
+  }
+}
+function requestAjax()
+{
+  try{
+    var request = new XMLHttpRequest();
+  }catch(error1)
+  {
+    try {
+      var request = ActiveXObject("Msxm12.XMLHTTP")
+    } catch (error2) {
+      try {
+        var request = ActiveXObject("Microsft.XMLHTTP")
+      } catch (error3) {
+        var request = false;
+      }
+    }
+  }
+
+  return request;
+}
+</script>
 
 
 <!-- script modal -->
