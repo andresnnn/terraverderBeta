@@ -27,6 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <th>Fecha Creación</th>
                                   <th>Fecha Prevista</th>
                                   <th>Estado Actual </th>
+
                               </tr>
                               <?php foreach($tarea as $t){ ?>
                               <tr>
@@ -39,13 +40,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <td><?php echo $t['fechaComienzo']; ?></td>
                                   <td><?php echo $t['nombreEstado']; ?></td>
                               </tr>
-                              <input type="hidden" name="idTareaBD" id="idTareaBD" value="<?php echo $t['idTarea']; ?>">
+                              
                               <?php } ?>
                       </table>
                       </div>
                   </div>
                 </div>
               </div>
+
 
   <div class="row">
     <div class="col-md-12">
@@ -57,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			<div class="box-body">
 				<div class="row clearfix">
 
-					<div class="col-md-3">
+					<div class="col-md-6">
 						<label for="idEstado" class="control-label">Estado Tarea</label>
 						<div class="form-group">
 							<select name="idEstado" class="form-control">
@@ -72,6 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								?>
 							</select>
 						</div>
+
 					</div>
 
 
@@ -92,12 +95,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
           </div>
-
 <?php foreach($tarea as $t){ ?>
       <div class="col-md-6">
             <label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>
             <div class="form-group">
-              <input type="text" name="observacionEspecialista" value="<?php echo ($this->input->post('observacionEspecialista') ? $this->input->post('observacionEspecialista') : $t['observacionEspecialista']); ?>" class="form-control" id="observacionEspecialista" />
+              <textarea  type="text" name="observacionEspecialista" value="<?php echo ($this->input->post('observacionEspecialista') ? $this->input->post('observacionEspecialista') : $t['observacionEspecialista']); ?>" class="form-control" id="observacionEspecialista" /> </textarea>
             </div>
           </div>
 <?php } ?>
@@ -106,39 +108,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-6">
               <label for="idInsumo" class="control-label"><span class="text-danger">*</span>Insumo</label>
               <div class="form-group">
-                                  <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>
-                                  <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar Insumo</button>
-                                  <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
-                                  <span id="estadoT" class="text-danger"></span><br>
-                                  <!-- <span id="estadoL" class="text-danger"></span><br> -->
-                                  <!-- <span id="estadoH" class="text-danger"></span><br> -->
-                                  <input type="hidden" min="0" name="idPlanta" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
+                <!-- <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/> -->
+                <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar Insumo</button>
+                <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
+                <span id="estadoT" class="text-danger"></span><br>
+                <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
-<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
-                      <input type="text" name="idInsumoBD" id="idInsumoBD">
-                      <input type="text" name="cantidadBD" id="cantidadBD">
-                      <input type="hidden" name="stockBD" id="stockBD">
 
-                      <!--FIN DE CAMPOS OCULTOS-->
+
             </div>
-
         </div>
 			</div>
-            <!-- seleccionar insumo -->
-            <div class="form-group">
-                                 <form name="add_name" id="add_name">
-                                      <div class="table-responsive">
-                                           <table class="table table-bordered" id="dynamic_field">
-                                                <tr>
-                                                     <td><input type="text" name="name[]" placeholder="Enter your Name" class="form-control name_list" /></td>
-                                                     <td><button type="button" name="add" id="add" class="btn btn-success">Add More</button></td>
-                                                </tr>
-                                           </table>
-                                           <input type="button" name="submit" id="submit" class="btn btn-info" value="Submit" />
-                                      </div>
-                                 </form>
-                            </div>
 
+      <!-- probando modal-->
+      <div class="container">
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" role="dialog">
+          <div style="overflow-x:auto;" class="modal-dialog modal-lg">
 
             <!-- Modal content-->
             <div class="modal-content">
@@ -161,7 +147,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
                                       <td > <?php echo $i['cantidad']; ?> </td>
-                                      <td> <input  id="cantidadUtilizada" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada"  /></td>
+                                      <td> <input  id="<?php echo 'canti'.$i['idInsumo'];?>" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada"  /></td>
 
                                       <td class="boton">
                                           <button onClick="javascript:cargarDatos(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
@@ -171,7 +157,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                           <?php } ?>
                       </table>
-                      <?php echo anchor('common/insumos/add', '<i class="fa fa-plus"> Agregar nuevo Insumo </i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nuevo insumo')); ?>
+                      <?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"> Agregar nuevo Insumo </i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nuevo insumo')); ?>
               </div>
               <div class="modal-footer">
               </div>
@@ -188,7 +174,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 			<?php echo form_close(); ?>
-		</div>
+
+
+    </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+      <div class="box box-info">
+          <div class="box-header with-border">
+              <h3 class="box-title">Insumo para agregar</h3>
+          </div>
+<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
+
+          <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea)?>
+          <div class="box-body">
+    				<div class="row clearfix">
+    					<div class="col-md-6">
+          <input type="text" name="idInsumoBD" id="idInsumoBD">
+          <input type="text" name="cantidadBD" id="cantidadBD">
+          <input type="hidden" name="stockBD" id="stockBD">
+          <button type="submit"> Agregar </button>
+              </div>
+              </div>
+              </div>
+          <?php echo form_close(); ?>
+      </div>
     </div>
 </div>
 </section>
@@ -206,6 +218,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     background-color: #f9f9f9;
 }
 </style>
+
+
 
 
 
@@ -228,8 +242,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author SAKZEDMK
  */
 function cargarDatos(id) {
-
-    document.getElementById('cantidadBD').value = document.getElementById('fila'+id).cells[2].value;
+    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
     document.getElementById('idInsumoBD').value = id;
 }
 

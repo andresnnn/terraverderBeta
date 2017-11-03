@@ -112,10 +112,10 @@ class Tareas_model extends CI_Model
       }
       //agrego nuevo elemento en insumo/tarea
 
-      function add_insumoTarea($params)
+      function add_insumoTarea($idTarea,$idInsumo,$cantidad)
   {
-      $this->db->insert('insumo/tarea',$params);
-      return $this->db->insert_id();
+      $query="INSERT INTO `insumo/tarea`(`idInsumo`, `idTarea`, `cantidadUtilizado`) VALUES (".$idInsumo.",".$idTarea.",".$cantidad.")";
+      $this->db->query($query);
   }
       /**
        * Retorna la cantidad de tareas, para el día de la fecha
@@ -129,7 +129,7 @@ class Tareas_model extends CI_Model
                 JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
                 JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
                 WHERE tarea.fechaComienzo=('".$fecha."') AND tarea.idEstado = 1 OR tarea.idEstado= 3";
-        
+
         return $this->db->query($query)->num_rows();
 
       }

@@ -243,16 +243,6 @@ class Umbraculos extends Admin_Controller {
                           );                // actualizar tarea
                   $this->Tareas_model->update_tareas($idTarea,$params);
 
-                  // if (isset(('idInsumoBD'))) {
-                    # code...
-                    $params2 = array(
-                      'idInsumo' => $this->input->post('idInsumoBD'),
-                      'idTarea' => $this->input->post('idTareaBD'),
-                      'cantidad' => $this->input->post('cantidadBD'),
-                                    );
-                    $this->Tareas_model->add_insumoTarea($params2);
-                  // }
-
                   redirect('common/umbraculos/verTareas/'.$idUmbraculo);
 
                 }
@@ -262,8 +252,17 @@ class Umbraculos extends Admin_Controller {
                   /* Load Template */
                   $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender',$this->data);
                 }
-              }}
+              }
+            }
 
+            /**
+            *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
+            **/
+            function agregarInsumoTarea($idUmbraculo,$idTarea)
+            {
+              $this->Tareas_model->add_insumoTarea($idTarea,$this->input->post('idInsumoBD'),$this->input->post('cantidadBD'));
+              redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
+            }
 
 
         /**
