@@ -34,7 +34,7 @@ class Tareas extends Admin_Controller{
         // $data['_view'] = 'tareas/index';
         // $this->load->view('layouts/main',$data);
 
-                $data['tarea'] = $this->Tareas_model->get_all_tareas();
+                $this->data['tarea'] = $this->Tareas_model->get_all_tareas();
                 /* Load Template */
                 $this->template->admin_render('admin/tareas/index', $this->data);
 
