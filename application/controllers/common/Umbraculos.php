@@ -245,12 +245,12 @@ class Umbraculos extends Admin_Controller {
 
                   // if (isset(('idInsumoBD'))) {
                     # code...
-                    $params2 = array(
-                      'idInsumo' => $this->input->post('idInsumoBD'),
-                      'idTarea' => $this->input->post('idTareaBD'),
-                      'cantidad' => $this->input->post('cantidadBD'),
-                                    );
-                    $this->Tareas_model->add_insumoTarea($params2);
+                    // $params2 = array(
+                    //   'idInsumo' => $this->input->post('idInsumoBD'),
+                    //   'idTarea' => $this->input->post('idTareaBD'),
+                    //   'cantidad' => $this->input->post('cantidadBD'),
+                    //                 );
+                    $this->Tareas_model->add_insumoTarea($idTarea,$this->input->post('idInsumoBD'),$this->input->post('cantidadBD'));
                   // }
 
                   redirect('common/umbraculos/verTareas/'.$idUmbraculo);
