@@ -108,15 +108,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-6">
               <label for="idInsumo" class="control-label"><span class="text-danger">*</span>Insumo</label>
               <div class="form-group">
-                <!-- <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/> -->
                 <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar Insumo</button>
                 <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                 <span id="estadoT" class="text-danger"></span><br>
                 <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
-
-
             </div>
+            
         </div>
 			</div>
 
@@ -186,20 +184,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="box-header with-border">
               <h3 class="box-title">Insumo para agregar</h3>
           </div>
-<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
 
-          <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea)?>
+<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
+<!-- common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea -->
+         <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
           <div class="box-body">
     				<div class="row clearfix">
     					<div class="col-md-6">
-          <input type="text" name="idInsumoBD" id="idInsumoBD">
+              <label> Nro del insumo: </label>
+              <input type="text" name="idInsumoBD" id="idInsumoBD">
+              </div>
+
+          <div class="col-md-6">
+          <label> Cantidad Utilizada: </label>
           <input type="text" name="cantidadBD" id="cantidadBD">
-          <input type="hidden" name="stockBD" id="stockBD">
+          <input type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>">
+
           <button type="submit"> Agregar </button>
               </div>
               </div>
               </div>
-          <?php echo form_close(); ?>
+              <?php echo form_close(); ?>
       </div>
     </div>
 </div>
@@ -219,72 +224,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }
 </style>
 
-
+<!-- script ajax -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
-
-var cont;
-var data;
-function onLoad()
-{
-  cont = document.getElementById("cont");
-  data = new Array();
+/** se carga los datos del modal al form principal;**/
+function cargarDatos(id) {
+   document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
+   document.getElementById('idInsumoBD').value = id;
+   // document.getElementById('idTarea').value = <?php echo $idTarea ?>;
 }
-function prueba(){
-  var request = new requestAjax();
-  request.onreadystatechange = function()
-  {
-  if (request.readyState==4 && request.status==200) {
-    if (request.responseXML != null) {
-      data[0]= request.responseXML.getElementsByTagName("cantidad").item(0);
-      cont.innerHTML+="cantidad";
-    }
-
-  }
-  }
-}
-function requestAjax()
-{
-  try{
-    var request = new XMLHttpRequest();
-  }catch(error1)
-  {
-    try {
-      var request = ActiveXObject("Msxm12.XMLHTTP")
-    } catch (error2) {
-      try {
-        var request = ActiveXObject("Microsft.XMLHTTP")
-      } catch (error3) {
-        var request = false;
-      }
-    }
-  }
-
-  return request;
-}
-</script>
-
-
-<!-- script modal -->
-<script>
-//FUNCION PARA ABRIR LA VENTANA MODAL
-//
-    $(document.ready(function(){
+    $(document).ready(function(){
+      /** FUNCION PARA ABRIR LA VENTANA MODAL**/
         $("#myBtn").click(function(){
             $("#myModal").modal();
         });
+        /** funcon para cargar a la base**/
+        $('form.jsform').on('submit', function(form){
+            form.preventDefault();
+            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform').serialize(), (data) => {} {
+                alert("hola");
+                $('div.jsError').html(data);
+            });
+        });
+        $('form.jsform').click('submit', function(form){
+
+
+        });
     });
-
-
-
-/**
- * [cargarDatos description]
- * @param  {[type]} id ES EL ID DE LA PLANTA DENTRO DE LA BD
- * @return {[type]}    [description]
- * @author SAKZEDMK
- */
-function cargarDatos(id) {
-    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
-    document.getElementById('idInsumoBD').value = id;
-}
-
 </script>
