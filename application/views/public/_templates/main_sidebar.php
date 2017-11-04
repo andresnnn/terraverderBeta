@@ -41,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <li class="text-uppercase">Umbráculos</li>
                         <!-- Botones links-->
                         <li>
-                            <a href="">
+                             <a href="<?php echo site_url('user/umbraculos_pla'); ?>">
                                 <i class="fa fa-dashboard"></i> <span>Consultar Umbráculos</span>
                             </a>
                         </li>
