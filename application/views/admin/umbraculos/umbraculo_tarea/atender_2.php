@@ -190,7 +190,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
 <!-- common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea -->
-         <?php echo form_open('common/umbraculos/agregarInsumoTarea', array('class'=>'jsform')); ?>
+          <form name="insumo_tarea" action="" onsubmit="enviarDatosInsumos(); return false">
           <div class="box-body">
     				<div class="row clearfix">
     					<div class="col-md-6">
@@ -207,7 +207,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
               </div>
               </div>
-              <?php echo form_close(); ?>
+          </form>
       </div>
     </div>
 </div>
@@ -228,18 +228,50 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 
 <!-- script ajax -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-
 <script>
-    $(document).ready(function(){
-        $('form.jsform').on('submit', function(form){
-            form.preventDefault();
-            $.post('/atender.php/common/umbraculos/agregarInsumoTarea', $('form.jsform').serialize(), function(data){
-                alert("hola");
-                $('div.jsError').html(data);
-            });
-        });
-    });
+// Función para recoger los datos de PHP según el navegador, se usa siempre.
+function objetoAjax(){
+	var xmlhttp=false;
+	try {
+		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
+	} catch (e) {
+
+	try {
+		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+	} catch (E) {
+		xmlhttp = false;
+	}
+}
+
+if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
+	  xmlhttp = new XMLHttpRequest();
+	}
+	return xmlhttp;
+}
+
+//Función para recoger los datos del formulario y enviarlos por post
+function enviarDatosInsumos(){
+  var cantidad=document.getElementById('cantidadBD').value ;
+  var idInsumo=document.getElementById('idInsumoBD').value;
+  var idTarea=document.getElementById('idTarea').value;
+  alert("hola");
+
+  ajax=objetoAjax();
+
+  ajax.open("POST", 'common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea,true);
+
+  ajax.onreadystatechange=function() {
+
+  	if (ajax.readyState==4) {
+
+		divResultado.innerHTML = ajax.responseText
+
+	}
+ }
+	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+	//enviando los valores a registro.php para que inserte los datos
+	ajax.send("cantidad="+cantidad+"&idInsumo="+idInsumo+"&idTarea="+idTarea)
+}
 </script>
 
 
