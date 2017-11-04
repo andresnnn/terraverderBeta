@@ -189,10 +189,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="box-body">
     				<div class="row clearfix">
                 <table class="table table-striped table-hover">
+                  <tr>
+                  <div></div>
+                      <th>Nro Tarea</th>
+                      <th>Nro Insumo</th>
+                      <th>Cantidad Requerida</th>
+                      <th>Acciones</th>
+                  </tr>
     					<tr>
-        <td>  <input type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
-        <td>  <input type="text" name="idInsumoBD" id="idInsumoBD"> </td>
-        <td>  <input type="text" name="cantidadBD" id="cantidadBD"> </td>
+        <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
+        <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
+        <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
         <td>  <button type="submit"> Agregar </button> </td>
               </tr>
                 </table>
@@ -219,13 +226,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </style>
 
 
-
-
-
 <!-- script modal -->
 <script>
 //FUNCION PARA ABRIR LA VENTANA MODAL
-//
     $(document.ready(function(){
         $("#myBtn").click(function(){
             $("#myModal").modal();
@@ -233,12 +236,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         // funcion de ajax
         $('form.jsform').on('submit', function(form){
             form.preventDefault();
-            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform').serialize(), (data) => {} {
-                alert("hola");
+            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
                 $('div.jsError').html(data);
             });
         });
-
     });
 
 
