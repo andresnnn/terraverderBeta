@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
+ <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 <div class="content-wrapper">
     <section class="content-header">
         <?php echo $pagetitle; ?>
@@ -184,6 +184,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <h3 class="box-title">Insumo utilizados en la tarea</h3>
           </div>
 <!--formulario para cargar a la base los insumos en la tarea-->
+
           <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
 
           <div class="box-body">
@@ -200,7 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
         <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
         <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
-        <td>  <button type="submit" id="btnAgregar" name="btnAgregar"> Agregar </button> </td>
+        <td>  <input type="submit"   id="btnAgregar" name="btnAgregar" value="Agregar"> </td>
               </tr>
                 </table>
               </div>
@@ -209,6 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 </div>
+<div id="result"></div>
 </section>
 </div>
 
@@ -228,20 +230,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- script modal -->
 <script>
-//FUNCION PARA ABRIR LA VENTANA MODAL
-    $(document.ready(function(){
-        $("#myBtn").click(function(){
-            $("#myModal").modal();
-        });
-        // funcion de ajax
-        $('btnAgregar').on('click', function(e){
-            e.preventDefault();
-            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
-                $('div.jsError').html(data);
-                  }).done(function() { alert('Request done!');
-          });
-        });
+function cargarDatos(id) {
+    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
+    document.getElementById('idInsumoBD').value = id;
+}
+$('form.jsform').on('submit', function(form){
+  var cantidad =  $('#cantidadBD').val();
+  var idInsumo =  $('#idInsumoBD').val();
+  var idTarea =  $('#idTarea').val();
+    alert("hola");
+    form.preventDefault();
+    $.ajax({
+      url: '/atender.php/common/umbraculos.php/agregarInsumoTarea', data:'cantidad='+cantidad,
+      success: function(data){}
     });
+
+
+  });
+
+
+
+
+
 
 
 
@@ -251,9 +261,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @return {[type]}    [description]
  * @author SAKZEDMK
  */
-function cargarDatos(id) {
-    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
-    document.getElementById('idInsumoBD').value = id;
-}
+
 
 </script>

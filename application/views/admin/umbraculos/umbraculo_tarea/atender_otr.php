@@ -228,19 +228,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- script modal -->
 <script>
-//FUNCION PARA ABRIR LA VENTANA MODAL
-    $(document.ready(function(){
-        $("#myBtn").click(function(){
-            $("#myModal").modal();
-        });
-        // funcion de ajax
+
+
         $('form.jsform').on('submit', function(form){
             form.preventDefault();
             $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
                 $('div.jsError').html(data);
             });
         });
-    });
+
 
 
 
