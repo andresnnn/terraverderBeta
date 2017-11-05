@@ -158,6 +158,22 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+
+    function listar_tareas()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    ORDER BY t.fechaCreacion DESC";
+        return $this->db->query($query)->result_array();
+    }
+
     /*
      * function to add new tareas
      */
