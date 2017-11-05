@@ -234,11 +234,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $("#myModal").modal();
         });
         // funcion de ajax
-        $('btnAgregar').on('click', function(form){
-            form.preventDefault();
+        $('btnAgregar').on('click', function(e){
+            e.preventDefault();
             $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
                 $('div.jsError').html(data);
-            });
+                  }).done(function() { alert('Request done!');
+          });
         });
     });
 

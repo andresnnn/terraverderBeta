@@ -262,7 +262,7 @@ class Umbraculos extends Admin_Controller {
             {
               $this->Tareas_model->add_insumoTarea($this->input->post('idTarea'),$this->input->post('idInsumoBD'),$this->input->post('cantidadBD'));
               // redirect('#');
-              redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
+              // redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
             }
 
 
