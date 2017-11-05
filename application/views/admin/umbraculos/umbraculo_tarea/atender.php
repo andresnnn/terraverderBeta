@@ -201,7 +201,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
         <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
         <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
-        <td>  <input type="submit" id="btnAgregar" name="btnAgregar" value="Agregar"> </td>
+        <td>  <input type="submit"   id="btnAgregar" name="btnAgregar" value="Agregar"> </td>
               </tr>
                 </table>
               </div>
@@ -230,22 +230,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- script modal -->
 <script>
-//FUNCTION to open the MODAL window
-    $(document.ready(function(){
-        $("#myBtn").click(function(){
-            $("#myModal").modal();
-        });
-        //FUNCTION ajax
-        $("#jsform").submit( function(e){
-
-            e.preventDefault();
-            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
-             $('div.jsError').html(data);
-             return false;
-            });
-            return false;
-        });
+function cargarDatos(id) {
+    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
+    document.getElementById('idInsumoBD').value = id;
+}
+$('form.jsform').on('submit', function(form){
+  var cantidad =  $('#cantidadBD').val();
+  var idInsumo =  $('#idInsumoBD').val();
+  var idTarea =  $('#idTarea').val();
+    alert("hola");
+    form.preventDefault();
+    $.ajax({
+      url: '/atender.php/common/umbraculos.php/agregarInsumoTarea', data:'cantidad='+cantidad,
+      success: function(data){}
     });
+
+
+  });
+
+
+
+
 
 
 
@@ -256,9 +261,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @return {[type]}    [description]
  * @author SAKZEDMK
  */
-function cargarDatos(id) {
-    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
-    document.getElementById('idInsumoBD').value = id;
-}
+
 
 </script>
