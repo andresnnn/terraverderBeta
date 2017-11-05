@@ -108,16 +108,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-6">
               <label for="idInsumo" class="control-label"><span class="text-danger">*</span>Insumo</label>
               <div class="form-group">
-                <!-- <input disabled class="form-control" type="text" name="nombre" id="nombre" value=""/> -->
                 <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar Insumo</button>
                 <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                 <span id="estadoT" class="text-danger"></span><br>
                 <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
               </div>
             </div>
-            <!-- <div id="resultado">-->
-            <!-- <?php include('consulta.php');?> -->
-          <!-- </div> -->
         </div>
 			</div>
 
@@ -185,29 +181,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <div class="col-md-12">
       <div class="box box-info">
           <div class="box-header with-border">
-              <h3 class="box-title">Insumo para agregar</h3>
+              <h3 class="box-title">Insumo utilizados en la tarea</h3>
           </div>
+<!--formulario para cargar a la base los insumos en la tarea-->
+          <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
 
-<!--CAMPOS QUE VAN A SER ENVIADOS AL CONTROLADOR PARA CARGARSE EN LA 'BD'-->
-<!-- common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea -->
-          <form name="insumo_tarea" action="" onsubmit="enviarDatosInsumos(); return false">
           <div class="box-body">
     				<div class="row clearfix">
-    					<div class="col-md-6">
-              <label> Nro del insumo: </label>
-              <input type="text" name="idInsumoBD" id="idInsumoBD">
+                <table class="table table-striped table-hover">
+                  <tr>
+                  <div></div>
+                      <th>Nro Tarea</th>
+                      <th>Nro Insumo</th>
+                      <th>Cantidad Requerida</th>
+                      <th>Acciones</th>
+                  </tr>
+    					<tr>
+        <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
+        <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
+        <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
+        <td>  <button type="submit" id="btnAgregar" name="btnAgregar"> Agregar </button> </td>
+              </tr>
+                </table>
               </div>
-
-          <div class="col-md-6">
-          <label> Cantidad Utilizada: </label>
-          <input type="text" name="cantidadBD" id="cantidadBD">
-          <input type="hidden" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>">
-
-          <button type="submit"> Agregar </button>
               </div>
-              </div>
-              </div>
-          </form>
+          <?php echo form_close(); ?>
       </div>
     </div>
 </div>
@@ -227,61 +225,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 }
 </style>
 
-<!-- script ajax -->
-<script>
-// Función para recoger los datos de PHP según el navegador, se usa siempre.
-function objetoAjax(){
-	var xmlhttp=false;
-	try {
-		xmlhttp = new ActiveXObject("Msxml2.XMLHTTP");
-	} catch (e) {
-
-	try {
-		xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-	} catch (E) {
-		xmlhttp = false;
-	}
-}
-
-if (!xmlhttp && typeof XMLHttpRequest!='undefined') {
-	  xmlhttp = new XMLHttpRequest();
-	}
-	return xmlhttp;
-}
-
-//Función para recoger los datos del formulario y enviarlos por post
-function enviarDatosInsumos(){
-  var cantidad=document.getElementById('cantidadBD').value ;
-  var idInsumo=document.getElementById('idInsumoBD').value;
-  var idTarea=document.getElementById('idTarea').value;
-  alert("hola");
-
-  ajax=objetoAjax();
-
-  ajax.open("POST", 'common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea,true);
-
-  ajax.onreadystatechange=function() {
-
-  	if (ajax.readyState==4) {
-
-		divResultado.innerHTML = ajax.responseText
-
-	}
- }
-	ajax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-	//enviando los valores a registro.php para que inserte los datos
-	ajax.send("cantidad="+cantidad+"&idInsumo="+idInsumo+"&idTarea="+idTarea)
-}
-</script>
-
 
 <!-- script modal -->
 <script>
 //FUNCION PARA ABRIR LA VENTANA MODAL
-//
     $(document.ready(function(){
         $("#myBtn").click(function(){
             $("#myModal").modal();
+        });
+        // funcion de ajax
+        $('form.jsform').on('submit', function(form){
+            form.preventDefault();
+            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
+                $('div.jsError').html(data);
+            });
         });
     });
 

@@ -200,7 +200,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
         <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
         <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
-        <td>  <button type="submit"> Agregar </button> </td>
+        <td>  <button type="submit" id="btnAgregar" name="btnAgregar"> Agregar </button> </td>
               </tr>
                 </table>
               </div>
@@ -234,7 +234,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $("#myModal").modal();
         });
         // funcion de ajax
-        $('form.jsform').on('submit', function(form){
+        $('btnAgregar').on('click', function(form){
             form.preventDefault();
             $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
                 $('div.jsError').html(data);
