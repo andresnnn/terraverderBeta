@@ -12,16 +12,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="tab-content">
                     <!-- Home tab content -->
                     <div class="tab-pane active" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Actividad reciente</h3>
-
-                        <h3 class="control-sidebar-heading">Progreso de programación</h3>
+                        <h3 class="control-sidebar-heading">Manual de usuario</h3>
                         <ul class="control-sidebar-menu">
                             <li>
-                                <a href="#">
-                                    <h4 class="control-sidebar-subheading">Adaptación plantilla a nuestro sistema<span class="label label-danger pull-right">40%</span></h4>
-                                    <div class="progress progress-xxs">
-                                        <div class="progress-bar progress-bar-danger" style="width:40%"></div>
-                                    </div>
+                                <a href="<?php echo base_url('upload/manual_usuarios.pdf'); ?>" target="_blank">
+                                    Ver manual de uso
                                 </a>
                             </li>
                         </ul>

@@ -5,19 +5,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <aside class="main-sidebar">
                 <section class="sidebar">
-<?php if ($admin_prefs['user_panel'] == TRUE): ?>
-                    <!-- Sidebar user panel -->
-                    <div class="user-panel">
-                        <div class="pull-left image">
-                            <img src="<?php echo base_url($avatar_dir . '/m_001.png'); ?>" class="img-circle" alt="User Image">
-                        </div>
-                        <div class="pull-left info">
-                            <p><?php echo $user_login['firstname']." ".$user_login['lastname'];  ?></p>
-                            <a href="#"><i class="fa fa-circle text-success"></i> <?php echo lang('menu_online'); ?></a>
-                        </div>
-                    </div>
+                    <?php if ($admin_prefs['user_panel'] == TRUE): ?>
+                                        <!-- Sidebar user panel -->
+                                        <div class="user-panel">
+                                            <div class="pull-left image">
+                                                <img src="<?php echo base_url($avatar_dir . '/m_001.png'); ?>" class="img-circle" alt="User Image">
+                                            </div>
+                                            <div class="pull-left info">
+                                                <p><?php echo $user_login['firstname']." ".$user_login['lastname'];  ?></p>
+                                                <a href="#"><i class="fa fa-circle text-success"></i> <?php echo lang('menu_online'); ?></a>
+                                            </div>
+                                        </div>
 
-<?php endif; ?>
+                    <?php endif; ?>
 
                     <!-- Sidebar menu -->
                     <ul class="sidebar-menu">

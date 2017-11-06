@@ -41,7 +41,7 @@ class Tareas extends Admin_Controller{
             }
     }
 
-    /**
+    /*
      AGREGAR TAREA DENTRO DE UMBRACULO
      */
 function agregarTarea($idUmbraculo)
@@ -174,6 +174,5 @@ function agregarTarea($idUmbraculo)
                 $this->template->admin_render('admin/tareas/detalles', $this->data);
             }
     }
-
 
 }

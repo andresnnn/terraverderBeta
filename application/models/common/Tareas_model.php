@@ -220,4 +220,42 @@ class Tareas_model extends CI_Model
     {
         return $this->db->delete('tarea',array('idTarea'=>$idTarea));
     }
+
+    function get_plantas_nombre($idTarea)
+{
+    $query = "SELECT planta.nombrePlanta FROM `tarea` JOIN planta ON planta.idPlanta = `tarea`.idPlanta WHERE `tarea`.idTarea=".$idTarea;
+
+    return $this->db->query($query)->row_array();
+}
+
+
+function get_umbraculo_nombre($idTarea)
+{
+    $query = "SELECT umbraculo.nombreUmbraculo FROM `tarea` JOIN umbraculo ON umbraculo.idUmbraculo = `tarea`.idUmbraculo WHERE `tarea`.idTarea=".$idTarea;
+
+    return $this->db->query($query)->row_array();
+}
+
+function get_tipotarea_nombre($idTarea)
+{
+    $query = "SELECT tipotarea.nombreTipoTarea FROM `tarea` JOIN tipotarea ON tipotarea.idTipoTarea = `tarea`.idTipoTarea WHERE `tarea`.idTarea=".$idTarea;
+
+    return $this->db->query($query)->row_array();
+}
+
+function get_estadoTarea_nombre($idTarea)
+{
+    $query = "SELECT estado_tarea.nombreEstado FROM `tarea` JOIN estado_tarea ON estado_tarea.idEstado = `tarea`.idEstado WHERE `tarea`.idTarea=".$idTarea;
+
+    return $this->db->query($query)->row_array();
+}
+
+function get_users_nombre($idTarea)
+{
+    $query = "SELECT users.email FROM `tarea` JOIN users ON users.id = `tarea`.idUserCreador WHERE `tarea`.idTarea=".$idTarea;
+
+    return $this->db->query($query)->row_array();
+}
+
+
 }
