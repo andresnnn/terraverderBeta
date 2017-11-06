@@ -21,6 +21,25 @@ class Tareas_model extends CI_Model
         return $this->db->get_where('tarea',array('idTarea'=>$idTarea))->row_array();
     }
 
+    /**
+     * Ver detalles de tarea completo
+     * @author SAKZEDMK
+     */
+    function ver_detalles_tarea($idTarea)
+    {
+      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo
+              FROM tarea
+              JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
+              JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
+              JOIN estado_tarea ON estado_tarea.idEstado = tarea.idEstado
+              JOIN planta ON planta.idPlanta = tarea.idPlanta
+              LEFT OUTER JOIN users creo ON creo.id = tarea.idUserCreador
+              LEFT OUTER JOIN users uso ON uso.id = tarea.idUserAtencion
+
+              WHERE idTarea=".$idTarea;
+        return $this->db->query($query)->result_array();
+    }
+
     /*
      * Get all tareas
      */

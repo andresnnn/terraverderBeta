@@ -113,9 +113,6 @@ function agregarTarea($idUmbraculo)
                     else{
                       echo "error";
                       redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
-
-
-
                     }
                 }
                 else
@@ -145,87 +142,38 @@ function agregarTarea($idUmbraculo)
                 }
     }
 
-
-
-
-
-    /*
-     * Editing a tareas
-     */
-/*    function edit($idTarea)
+    function selecciona_umbraculo ()
     {
-        // check if the tareas exists before trying to edit it
-        $data['tareas'] = $this->Tareas_model->get_tareas($idTarea);
-
-        if(isset($data['tareas']['idTarea']))
-        {
-            $this->load->library('form_validation');
-
-            $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
-            $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
-            $this->form_validation->set_rules('fechaAtencion','FechaAtencion','required');
-            $this->form_validation->set_rules('fechaComienzo','fechaComienzo','required');
-            $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
-
-            if($this->form_validation->run())
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
             {
-                $params = array(
-                    'idTipoTarea' => $this->input->post('idTipoTarea'),
-                    'idEstado' => $this->input->post('idEstado'),
-                    'idUserAtencion' => $this->input->post('idUserAtencion'),
-                    'idUserCreador' => $this->input->post('idUserCreador'),
-                    'idPlanta' => $this->input->post('idPlanta'),
-                    'idUmbraculo' => $this->input->post('idUmbraculo'),
-                    'fechaCreacion' => $this->input->post('fechaCreacion'),
-                    'fechaAtencion' => $this->input->post('fechaAtencion'),
-                    'fechaComienzo' => $this->input->post('fechaComienzo'),
-                    'observacionEspecialista' => $this->input->post('observacionEspecialista'),
-                );
-
-                $this->Tareas_model->update_tareas($idTarea,$params);
-                redirect('tareas/index');
+                redirect('auth/login', 'refresh');
             }
             else
             {
-                $this->load->model('Tipotarea_model');
-                $data['all_tipotarea'] = $this->Tipotarea_model->get_all_tipotarea();
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                $this->load->model('common/Umbraculos_model');
+                $this->data['all_umbraculo'] = $this->Umbraculos_model->get_all_umbraculos();
 
-                $this->load->model('Estado tarea_model');
-                $data['all_estado tarea'] = $this->Estado tarea_model->get_all_estado tarea();
-
-                $this->load->model('User_model');
-                $data['all_users'] = $this->User_model->get_all_users();
-                $data['all_users'] = $this->User_model->get_all_users();
-
-                $this->load->model('Plantum_model');
-                $data['all_planta'] = $this->Plantum_model->get_all_planta();
-
-                $this->load->model('Umbraculo_model');
-                $data['all_umbraculo'] = $this->Umbraculo_model->get_all_umbraculo();
-
-                $data['_view'] = 'tarea/edit';
-                $this->load->view('layouts/main',$data);
+                $this->template->admin_render('admin/tareas/elegir', $this->data);
             }
-        }
-        else
-            show_error('The tareas you are trying to edit does not exist.');
-    } */
 
-    /*
-     * Deleting tareas
-     */
-/*    function remove($idTarea)
+    }
+
+    function ver_detalles($idTarea)
     {
-        $tareas = $this->Tareas_model->get_tareas($idTarea);
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                $this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
+                $this->template->admin_render('admin/tareas/detalles', $this->data);
+            }
+    }
 
-        // check if the tareas exists before trying to delete it
-        if(isset($tareas['idTarea']))
-        {
-            $this->Tareas_model->delete_tareas($idTarea);
-            redirect('tareas/index');
-        }
-        else
-            show_error('The tareas you are trying to delete does not exist.');
-    }*/
 
 }

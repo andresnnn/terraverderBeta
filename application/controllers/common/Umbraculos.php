@@ -211,6 +211,33 @@ class Umbraculos extends Admin_Controller {
 
                 }
             }
+
+            /**
+             * Ver detalles tarea dentro del umbráculo
+             * @param  [type] $idTarea [description]
+             * @return [type]          [description]
+             */
+                function ver_detalles_tarea($idUmbraculo,$idTarea)
+                {
+                    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                        {
+                            redirect('auth/login', 'refresh');
+                        }
+                        else
+                        {
+                            /* Breadcrumbs */
+                            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                             $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
+                            $this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
+                            $this->template->admin_render('admin/umbraculos/umbraculo_tarea/detalles', $this->data);
+                        }
+                }
+            /**
+             * [atenderTarea description]
+             * @param  [type] $idUmbraculo [description]
+             * @param  [type] $idTarea     [description]
+             * @return [type]              [description]
+             */
             function atenderTarea($idUmbraculo,$idTarea)
             {
               if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
@@ -406,23 +433,5 @@ class Umbraculos extends Admin_Controller {
 
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
     }
-
-    /*
-     * Deleting umbraculos
-
-    function remove($idUmbraculo)
-    {
-        $umbraculos = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-
-        // check if the umbraculos exists before trying to delete it
-        if(isset($umbraculos['idUmbraculo']))
-        {
-            $this->Umbraculos_model->delete_umbraculos($idUmbraculo);
-            redirect('umbraculos/index');
-        }
-        else
-            show_error('The umbraculos you are trying to delete does not exist.');
-    }*/
-
 
 }

@@ -14,7 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Tareas </h3>
+                                    <h3 class="box-title"><?php echo anchor('common/tareas/selecciona_umbraculo', '<i class="fa fa-plus"></i> '. 'Crear nueva tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                 </div>
                                     <div class="box-body">
                                     <table class="table table-striped table-hover">
@@ -39,14 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['nombreEstado']; ?></td>
 
                                                 <td>
-                                                    <a href="<?php echo site_url('common/tarea/profile/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
+                                                    <a href="<?php echo site_url('common/tareas/ver_detalles/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
                                                     <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
                                                     <?php if ($t['idEstado'] == 1 || $t['idEstado'] == 3) {
                                                     //echo " <a href= 'atender/'.$u['idTarea'];"
                                                     echo anchor('common/atenderTarea/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));
-                                                        //echo "<a href= atender/"; echo $t['idTarea'];
-
-                                                      // echo" class='btn btn-danger btn-xs'><span class='fa fa-sign-language'></span> Atender</a>";
                                                     } ?>
                                                 </td>
                                             </tr>
@@ -57,7 +54,4 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               </div>
                             </div>
                 </section>
-            <div class="box-footer" style="text-align: center;">
-                <a href="<?php echo site_url('common/tareas'); ?>" class="btn btn-default btn-flat">Volver</a>
-            </div>
             </div>
