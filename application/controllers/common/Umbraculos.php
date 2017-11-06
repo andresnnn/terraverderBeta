@@ -260,7 +260,7 @@ class Umbraculos extends Admin_Controller {
             **/
             function agregarInsumoTarea()
             {
-
+              echo "holas";
                           //variables POST
               $cantidad=$_POST['cantidad'];
               $idInsumo=$_POST['idInsumo'];
@@ -270,7 +270,7 @@ class Umbraculos extends Admin_Controller {
 
 
               // redirect('#');
-                redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
+                // redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
             }
 
 

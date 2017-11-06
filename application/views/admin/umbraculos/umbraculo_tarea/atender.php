@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
+<script type="text/javascript">
+var base_url = "<?php echo base_url(); ?>";
+</script>
 
 <div class="content-wrapper">
     <section class="content-header">
@@ -232,6 +235,8 @@ integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
 crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
+
+
 function cargarDatos(id) {
     document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
     document.getElementById('idInsumoBD').value = id;
@@ -242,9 +247,10 @@ $('form.jsform').on('submit', function(form){
   var idTarea =  $('#idTarea').val();
 
     form.preventDefault();
-    $.post('<?php echo base_url(); ?>atender.php/common/umbraculos/agregarInsumoTarea', {
-      cantidad:cantidad, IdInsumo:idInsumo, idTarea:+idTarea
-    }, function(response,status){ } );
+    $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
+      cantidad:cantidad, idInsumo:idInsumo, idTarea:+idTarea
+    }, function(response,status){
+    alert("hola"); } );
   });
 
 
