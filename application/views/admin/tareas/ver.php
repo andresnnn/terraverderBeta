@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="box-header with-border ">
                                     <h3 class="box-title">Detalles de la tarea nro. <?php echo $tarea['idTarea']; ?> </h3>
                                 </div>
-                                <div class="box-body ">
+                                <div class="box-body">
                                     <table class="table table-striped">
                                         <tbody>
                                             <tr>
@@ -34,11 +34,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </tr>
                                             <tr>
                                                 <th>Creo la tarea</th>
-                                                <td><?php echo $tarea['idUserCreador']; ?></td>
+                                                <td>(ID:<?php echo $tarea['idUserCreador']; ?>) - <?php echo $user['email']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Atendio la tarea</th>
-                                                <td><?php echo $tarea['idUserAtencion']; ?></td>
+                                                <td>(ID:<?php echo $tarea['idUserCreador']; ?>) - <?php echo $user['email']; ?></td>
                                             </tr>
                                             <tr>
                                                 <th>Planta intervenida</th>
@@ -48,10 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Umbraculo donde se realizo</th>
                                                 <td><?php echo $umbraculo['nombreUmbraculo']; ?></td>
                                             </tr>
-                                            <tr>
-                                                <th>Insumo a utilizar</th>
-                                                <td><?php echo $insumo['nombreInsumo']; ?></td>
-                                            </tr>
+
                                             <tr>
                                                 <th>Fecha de creacion</th>
                                                 <td><?php echo $tarea['fechaCreacion']; ?></td>
@@ -64,16 +61,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Observaciones del especialista</th>
                                                 <td><?php echo $tarea['observacionEspecialista']; ?></td>
                                             </tr>
-                                            <tr>
-                                                <th>Observaciones del planificador</th>
-                                                <td><?php echo $tarea['observacionCreador']; ?></td>
-                                            </tr>
+
 
                                         </tbody>
                                     </table>
                                 </div>
                                 <div>
-                                  <a href="<?php echo site_url('common/tareas/remove/'.$tarea['idTarea']); ?>" class="btn btn-danger btn-xl btn-block"><span class="fa fa-trash"></span>Eliminar la tarea <?php echo $tarea['idTarea']; ?></a>
 
                                 </div>
                             </div>

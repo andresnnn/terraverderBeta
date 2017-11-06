@@ -41,7 +41,7 @@ class Tareas extends Admin_Controller{
             }
     }
 
-    /**
+    /*
      AGREGAR TAREA DENTRO DE UMBRACULO
      */
 function agregarTarea($idUmbraculo)
@@ -227,5 +227,38 @@ function agregarTarea($idUmbraculo)
         else
             show_error('The tareas you are trying to delete does not exist.');
     }*/
+     function profile($idTarea)
+      {
+          if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+          {
+              redirect('auth/login', 'refresh');
+          }
+          else
+          {
+              /* Breadcrumbs */
+              $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+              /* Data */
+              $idTarea = (int) $idTarea;
+
+
+  /*aca cargo los modelos e invoco a sus funciones- joins*/
+               $this->data['tarea'] = $this->Tareas_model->get_tareas($idTarea);
+              /* $this->data['planta'] = $this->Plantas_model->get_nombre_planta($idTarea);*/
+               $this->data['planta'] = $this->Tareas_model->get_plantas_nombre($idTarea);/*con esto veo el nombre de la planta de la tarea*/
+                /*$this->data['planta'] = $this->Plantas_model->get_planta($idTarea);*/
+                 $this->data['umbraculo'] = $this->Tareas_model->get_umbraculo_nombre($idTarea);
+                $this->data['tipo'] = $this->Tareas_model->get_tipotarea_nombre($idTarea);
+              $this->data['estado'] = $this->Tareas_model-> get_estadoTarea_nombre($idTarea);
+              $this->data['user'] = $this->Tareas_model-> get_users_nombre($idTarea);
+              /*$this->data['insumo'] = $this->Insumotarea_model-> get_insumotarea($idTarea);*/
+
+              /* CARGAR INFORMARCION */
+             // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
+
+              /* Load Template */
+              $this->template->admin_render('admin/tareas/ver', $this->data);
+          }
+      }
 
 }
