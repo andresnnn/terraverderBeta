@@ -147,7 +147,7 @@ var base_url = "<?php echo base_url(); ?>";
                                   <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
                                       <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
-                                      <td> <input  id="<?php echo 'canti'.$i['idInsumo'];?>" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada"  /></td>
+                                      <td> <input  id="<?php echo 'canti'.$i['idInsumo'];?>" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada" onchange="javascript:stockMax(<?php echo $i['idInsumo'];?>);" /></td>
 
                                       <td class="boton">
                                           <button onClick="javascript:cargarDatos(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
@@ -238,24 +238,24 @@ integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
 crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
+function stockMax(id){
+
+
+  if (((document.getElementById('canti'+id).value)>(document.getElementById('canti'+id).min))||((document.getElementById('canti'+id).value)<(document.getElementById('canti'+id).max))) {
+    document.getElementById('canti'+id).value=0;
+  }
+
+}
+
 function cargarDatos(id) {
     document.getElementById('idInsumoBD').value = id;
     document.getElementById('stockActual').value = document.getElementById('stock'+id).value;
-    if ((document.getElementById('canti'+id).value)<(document.getElementById('stock'+id).value)) {
-      alert("mayor");
-      document.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
-      document.getElementById('nuevoStock').value = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
-    }
-    else if ((document.getElementById('canti'+id).value)>(document.getElementById('stock'+id).value)) {
-      alert("menor");
-      document.getElementById('cantRequerida').value = document.getElementById('stock'+id).value;
-      document.getElementById('nuevoStock').value = 0;
-    }
-    else if ((document.getElementById('canti'+id).value)==(document.getElementById('stock'+id).value)){
-    alert("igual");
+    ocument.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
+    document.getElementById('nuevoStock').value = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
+
     }
 
-}
+
 $('form.jsform').on('submit', function(form){
   var cantidad =  $('#cantRequerida').val();
   var idInsumo =  $('#idInsumoBD').val();
