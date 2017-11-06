@@ -238,21 +238,21 @@ integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
 crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
-
-
 function cargarDatos(id) {
     document.getElementById('idInsumoBD').value = id;
     document.getElementById('stockActual').value = document.getElementById('stock'+id).value;
-    if ((document.getElementById('stock'+id).value)>(document.getElementById('canti'+id).value)) {
+    if ((document.getElementById('canti'+id).value)<(document.getElementById('stock'+id).value)) {
       alert("mayor");
       document.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
       document.getElementById('nuevoStock').value = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
     }
-    else {
-        alert("menor");
-        document.getElementById('cantRequerida').value = document.getElementById('stock'+id).value;
-        document.getElementById('nuevoStock').value = 0;
-
+    else if ((document.getElementById('canti'+id).value)>(document.getElementById('stock'+id).value)) {
+      alert("menor");
+      document.getElementById('cantRequerida').value = document.getElementById('stock'+id).value;
+      document.getElementById('nuevoStock').value = 0;
+    }
+    else if ((document.getElementById('canti'+id).value)==(document.getElementById('stock'+id).value)){
+    alert("igual");
     }
 
 }
