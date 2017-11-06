@@ -16,54 +16,54 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <li class="dropdown">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
                             <i class="fa fa-tasks"></i>
-                            <span class="badge bg-theme">3</span>
+                            <span class="badge bg-theme"><?php echo $nro_noti; ?></span>
                         </a>
                         <ul class="dropdown-menu extended tasks-bar">
                             <div class="notify-arrow notify-arrow-green"></div>
                             <li>
-                                <p class="green">Hay 3 tareas pendientes</p>
+                                <p class="green">Hay (<?php echo $nro_noti; ?>) tareas para hoy</p>
                             </li>
                             <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Adaptar plantilla al sistema</div>
-                                        <div class="percent">25%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 25%">
-                                            <span class="sr-only">40% Complete (success)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Crear base de datos</div>
-                                        <div class="percent">1%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 1%">
-                                            <span class="sr-only">60% Complete (warning)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="index.html#">
-                                    <div class="task-info">
-                                        <div class="desc">Desarrollar vistas</div>
-                                        <div class="percent">0%</div>
-                                    </div>
-                                    <div class="progress progress-striped">
-                                        <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
-                                            <span class="sr-only">70% Complete (Important)</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="external">
-                                <a href="#">See All Tasks</a>
+                                            <!-- start task -->
+                                            <?php foreach($notificacion as $noti){ ?>
+                                            <li>
+                                            
+                                            <!-- <?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?> -->
+                                                <a href="<?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?>">
+                                                <div class="task-info">
+                                                    <strong><?php echo $noti['nombreTipoTarea'].": ".$noti['descripcionTarea'];; ?></strong><br>
+                                                    Umbráculo: <?php echo $noti['nombreUmbraculo']; ?><br>
+                                                    Sobre planta: <?php echo $noti['nombrePlanta']; ?><br>
+                                                    Hora de comienzo prevista: <?php echo $noti['horaComienzo']; ?>
+                                                </div>
+                                            <div class="progress progress-striped">
+
+                                                <div class="progress-bar progress-bar-success" role="progressbar" 
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="<?php 
+                                                if ($noti['idEstado'] == 1) {
+                                                   echo 'width: 1%;';
+                                                }elseif($noti['idEstado'] == 3){
+                                                    echo 'width: 45%;';
+                                                    }elseif($noti['idEstado'] == 2){
+                                                    echo 'width: 100%;';
+                                                    }
+                                                    ?>">
+                                                <span class="sr-only">Completada 0%</span>
+                                                </div>                           
+                                            </div>
+                                            <div class="percent">Completada <?php 
+                                                if ($noti['idEstado'] == 1) {
+                                                   echo '0%';
+                                                }elseif($noti['idEstado'] == 3){
+                                                    echo '45%';
+                                                    }elseif($noti['idEstado'] == 2){
+                                                    echo '100%';
+                                                    }
+                                                    ?></div>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
+                                            <!-- end task -->
                             </li>
                         </ul>
                     </li>

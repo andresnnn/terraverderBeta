@@ -30,7 +30,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <span class="label label-danger"><?php echo $nro_noti; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li class="header">Hay (<?php echo $nro_noti; ?>) nuevas tareas para hoy</li>
+                                    <li class="header">Hay (<?php echo $nro_noti; ?>) tareas para hoy</li>
                                     <li>
                                         <ul class="menu">
                                             <!-- start task -->
@@ -38,17 +38,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <li>
                                             <!-- <?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?> -->
                                                 <a href="<?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?>">
+                                                <div class="task-info">
                                                     <strong><?php echo $noti['nombreTipoTarea'].": ".$noti['descripcionTarea'];; ?></strong>
                                                     Umbráculo: <?php echo $noti['nombreUmbraculo']; ?><br>
                                                     Sobre planta: <?php echo $noti['nombrePlanta']; ?><br>
                                                     Hora de comienzo prevista: <?php echo $noti['horaComienzo']; ?>
+                                                    </div>
+                                                    <div class="progress progress-striped">
+
+                                                <div class="progress-bar progress-bar-success" role="progressbar" 
+                                                aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" style="<?php 
+                                                if ($noti['idEstado'] == 1) {
+                                                   echo 'width: 1%;';
+                                                }elseif($noti['idEstado'] == 3){
+                                                    echo 'width: 45%;';
+                                                    }elseif($noti['idEstado'] == 2){
+                                                    echo 'width: 100%;';
+                                                    }
+                                                    ?>">
+                                                <span class="sr-only">Completada 0%</span>
+                                                </div>                           
+                                            </div>
+                                            <div class="percent">Completada <?php 
+                                                if ($noti['idEstado'] == 1) {
+                                                   echo '0%';
+                                                }elseif($noti['idEstado'] == 3){
+                                                    echo '45%';
+                                                    }elseif($noti['idEstado'] == 2){
+                                                    echo '100%';
+                                                    }
+                                                    ?></div>
                                                 </a>
                                             </li>
                                             <?php } ?>
                                             <!-- end task -->
                                         </ul>
                                     </li>
-                                    <li class="footer"><a href="#"><?php echo lang('header_view_all'); ?></a></li>
                                 </ul>
                             </li>
 
@@ -86,7 +111,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <?php endif; ?>
 <?php if ($admin_prefs['ctrl_sidebar'] == TRUE): ?>
                             <!-- Control Sidebar Toggle Button -->
-                            <li><a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a></li>
+                            <li><a href="#" data-toggle="control-sidebar"><i class="fa fa-question-circle"></i></a></li>
 <?php endif; ?>
 
                         </ul>

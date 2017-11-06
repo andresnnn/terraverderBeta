@@ -39,7 +39,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['nombreEstado']; ?></td>
 
                                                 <td>
+<<<<<<< HEAD
                                                     <a href="<?php echo site_url('common/tareas/ver_detalles/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
+=======
+                                                    <a href="<?php echo site_url('common/tareas/profile/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
+>>>>>>> master
                                                     <!-- IF TAREA ESTADO = 1 MUESTRO ESTE BOTON -->
                                                     <?php if ($t['idEstado'] == 1 || $t['idEstado'] == 3) {
                                                     //echo " <a href= 'atender/'.$u['idTarea'];"
