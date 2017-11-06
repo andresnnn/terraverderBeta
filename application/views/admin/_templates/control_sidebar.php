@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="tab-content">
                     <!-- Home tab content -->
                     <div class="tab-pane active" id="control-sidebar-home-tab">
-                        <h3 class="control-sidebar-heading">Manual de usuario</h3>
+                        <h3 class="control-sidebar-heading">Ayuda</h3>
                         <ul class="control-sidebar-menu">
                             <li>
                                 <a href="<?php echo base_url('upload/manual_usuarios.pdf'); ?>" target="_blank">
