@@ -146,7 +146,7 @@ var base_url = "<?php echo base_url(); ?>";
                               <?php if ($i['active'] == 1): ?>
                                   <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
-                                      <td > <?php echo $i['cantidad']; ?> </td>
+                                      <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
                                       <td> <input  id="<?php echo 'canti'.$i['idInsumo'];?>" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada"  /></td>
 
                                       <td class="boton">
@@ -197,13 +197,16 @@ var base_url = "<?php echo base_url(); ?>";
                   <div></div>
                       <th>Nro Tarea</th>
                       <th>Nro Insumo</th>
+                      <th>Stock Insumo</th>
                       <th>Cantidad Requerida</th>
                       <th>Acciones</th>
                   </tr>
     					<tr>
         <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
         <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
-        <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
+        <td> <input readonly type="number" name="nuevoStock" id="nuevoStock" min="0"> </td>
+        <input  type="hidden" name="stockActual" id="stockActual" >
+        <td>  <input readonly type="text" name="cantRequerida" id="cantRequerida"> </td>
         <td>  <input type="submit"   id="btnAgregar" name="btnAgregar" value="Agregar"> </td>
               </tr>
                 </table>
@@ -238,28 +241,34 @@ crossorigin="anonymous"></script>
 
 
 function cargarDatos(id) {
-    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
     document.getElementById('idInsumoBD').value = id;
+    document.getElementById('stockActual').value = document.getElementById('stock'+id).value;
+    if ((document.getElementById('stock'+id).value)>(document.getElementById('canti'+id).value)) {
+      alert("mayor");
+      document.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
+      document.getElementById('nuevoStock').value = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
+    }
+    else {
+        alert("menor");
+        document.getElementById('cantRequerida').value = document.getElementById('stock'+id).value;
+        document.getElementById('nuevoStock').value = 0;
+
+    }
+
 }
 $('form.jsform').on('submit', function(form){
-  var cantidad =  $('#cantidadBD').val();
+  var cantidad =  $('#cantRequerida').val();
   var idInsumo =  $('#idInsumoBD').val();
   var idTarea =  $('#idTarea').val();
+  var nuevoStock = $('#nuevoStock').val();
+
 
     form.preventDefault();
     $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
-      cantidad:cantidad, idInsumo:idInsumo, idTarea:+idTarea
+      cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
     }, function(response,status){
     alert("hola"); } );
   });
-
-
-
-
-
-
-
-
 /**
  * [cargarDatos description]
  * @param  {[type]} id ES EL ID DE LA PLANTA DENTRO DE LA BD
