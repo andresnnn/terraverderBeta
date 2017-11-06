@@ -239,10 +239,13 @@ crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
 function stockMax(id){
+  var $valor =  document.getElementById('canti'+id).value;
+    var $valorMax= document.getElementById('canti'+id).max;
+    var $valorMin = document.getElementById('canti'+id).min;
 
-
-  if (((document.getElementById('canti'+id).value)>(document.getElementById('canti'+id).min))||((document.getElementById('canti'+id).value)<(document.getElementById('canti'+id).max))) {
+  if ($valor>$valorMax||$valor<$valorMin) {
     document.getElementById('canti'+id).value=0;
+    alert("La cantidad requerida no debe superar el stock, ni ser menor a cero ");
   }
 
 }
@@ -250,7 +253,7 @@ function stockMax(id){
 function cargarDatos(id) {
     document.getElementById('idInsumoBD').value = id;
     document.getElementById('stockActual').value = document.getElementById('stock'+id).value;
-    ocument.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
+    document.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
     document.getElementById('nuevoStock').value = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
 
     }
