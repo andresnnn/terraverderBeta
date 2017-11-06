@@ -184,7 +184,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               <h3 class="box-title">Insumo utilizados en la tarea</h3>
           </div>
 <!--formulario para cargar a la base los insumos en la tarea-->
-
           <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
 
           <div class="box-body">
@@ -201,7 +200,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
         <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
         <td>  <input readonly type="text" name="cantidadBD" id="cantidadBD"> </td>
-        <td>  <input type="submit"   id="btnAgregar" name="btnAgregar" value="Agregar"> </td>
+        <td>  <button type="submit" id="btnAgregar" name="btnAgregar"> Agregar </button> </td>
               </tr>
                 </table>
               </div>
@@ -210,7 +209,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       </div>
     </div>
 </div>
-<div id="result"></div>
 </section>
 </div>
 
@@ -226,30 +224,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     background-color: #f9f9f9;
 }
 </style>
-<script
-src="https://code.jquery.com/jquery-2.1.3.min.js"
-integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
-crossorigin="anonymous"></script>
+
+
 <!-- script modal -->
 <script>
-function cargarDatos(id) {
-    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
-    document.getElementById('idInsumoBD').value = id;
-}
-$('form.jsform').on('submit', function(form){
-  var cantidad =  $('#cantidadBD').val();
-  var idInsumo =  $('#idInsumoBD').val();
-  var idTarea =  $('#idTarea').val();
-
-    form.preventDefault();
-    $.post('<?php echo base_url(); ?>atender.php/common/umbraculos/agregarInsumoTarea', {
-      cantidad:cantidad, IdInsumo:idInsumo, idTarea:+idTarea
-    }, function(response,status){ } );
-  });
 
 
-
-
+        $('form.jsform').on('submit', function(form){
+            form.preventDefault();
+            $.post('/atender.php/common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, $('form.jsform'), (data) => {} {
+                $('div.jsError').html(data);
+            });
+        });
 
 
 
@@ -260,6 +246,9 @@ $('form.jsform').on('submit', function(form){
  * @return {[type]}    [description]
  * @author SAKZEDMK
  */
-
+function cargarDatos(id) {
+    document.getElementById('cantidadBD').value = document.getElementById('canti'+id).value;
+    document.getElementById('idInsumoBD').value = id;
+}
 
 </script>
