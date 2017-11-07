@@ -15,8 +15,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Plantas en umbráculo</h3>
                                 </div>
-                                <div class="box-body">
-                                    <table class="table table-striped table-hover">
+                                    <div class="box-body">                       
+                                    <table style="text-align: center;" class="table table-striped table-hover">
                                         <tr>
                                             <th>Nombre</th>
                                             <th>Nombre Científico</th>
@@ -35,11 +35,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td>
                                                 <!-- BOTON QUE LLAMA AL CONTROLADOR Y CAPTURA LA NUEVA CANTIDAD DE PLANTAS CON SU RESPECTIVO 
                                                 ESPACIO OCUPADO, Y LA ACTUALIZA DENTRO DE LA 'BD' -->
-                                                <button type="button" onClick="nuevoFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
+                                                <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
 
                                                 <!-- ELIMINA UNA PLANTA DENTRO DEL UMBRACULO Y DEBE DE REESTABLECER EL ESPACIO QUE SE DESOCUPA 
                                                 DENTRO DEL MISMO -->
-                                                <?php echo form_open('user/umbraculos_pla/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>
+                                                <?php echo form_open('common/umbraculos/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>
                                                 <input type="hidden" id="nuevaCantidad" name="nuevaCantidad" value="<?php echo $info_umbraculo['unidadEspacioDisponible_m2']+($u['unidadEspacioPlanta_m2']*$u['cantidad'])/10000;?>"> 
                                                 <!--ESTE ES EL CAMPO QUE LLEVA EL VALOR CON EL ESPACIO REESTABLECIDO-->
                                                 <button type="submit" class="btn btn-danger btn-xs"><span class="fa fa-minus"> </span> Borrar planta umbráculo</button>
@@ -48,18 +48,76 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </tr>
                                         <?php } ?>
                                     </table>
-                                </div>
-                            </div>
-                        </div>
+                                    </div>
+                                <!--MODAL PARA ACTUALIZAR LA CANTIDAD DE LA PLANTA-->
+                                <div class="container">
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="myModal" role="dialog">
+                                    <div style="overflow-x:auto;" class="modal-dialog modal-lg">
+                                    
+                                      <!-- Modal content-->
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                          <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Actualizar cantidad de planta seleccionada</span></h4>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <?php echo form_open('user/umbraculos_pla/actalizar_cantidad/'.$info_umbraculo['idUmbraculo'].'/'); ?>
+                                                <div class="box-body">
+                                                <div align="center">
+                                                    <table style="align-items: center;text-align: center;">
+                                                        <tr>
+                                                            <th style="text-align: center;">CANTIDAD</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <input style="text-align: center;" onChange="verificarEspacio();" min="0" type="number" name="cantidad" value="" class="form-control" id="cantidad" />
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                    <span style="text-align: center"  class="text-danger" id="msjError"></span>
+                                                    <!--CAMPOS OCULTOS-->
+                                                    <input type="hidden" value="" name="idUmbraculo" id="idUmbraculo"> 
+                                                    <input type="hidden" value="" name="idPlanta" id="idPlanta"> 
+                                                    <input type="hidden" name="ocupaPlanta" id="ocupaPlanta">
+                                                    <!--Espacio disponible en umbráculo-->
+                                                    <input type="hidden" name="disponibleU" id="disponibleU">
+                                                    <!--Cantidad usada como punto de comparación-->
+                                                    <input type="hidden" name="cantiActualPlanta" id="cantiActualPlanta">
+
+                                                    <!-- CAMPOS QUE LLEGAN AL CONTROLADOR PARA SUBIR A LA 'BD' -->
+                                                    <input type="hidden" name="dipoActualizada" id="dipoActualizada"> <!--Nuevo espacio para almacenar en BD-->
+                                                    <input type="hidden" name="dipoSumaActualizada" id="dipoSumaActualizada"> <!--Nuevo espacio para almacenar en BD-->
+                                                    <!--FIN CAMPOS OCULTOS <input type="text" name="resu" id="resu" value="">-->
+                                                </div>
+                                                </div>
+                                                <div align="center" class="box-footer">
+                                                    <button id="guardar" type="submit" class="btn btn-success btn-flat">
+                                                        <i class="fa fa-save"></i> Guardar
+                                                    </button>
+                                                    <button type="close" data-dismiss="modal" class="btn btn-flat">
+                                                        <i class="fa fa-cancel"></i> Cancelar
+                                                    </button>
+                                                </div>              
+                                            <?php echo form_close(); ?>
+                                        </div>
+                                        <div class="modal-footer">
+                                        </div>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
                     </div>
                 </section>
-                            <div class="box-footer" style="text-align: center;">
+<div class="box-footer" style="text-align: center;">
                 <a href="<?php echo site_url('user/umbraculos_pla/ver/'.$id); ?>" class="btn btn-default btn-flat">Volver</a>
             </div>  
             </div>
             </div>
 
-              <style>
+
+<style>
   .modal-header, h4, .close {
       background-color: #5cb85c;
       color:white !important;
@@ -75,7 +133,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 
 
-function nuevoFormulario(cantidad,umbraculo,planta,dimPlanta,dispU)
+function crearFormulario(cantidad,umbraculo,planta,dimPlanta,dispU)
 {
     document.getElementById('cantidad').value = cantidad;
     document.getElementById('idUmbraculo').value = umbraculo;
