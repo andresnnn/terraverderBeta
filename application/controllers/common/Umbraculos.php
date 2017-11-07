@@ -287,17 +287,27 @@ class Umbraculos extends Admin_Controller {
             **/
             function agregarInsumoTarea()
             {
-              echo "holas";
-                          //variables POST
+              //variables POST
               $cantidad=$_POST['cantidad'];
               $idInsumo=$_POST['idInsumo'];
               $idTarea=$_POST['idTarea'];
-            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);
-          // $this->Tareas_model->add_insumoTarea($this->input->post('idTarea'),$this->input->post('idInsumoBD'),$this->input->post('cantidadBD'));
+              $nuevoStock=$_POST['nuevoStock'];
+              if($this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo)){
+              $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
+            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
+            }
+            /**
+            *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
+            **/
+            function ExisteInsumoTarea()
+            {
+              //variables POST
+              $cantidad=$_POST['cantidad'];
+              $idInsumo=$_POST['idInsumo'];
+              $idTarea=$_POST['idTarea'];
+              $nuevoStock=$_POST['nuevoStock'];
+              return $this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo);
 
-
-              // redirect('#');
-                // redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
             }
 
 
