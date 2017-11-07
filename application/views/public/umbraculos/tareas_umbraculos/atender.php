@@ -2,6 +2,9 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>      
+<script type="text/javascript">
+var base_url = "<?php echo base_url(); ?>";
+</script>
             <div class="wrapper">
                 <section id="main-content" class="content-header">
                  <h3 class="box-title">Administración Umbráculos</h3>
@@ -273,7 +276,6 @@ $('form.jsform').on('submit', function(form){
 
 
     form.preventDefault();
-
 
     $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
       cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock

@@ -91,6 +91,12 @@ class Umbraculos_pla extends Public_controller {
 
                 }
             }
+            /**
+             * [atenderTarea description]
+             * @param  [type] $idUmbraculo [description]
+             * @param  [type] $idTarea     [description]
+             * @return [type]              [description]
+             */
             function atenderTarea($idUmbraculo,$idTarea)
             {
               if ( ! $this->ion_auth->logged_in())
@@ -99,7 +105,6 @@ class Umbraculos_pla extends Public_controller {
               }
               else
               {
-
                 /* Data */
                 $this->data['idTarea'] = $idTarea = (int) $idTarea;
                 $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
@@ -108,6 +113,7 @@ class Umbraculos_pla extends Public_controller {
                 $this->data['insumos'] = $this->Tareas_model->get_all_insumo();
               /* libreria formulario*/
                   $this->load->library('form_validation');
+                  // $this->load->library('form_validation_insumo_tarea');
                   // validaciones
                   $this->form_validation->set_rules('observacionEspecialista','observacionEspecialista','max_length[50]');
                   if($this->form_validation->run())
@@ -134,12 +140,30 @@ class Umbraculos_pla extends Public_controller {
             /**
             *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
             **/
-            function agregarInsumoTarea($idUmbraculo,$idTarea)
+            function agregarInsumoTarea()
             {
-              $this->Tareas_model->add_insumoTarea($idTarea,$this->input->post('idInsumoBD'),$this->input->post('cantidadBD'));
-              redirect('user/umbraculos_pla/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
+              //variables POST
+              $cantidad=$_POST['cantidad'];
+              $idInsumo=$_POST['idInsumo'];
+              $idTarea=$_POST['idTarea'];
+              $nuevoStock=$_POST['nuevoStock'];
+              if($this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo)){
+              $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
+            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
             }
+            /**
+            *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
+            **/
+            function ExisteInsumoTarea()
+            {
+              //variables POST
+              $cantidad=$_POST['cantidad'];
+              $idInsumo=$_POST['idInsumo'];
+              $idTarea=$_POST['idTarea'];
+              $nuevoStock=$_POST['nuevoStock'];
+              return $this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo);
 
+            }
 
         /**
          * LA FUNCION VER PLANTAS, LISTA TODAS LAS PLANTAS REGISTRADAS EN EL UMBRÁCULO
