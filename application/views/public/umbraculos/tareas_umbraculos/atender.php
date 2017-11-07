@@ -1,102 +1,94 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-?>
-<script type="text/javascript">
-var base_url = "<?php echo base_url(); ?>";
-</script>
+?>      
+            <div class="wrapper">
+                <section id="main-content" class="content-header">
+                 <h3 class="box-title">Administración Umbráculos</h3>
+                 
+                    <div class="row">
+                        <div class="col-md-12">
+                    </div>
 
-<div class="content-wrapper">
-    <section class="content-header">
-        <?php echo $pagetitle; ?>
-        <?php echo $breadcrumb; ?>
-    </section>
+                        <div class="col-md-12">
+                            <div class="box">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title">Estado actual tarea</h3>
+                                </div>
+                                <div class="box-body">
+                                    <!-- CONTENIDO -->
+                                        <table class="table table-striped table-hover">
+                                                  <tr>
+                                                      <th>N° Tarea</th>
+                                                      <th>Tipo tarea</th>
+                                                      <th>Planta</th>
+                                                      <th>Umbraculo</th>
+                                                      <th>Creador</th>
+                                                      <th>Fecha Creación</th>
+                                                      <th>Fecha Prevista</th>
+                                                      <th>Estado Actual </th>
 
-    <section class="content">
-      <div class="row">
-          <div class="col-md-12">
-               <div class="box">
-                  <div class="box-header with-border">
-                      <h3 class="box-title">Tareas <strong></strong></h3>
-                  </div>
-                      <div class="box-body">
-                      <table class="table table-striped table-hover">
-                              <tr>
-                                  <th>nro de tarea</th>
-                                  <th>Tipo tarea</th>
-                                  <th>Planta</th>
-                                  <th>Umbraculo</th>
-                                  <th>Creador</th>
-                                  <th>Fecha Creación</th>
-                                  <th>Fecha Prevista</th>
-                                  <th>Estado Actual </th>
+                                                  </tr>
+                                                  <?php foreach($tarea as $t){ ?>
+                                                  <tr>
+                                                      <td><?php echo $t['idTarea']; ?></td>
+                                                      <td><?php echo $t['nombreTipoTarea']; ?></td>
+                                                      <td><?php echo $t['nombrePlanta']; ?></td>
+                                                      <td><?php echo $t['nombreUmbraculo']; ?></td>
+                                                      <td><?php echo $t['creador']; ?></td>
+                                                      <td><?php echo $t['fechaCreacion']; ?></td>
+                                                      <td><?php echo $t['fechaComienzo']; ?></td>
+                                                      <td><?php echo $t['nombreEstado']; ?></td>
+                                                  </tr>
 
-                              </tr>
-                              <?php foreach($tarea as $t){ ?>
-                              <tr>
-                                  <td><?php echo $t['idTarea']; ?></td>
-                                  <td><?php echo $t['nombreTipoTarea']; ?></td>
-                                  <td><?php echo $t['nombrePlanta']; ?></td>
-                                  <td><?php echo $t['nombreUmbraculo']; ?></td>
-                                  <td><?php echo $t['creador']; ?></td>
-                                  <td><?php echo $t['fechaCreacion']; ?></td>
-                                  <td><?php echo $t['fechaComienzo']; ?></td>
-                                  <td><?php echo $t['nombreEstado']; ?></td>
-                              </tr>
-
-                              <?php } ?>
-                      </table>
-                      </div>
-                  </div>
-                </div>
-              </div>
-
-
+                                                  <?php } ?>
+                                        </table>
+                                    <!-- FIN CONTENIDO-->
   <div class="row">
     <div class="col-md-12">
-      	<div class="box box-info">
+        <div class="box box-info">
             <div class="box-header with-border">
-              	<h3 class="box-title">Atender Tarea</h3>
+                <h3 class="box-title">Formulario Atención</h3>
             </div>
-			<?php echo form_open('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea); ?>
-			<div class="box-body">
-				<div class="row clearfix">
+            <?php echo form_open('user/umbraculos_pla/atenderTarea/'.$idUmbraculo.'/'.$idTarea); ?>
+            <div class="box-body">
+                <div class="row clearfix">
 
-					<div class="col-md-6">
-						<label for="idEstado" class="control-label">Estado Tarea</label>
-						<div class="form-group">
-							<select name="idEstado" class="form-control">
-								<option value="">select estado_tarea</option>
-								<?php
-								foreach($estados as $estado_tarea)
-								{
-									$selected = ($estado_tarea['idEstado'] ) ? ' selected="selected"' : "";
+                    <div class="col-md-6">
+                        <label for="idEstado" class="control-label">Estado Tarea</label>
+                        <div class="form-group">
+                            <select name="idEstado" class="form-control">
+                                <option value="">select estado_tarea</option>
+                                <?php
+                                foreach($estados as $estado_tarea)
+                                {
+                                    $selected = ($estado_tarea['idEstado'] ) ? ' selected="selected"' : "";
 
-									echo '<option value="'.$estado_tarea['idEstado'].'" '.$selected.'>'.$estado_tarea['nombreEstado'].'</option>';
-								}
-								?>
-							</select>
-						</div>
+                                    echo '<option value="'.$estado_tarea['idEstado'].'" '.$selected.'>'.$estado_tarea['nombreEstado'].'</option>';
+                                }
+                                ?>
+                            </select>
+                        </div>
 
-					</div>
+                    </div>
 
 
 
-					<div class="col-md-6">
-						<label for="idUserAtencion" class="control-label">Usuario Actual: </label>
+                    <div class="col-md-6">
+                        <label for="idUserAtencion" class="control-label">Usuario Actual: </label>
             <div class="form-group">
-						<?php echo $user_login['firstname']." ".$user_login['lastname']; ?>
-						<input type="hidden" name="idUserAtencion" value="<?php echo $user_login['id']; ?>" class="has-datepicker form-control" id="idUserAtencion" />
-						</div>
-					</div>
+                        <?php echo $user_login['firstname']." ".$user_login['lastname']; ?>
+                        <input type="hidden" name="idUserAtencion" value="<?php echo $user_login['id']; ?>" class="has-datepicker form-control" id="idUserAtencion" />
+                        </div>
+                    </div>
 
 
           <div class="col-md-6">
-						<label for="fechaAtencion" class="control-label"><span class="text-danger">*</span>Fecha Atención</label>
+                        <label for="fechaAtencion" class="control-label"><span class="text-danger">*</span>Fecha Atención</label>
             <div class="form-group">
               <input  readonly type="text" name="fechaAtencion" value="<?php echo date('Y-m-d'); ?>" class="has-datepicker form-control" id="fechaAtencion" />
-							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
-						</div>
+                            <span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
+                        </div>
           </div>
 <?php foreach($tarea as $t){ ?>
       <div class="col-md-6">
@@ -118,7 +110,7 @@ var base_url = "<?php echo base_url(); ?>";
               </div>
             </div>
         </div>
-			</div>
+            </div>
 
       <!-- probando modal-->
       <div class="container">
@@ -157,7 +149,6 @@ var base_url = "<?php echo base_url(); ?>";
                             </div>
                           <?php } ?>
                       </table>
-                      <?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"> Agregar nuevo Insumo </i> ', array('class' => 'btn btn-block btn-primary btn-flat','title' => 'Registrar nuevo insumo')); ?>
               </div>
               <div class="modal-footer">
               </div>
@@ -169,11 +160,11 @@ var base_url = "<?php echo base_url(); ?>";
 <!-- pie de pagina -->
       <div class="box-footer">
           <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
-          <a href="<?php echo site_url('common/umbraculos/verTareas/'.$idUmbraculo); ?>" class="btn btn-default btn-flat">Cancelar</a>
+          <a href="<?php echo site_url('user/umbraculos_pla/verTareas/'.$idUmbraculo); ?>" class="btn btn-default btn-flat">Cancelar</a>
       </div>
 
 
-			<?php echo form_close(); ?>
+            <?php echo form_close(); ?>
 
 
     </div>
@@ -184,25 +175,25 @@ var base_url = "<?php echo base_url(); ?>";
   <div class="col-md-12">
       <div class="box box-info">
           <div class="box-header with-border">
-              <h3 class="box-title">Insumo utilizados en la tarea</h3>
+              <h3 class="box-title">Agregar insumo a la tarea</h3>
           </div>
 <!--formulario para cargar a la base los insumos en la tarea-->
 
-          <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
+          <?php echo form_open('user/umbraculos_pla/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
 
           <div class="box-body">
-    				<div class="row clearfix">
+                    <div class="row clearfix">
               <div id="result"></div>
                 <table class="table table-striped table-hover">
                   <tr>
                   <div></div>
-                      <th>Nro Tarea</th>
-                      <th>Nro Insumo</th>
-                      <th>Stock Insumo</th>
+                      <th>N° Tarea</th>
+                      <th>Cod. Insumo</th>
+                      <th>Stock Actual</th>
                       <th>Cantidad Requerida</th>
                       <th>Acciones</th>
                   </tr>
-    					<tr>
+                        <tr>
         <td>  <input readonly type="text" name="idTarea" id="idTarea" value="<?php echo $idTarea ?>"> </td>
         <td>  <input readonly type="text" name="idInsumoBD" id="idInsumoBD"> </td>
         <td> <input readonly type="number" name="nuevoStock" id="nuevoStock" min="0"> </td>
@@ -220,7 +211,7 @@ var base_url = "<?php echo base_url(); ?>";
 <div id="result"></div>
 </section>
 </div>
-
+</div>
 <!-- Estilo del modal -->
 <style>
 .modal-header, h4, .close {
@@ -233,10 +224,7 @@ var base_url = "<?php echo base_url(); ?>";
     background-color: #f9f9f9;
 }
 </style>
-<script
-src="https://code.jquery.com/jquery-2.1.3.min.js"
-integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
-crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-2.1.3.min.js" integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM=" crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
 function stockMax(id){

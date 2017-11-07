@@ -99,8 +99,7 @@ class Umbraculos_pla extends Public_controller {
               }
               else
               {
-                /* Breadcrumbs */
-                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
                 /* Data */
                 $this->data['idTarea'] = $idTarea = (int) $idTarea;
                 $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
@@ -109,7 +108,6 @@ class Umbraculos_pla extends Public_controller {
                 $this->data['insumos'] = $this->Tareas_model->get_all_insumo();
               /* libreria formulario*/
                   $this->load->library('form_validation');
-                  // $this->load->library('form_validation_insumo_tarea');
                   // validaciones
                   $this->form_validation->set_rules('observacionEspecialista','observacionEspecialista','max_length[50]');
                   if($this->form_validation->run())
@@ -127,10 +125,8 @@ class Umbraculos_pla extends Public_controller {
 
                 }
                 else {
-                  /* Breadcrumbs */
-                      $this->data['breadcrumb'] = $this->breadcrumbs->show();
                   /* Load Template */
-                  $this->template->user_render('public/umbraculosumbraculo_tarea/atender',$this->data);
+                  $this->template->user_render('public/umbraculos/tareas_umbraculos/atender',$this->data);
                 }
               }
             }
@@ -141,7 +137,7 @@ class Umbraculos_pla extends Public_controller {
             function agregarInsumoTarea($idUmbraculo,$idTarea)
             {
               $this->Tareas_model->add_insumoTarea($idTarea,$this->input->post('idInsumoBD'),$this->input->post('cantidadBD'));
-              redirect('common/umbraculos/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
+              redirect('user/umbraculos_pla/atenderTarea/'.$idUmbraculo.'/'.$idTarea);
             }
 
 

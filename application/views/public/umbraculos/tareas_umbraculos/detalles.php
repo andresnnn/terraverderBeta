@@ -104,15 +104,32 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <?php } ?>
                                     </div>
                                     <!--FIN CAJA-->
+                                    <!--CAJA CON TABLA DE INSUMOS UTILIZADOS-->
+                                    <div class="col-md-6">
+                                    <label class="control-label">Insumos utilizados</label>
+                                    <table class="table table-striped table-hover">
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <th>Descripción</th>
+                                                <th>Cantidad Utilizada</th>
+                                            </tr>
+                                            <?php foreach($insumos_tarea as $it){ ?>
+                                            <tr>
+                                                <td><?php echo $it['nombreInsumo']; ?></td>
+                                                <td><?php echo $it['descripcionInsumo']; ?></td>
+                                                <td><?php echo $it['cantidadUtilizado']; ?></td>
+                                            </tr>
+                                            <?php } ?>
+                                    </table>
+                                    </div>
+                                    <!--FIN DE CAJA INSUMOS-->
                                     <!-- FIN CONTENIDO-->
                                 </div>
                             </div>
                         </div>
+                                        <div class="box-footer" style="text-align: center;">
+                <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Volver</a>
+                </div>
                     </div>
                 </section>
-                <div class="box-footer" style="text-align: center;">
-                
-                <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Volver</a>
-<!--                     <a href="<?php echo site_url('user/umbraculos_pla/verTareas/'.$t['idUmbraculo']); ?>" class="btn btn-default btn-flat">Volver</a> -->
-                </div>
             </div>

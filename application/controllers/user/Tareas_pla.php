@@ -158,6 +158,7 @@ class Tareas_pla extends Public_controller{
             }
             else
             {
+                $this->data['insumos_tarea'] = $this->Tareas_model->insumos_tarea($idTarea);
                 $this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
                 $this->template->user_render('public/umbraculos/tareas_umbraculos/detalles', $this->data);
             }

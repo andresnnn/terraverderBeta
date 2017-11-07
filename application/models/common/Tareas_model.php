@@ -215,6 +215,21 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
 
+    /**
+     * Retorna todos los insumos, que se utilizaron en determinada, tarea, a la cual se le observan los detalles.
+     * @param  [type] $idTarea Único paramentro de entrada.
+     * @author SAKZEDMK
+     */
+    function insumos_tarea($idTarea)
+    {
+      $query= "SELECT `insumo/tarea`.`idTarea`,`insumo/tarea`.`cantidadUtilizado`,insumo.nombreInsumo,insumo.descripcionInsumo,insumo.idInsumo
+                FROM `insumo/tarea` 
+                JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
+                WHERE `insumo/tarea`.`idTarea`=".$idTarea;
+      return $this->db->query($query)->result_array();
+    }
+
+    
     /*
      * function to add new tareas
      */

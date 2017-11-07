@@ -170,6 +170,7 @@ function agregarTarea($idUmbraculo)
             {
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                $this->data['insumos_tarea'] = $this->Tareas_model->insumos_tarea($idTarea);
                 $this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
                 $this->template->admin_render('admin/tareas/detalles', $this->data);
             }
