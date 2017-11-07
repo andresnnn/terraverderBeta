@@ -292,8 +292,9 @@ class Umbraculos extends Admin_Controller {
               $idInsumo=$_POST['idInsumo'];
               $idTarea=$_POST['idTarea'];
               $nuevoStock=$_POST['nuevoStock'];
-              $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);            
-            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);
+              if($this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo)){
+              $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
+            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
 
 
             }

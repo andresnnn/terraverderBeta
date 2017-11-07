@@ -144,6 +144,20 @@ class Tareas_model extends CI_Model
     $query = "UPDATE `insumo` SET `cantidad`=".$nuevoStock." WHERE `insumo`.`idInsumo`=".$idInsumo;
     $this->db->query($query);
   }
+
+  /** existe insumo en tarea **/
+  function existe_insumo_tarea($idTarea,$idInsumo)
+  {
+    //consulta de tareas en el umbraculo y en la misma planta con la misma fecha ingresada
+    $vector = $this->db->get_where('insumo/tarea',array('idTarea'=>$idTarea,'idInsumo'=>$idInsumo))->row_array();
+
+    if (  ($vector==null)){
+    return true;
+    }
+    else {
+      return false;}
+    }
+
       /**
        * Retorna la cantidad de tareas, para el día de la fecha
        * @param  [type] $fecha [description]
