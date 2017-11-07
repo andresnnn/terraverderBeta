@@ -50,7 +50,7 @@ header('Vary: Accept-Encoding');
               <h1 style="text-shadow: -2px -2px 1px #464646;"  class="brand-heading">TerraVERDE</h1>
 
               <!-- ACCEDER PRINCIPAL -->
-                <?php if ($user): ?>
+                <?php if ($user && !$admin_link): ?>
                     <p style="text-shadow: -2px -2px 1px #464646;" class="intro-text">LOGUEADO COMO </p> <h3 style="text-shadow: -2px -2px 1px #464646;" ><?php echo $user_login['firstname'].$user_login['lastname']; ?> </h3>
                     <a href="<?php echo site_url('principal'); ?>" class="btn btn-circle js-scroll-trigger"><i style="text-shadow: -2px -2px 1px #464646;" class="fa fa-user  animated" title="Pagina principal"></i></a>
                 <?php endif; ?>
@@ -59,6 +59,7 @@ header('Vary: Accept-Encoding');
 
               <!-- ACCEDER ADMIN-->
                 <?php if ($admin_link): ?>
+                                        <p style="text-shadow: -2px -2px 1px #464646;" class="intro-text">LOGUEADO COMO </p> <h3 style="text-shadow: -2px -2px 1px #464646;" ><?php echo $user_login['firstname'].$user_login['lastname']; ?> </h3>
                             <a href="<?php echo site_url('admin'); ?>" class="btn btn-circle js-scroll-trigger"><i style="text-shadow: -2px -2px 1px #464646;" class="fa fa-user-secret  animated" title="Pagina Administración"></i></a>
                 <?php endif; ?>
               <!-- FIN ACCEDER ADMIN -->

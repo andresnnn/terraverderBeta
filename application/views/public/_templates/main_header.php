@@ -27,9 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <!-- start task -->
                                             <?php foreach($notificacion as $noti){ ?>
                                             <li>
-                                            
-                                            <!-- <?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?> -->
-                                                <a href="<?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?>">
+                                                <a href="<?php echo site_url('user/tareas_pla/ver_detalles/'.$noti['idTarea']); ?>">
                                                 <div class="task-info">
                                                     <strong><?php echo $noti['nombreTipoTarea'].": ".$noti['descripcionTarea'];; ?></strong><br>
                                                     Umbráculo: <?php echo $noti['nombreUmbraculo']; ?><br>
@@ -69,9 +67,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </li>
  
             </div>
-            <div class="top-menu">
+            <div style="align-items: center" class="top-menu">
             	<ul class="nav pull-right top-menu">
-                    <li><a class="logout" href="<?php echo site_url('auth/login'); ?>">Salir</a></li>
+
+                <!--DROPDOWN PARA CUENTA USER-->
+                <li class="dropdown">
+                        <a data-toggle="dropdown" class="logout dropdown-toggle" href="index.html#">
+                                    <span class="hidden-xs"><?php echo $user_login['firstname']." ".$user_login['lastname']; ?></span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green "></div>
+                            <li>
+                                <p class="green">Acciones</p>
+                            </li>
+                            <li><a class="logout" href="<?php echo site_url('auth/login'); ?>">Salir</a></li>
+                        </ul>
+                </li>
+                <!--FIN DROPDOWN PARA CUENTA USER-->
             	</ul>
             </div>
         </header>
+

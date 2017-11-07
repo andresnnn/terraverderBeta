@@ -36,8 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <!-- start task -->
                                             <?php foreach($notificacion as $noti){ ?>
                                             <li>
-                                            <!-- <?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?> -->
-                                                <a href="<?php echo site_url('common/umbraculos/atenderTarea/'.$noti['idUmbraculo'].'/'.$noti['idTarea']); ?>">
+                                                <a href="<?php echo site_url('common/tareas/ver_detalles/'.$noti['idTarea']); ?>">
                                                 <div class="task-info">
                                                     <strong><?php echo $noti['nombreTipoTarea'].": ".$noti['descripcionTarea'];; ?></strong>
                                                     Umbráculo: <?php echo $noti['nombreUmbraculo']; ?><br>
@@ -88,14 +87,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <ul class="dropdown-menu">
                                     <li class="user-header">
                                         <img src="<?php echo base_url($avatar_dir . '/m_001.png'); ?>" class="img-circle" alt="User Image">
-                                        <p><?php echo $user_login['firstname'].$user_login['lastname']; ?><small><?php echo lang('header_member_since'); ?> <?php echo date('d-m-Y', $user_login['created_on']); ?></small></p>
+                                        <small><p>Usuario actual</p></small>
+                                        <p><?php echo $user_login['firstname'].$user_login['lastname']; ?></p>
                                     </li>
                                     <li class="user-body">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Tareas Atendidas</a>
-                                            </div>
-                                        </div>
                                     </li>
                                     <li class="user-footer">
                                         <div class="pull-left">
