@@ -239,22 +239,39 @@ crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
 function stockMax(id){
-  var $valor =  document.getElementById('canti'+id).value;
+    var $valor =  document.getElementById('canti'+id).value;
     var $valorMax= document.getElementById('canti'+id).max;
     var $valorMin = document.getElementById('canti'+id).min;
-
-  if ($valor>$valorMax||$valor<$valorMin) {
+    var $cantReq = $valorMax-$valor;
+    document.getElementById('canti'+id).value=parseInt($valor);
+  if ($cantReq<0) {
+    document.getElementById('canti'+id).value=$valorMax;
+    alert("La cantidad requerida no debe superar el stock");
+  }
+  else if ($cantReq>$valorMax) {
     document.getElementById('canti'+id).value=0;
-    alert("La cantidad requerida no debe superar el stock, ni ser menor a cero ");
+  alert("La cantidad requerida no debe ser menor a cero ");
+
   }
 
 }
 
 function cargarDatos(id) {
+    var $valor =  document.getElementById('canti'+id).value;
+    var $stockActual= document.getElementById('stock'+id).value;
+    var $cantRequerida = document.getElementById('canti'+id).value;
+    var $nuevoStock = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
     document.getElementById('idInsumoBD').value = id;
     document.getElementById('stockActual').value = document.getElementById('stock'+id).value;
     document.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
-    document.getElementById('nuevoStock').value = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
+    if($nuevoStock>=0){
+    document.getElementById('nuevoStock').value = $nuevoStock;
+    }
+    else {
+
+    document.getElementById('nuevoStock').value = 0;
+
+    }
 
     }
 
