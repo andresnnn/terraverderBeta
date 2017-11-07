@@ -3,47 +3,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>      
             <div class="wrapper">
-                <section id="main-content" class="content-header">
-                 <h3 class="box-title">Administración Umbráculos</h3>
-                 
+<section id="main-content" class="content-header">
                     <div class="row">
-                        <div class="col-md-12">
-                    </div>
-
                         <div class="col-md-6">
-                            <div class="box">
-                                <div class="box-body">
-                                    <!-- CONTENIDO -->
-                                    <div class="box-header with-border">
+                             <div class="box">
+                                <div class="box-header with-border">
                                     <h3 class="box-title">Detalles <strong><?php echo $info_umbraculo['nombreUmbraculo']?></h3>
-                                     </div>
-                                        <div class="box-body">
-                                            <table class="table table-striped table-hover">
-                                                <tbody>
-                                                    <tr>
-                                                        <th>Nombre</th>
-                                                        <td><?php echo $info_umbraculo['nombreUmbraculo']; ?></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Sustrato</th>
-                                                        <td><textarea style="width:100%" disabled><?php echo $info_umbraculo['descripcionSustrato']; ?></textarea></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Descripción</th>
-                                                        <td><textarea style="width:100%" disabled><?php echo $info_umbraculo['descripcionUmbraculo']; ?></textarea></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-
-                                    <!--CAJA CONDICIONES-->
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-striped table-hover">
+                                        <tbody>
+                                            <tr>
+                                                <th>Nombre</th>
+                                                <td><?php echo $info_umbraculo['nombreUmbraculo']; ?></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Sustrato</th>
+                                                <td><textarea style="width:100%" disabled><?php echo $info_umbraculo['descripcionSustrato']; ?></textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <th>Descripción</th>
+                                                <td><textarea style="width:100%" disabled><?php echo $info_umbraculo['descripcionUmbraculo']; ?></textarea></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="box-footer" style="text-align: center;" title="Volver a vista administración de umbráculos">
+                                    <a href="<?php echo site_url('user/umbraculos_pla'); ?>" class="btn btn-default btn-flat">Volver atrás</a>
+                                </div>
+                            </div>
+                    <!--CAJA CONDICIONES-->
                             <div class="box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title">Condiciones</h3>
                                 </div>
                             <div class="box-body">
-                                    <div class="col-md-6">
+                                    <div class="box-body">
                                                 <table class="table table-striped table-hover">
                                                 <tr>
                                                     <td>Temperatura <strong><?php echo $info_umbraculo['temperaturaUmbraculo']; ?>°C</strong></td>
@@ -100,20 +95,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                             <div>
                                                 <table>
-                                                    <td><h3 class="box-title"><?php echo anchor('common/umbraculos/verPlantas/'.$id, '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Ver todas las plantas dentro del umbráculo')); ?></h3></td
+                                                    <td><h3 class="box-title"><?php echo anchor('user/umbraculos_pla/verPlantas/'.$id, '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Ver todas las plantas dentro del umbráculo')); ?></h3></td
                                                     >
                                                       <td><h3 class="box-title">
-                                                      <?php echo anchor('common/umbraculos/agregarPlanta/'.$id, '<i class="fa fa-plus"></i> '.'Agregar planta', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Agregar una nueva planta dentro de este umbráculo')); ?>
+                                                      <?php echo anchor('user/umbraculos_pla/agregarPlanta/'.$id, '<i class="fa fa-plus"></i> '.'Agregar planta', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Agregar una nueva planta dentro de este umbráculo')); ?>
                                                       </h3></td>
                                                 </table>
                                             </div>
                                     </div>
                             </div>
-                            </div>
                         </div>
+                    </div>
                     <!--FIN CAJA PLANTAS-->
 
-                                        <!--CAJA TAREAS-->
+                    <!--CAJA TAREAS-->
 
                     <div class="col-md-6">
                              <div class="box">
@@ -143,9 +138,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </table>
                                             <div>
                                                 <table>
-                                                    <td><h3 class="box-title"><?php echo anchor('common/Umbraculos/verTareas/'.$id,'<i class="fa fa-eye"></i> '.'Ver Todas las tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
+                                                    <td><h3 class="box-title"><?php echo anchor('user/Umbraculos_pla/verTareas/'.$id,'<i class="fa fa-eye"></i> '.'Ver Todas las tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
-                                                    <td><h3 class="box-title"><?php echo anchor('common/Tareas/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                    <td><h3 class="box-title"><?php echo anchor('user/Tareas_pla/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
                                                 </table>
                                             </div>
                                 </div>
@@ -153,14 +148,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                     <!--FIN CAJA TAREAS-->
-                                    <!-- FIN CONTENIDO-->
-                                </div>
-                            </div>
-                        </div>
-
-
-                    </div>
-
-
                 </section>
             </div>

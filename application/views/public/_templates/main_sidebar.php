@@ -18,31 +18,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <ul class="sidebar-menu" style="margin: 2%;">
                         <li >
                             <a href="<?php echo site_url('principal'); ?>">
-                                <i class="fa fa-dashboard"></i> <span>Principal</span>
+                                <i class="fa fa-dashboard"></i> <span>Home</span>
                             </a>
                         </li>
                         <!-- TITULO ELEMENTO-->
-                        <li class="text-uppercase">Insumos</li>
+                        <li class="text-uppercase">Administración Insumos</li>
                         <!-- Botones links-->
                         <li >
                             <a href="<?php echo site_url('user/insumos_pla'); ?>">
-                                <i class="fa fa-dashboard"></i> <span>Consultar Insumos</span>
+                                <i class="fa fa-truck"></i><span>Insumos</span>
                             </a>
                         </li>
                         <!-- TITULO ELEMENTO-->
-                        <li class="text-uppercase">Tareas</li>
+                        <li class="text-uppercase">Administración Tareas</li>
                         <!-- Botones links-->
                          <li>
-                            <a href="">
-                                <i class="fa fa-tasks"></i> <span>Consultar Tareas</span>
+                            <a href="<?php echo site_url('user/tareas_pla'); ?>">
+                                <i class="fa fa-tasks"></i><span>Tareas</span>
                             </a>
                         </li>
                         <!-- TITULO ELEMENTO-->
-                        <li class="text-uppercase">Umbráculos</li>
+                        <li class="text-uppercase">Administración Umbráculos</li>
                         <!-- Botones links-->
                         <li>
                              <a href="<?php echo site_url('user/umbraculos_pla'); ?>">
-                                <i class="fa fa-dashboard"></i> <span>Consultar Umbráculos</span>
+                                <i class="fa fa-tree"></i><span>Umbráculos</span>
                             </a>
                         </li>
                         <!-- TITULO ELEMENTO-->
@@ -50,12 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <!-- Botones links-->
                         <li>
                             <a href="<?php echo site_url('user/plantas_pla'); ?>">
-                                <i class="fa fa-tasks"></i> <span>Plantas</span>
+                                <i class="fa fa-tencent-weibo"></i><span>Plantas</span>
                             </a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('user/especies_pla'); ?>">
-                                <i class="fa fa-tasks"></i> <span>Especies de planta</span>
+                                <i class="fa fa-pagelines"></i><span>Especies de planta</span>
                             </a>
                         </li>
                     </ul>

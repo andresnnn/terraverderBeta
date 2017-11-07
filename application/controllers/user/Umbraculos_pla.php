@@ -55,15 +55,12 @@ class Umbraculos_pla extends Public_controller {
                 }
                 else
                 {
-                    /* Data */
+                                      /* Data */
                     $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
-
                      $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
                      $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->get_umbraculo_plantas_nombre($idUmbraculo);
                      $this->data['tareas'] = $this->Tareas_model->obtener_tareas_umbraculo($idUmbraculo);
                     /* CARGAR INFORMARCION */
-                   // $this->load->view('admin/umbraculos/umbraculos_plantas/index',$this->data);
-
                     /* Load Template */
                     $this->template->user_render('public/umbraculos/ver', $this->data);
                 }
@@ -77,17 +74,12 @@ class Umbraculos_pla extends Public_controller {
              */
             public function verTareas($idUmbraculo)
             {
-                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                if ( ! $this->ion_auth->logged_in())
                 {
                     redirect('auth/login', 'refresh');
                 }
                 else
                 {
-
-
-                    /* Breadcrumbs */
-                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
                     /* Data */
                     $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
 
@@ -95,7 +87,7 @@ class Umbraculos_pla extends Public_controller {
                     $this->data['tareas_en_umbraculo'] = $this->Tareas_model->listar_tareas_umbraculo($idUmbraculo);
 
                     /* Load Template */
-                    $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
+                    $this->template->user_render('public/umbraculos/tareas_umbraculos/index', $this->data);
 
                 }
             }
@@ -131,14 +123,14 @@ class Umbraculos_pla extends Public_controller {
                           );                // actualizar tarea
                   $this->Tareas_model->update_tareas($idTarea,$params);
 
-                  redirect('common/umbraculos/verTareas/'.$idUmbraculo);
+                  redirect('user/umbraculos_pla/verTareas/'.$idUmbraculo);
 
                 }
                 else {
                   /* Breadcrumbs */
                       $this->data['breadcrumb'] = $this->breadcrumbs->show();
                   /* Load Template */
-                  $this->template->admin_render('admin/umbraculos/umbraculo_tarea/atender',$this->data);
+                  $this->template->user_render('public/umbraculosumbraculo_tarea/atender',$this->data);
                 }
               }
             }
@@ -162,22 +154,19 @@ class Umbraculos_pla extends Public_controller {
          */
             public function verPlantas($idUmbraculo)
             {
-                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                if ( ! $this->ion_auth->logged_in())
                 {
                     redirect('auth/login', 'refresh');
                 }
                 else
                 {
-                    /* Breadcrumbs */
-                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
                     /* INFORMACIÓN QUE LLEGA A LA VISTA */
                     $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
                     $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
                     $this->data['umbraculo_plantas'] = $this->Umbraculoplantas_model->ver_plantas_umbraculo($idUmbraculo);
 
                     /* CARGAR PLANTILLA */
-                    $this->template->admin_render('admin/umbraculos/umbraculos_plantas/see', $this->data);
+                    $this->template->user_render('public/umbraculos/plantas_umbraculos/index', $this->data);
                 }
             }
 
@@ -189,15 +178,12 @@ class Umbraculos_pla extends Public_controller {
      */
     public function agregarPlanta($idUmbraculo)
     {
-        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+        if ( ! $this->ion_auth->logged_in())
         {
             redirect('auth/login', 'refresh');
         }
         else
         {
-            /* Breadcrumbs */
-            $this->data['breadcrumb'] = $this->breadcrumbs->show();
-
             /* Data */
             $idUmbraculo = (int) $idUmbraculo;
             $this->data['id'] = $idUmbraculo;
@@ -209,7 +195,7 @@ class Umbraculos_pla extends Public_controller {
             $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();
 
             /* Load Template */
-            $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
+            $this->template->user_render('public/umbraculos/plantas_umbraculos/add_planta', $this->data);
         }
     }
     /**
@@ -236,11 +222,11 @@ class Umbraculos_pla extends Public_controller {
             if ($this->Umbraculoplantas_model->esta_registrada($params) == NULL) {
                 $umbraculo_plantas_id = $this->Umbraculoplantas_model->add_umbraculo_plantas($params);
                 $this->Umbraculos_model->actualizar_espacio_disponible($this->input->post('idUmbraculo'),$this->input->post('nuevoEspacioDisponible'));
-                redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
+                redirect('user/umbraculos_pla/ver/'.$this->input->post('idUmbraculo'));
             }else{
                 show_error('La planta ya se encuentra registrada dentro del umbráculo');
                 sleep(3);
-                redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
+                redirect('user/umbraculos_pla/ver/'.$this->input->post('idUmbraculo'));
             }
         }
         else
@@ -248,7 +234,7 @@ class Umbraculos_pla extends Public_controller {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
             /* CARGA VISTA CON PLANTILLA */
-            $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
+            $this->template->user_render('public/umbraculosumbraculos_plantas/add', $this->data);
         }
     }
 
@@ -264,7 +250,7 @@ class Umbraculos_pla extends Public_controller {
         $umbraculo_plantas = $this->Umbraculoplantas_model->get_umbraculo_plantas($idUmbraculo);
         $this->Umbraculoplantas_model->retirar_planta_umbraculo($idUmbraculo,$idPlanta);
         $this->Umbraculos_model->actualizar_espacio_disponible($idUmbraculo,$this->input->post('nuevaCantidad'));
-        redirect('common/umbraculos/verPlantas/'.$idUmbraculo);
+        redirect('user/umbraculos_pla/verPlantas/'.$idUmbraculo);
     }
 
     /**
@@ -289,7 +275,7 @@ class Umbraculos_pla extends Public_controller {
             /*NUEVA ESPACIO DISPONIBLE DEL UMBRACULO*/
             $this->Umbraculos_model->actualizar_espacio_disponible($umbraculo,$this->input->post('dipoActualizada'));
 
-            redirect('common/umbraculos/verPlantas/'.$umbraculo);
+            redirect('user/umbraculos_pla/verPlantas/'.$umbraculo);
     }
 
 
