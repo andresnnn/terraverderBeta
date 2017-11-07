@@ -192,6 +192,7 @@ var base_url = "<?php echo base_url(); ?>";
 
           <div class="box-body">
     				<div class="row clearfix">
+              <div id="result"></div>
                 <table class="table table-striped table-hover">
                   <tr>
                   <div></div>
@@ -284,6 +285,11 @@ $('form.jsform').on('submit', function(form){
 
 
     form.preventDefault();
+    $.post(base_url+'common/umbraculos/ExisteInsumoTarea', {
+      cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
+    }, function(response,status){
+      $("#result").html(mensaje);
+
     $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
       cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
     }, function(response,status){
