@@ -38,6 +38,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <i class="fa fa-tasks"></i><span>Tareas</span>
                             </a>
                         </li>
+                        <?php if ($permisos['idGrupo'] == 2) { ?>
+                        <li>
+                            <a href="<?php echo site_url('user/Tipostareas_pla'); ?>">
+                                <i class="fa fa-thumb-tack"></i> <span>Tipos de Tareas</span>
+                            </a>
+                        </li>
+                        <?php }?>
                         <!-- TITULO ELEMENTO-->
                         <li class="text-uppercase">Administración Umbráculos</li>
                         <!-- Botones links-->

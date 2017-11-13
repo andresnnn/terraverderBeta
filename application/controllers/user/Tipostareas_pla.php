@@ -1,18 +1,22 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Tipotareas_pla extends Public_Controller{
+class Tipostareas_pla extends Public_Controller{
 
     public function __construct()
     {
       parent::__construct();
-              /*carga del modelo*/
+      /*carga del modelo*/
       $this->load->model('admin/Tipotareas_model');
-              /* Load :: Common */
       $this->lang->load('admin/tipotareas');
-      /* Title Page :: Common */
-      $this->page_title->push(lang('menu_tipotarea'));
-      $this->data['pagetitle'] = $this->page_title->show();
+        if (!$this->ion_auth->logged_in() )
+        {
+            redirect('auth/login', 'refresh');
+        }
+        else
+        {
+            $this->data['user_login']  = $this->prefs_model->user_info_login($this->ion_auth->user()->row()->id);
+        }
 
     }
 
@@ -21,18 +25,16 @@ class Tipotareas_pla extends Public_Controller{
      */
     public function index()
     {
-      if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+      if ( ! $this->ion_auth->logged_in())
       {
           redirect('auth/login', 'refresh');
       }
       else
       {
-          /* Breadcrumbs */
-          $this->data['breadcrumb'] = $this->breadcrumbs->show();
           /* insumos consulta*/
           $this->data['tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();
           /* Load Template */
-          $this->template->admin_render('admin/tipotareas/index', $this->data);
+          $this->template->user_render('public/tiposTarea/index', $this->data);
 
       }
     }
@@ -42,14 +44,12 @@ class Tipotareas_pla extends Public_Controller{
      */
     public function add()
     {
-      if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+      if ( ! $this->ion_auth->logged_in())
       {
           redirect('auth/login', 'refresh');
       }
       else
       {
-          /* Breadcrumbs */
-          $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
             /* form validation*/
         $this->load->library('form_validation');
@@ -65,11 +65,11 @@ class Tipotareas_pla extends Public_Controller{
             );
 
             $tipotarea_id = $this->Tipotareas_model->add_tipotarea($params);
-            redirect('common/tipotareas/index');
+            redirect('user/Tipostareas_pla/index');
         }
         else
         {
-          $this->template->admin_render('admin/tipotareas/add', $this->data);
+          $this->template->user_render('public/tipostarea/add', $this->data);
         }
     }
   }
@@ -79,10 +79,6 @@ class Tipotareas_pla extends Public_Controller{
      */
     function edit($idTipoTarea)
     {
-          /* Breadcrumbs */
-      $this->data['breadcrumb'] = $this->breadcrumbs->show();
-      // check if the insumo exists before trying to edit it
-
         // check if the tipotarea exists before trying to edit it
         $this->data['tipotarea'] = $this->Tipotareas_model->get_tipotarea($idTipoTarea);
 
@@ -101,41 +97,22 @@ class Tipotareas_pla extends Public_Controller{
                 );
 
                 $this->Tipotareas_model->update_tipotarea($idTipoTarea,$params);
-                redirect('common/tipotareas/index');
+                redirect('user/Tipostareas_pla');
             }
             else
             {
-                  $this->template->admin_render('admin/tipotareas/edit', $this->data);
+                  $this->template->user_render('public/tipostarea/edit', $this->data);
             }
         }
         else
             show_error('The tipotarea you are trying to edit does not exist.');
     }
 
-    /*
-     * Deleting tipotarea
-     */
-    function remove($idTipoTarea)
-    {
-        $tipotarea = $this->Tipotareas_model->get_tipotarea($idTipoTarea);
-
-        // check if the tipotarea exists before trying to delete it
-        if(isset($tipotarea['idTipoTarea']))
-        {
-            $this->Tipotareas_model->delete_tipotarea($idTipoTarea);
-            redirect('common/tipotareas/index');
-        }
-        else
-            show_error('The tipotarea you are trying to delete does not exist.');
-    }
-
     function profile($idTipoTarea)
     {
-      /* Breadcrumbs */
-        $this->data['breadcrumb'] = $this->breadcrumbs->show();
         // check if the insumo exists before trying to edit it
         $this->data['tipotarea'] = $this->Tipotareas_model->get_tipotarea($idTipoTarea);
-        $this->template->admin_render('admin/tipotareas/profile', $this->data);
+        $this->template->user_render('public/tipostarea/profile', $this->data);
 
     }
 

@@ -16,9 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h3 class="box-title">Nuevo tipo de tarea</h3>
                     </div>
                     <div class="box-body">
-
                       <!-- COMIENZA FORMULARIO -->
-
 							<?php echo form_open('common/tipotareas/add',array('class' => 'form-horizontal', 'id')); ?>
 
 								<div class="form-group">
