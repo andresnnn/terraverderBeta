@@ -13,7 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                             <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><?php echo anchor('user/insumos_pla/crear', '<i class="fa fa-plus"></i> '. 'Agregar nuevo insumo', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                        <?php  
+                                        if ($permisos['idGrupo'] == 2) {
+                                            echo "<h3 class='box-title'>";
+                                            echo anchor('user/insumos_pla/crear', '<i class="fa fa-plus"></i> '. 'Agregar nuevo insumo', array('class' => 'btn btn-block btn-primary btn-flat'));
+                                            echo "</h3>";
+                                        }
+                                        ?>
                                 </div>
 
                                 <div class="box-body">
@@ -23,8 +29,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <th>Nombre Insumo</th>
                                         <th>Descripcion Insumo</th>
                                         <th>Cantidad</th>
+                                    <?php if ($permisos['idGrupo'] == 2) { ?>
                                         <th>Punto De Pedido</th>
                                         <th>Estado</th>
+                                    <?php } ?>
                                         <th>Acciones</th>
                                     </tr>
                                     <?php foreach($insumo as $i){ ?>
@@ -32,19 +40,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         <td><?php echo $i['nombreInsumo']; ?></td>
                                         <td><?php echo $i['descripcionInsumo']; ?></td>
                                         <td><?php echo $i['cantidad']; ?></td>
-                                        <td><?php echo $i['puntoDePedido']; ?></td>
-                                        <td title="El estado determina, el poder utilizar o no, determinado insumoi en otros módulos">
-                                        <?php 
-                                        if ($i['active'] == 1) {
-                                            echo "<a href='".site_url('user/insumos_pla/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
-                                        }else{
-                                            echo "<a href='".site_url('user/insumos_pla/activado_logico/'.$i['idInsumo'])."'><span class='label label-default'>Inactivo</span></a>";
-                                        }
-                                        ?>
-                                        </td>
+                                        <?php if ($permisos['idGrupo'] == 2) { ?>
+                                            <td><?php echo $i['puntoDePedido']; ?></td>
+                                            <td title='El estado determina, el poder utilizar o no, determinado insumoi en otros módulos'>
+                                            <?php 
+
+                                            if ($i['active'] == 1) {
+                                                echo "<a href='".site_url('user/insumos_pla/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
+                                            }else{
+                                                echo "<a href='".site_url('user/insumos_pla/activado_logico/'.$i['idInsumo'])."'><span class='label label-default'>Inactivo</span></a>";
+                                            }
+                                            ?>
+                                            </td>
+
+                                        <?php } ?>
+
                                         <td>
                                             <a href="<?php echo site_url('user/insumos_pla/profile/'.$i['idInsumo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
-                                            <a href="<?php echo site_url('user/insumos_pla/edit/'.$i['idInsumo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
+                                            <?php 
+                                                if ($permisos['idGrupo'] == 2) {
+                                                    echo "<a href='".site_url('user/insumos_pla/edit/'.$i['idInsumo'])."' class='btn btn-info btn-xs'><span class='fa fa-pencil'></span> Editar</a>";
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                     <?php } ?>

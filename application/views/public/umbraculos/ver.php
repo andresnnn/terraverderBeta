@@ -140,7 +140,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <table>
                                                     <td><h3 class="box-title"><?php echo anchor('user/Umbraculos_pla/verTareas/'.$id,'<i class="fa fa-eye"></i> '.'Ver Todas las tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
+                                                    <?php if ($permisos['idGrupo'] == 2) { ?>
                                                     <td><h3 class="box-title"><?php echo anchor('user/Tareas_pla/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                    <?php  }?>
                                                 </table>
                                             </div>
                                 </div>

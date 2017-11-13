@@ -251,10 +251,8 @@ class Umbraculos_pla extends Public_controller {
         }
         else
         {
-            /* Breadcrumbs */
-            $this->data['breadcrumb'] = $this->breadcrumbs->show();
             /* CARGA VISTA CON PLANTILLA */
-            $this->template->user_render('public/umbraculosumbraculos_plantas/add', $this->data);
+            $this->template->user_render('public/umbraculos/plantas_umbraculos/add_planta', $this->data);
         }
     }
 

@@ -93,6 +93,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 										</div>
                                 	</div>
                                 	<!--FIN CAJA-->
+
+                                    <!--CAJA-->
                                 	<div class="col-md-6">
 									<?php if ($t['idEstado'] == 1 || $t['idEstado'] == 3) {
 
@@ -100,6 +102,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         echo anchor('common/umbraculos/atenderTarea/'.$t['idUmbraculo'].'/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));
 
                                         echo '</div>';
+                                    } elseif ($t['idEstado'] == 2) {
+                                        echo '<label class="control-label">Observaciones</label><div class="form-group">';
+                                        echo '<textarea disabled class="form-control">'.$t['observacionEspecialista'].'</textarea>';
                                     } ?>
                                 	<?php } ?>
                                 	</div>

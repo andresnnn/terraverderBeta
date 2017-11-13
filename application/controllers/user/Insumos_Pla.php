@@ -79,8 +79,6 @@ class Insumos_pla extends Public_Controller {
      */
       function edit($idInsumo)
       {
-        /* Breadcrumbs */
-          $this->data['breadcrumb'] = $this->breadcrumbs->show();
           // check if the insumo exists before trying to edit it
           $this->data['insumo'] = $this->Insumos_model->get_insumo($idInsumo);
 
@@ -90,7 +88,7 @@ class Insumos_pla extends Public_Controller {
 
         $this->form_validation->set_rules('nombreInsumo','NombreInsumo','max_length[50]|min_length[4]|required');
         $this->form_validation->set_rules('descripcionInsumo','DescripcionInsumo','max_length[255]|min_length[10]|required');
-        //$this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]');
+        $this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]');
         $this->form_validation->set_rules('puntoDePedido','PuntoDePedido','is_natural');
 
         if($this->form_validation->run())
@@ -103,11 +101,11 @@ class Insumos_pla extends Public_Controller {
                   );
 
                   $this->Insumos_model->update_insumo($idInsumo,$params);
-                  redirect('user/insumos/index');
+                  redirect('user/insumos_pla');
               }
               else
               {
-                $this->template->user_render('public/insumos_pla/edit', $this->data);
+                $this->template->user_render('public/insumos/edit', $this->data);
               }
           }
           else
@@ -121,12 +119,9 @@ class Insumos_pla extends Public_Controller {
          */
               function profile($idInsumo)
               {
-
-                /* Breadcrumbs */
-                  $this->data['breadcrumb'] = $this->breadcrumbs->show();
                   // check if the insumo exists before trying to edit it
                   $this->data['insumo'] = $this->Insumos_model->get_insumo($idInsumo);
-                  $this->template->user_render('public/insumos_pla/profile', $this->data);
+                  $this->template->user_render('public/insumos/profile', $this->data);
 
               }
   

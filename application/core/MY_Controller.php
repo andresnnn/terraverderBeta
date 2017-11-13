@@ -17,6 +17,7 @@ class MY_Controller extends CI_Controller
         $this->load->model('common/prefs_model');
         /* Title Page :: Common */
         $this->load->model('common/Tareas_model');
+        $this->load->model('common/Users_model');
 
         /* Data */
         $this->data['lang']           = element($this->config->item('language'), $this->config->item('language_abbr'));
@@ -134,6 +135,9 @@ class Public_Controller extends MY_Controller
 
             $this->data['logout_link'] = TRUE;
             $this->data['user'] = TRUE;
+
+            /*Para permisos*/
+            $this->data['permisos'] = $this->Users_model->consultar_permisos($this->ion_auth->user()->row()->id);
         }
         else
         {

@@ -39,7 +39,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                 <!-- ELIMINA UNA PLANTA DENTRO DEL UMBRACULO Y DEBE DE REESTABLECER EL ESPACIO QUE SE DESOCUPA 
                                                 DENTRO DEL MISMO -->
-                                                <?php echo form_open('common/umbraculos/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>
+                                                <?php echo form_open('user/umbraculos_pla/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>
                                                 <input type="hidden" id="nuevaCantidad" name="nuevaCantidad" value="<?php echo $info_umbraculo['unidadEspacioDisponible_m2']+($u['unidadEspacioPlanta_m2']*$u['cantidad'])/10000;?>"> 
                                                 <!--ESTE ES EL CAMPO QUE LLEVA EL VALOR CON EL ESPACIO REESTABLECIDO-->
                                                 <button type="submit" class="btn btn-danger btn-xs"><span class="fa fa-minus"> </span> Borrar planta umbráculo</button>

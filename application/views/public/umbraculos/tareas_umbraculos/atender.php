@@ -277,10 +277,10 @@ $('form.jsform').on('submit', function(form){
 
     form.preventDefault();
 
-    $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
+    $.post(base_url+'user/umbraculos_pla/agregarInsumoTarea', {
       cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
     }, function(response,status){
-    alert("hola"); } );
+    alert("Insumo agregado"); } );
   });
 
 </script>
