@@ -177,4 +177,25 @@ class Plantas extends Admin_Controller{
             show_error('The planta you are trying to delete does not exist.');
     }
     
+    /**
+     * Para ver lo detalles de la planta junto con los de las especie a la que pertenece.
+     * @param  [type] $idPlanta [description]
+     * @return [type]           [description]
+     * @author SAKZEDMK
+     */
+    function ver ($idPlanta)
+    {
+        /*info_planta_especie($idPlanta)*/
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+        {
+            redirect('auth/login', 'refresh');
+        }
+        else
+        {
+            /* Breadcrumbs */
+            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+            $this->data['detalles'] = $this->Plantas_model->info_planta_especie($idPlanta);
+            $this->template->admin_render('admin/plantas/ver', $this->data);
+        }
+    }
 }

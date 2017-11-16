@@ -25,14 +25,6 @@ class Plantas_model extends CI_Model
         $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
     }
-
-    /**
-     *SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin,planta.idPlanta,planta.nombrePlanta,`umbraculo/planta`.`idUmbraculo`
-FROM `umbraculo/planta` 
-JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta 
-JOIN especie ON planta.idEspecie=especie.idEspecie
-WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo." 
-     */
     
     /*ESTA FUNCION ARROJARA COMO RESULTADO UN ARRAY QUE CONTIENE LA INFORMACION
     DE LAS PLANTAS CON LA RESPECTIVA INFORMACIÓN DE SU ESPECIE, PARA REALIZAR LA COMPARACION DE CONDICIONES A LA HORA DE AGREGAR UNA PLANTA ADENTRO*/
@@ -40,6 +32,22 @@ WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo."
     {
         $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMin,especie.temperaturaMax,especie.temperaturaMin,especie.nombreEspecie,planta.idPlanta,planta.nombrePlanta,planta.unidadEspacioPlanta_m2,planta.active FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
+    }
+
+    /**
+     * Reotorna la informacion de la planta, junto con la de su respectiva especie
+     * @param  [type] $idPlanta [description]
+     * @return [type]           [description]
+     */
+    function info_planta_especie($idPlanta)
+    {
+
+        $query="SELECT * 
+                FROM planta 
+                JOIN especie ON planta.idEspecie = especie.idEspecie
+                WHERE planta.idPlanta =".$idPlanta;
+        return $this->db->query($query)->row_array();
+
     }
 
     /*

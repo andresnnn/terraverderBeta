@@ -151,5 +151,23 @@ class Plantas_pla extends Public_Controller{
         $this->Plantas_model->activar_planta($idPlanta);
         redirect('user/plantas_pla/index'); 
     }
-    
+    /**
+     * Para ver lo detalles de la planta junto con los de las especie a la que pertenece.
+     * @param  [type] $idPlanta [description]
+     * @return [type]           [description]
+     * @author SAKZEDMK
+     */
+    function ver ($idPlanta)
+    {
+        /*info_planta_especie($idPlanta)*/
+        if ( ! $this->ion_auth->logged_in())
+        {
+            redirect('auth/login', 'refresh');
+        }
+        else
+        {
+            $this->data['detalles'] = $this->Plantas_model->info_planta_especie($idPlanta);
+            $this->template->user_render('public/plantas/ver', $this->data);
+        }
+    }
 }

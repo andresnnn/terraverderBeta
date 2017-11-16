@@ -42,6 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 ?>
                                             </td>
                                             <td>
+                                                <a href="<?php echo site_url('user/plantas_pla/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a> 
                                                 <a href="<?php echo site_url('user/plantas_pla/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
                                             </td>
                                         </tr>
