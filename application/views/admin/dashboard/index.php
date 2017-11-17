@@ -22,7 +22,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                   </div>
                               </div>
                               <div class="box-body">
-                                <p>Es el sistema por el cual la empresa ha optado por utilizar, para el apoyo en la gestión de sus recursos.</p>
+                                TERRAVERDE
+                                <p>Es el sistema que la empresa optó por utilizar, para el apoyo en la gestión de los recursos de las instalaciones agronómicas.</p>
+                                <p>Mediante su rango de <strong>Administrador</strong> posee acceso a todas las acciones disponibles para gestionar: </p>
+                                <ul>
+                                    <li><i class="fa fa-hand-o-right"></i>  Los usuarios.</li>
+                                    <li><i class="fa fa-hand-o-right"></i>  Los umbráculos y la creación de una tarea asociada.</li>
+                                    <li><i class="fa fa-hand-o-right"></i>  Las  tareas.</li>                                    
+                                    <li><i class="fa fa-hand-o-right"></i> Las especies y plantas.</li>
+                                    <li><i class="fa fa-hand-o-right"></i>  Los insumos</li>
+                                    <li><i class="fa fa-hand-o-right"></i>  Las tareas.</li>
+                                </ul>
 
                               </div>
                           </div>

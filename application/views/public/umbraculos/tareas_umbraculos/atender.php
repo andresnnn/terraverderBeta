@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-?>      
+?>
 <script type="text/javascript">
 var base_url = "<?php echo base_url(); ?>";
 </script>
             <div class="wrapper">
                 <section id="main-content" class="content-header">
                  <h3 class="box-title">Administración Umbráculos</h3>
-                 
+
                     <div class="row">
                         <div class="col-md-12">
                     </div>
@@ -61,7 +61,9 @@ var base_url = "<?php echo base_url(); ?>";
                         <label for="idEstado" class="control-label">Estado Tarea</label>
                         <div class="form-group">
                             <select name="idEstado" class="form-control">
-                                <option value="">select estado_tarea</option>
+
+                                <option value=""> Selecciona un estado de la tarea </option>
+
                                 <?php
                                 foreach($estados as $estado_tarea)
                                 {
@@ -72,7 +74,6 @@ var base_url = "<?php echo base_url(); ?>";
                                 ?>
                             </select>
                         </div>
-
                     </div>
 
 
@@ -142,7 +143,7 @@ var base_url = "<?php echo base_url(); ?>";
                                   <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
                                       <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
-                                      <td> <input  id="<?php echo 'canti'.$i['idInsumo'];?>" type="number" min="0" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada" onchange="javascript:stockMax(<?php echo $i['idInsumo'];?>);" /></td>
+                                      <td> <input  id="<?php echo 'canti'.$i['idInsumo'];?>" value="1" type="number" min="1" max="<?php echo $i['cantidad']; ?>" name="cantidadUtilizada" onchange="javascript:stockMax(<?php echo $i['idInsumo'];?>);" /></td>
 
                                       <td class="boton">
                                           <button onClick="javascript:cargarDatos(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>

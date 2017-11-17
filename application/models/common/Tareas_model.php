@@ -87,7 +87,7 @@ class Tareas_model extends CI_Model
 
     function get_tarea_join($idTarea)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,umb.nombreUmbraculo,umb.idUmbraculo,t.observacionEspecialista
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,umb.nombreUmbraculo,umb.idUmbraculo,t.observacionEspecialista,t.idEstado
                     FROM tarea t
                     JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
                     JOIN estado_tarea et ON t.idEstado= et.idEstado
@@ -126,7 +126,7 @@ class Tareas_model extends CI_Model
                 JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
                 JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
                 JOIN planta ON planta.idPlanta = tarea.idPlanta
-                WHERE tarea.fechaComienzo=('".$fecha."') "; 
+                WHERE tarea.fechaComienzo=('".$fecha."') ";
         return $this->db->query($query)->result_array();
       }
       //agrego nuevo elemento en insumo/tarea
@@ -155,7 +155,7 @@ class Tareas_model extends CI_Model
     return true;
     }
     else {
-      
+
       return false;}
     }
 
@@ -170,7 +170,7 @@ class Tareas_model extends CI_Model
                 FROM `tarea`
                 JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
                 JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
-                WHERE tarea.fechaComienzo=('".$fecha."')"; 
+                WHERE tarea.fechaComienzo=('".$fecha."')";
         return $this->db->query($query)->num_rows();
 
       }
@@ -223,13 +223,13 @@ class Tareas_model extends CI_Model
     function insumos_tarea($idTarea)
     {
       $query= "SELECT `insumo/tarea`.`idTarea`,`insumo/tarea`.`cantidadUtilizado`,insumo.nombreInsumo,insumo.descripcionInsumo,insumo.idInsumo
-                FROM `insumo/tarea` 
+                FROM `insumo/tarea`
                 JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
                 WHERE `insumo/tarea`.`idTarea`=".$idTarea;
       return $this->db->query($query)->result_array();
     }
 
-    
+
     /*
      * function to add new tareas
      */

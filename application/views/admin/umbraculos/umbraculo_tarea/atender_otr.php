@@ -63,7 +63,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<label for="idEstado" class="control-label">Estado Tarea</label>
 						<div class="form-group">
 							<select name="idEstado" class="form-control">
-								<option value="">select estado_tarea</option>
+								<option value="">selecciona </option>
 								<?php
 								foreach($estados as $estado_tarea)
 								{
