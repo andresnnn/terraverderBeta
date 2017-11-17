@@ -41,8 +41,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <li><i class="fa fa-arrow-circle-right "></i>  Atender las tareas que esten pendientes, y si es necesario indicar los insumos que se utilizan en cada una.</li>
                                                 </ul>
                                             </ul>
-
-                                            <p>Puede consultar el manual de usuario para cualquier duda que pueda surgir. <a target="_blank" href="<?php echo base_url('upload/manual_especialista.pdf'); ?>">Haciendo click aquí</a></p>
                                     <?php }?>
 
                                     <?php if ($permisos['idGrupo'] == 2) { ?>
@@ -68,7 +66,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <li><i class="fa fa-arrow-circle-right "></i>  Atender las tareas que esten pendientes, y si es necesario indicar los insumos que se utilizan en cada una.</li>
                                                 </ul>
                                             </ul>
-                                            <p>Puede consultar el manual de usuario para cualquier duda que pueda surgir. <a target="_blank" href="<?php echo base_url('upload/manual_planificador.pdf'); ?>">Haciendo click aquí</a></p>
                                     <?php }?>
 
 
