@@ -81,7 +81,8 @@ class Tareas_model extends CI_Model
     function get_all_insumo()
     {
         $query ="SELECT *
-                    FROM insumo";
+                    FROM insumo
+                    WHERE insumo.cantidad>0";
         return $this->db->query($query)->result_array();
     }
 
