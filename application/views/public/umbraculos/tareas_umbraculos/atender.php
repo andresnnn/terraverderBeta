@@ -1,14 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-?>      
+?>
 <script type="text/javascript">
 var base_url = "<?php echo base_url(); ?>";
 </script>
             <div class="wrapper">
                 <section id="main-content" class="content-header">
                  <h3 class="box-title">Administración Umbráculos</h3>
-                 
+
                     <div class="row">
                         <div class="col-md-12">
                     </div>
@@ -61,7 +61,9 @@ var base_url = "<?php echo base_url(); ?>";
                         <label for="idEstado" class="control-label">Estado Tarea</label>
                         <div class="form-group">
                             <select name="idEstado" class="form-control">
-                                <option value="">select estado_tarea</option>
+                              <?php foreach($tarea as $t){ ?>
+                                <option value="<?php $t['nombreEstado']?>"> Selecciona un estado de la tarea </option>
+                              <?php } ?>
                                 <?php
                                 foreach($estados as $estado_tarea)
                                 {
@@ -72,7 +74,6 @@ var base_url = "<?php echo base_url(); ?>";
                                 ?>
                             </select>
                         </div>
-
                     </div>
 
 

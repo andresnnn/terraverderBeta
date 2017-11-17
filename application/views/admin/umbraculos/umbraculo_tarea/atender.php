@@ -66,7 +66,9 @@ var base_url = "<?php echo base_url(); ?>";
 						<label for="idEstado" class="control-label">Estado Tarea</label>
 						<div class="form-group">
 							<select name="idEstado" class="form-control">
-								<option value="">select estado_tarea</option>
+                <?php foreach($tarea as $t){ ?>
+								<option value="<?php $t['nombreEstado']?>">  Selecciona un estado de la tarea </option>
+                  <?php } ?>
 								<?php
 								foreach($estados as $estado_tarea)
 								{
