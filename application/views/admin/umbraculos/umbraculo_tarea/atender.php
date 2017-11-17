@@ -1,6 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+date_default_timezone_set('America/Buenos_Aires');
 ?>
 <script type="text/javascript">
 var base_url = "<?php echo base_url(); ?>";
@@ -66,7 +66,7 @@ var base_url = "<?php echo base_url(); ?>";
 						<label for="idEstado" class="control-label">Estado Tarea</label>
 						<div class="form-group">
 							<select name="idEstado" class="form-control">
-              
+
 								<option value="">  Selecciona un estado de la tarea </option>
 
 								<?php
@@ -99,6 +99,13 @@ var base_url = "<?php echo base_url(); ?>";
               <input  readonly type="text" name="fechaAtencion" value="<?php echo date('Y-m-d'); ?>" class="has-datepicker form-control" id="fechaAtencion" />
 							<span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
 						</div>
+          </div>
+          <div class="col-md-6">
+            <label for="horaAtencion" class="control-label"><span class="text-danger">*</span>Hora Atención</label>
+            <div class="form-group">
+              <input  readonly type="text" name="horaAtencion" value="<?php echo date('H:i:s', time() - date('Z')); ?>" class="has-datepicker form-control" id="horaAtencion" />
+              <span class="text-danger"><?php echo form_error('horaAtencion');?></span>
+            </div>
           </div>
 <?php foreach($tarea as $t){ ?>
       <div class="col-md-6">
@@ -247,12 +254,12 @@ function stockMax(id){
     var $valorMin = document.getElementById('canti'+id).min;
     var $cantReq = $valorMax-$valor;
     document.getElementById('canti'+id).value=parseInt($valor);
-  if ($cantReq<0) {
+  if ($cantReq<1) {
     document.getElementById('canti'+id).value=$valorMax;
     alert("La cantidad requerida no debe superar el stock");
   }
   else if ($cantReq>$valorMax) {
-    document.getElementById('canti'+id).value=0;
+    document.getElementById('canti'+id).value=1;
   alert("La cantidad requerida no debe ser menor a cero ");
 
   }

@@ -94,6 +94,13 @@ var base_url = "<?php echo base_url(); ?>";
                             <span class="text-danger"><?php echo form_error('fechaAtencion');?></span>
                         </div>
           </div>
+          <div class="col-md-6">
+            <label for="horaAtencion" class="control-label"><span class="text-danger">*</span>Hora Atención</label>
+            <div class="form-group">
+              <input  readonly type="text" name="horaAtencion" value="<?php echo date('H:i:s', time() - date('Z')); ?>" class="has-datepicker form-control" id="horaAtencion" />
+              <span class="text-danger"><?php echo form_error('horaAtencion');?></span>
+            </div>
+          </div>
 <?php foreach($tarea as $t){ ?>
       <div class="col-md-6">
             <label for="observacionEspecialista" class="control-label">ObservacionEspecialista</label>

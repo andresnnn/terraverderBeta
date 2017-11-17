@@ -103,6 +103,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <!--FIN CAJA-->
                                     <!--CAJA-->
                                     <div class="col-md-6">
+                      <label class="control-label">Hora atención</label>
+                      <div class="form-group">
+                        <input disabled type="text" value="<?php echo $t['horaAtencion']; ?>" class="form-control">
+                      </div>
+                                    </div>
+                                    <!--FIN CAJA-->
+                                    <!--CAJA-->
+                                    <div class="col-md-6">
                                         <label class="control-label">Usuario atendió</label>
                                         <div class="form-group">
                                             <input disabled type="text" value="<?php echo $t['Atendio']; ?>" class="form-control">
