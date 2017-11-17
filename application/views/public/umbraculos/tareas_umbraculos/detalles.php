@@ -1,11 +1,11 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-?>      
+?>
             <div class="wrapper">
                 <section id="main-content" class="content-header">
                  <h3 class="box-title">Administración Umbráculos</h3>
-                 
+
                     <div class="row">
                         <div class="col-md-12">
                     </div>
@@ -68,6 +68,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <!--FIN CAJA-->
+                                    <!--CAJA-->
+                                    <div class="col-md-6">
+                                        <label class="control-label">Fecha Prevista</label>
+                                        <div class="form-group">
+                                            <input disabled type="text" value="<?php echo $t['fechaComienzo']; ?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!--FIN CAJA-->
+                                    <!--CAJA-->
+                                    <div class="col-md-6">
+                                        <label class="control-label">Hora Prevista</label>
+                                        <div class="form-group">
+                                            <input disabled type="text" value="<?php echo $t['horaComienzo']; ?>" class="form-control">
+                                        </div>
+                                    </div>
+                                    <!--FIN CAJA-->
 
                                     <!--CAJA-->
                                     <div class="col-md-6">
@@ -94,7 +110,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </div>
                                     <!--FIN CAJA-->
                                     <div class="col-md-6">
-                                    <?php 
+                                    <?php
 
                                     if ($permisos['idGrupo'] == 3) {
                                         if ($t['idEstado'] == 1 || $t['idEstado'] == 3) {
