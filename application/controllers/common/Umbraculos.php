@@ -461,7 +461,7 @@ class Umbraculos extends Admin_Controller {
         if(isset($umbraculo['idUmbraculo']))
         {
             $this->Umbraculos_model->delete_tareas_umbraculos($idUmbraculo);
-            redirect('common/umbraculos/index');
+            redirect('common/umbraculos/ver/'.$idUmbraculo);
         }
         else
             show_error('El umbraculo que queres borrar .');
