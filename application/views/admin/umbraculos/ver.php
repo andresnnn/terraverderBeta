@@ -11,6 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </section>
 
                 <section class="content">
+                    <h3 class="box-title"><?php echo anchor('common/umbraculos/removeUmbraculo/'.$id, '<i class="fa fa-plus"></i> '.'Borrar Umbraculo', array('class' => 'btn btn-block btn-danger btn-lg btn-flat')); ?></h3>
                     <div class="row">
                         <div class="col-md-6">
                              <div class="box">
@@ -102,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </table>
 
                                             <div>
-                                                <table>
+                                                <table style="text-align: center;">
                                                     <td><h3 class="box-title"><?php echo anchor('common/umbraculos/verPlantas/'.$id, '<i class="fa fa-eye"></i> '.'Ver plantas', array('class' => 'btn btn-block btn-primary btn-flat','title'=>'(?) Ver todas las plantas dentro del umbráculo')); ?></h3></td
                                                     >
                                                       <td><h3 class="box-title">
@@ -149,7 +150,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <td><h3 class="box-title"><?php echo anchor('common/Umbraculos/verTareas/'.$id,'<i class="fa fa-eye"></i> '.'Ver Todas las tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
                                                     <td><h3 class="box-title"><?php echo anchor('common/Tareas/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                     <td><h3 class="box-title"><?php echo anchor('common/umbraculos/removeTarea/'.$id, '<i class="fa fa-plus"></i> '.'Borrar todas las tareas', array('class' => 'btn btn-block btn-danger btn-flat')); ?></h3></td>
+                                                     
                                                 </table>
+                                                
                                             </div>
                                 </div>
                             </div>
@@ -157,4 +161,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                     <!--FIN CAJA TAREAS-->
                 </section>
+                   
             </div>

@@ -50,9 +50,19 @@ class Umbraculos_model extends CI_Model
     /*
      * function to delete umbraculos
      */
+       /*esta funcion borra las tareas delumbraculo */
+    function delete_tareas_umbraculos($idUmbraculo)
+    {
+        /*return $this->db->delete('umbraculo',array('idUmbraculo'=>$idUmbraculo));*/
+        $sql= "DELETE FROM tarea WHERE idUmbraculo =".$idUmbraculo;
+        return $this->db->query($sql);
+    }
+    /*esta funcion borra el umbraculo sin tareas*/
     function delete_umbraculos($idUmbraculo)
     {
-        return $this->db->delete('umbraculo',array('idUmbraculo'=>$idUmbraculo));
+        /*return $this->db->delete('umbraculo',array('idUmbraculo'=>$idUmbraculo));*/
+        $sql= "DELETE FROM umbraculo WHERE idUmbraculo =".$idUmbraculo;
+        return $this->db->query($sql);
     }
 
     function retirar_planta_umbraculo($idUmbraculo,$idPlanta)

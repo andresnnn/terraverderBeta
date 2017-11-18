@@ -452,5 +452,33 @@ class Umbraculos extends Admin_Controller {
 
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
     }
+    /*Esta funcion borra las tareas del umbraculo*/
+    function removeTarea($idUmbraculo)
+    {
+        $umbraculo = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+
+        // check if the umbraculo exists before trying to delete it
+        if(isset($umbraculo['idUmbraculo']))
+        {
+            $this->Umbraculos_model->delete_tareas_umbraculos($idUmbraculo);
+            redirect('common/umbraculos/index');
+        }
+        else
+            show_error('El umbraculo que queres borrar .');
+    }
+    /*Esta funcion borra el umbraculo*/
+    function removeUmbraculo($idUmbraculo)
+    {
+        $umbraculo = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+
+        // check if the umbraculo exists before trying to delete it
+        if(isset($umbraculo['idUmbraculo']))
+        {
+            $this->Umbraculos_model->delete_umbraculos($idUmbraculo);
+            redirect('common/umbraculos/index');
+        }
+        else
+            show_error('El umbraculo que queres borrar .');
+    }
 
 }
