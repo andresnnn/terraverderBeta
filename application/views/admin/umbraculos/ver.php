@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title" style="text-align: center;">Detalles del <strong><?php echo $info_umbraculo['nombreUmbraculo']?></h3>
+                                    <h3 class="box-title" style="text-align: center;"><i class="ion-android-home" style="font-size:25px;"></i>  Detalles del <strong><?php echo $info_umbraculo['nombreUmbraculo']?></h3>
                                 </div>
                                 <div class="box-body">
                                     <table class="table table-striped table-hover">
@@ -43,7 +43,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <!--CAJA CONDICIONES-->
                             <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Condiciones Ambientales</h3>
+                                    <h3 class="box-title"><i class="ion-thermometer" style="font-size:25px;"></i>  Condiciones Ambientales</h3>
                                 </div>
                             <div class="box-body">
                                     <div class="box-body">
@@ -90,7 +90,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="progress" title="Espacio disponible dentro del umbráculo">
                                                     <div class="progress-bar progress-bar-striped progress-bar-success active" role="progressbar" aria-valuenow="<?php echo $info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2']); ?>" aria-valuemin="0" aria-valuemax="<?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>" 
                                                     style="width: 
-                                                    <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100.000)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ></div>
+                                                    <?php echo ($info_umbraculo['unidadEspacioTotal_m2']+($info_umbraculo['unidadEspacioDisponible_m2']-$info_umbraculo['unidadEspacioTotal_m2'])*-100.000)/$info_umbraculo['unidadEspacioTotal_m2']; ?>%" ><strong><?php echo $info_umbraculo['unidadEspacioDisponible_m2']; ?> M<sup>2 </sup>de  <?php echo $info_umbraculo['unidadEspacioTotal_m2']; ?>  M<sup>2 </sup></strong> </div>
                                                 </div>
                                             </div>
                                     </div>
@@ -102,7 +102,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="box col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Plantas</h3>
+                                    <h3 class="box-title"><i class="ion-leaf" style="font-size:25px;"></i> Plantas</h3>
                                 </div>
                                 <div class="box-body">
                               
@@ -139,7 +139,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-12">
                              <div class="box">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title">Tareas</h3>
+                                    <h3 class="box-title"><i class="ion-erlenmeyer-flask" style="font-size:25px;"></i> Tareas</h3>
                                 </div>
                                 <div class="box-body">
                                         <table class="table table-striped table-hover">
@@ -178,9 +178,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div></div>
                     <!--FIN CAJA TAREAS-->
-                          <h3 class="box-title text"><?php echo anchor('common/umbraculos/removeUmbraculo/'.$id,'Borrar Umbraculo     '.'<i class="ion-trash-a" style="font-size:40px;"></i> ', array('class' => 'btn btn-block btn-danger btn-lg btn-flat')); ?></h3>
-                            <h3 class="box-title "><?php echo anchor('common/umbraculos/editar/'.$id,'Editar Umbraculo     '.'<i class="ion-wrench" style="font-size:40px;"></i> ', array('class' => 'btn btn-block btn-info btn-lg btn-flat')); ?></h3>
+                          <h3 class="box-title text"><?php echo anchor('common/umbraculos/removeUmbraculo/'.$id,'Borrar Umbraculo     '.'<i class="ion-trash-a" style="font-size:25px;"></i> ', array('class' => 'btn btn-block btn-danger btn-lg btn-flat')); ?></h3>
+                            <h3 class="box-title "><?php echo anchor('common/umbraculos/editar/'.$id,'Editar Umbraculo     '.'<i class="ion-wrench" style="font-size:25px;"></i> ', array('class' => 'btn btn-block btn-info btn-lg btn-flat')); ?></h3>
                             <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-lg btn-default btn-flat">Volver atrás</a>
                 </section>
                    
             </div>
+

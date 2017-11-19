@@ -356,18 +356,27 @@ class Umbraculos extends Admin_Controller {
         }
         else
         {
+            
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
             /* Data */
             $idUmbraculo = (int) $idUmbraculo;
             $this->data['id'] = $idUmbraculo;
+            
 
             /*CARGA LA INFORMACION DEL UMBRACULO PARA HACER LAS COMPRACIONES NECESARIAS*/
             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
 
             /* CARGAR INFORMARCION DE LAS PLANTAS REGISTRADAS*/
-            $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();
+           /* $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();*/
+            
+            
+            
+            /*$this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies_sel($info_umbraculo['luzUmbraculo'],$info_umbraculo['humedadUmbraculo'],$info_umbraculo['temperaturaUmbraculo']);*/
+            
+            $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies_select($this->data['info_umbraculo']);
+           
 
             /* Load Template */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);

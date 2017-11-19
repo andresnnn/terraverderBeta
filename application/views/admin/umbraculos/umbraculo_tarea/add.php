@@ -93,15 +93,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					</div>
 
         </div>
+                
         <div class="col-md-6">
-          <label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>Fecha y hora Prevista para la Tarea</label>
+          <label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>Fecha Prevista para la Tarea</label>
           <div class="form-group">
-            <input class="has-datepicker form-control" type="date" name="fechaComienzo" id="fechaComienzo" value="<?php echo $this->input->post(date('Y-m-d', strtotime('fechaComienzo'))); ?>" min="<?php echo date('Y-m-d');?>"/>
+            <input class="has-datepicker form-control" type="date"  name="fechaComienzo" id="fechaComienzo" value="<?php echo $this->input->post(date('Y-m-d', strtotime('fechaComienzo'))); ?>" min="<?php echo date('Y-m-d');?>"/>
             <span class="text-danger"><?php echo form_error('fechaComienzo');?></span>
           </div>
-
+          <label for="fechaHoraComienzo" class="control-label"><span class="text-danger">*</span>Hora Prevista para la Tarea</label>
           <div class="form-group">
-            <input class="has-datepicker form-control" type="time" name="horaComienzo" id="horaComienzo" value="<?php echo $this->input->post(('horaComienzo')); ?>"/>
+            <input class="has-datepicker form-control"  type="time"   min="08:00" max="19:00" name="horaComienzo" id="horaComienzo" value="<?php echo $this->input->post(('horaComienzo')); ?>"/>
             <span class="text-danger"><?php echo form_error('horaComienzo');?></span>
           </div>
         </div>
@@ -118,3 +119,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>
+<script>
+    function validarFechaMenorActual(){
+var hoy             = new Date();
+        alert (hoy);
+var fechaFormulario = new Date('18-11-2017');
+//var fechaFormulario = new Date(document.getElementById("fechaComienzo"));
+       // var fecha = new Date();
+//document.getElementById("demo").innerHTML = d;
+//document.getElementById("fechaComienzo").innerHTML =fecha;
+
+// Comparamos solo las fechas => no las horas!!
+hoy.setHours(0,0,0,0);
+fechaFormulario.setHours(0,0,0,0); // Lo iniciamos a 00:00 horas
+
+if (hoy <=fechaFormulario) {
+
+  alert("Fecha Valida");
+}
+else {
+  alert("No se puede planificar para fechas anteriores a la actual.");
+}
+}
+    function tiempo(){
+        alert("Debe elejir una hora entre las 08 A.M y las 19 P.M");
+    }
+</script>
