@@ -27,7 +27,7 @@ class Tareas_model extends CI_Model
      */
     function ver_detalles_tarea($idTarea)
     {
-      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo
+      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo, tarea.horaAtencion
               FROM tarea
               JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
               JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
@@ -81,7 +81,8 @@ class Tareas_model extends CI_Model
     function get_all_insumo()
     {
         $query ="SELECT *
-                    FROM insumo";
+                    FROM insumo
+                    WHERE insumo.cantidad>0 AND insumo.active=1";
         return $this->db->query($query)->result_array();
     }
 

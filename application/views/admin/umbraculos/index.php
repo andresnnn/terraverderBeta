@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <b>Acciones: </b><br>
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                                            <a href="<?php echo site_url('umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a><br><br>
+                                            <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a><br><br>
                                         </div>
                                     </div>
                                 </div>
@@ -48,9 +48,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                     </tr>
                     <?php } ?>
-                </table>  
-                                 
-                    
+                </table>
+
+
                          </div>
                     </div>
                 </section>

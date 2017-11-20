@@ -28,10 +28,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <ul>
                                     <li><i class="fa fa-hand-o-right"></i>  Los usuarios.</li>
                                     <li><i class="fa fa-hand-o-right"></i>  Los umbráculos y la creación de una tarea asociada.</li>
-                                    <li><i class="fa fa-hand-o-right"></i>  Las  tareas.</li>                                    
+                                    <li><i class="fa fa-hand-o-right"></i>  Las  tareas.</li>
                                     <li><i class="fa fa-hand-o-right"></i> Las especies y plantas.</li>
-                                    <li><i class="fa fa-hand-o-right"></i>  Los insumos</li>
-                                    <li><i class="fa fa-hand-o-right"></i>  Las tareas.</li>
+                                    <li><i class="fa fa-hand-o-right"></i>  Los insumos.</li>
                                 </ul>
 
                               </div>

@@ -6,6 +6,7 @@ class Umbraculos extends Admin_Controller {
     public function __construct()
     {
         parent::__construct();
+
                 /* Load :: Common */
         $this->lang->load('admin/umbraculos');
         /* Title Page :: Common */
@@ -16,6 +17,7 @@ class Umbraculos extends Admin_Controller {
         $this->load->model('common/Plantas_model');
         $this->load->model('common/Umbraculoplantas_model');
         $this->load->model('common/Tareas_model');
+
     }
 
 
@@ -254,6 +256,7 @@ class Umbraculos extends Admin_Controller {
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
                 $this->data['insumos'] = $this->Tareas_model->get_all_insumo();
+                $this->data['insumosTarea'] = $this->Tareas_model->insumos_tarea($idTarea);
               /* libreria formulario*/
                   $this->load->library('form_validation');
                   // $this->load->library('form_validation_insumo_tarea');
@@ -264,6 +267,7 @@ class Umbraculos extends Admin_Controller {
                           	/* datos para actualizar */
                   $params = array(
                     'fechaAtencion' => $this->input->post('fechaAtencion'),
+                    'horaAtencion' => $this->input->post('horaAtencion'),
                     'idEstado' => $this->input->post('idEstado'),
                     'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     'idUserAtencion' => $this->input->post('idUserAtencion'),

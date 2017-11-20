@@ -6,9 +6,11 @@ class MY_Controller extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
+		
 
         /* COMMON :: ADMIN & PUBLIC */
         /* Load */
+
         $this->load->database();
         $this->load->config('common/dp_config');
         $this->load->config('common/dp_language');
@@ -125,7 +127,7 @@ class Public_Controller extends MY_Controller
         }
         else
         {
-            
+
             $this->data['admin_link'] = FALSE;
 
         }
