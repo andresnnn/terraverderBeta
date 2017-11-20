@@ -134,7 +134,6 @@ var base_url = "<?php echo base_url(); ?>";
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
           <div style="overflow-x:auto;" class="modal-dialog modal-lg">
-
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
@@ -175,6 +174,7 @@ var base_url = "<?php echo base_url(); ?>";
           </div>
         </div>
       </div>
+      <!-- termina modal -->
 <!-- pie de pagina -->
       <div class="box-footer">
           <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
@@ -198,7 +198,59 @@ var base_url = "<?php echo base_url(); ?>";
 <!--formulario para cargar a la base los insumos en la tarea-->
 
           <?php echo form_open('common/umbraculos/agregarInsumoTarea/'.$idUmbraculo.'/'.$idTarea, array('class'=>'jsform')); ?>
+          <!-- boto para el modal -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal2"> <span class="fa fa-plus"></span>Ver insumos agregados</button>
+              <span class="text-danger"><?php echo form_error('idInsumo');?></span>
+               <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
+              <span id="estadoT" class="text-danger"></span><br>
+              <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
+            </div>
+          </div>
+          <!-- probando modal-->
+          <div class="container">
+            <!-- Modal -->
+            <div class="modal fade" id="myModal2" role="dialog">
+              <div style="overflow-x:auto;" class="modal-dialog modal-lg">
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Insumos en la tarea</h4>
+                  </div>
+                  <div class="modal-body">
+                          <table class="table table-striped table-hover">
+                              <tr>
+                              <div></div>
+                                  <th>Nombre</th>
+                                  <th>Cantidad Utilizada</th>
+                                  <th>Acciones</th>
+                              </tr>
+                              <?php foreach($insumos as $i){ ?>
+                                <div id="insumosSeleccionados">
+                                  <?php if ($i['active'] == 1): ?>
+                                      <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
+                                          <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
+                                          <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
+                                          <td class="boton">
+                                              <button onClick="javascript:borrarInsumo(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
+                                          </td>
+                                      </tr>
+                                  <?php endif; ?>
+                                </div>
+                              <?php } ?>
+                          </table>
+                        
+                  </div>
+                  <div class="modal-footer">
+                  </div>
+                </div>
 
+              </div>
+            </div>
+          </div>
+          <!-- tabla con los datos -->
           <div class="box-body">
     				<div class="row clearfix">
               <div id="result"></div>
