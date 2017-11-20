@@ -129,7 +129,7 @@ var base_url = "<?php echo base_url(); ?>";
         </div>
 			</div>
 
-      <!-- probando modal-->
+      <!-- modal seleccionar insumos para agregar-->
       <div class="container">
         <!-- Modal -->
         <div class="modal fade" id="myModal" role="dialog">
@@ -234,7 +234,7 @@ var base_url = "<?php echo base_url(); ?>";
                                           <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
                                           <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
                                           <td class="boton">
-                                              <button onClick="javascript:borrarInsumo(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
+                                              <button onClick="javascript:borrarInsumoTarea(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
                                           </td>
                                       </tr>
 
@@ -319,21 +319,27 @@ function stockMax(id){
     alert("La cantidad requerida debe ser mayor a cero");
   }
 }
+function borrarInsumoTarea(idInsumo) {}
 
-function cargarDatos(id) {
-
-  var cantRequerida = $('#canti'+id).val();
-  var actualStock = $('#stock'+id).val();
-  var nuevoStock = $('#stock'+id).val()-$('#canti'+id).val();
+function cargarDatos(idInsumo) {
+  var idTarea =  $('#idTarea').val();
+  var cantidad = $('#canti'+idInsumo).val();
+  var actualStock = $('#stock'+idInsumo).val();
+  var nuevoStock = $('#stock'+idInsumo).val()-$('#canti'+idInsumo).val();
   if(nuevoStock<0){
     nuevoStock=0;
-    cantRequerida = nuevoStock;
+    cantidad = nuevoStock;
     }
-    
+
+    $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
+      cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
+    }, function(response,status){
+    alert("hola"); } );
+
   document.getElementById('nuevoStock').value = nuevoStock;
-  document.getElementById('idInsumoBD').value = id;
+  document.getElementById('idInsumoBD').value = idInsumo;
   document.getElementById('stockActual').value = actualStock;
-  document.getElementById('cantRequerida').value = cantRequerida;
+  document.getElementById('cantRequerida').value = cantidad;
 
 
     }
