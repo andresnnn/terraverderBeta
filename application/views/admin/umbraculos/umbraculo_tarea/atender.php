@@ -151,7 +151,7 @@ var base_url = "<?php echo base_url(); ?>";
                           </tr>
                           <?php foreach($insumos as $i){ ?>
                             <div id="insumosSeleccionados">
-                              <?php if ($i['active'] == 1): ?>
+
                                   <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
                                       <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
                                       <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
@@ -161,7 +161,7 @@ var base_url = "<?php echo base_url(); ?>";
                                           <button onClick="javascript:cargarDatos(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
                                       </td>
                                   </tr>
-                              <?php endif; ?>
+                            
                             </div>
                           <?php } ?>
                       </table>
@@ -237,7 +237,7 @@ var base_url = "<?php echo base_url(); ?>";
                                               <button onClick="javascript:borrarInsumo(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
                                           </td>
                                       </tr>
-                                  
+
                                 </div>
                               <?php } ?>
                           </table>
@@ -306,13 +306,17 @@ function stockMax(id){
     var $valorMin = document.getElementById('canti'+id).min;
     var $cantReq = $valorMax-$valor;
     document.getElementById('canti'+id).value=parseInt($valor);
-  if ($cantReq<1) {
+  if ($cantReq<0) {
     document.getElementById('canti'+id).value=$valorMax;
     alert("La cantidad requerida no debe superar el stock");
   }
   else if ($cantReq>$valorMax) {
     document.getElementById('canti'+id).value=1;
-  alert("La cantidad requerida no debe ser menor a cero ");
+  alert("La cantidad requerida no debe ser negativa");
+  }
+  else if ($cantReq==$valorMax) {
+    document.getElementById('canti'+id).value=1;
+    alert("La cantidad requerida debe ser mayor a cero");
 
   }
 

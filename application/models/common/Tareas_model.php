@@ -82,7 +82,7 @@ class Tareas_model extends CI_Model
     {
         $query ="SELECT *
                     FROM insumo
-                    WHERE insumo.cantidad>0";
+                    WHERE insumo.cantidad>0 AND insumo.active=1";
         return $this->db->query($query)->result_array();
     }
 
