@@ -227,21 +227,21 @@ var base_url = "<?php echo base_url(); ?>";
                                   <th>Cantidad Utilizada</th>
                                   <th>Acciones</th>
                               </tr>
-                              <?php foreach($insumos as $i){ ?>
+                              <?php foreach($insumosTarea as $i){ ?>
                                 <div id="insumosSeleccionados">
-                                  <?php if ($i['active'] == 1): ?>
+
                                       <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
                                           <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
-                                          <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
+                                          <td > <input readonly id="<?php echo 'stock'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
                                           <td class="boton">
                                               <button onClick="javascript:borrarInsumo(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
                                           </td>
                                       </tr>
-                                  <?php endif; ?>
+                                  
                                 </div>
                               <?php } ?>
                           </table>
-                        
+
                   </div>
                   <div class="modal-footer">
                   </div>
