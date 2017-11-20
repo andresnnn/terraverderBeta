@@ -161,7 +161,7 @@ var base_url = "<?php echo base_url(); ?>";
                                           <button onClick="javascript:cargarDatos(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Utilizar</button>
                                       </td>
                                   </tr>
-                            
+
                             </div>
                           <?php } ?>
                       </table>
@@ -317,27 +317,24 @@ function stockMax(id){
   else if ($cantReq==$valorMax) {
     document.getElementById('canti'+id).value=1;
     alert("La cantidad requerida debe ser mayor a cero");
-
   }
-
 }
 
 function cargarDatos(id) {
-    var $valor =  document.getElementById('canti'+id).value;
-    var $stockActual= document.getElementById('stock'+id).value;
-    var $cantRequerida = document.getElementById('canti'+id).value;
-    var $nuevoStock = document.getElementById('stock'+id).value - document.getElementById('canti'+id).value;
-    document.getElementById('idInsumoBD').value = id;
-    document.getElementById('stockActual').value = document.getElementById('stock'+id).value;
-    document.getElementById('cantRequerida').value = document.getElementById('canti'+id).value;
-    if($nuevoStock>=0){
-    document.getElementById('nuevoStock').value = $nuevoStock;
-    }
-    else {
 
-    document.getElementById('nuevoStock').value = 0;
-
+  var cantRequerida = $('#canti'+id).val();
+  var actualStock = $('#stock'+id).val();
+  var nuevoStock = $('#stock'+id).val()-$('#canti'+id).val();
+  if(nuevoStock<0){
+    nuevoStock=0;
+    cantRequerida = nuevoStock;
     }
+    
+  document.getElementById('nuevoStock').value = nuevoStock;
+  document.getElementById('idInsumoBD').value = id;
+  document.getElementById('stockActual').value = actualStock;
+  document.getElementById('cantRequerida').value = cantRequerida;
+
 
     }
 
