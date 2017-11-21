@@ -65,7 +65,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </li>
                         </ul>
                     </li>
- 
+                    <?php if ($permisos['idGrupo'] == 2){?>
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+                            <i class="fa fa-bell-o"></i>
+                            <span class="badge bg-theme"><?php echo $nro_faltantes; ?></span>
+                        </a>
+                        <ul class="dropdown-menu extended tasks-bar">
+                            <div class="notify-arrow notify-arrow-green"></div>
+                            <li>
+                                <p class="green">Hay (<?php echo $nro_faltantes; ?>) eventos detectados</p>
+                            </li>
+                            <li>
+                                            <!-- start alerta -->
+                                            <?php foreach($insumos_faltantes as $insumo){ ?>
+                                            <li>
+                                                <!--<a href="<?php echo site_url('common/tareas/ver_detalles/'.$noti['idTarea']); ?>">-->
+                                                <a href="<?php echo site_url('user/insumos_pla/profile/'.$insumo['idInsumo']); ?>">
+                                                <strong>¡Atención! Insumo bajo de stock</strong>
+                                                <div class="task-info">
+                                                Insumo: <?php echo $insumo['nombreInsumo']; ?> <br>
+                                                Decripción insumo:<?php echo $insumo['descripcionInsumo']; ?> <br>
+                                                </div>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
+                                            <!-- end alerta-->
+                            </li>
+                        </ul>
+                    </li>
+                            <?php } ?>
             </div>
             <div style="align-items: center" class="top-menu">
             	<ul class="nav pull-right top-menu">

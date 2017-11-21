@@ -77,6 +77,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </li>
 
 <?php endif; ?>
+                            <!-- EVENTOS -->
+                            <li class="dropdown tasks-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-danger"><?php echo $nro_faltantes; ?></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">Hay (<?php echo $nro_faltantes; ?>) eventos detectados</li>
+                                    <li>
+                                        <ul class="menu">
+                                            <!-- start alerta -->
+                                            <?php foreach($insumos_faltantes as $insumo){ ?>
+                                            <li>
+                                                <!--<a href="<?php echo site_url('common/tareas/ver_detalles/'.$noti['idTarea']); ?>">-->
+                                                <a href="<?php echo site_url('common/insumos/profile/'.$insumo['idInsumo']); ?>">
+                                                <strong>¡Atención! Insumo bajo de stock</strong>
+                                                <div class="task-info">
+                                                Insumo: <?php echo $insumo['nombreInsumo']; ?> <br>
+                                                Decripción insumo:<?php echo $insumo['descripcionInsumo']; ?> <br>
+                                                </div>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
+                                            <!-- end alerta-->
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- FIN EVENTOS -->
 <?php if ($admin_prefs['user_menu'] == TRUE): ?>
                             <!-- User Account -->
                             <li class="dropdown user user-menu">

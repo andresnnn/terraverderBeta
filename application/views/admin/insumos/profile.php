@@ -42,6 +42,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 </tr>
                             </tbody>
                         </table>
+                        <div class="box-footer">
+                            <a href="<?php echo site_url('common/insumos/edit/'.$insumo['idInsumo']); ?>" class="btn btn-warning btn-flat"><span class="fa fa-pencil"></span> Editar</a>
+                            <a href="<?php echo site_url('common/insumos'); ?>" class="btn btn-default btn-flat">Volver</a>
+                        </div>
                     </div>
                   </div>
                 </div>

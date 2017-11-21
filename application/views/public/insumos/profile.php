@@ -46,6 +46,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     </table>
                                     <!-- FIN CONTENIDO-->  
                                 <div class="box-footer">
+                                <?php if ($permisos['idGrupo'] == 2) { ?>
+                                    <a href="<?php echo site_url('user/insumos_pla/edit/'.$insumo['idInsumo']); ?>" class="btn btn-warning btn-flat"><span class="fa fa-pencil"></span> Editar</a>
+                                <?php } ?>
                                   <a href="<?php echo site_url('user/insumos_pla'); ?>" class="btn btn-default btn-flat">Volver</a>
                                 </div>
                                 </div>

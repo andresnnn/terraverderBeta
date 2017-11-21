@@ -31,6 +31,12 @@ class Dashboard extends Admin_Controller {
             /* Data */
             $this->data['count_users']       = $this->dashboard_model->get_count_record('users');
             $this->data['count_groups']      = $this->dashboard_model->get_count_record('groups');
+            $this->data['count_planta']      = $this->dashboard_model->get_count_record('planta');
+            $this->data['count_especies']      = $this->dashboard_model->get_count_record('especie');
+            $this->data['count_umbraculo']      = $this->dashboard_model->get_count_record('umbraculo');
+            $this->data['count_insumo']      = $this->dashboard_model->get_count_record('insumo');
+            $this->data['count_ttarea']      = $this->dashboard_model->get_count_record('tipotarea');
+            $this->data['count_tarea']      = $this->dashboard_model->get_count_record('tarea');
             $this->data['disk_totalspace']   = $this->dashboard_model->disk_totalspace(DIRECTORY_SEPARATOR);
             $this->data['disk_freespace']    = $this->dashboard_model->disk_freespace(DIRECTORY_SEPARATOR);
             $this->data['disk_usespace']     = $this->data['disk_totalspace'] - $this->data['disk_freespace'];

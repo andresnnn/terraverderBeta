@@ -85,4 +85,29 @@ class Insumos_model extends CI_Model
       $this->db->query($query);
     }
 
+    /**
+     * @return [type]           Listado de insumos faltos de stock, por debajo del punto de pedido o, igual al punto de pedido
+     * @author SAKZEDMK
+     */
+    function insumos_faltos ()
+    {
+      $query = "SELECT * 
+                FROM insumo 
+                WHERE insumo.cantidad <= insumo.puntoDePedido";
+      return $this->db->query($query)->result_array();
+    }
+
+    /**
+     * @return [type]           Cantidad insumos faltos de stock, por debajo del punto de pedido o, igual al punto de pedido
+     * @author SAKZEDMK
+     */
+    function insumos_cantidad ()
+    {
+      $query = "SELECT * 
+                FROM insumo 
+                WHERE insumo.cantidad <= insumo.puntoDePedido";
+      return $this->db->query($query)->num_rows();
+    }
+
+
 }

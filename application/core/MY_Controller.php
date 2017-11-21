@@ -20,6 +20,7 @@ class MY_Controller extends CI_Controller
         /* Title Page :: Common */
         $this->load->model('common/Tareas_model');
         $this->load->model('common/Users_model');
+        $this->load->model('admin/insumos_model');
 
         /* Data */
         $this->data['lang']           = element($this->config->item('language'), $this->config->item('language_abbr'));
@@ -29,6 +30,9 @@ class MY_Controller extends CI_Controller
         $this->data['avatar_dir']     = $this->config->item('avatar_dir');
         $this->data['notificacion'] = $this->Tareas_model->consultar_tareas(date('Y-m-d'));
         $this->data['nro_noti'] = $this->Tareas_model->nro_tareas(date('Y-m-d'));
+        $this->data['insumos_faltantes'] = $this->insumos_model->insumos_faltos();
+        $this->data['nro_faltantes'] = $this->insumos_model->insumos_cantidad();
+        
 
         /* Any mobile device (phones or tablets) */
         if ($this->mobile_detect->isMobile())
