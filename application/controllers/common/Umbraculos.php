@@ -250,7 +250,7 @@ class Umbraculos extends Admin_Controller {
               {
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
-                /* Data */
+                /* Datas */
                 $this->data['idTarea'] = $idTarea = (int) $idTarea;
                 $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
