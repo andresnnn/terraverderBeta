@@ -360,27 +360,19 @@ class Umbraculos extends Admin_Controller {
         }
         else
         {
-            
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
             /* Data */
             $idUmbraculo = (int) $idUmbraculo;
             $this->data['id'] = $idUmbraculo;
-            
 
             /*CARGA LA INFORMACION DEL UMBRACULO PARA HACER LAS COMPRACIONES NECESARIAS*/
             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
 
             /* CARGAR INFORMARCION DE LAS PLANTAS REGISTRADAS*/
-           /* $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();*/
-            
-            
-            
-            /*$this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies_sel($info_umbraculo['luzUmbraculo'],$info_umbraculo['humedadUmbraculo'],$info_umbraculo['temperaturaUmbraculo']);*/
-            
+            /*$this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();*/
             $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies_select($this->data['info_umbraculo']);
-           
 
             /* Load Template */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);
@@ -464,34 +456,6 @@ class Umbraculos extends Admin_Controller {
             $this->Umbraculos_model->actualizar_espacio_disponible($umbraculo,$this->input->post('dipoActualizada'));
 
             redirect('common/umbraculos/verPlantas/'.$umbraculo);
-    }
-    /*Esta funcion borra las tareas del umbraculo*/
-    function removeTarea($idUmbraculo)
-    {
-        $umbraculo = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-
-        // check if the umbraculo exists before trying to delete it
-        if(isset($umbraculo['idUmbraculo']))
-        {
-            $this->Umbraculos_model->delete_tareas_umbraculos($idUmbraculo);
-            redirect('common/umbraculos/ver/'.$idUmbraculo);
-        }
-        else
-            show_error('El umbraculo que queres borrar .');
-    }
-    /*Esta funcion borra el umbraculo*/
-    function removeUmbraculo($idUmbraculo)
-    {
-        $umbraculo = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
-
-        // check if the umbraculo exists before trying to delete it
-        if(isset($umbraculo['idUmbraculo']))
-        {
-            $this->Umbraculos_model->delete_umbraculos($idUmbraculo);
-            redirect('common/umbraculos/index');
-        }
-        else
-            show_error('El umbraculo que queres borrar .');
     }
 
 }
