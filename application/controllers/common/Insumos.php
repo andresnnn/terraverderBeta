@@ -100,14 +100,14 @@ class Insumos extends Admin_Controller {
     if($this->form_validation->run())
           {
               $params = array(
-        'nombreInsumo' => $this->input->post('nombreInsumo'),
-        'cantidad' => $this->input->post('cantidad'),
-        'puntoDePedido' => $this->input->post('puntoDePedido'),
-        'descripcionInsumo' => $this->input->post('descripcionInsumo'),
+                              'nombreInsumo' => $this->input->post('nombreInsumo'),
+                              'cantidad' => $this->input->post('cantidad'),
+                              'puntoDePedido' => $this->input->post('puntoDePedido'),
+                              'descripcionInsumo' => $this->input->post('descripcionInsumo'),
               );
 
               $this->Insumos_model->update_insumo($idInsumo,$params);
-              redirect('common/insumos/index');
+              redirect('common/insumos');
           }
           else
           {
