@@ -36,18 +36,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <!-- BOTON QUE LLAMA AL CONTROLADOR Y CAPTURA LA NUEVA CANTIDAD DE PLANTAS CON SU RESPECTIVO 
                                                 ESPACIO OCUPADO, Y LA ACTUALIZA DENTRO DE LA 'BD' -->
                                                 <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
-
+                                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal">Borrar</button>
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </table>
+                                                                                                  <!-- Modal -->
+                    <div class="modal fade" id="questionModal" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Atención</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>¿Está seguro de querer quitar la planta del umbráculo?</p>
+                          </div>
+                          <div class="modal-footer">
+                            
                                                 <!-- ELIMINA UNA PLANTA DENTRO DEL UMBRACULO Y DEBE DE REESTABLECER EL ESPACIO QUE SE DESOCUPA 
                                                 DENTRO DEL MISMO -->
                                                 <?php echo form_open('user/umbraculos_pla/sacar_planta_umbraculo/'.$u['idUmbraculo'].'/'.$u['idPlanta']); ?>
                                                 <input type="hidden" id="nuevaCantidad" name="nuevaCantidad" value="<?php echo $info_umbraculo['unidadEspacioDisponible_m2']+($u['unidadEspacioPlanta_m2']*$u['cantidad'])/10000;?>"> 
                                                 <!--ESTE ES EL CAMPO QUE LLEVA EL VALOR CON EL ESPACIO REESTABLECIDO-->
-                                                <button type="submit" class="btn btn-danger btn-xs"><span class="fa fa-minus"> </span> Borrar planta umbráculo</button>
+                                                <button type="submit" class="btn btn-danger btn-xs">Aceptar</button>
                                                  <?php echo form_close(); ?>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </table>
+                            <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                                     </div>
                                 <!--MODAL PARA ACTUALIZAR LA CANTIDAD DE LA PLANTA-->
                                 <div class="container">

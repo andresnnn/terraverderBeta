@@ -40,12 +40,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <b>Acciones: </b><br>
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                                            <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a><br><br>
+                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
+                                            <!-- <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> --><br><br>
                                         </div>
                                     </div>
                                 </div>
                     </div>
-
+                                                              <!-- Modal -->
+                    <div class="modal fade" id="questionModal" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Atención</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>¿Está seguro de querer eliminar el umbráculo seleccionado?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
+                            <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                     </tr>
                     <?php } ?>
                 </table>
