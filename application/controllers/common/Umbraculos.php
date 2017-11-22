@@ -313,6 +313,9 @@ class Umbraculos extends Admin_Controller {
               return $this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo);
 
             }
+    
+    
+
 
 
         /**
@@ -368,7 +371,8 @@ class Umbraculos extends Admin_Controller {
             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
 
             /* CARGAR INFORMARCION DE LAS PLANTAS REGISTRADAS*/
-            $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();
+            /*$this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();*/
+            $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies_select($this->data['info_umbraculo']);
 
             /* Load Template */
             $this->template->admin_render('admin/umbraculos/umbraculos_plantas/add', $this->data);

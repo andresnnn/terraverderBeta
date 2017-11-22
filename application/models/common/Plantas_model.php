@@ -10,6 +10,7 @@ class Plantas_model extends CI_Model
     {
         parent::__construct();
          $this->load->model('common/Especies_model');
+        $this->load->model('common/Umbraculos_model');
     }
     
     /*
@@ -25,6 +26,15 @@ class Plantas_model extends CI_Model
         $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
     }
+    
+        /*esta funcion es para cargar solo las plantas aptas a cada umbraculo*/
+    function obtener_plantas_especies_select($params)
+    {
+        $query = "SELECT * FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie WHERE (luzMax >=".$params['luzUmbraculo']."  AND luzMin <=".$params['luzUmbraculo']." AND humedadMax >=".$params['humedadUmbraculo']." AND humedadMin <=".$params['humedadUmbraculo']." AND temperaturaMax >=".$params['temperaturaUmbraculo']." AND temperaturaMin <=".$params['temperaturaUmbraculo'].")";
+        return $this->db->query($query)->result_array();
+    }
+    /**/
+
     
     /*ESTA FUNCION ARROJARA COMO RESULTADO UN ARRAY QUE CONTIENE LA INFORMACION
     DE LAS PLANTAS CON LA RESPECTIVA INFORMACIÓN DE SU ESPECIE, PARA REALIZAR LA COMPARACION DE CONDICIONES A LA HORA DE AGREGAR UNA PLANTA ADENTRO*/

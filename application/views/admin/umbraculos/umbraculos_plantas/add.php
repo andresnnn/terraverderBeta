@@ -116,7 +116,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <td><?php echo $p['temperaturaMax']; ?></td>
                                 <td><?php echo $p['temperaturaMin']; ?></td>
                                 <td class="boton">
-                                    <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);comprobarCondiciones();" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
+                                    <button onClick="javascript:cargarDatos(<?php echo $p['idPlanta'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-check"></span> Seleccionar</button>
                                 </td>
                             </tr>
                         <?php endif; ?>
