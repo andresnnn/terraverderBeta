@@ -236,12 +236,10 @@ var base_url = "<?php echo base_url(); ?>";
                                 <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
                                 <td > <input readonly type="number" id="<?php echo 'cantBorrar'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
                                 <td > <input readonly type="number" id="<?php echo  'stockBorrar'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
-
                                 <td class="boton">
                                     <button onClick="javascript:borrarInsumoTarea(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
                                 </td>
                             </tr>
-
                       </div>
                     <?php } ?>
                 </table>
@@ -294,7 +292,8 @@ function stockMax(id){
   }
 }
 function borrarInsumoTarea(idInsumo) {
-  alert("¿Esta seguro de borrar el insumo de la tarea?");
+  var confirmacion = confirm("¿Esta seguro de borrar el insumo de la tarea?");
+  if (confirmacion == true){
 var idTarea =  $('#idTarea').val();
 var cantidad = parseInt($('#cantBorrar'+idInsumo).val());
 var actualStock = parseInt($('#stockBorrar'+idInsumo).val());
@@ -303,6 +302,7 @@ $.post(base_url+'common/umbraculos/borrarInsumoTarea', {
   idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
 }, function(response,status){
 alert("Borrado Correctamente"); } );
+}
 }
 
 function cargarDatos(idInsumo) {
