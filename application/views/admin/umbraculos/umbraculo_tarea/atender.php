@@ -227,17 +227,17 @@ var base_url = "<?php echo base_url(); ?>";
                     <div></div>
                         <th>Nombre</th>
                         <th>Cantidad Utilizada</th>
-                        <th>Cantidad Nueva Utilizada</th>
+                        <th> Stock del Insumo <th>
                         <th>Acciones</th>
                     </tr>
                     <?php foreach($insumosTarea as $i){ ?>
                       <div id="insumosSeleccionados">
-                            <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
+                            <tr id="<?php echo 'filaBorrar'.$i['idInsumo'];?>">
                                 <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
-                                <td > <input readonly id="<?php echo 'canti'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
-                                <td > <input  id="<?php echo 'cantiNueva'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
+                                <td > <input readonly type="number" id="<?php echo 'cantBorrar'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
+                                <td > <input readonly type="number" id="<?php echo  'stockBorrar'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
+
                                 <td class="boton">
-                                    <button onClick="javascript:editarInsumoTarea(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-pencil"></span> Editar</button>
                                     <button onClick="javascript:borrarInsumoTarea(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
                                 </td>
                             </tr>
@@ -293,7 +293,17 @@ function stockMax(id){
     alert("La cantidad requerida debe ser mayor a cero");
   }
 }
-function borrarInsumoTarea(idInsumo) {}
+function borrarInsumoTarea(idInsumo) {
+  alert("¿Esta seguro de borrar el insumo de la tarea?");
+var idTarea =  $('#idTarea').val();
+var cantidad = parseInt($('#cantBorrar'+idInsumo).val());
+var actualStock = parseInt($('#stockBorrar'+idInsumo).val());
+var nuevoStock =parseInt(cantidad+actualStock);
+$.post(base_url+'common/umbraculos/borrarInsumoTarea', {
+  idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
+}, function(response,status){
+alert("Borrado Correctamente"); } );
+}
 
 function cargarDatos(idInsumo) {
   var idTarea =  $('#idTarea').val();
@@ -304,28 +314,13 @@ function cargarDatos(idInsumo) {
     nuevoStock=0;
     cantidad = nuevoStock;
     }
-
     $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
       cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
     }, function(response,status){
-    alert("hola"); } );
+    alert("Agregado Correctamente"); } );
     }
 
 
-$('form.jsform').on('submit', function(form){
-  var cantidad =  $('#cantRequerida').val();
-  var idInsumo =  $('#idInsumoBD').val();
-  var idTarea =  $('#idTarea').val();
-  var nuevoStock = $('#nuevoStock').val();
 
-
-    form.preventDefault();
-
-
-    $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
-      cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
-    }, function(response,status){
-    alert("hola"); } );
-  });
 
 </script>

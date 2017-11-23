@@ -287,7 +287,7 @@ class Umbraculos extends Admin_Controller {
             }
 
             /**
-            *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
+            *ESTA FUNCION AGREGA A LA TABLA 'Insumo/TAREA'
             **/
             function agregarInsumoTarea()
             {
@@ -296,12 +296,26 @@ class Umbraculos extends Admin_Controller {
               $idInsumo=$_POST['idInsumo'];
               $idTarea=$_POST['idTarea'];
               $nuevoStock=$_POST['nuevoStock'];
-              if($this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo)){
+              if($this->Tareas_model->no_existe_insumo_tarea($idTarea,$idInsumo)){
               $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
-            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
+              $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
             }
+
+            function borrarInsumoTarea()
+            {
+              //variables post
+
+              $idInsumo=$_POST['idInsumo'];
+              $idTarea=$_POST['idTarea'];
+              $nuevoStock=$_POST['nuevoStock'];
+              if(!$this->Tareas_model->no_existe_insumo_tarea($idTarea,$idInsumo)){
+              $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
+              $this->Tareas_model->delete_insumoTarea($idTarea,$idInsumo);}
+            }
+
+
             /**
-            *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
+            *ESTA FUNCION verifica doble insumo tarea
             **/
             function ExisteInsumoTarea()
             {
@@ -310,7 +324,7 @@ class Umbraculos extends Admin_Controller {
               $idInsumo=$_POST['idInsumo'];
               $idTarea=$_POST['idTarea'];
               $nuevoStock=$_POST['nuevoStock'];
-              return $this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo);
+              return $this->Tareas_model->no_existe_insumo_tarea($idTarea,$idInsumo);
 
             }
 
