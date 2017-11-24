@@ -54,11 +54,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                             <h4 class="modal-title">Atención</h4>
                           </div>
+                
                           <div class="modal-body">
                             <p>¿Está seguro de querer eliminar el umbráculo seleccionado?</p>
                           </div>
                           <div class="modal-footer">
-                            <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
+                            <a href="<?php echo site_url('common/umbraculos/borrarUmbraculo/'.$u['idUmbraculo']); ?>" class=" btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
                             <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
                           </div>
                         </div>

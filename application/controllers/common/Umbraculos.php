@@ -35,6 +35,9 @@ class Umbraculos extends Admin_Controller {
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
             /* CARGO EL LISTADO DE UMBRACULOS*/
             $this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos();
+            /*parte nueva*/
+            $this->load->model('common/tareas_model');
+            /*parte nueva*/
             $this->load->model('common/plantas_model');
             /* carga plantilla */
             $this->template->admin_render('admin/umbraculos/index', $this->data);
@@ -212,6 +215,24 @@ class Umbraculos extends Admin_Controller {
                     $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
 
                 }
+            }
+    
+    /*esta función permite borrar las tareas de un umbraculo---------*/
+    public function borrarTareas($idUmbraculo)
+            {
+              $this->data['breadcrumb'] = $this->breadcrumbs->show();
+              $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;  
+              $this->Tareas_model->borrar_tareas_umbraculo($idUmbraculo);
+              redirect('common/umbraculos/ver/'.$idUmbraculo);   
+            }
+    
+    /*esta función permite borrar  un umbraculo sin tareas----------*/
+    public function borrarUmbraculo($idUmbraculo)
+            {
+              $this->data['breadcrumb'] = $this->breadcrumbs->show();
+              $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;  
+              $this->Umbraculos_model->delete_umbraculos($idUmbraculo);
+              redirect('common/umbraculos/index/');   
             }
 
             /**

@@ -259,6 +259,16 @@ class Tareas_model extends CI_Model
     {
         return $this->db->delete('tarea',array('idTarea'=>$idTarea));
     }
+    
+    
+     /*esta funcion permite borrar las tareas de un umbraculo*/
+    function borrar_tareas_umbraculo($idUmbraculo)
+    {
+        return $this->db->delete('tarea',array('idUmbraculo'=>$idUmbraculo));
+    }
+    
+   
+    
 
     function get_plantas_nombre($idTarea)
 {

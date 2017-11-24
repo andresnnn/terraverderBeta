@@ -149,6 +149,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <td><h3 class="box-title"><?php echo anchor('common/Umbraculos/verTareas/'.$id,'<i class="fa fa-eye"></i> '.'Ver Todas las tareas', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td
                                                     >
                                                     <td><h3 class="box-title"><?php echo anchor('common/Tareas/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
+                                                    <td><h3 class="box-title"><?php echo anchor('common/Umbraculos/borrarTareas/'.$id, '<i class="fa fa-times "></i> '.'Borrar Tareas', array('class' => 'btn btn-block btn-danger btn-flat')); ?></h3></td>
                                                 </table>
                                             </div>
                                 </div>
