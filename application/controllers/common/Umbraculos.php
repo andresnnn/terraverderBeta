@@ -313,6 +313,12 @@ class Umbraculos extends Admin_Controller {
               $this->Tareas_model->delete_insumoTarea($idTarea,$idInsumo);}
             }
 
+            function verInsumoTarea($idTarea)
+            {
+              //variables post
+              return $this->Tareas_model->insumos_tarea($idTarea);
+            }
+
 
             /**
             *ESTA FUNCION verifica doble insumo tarea

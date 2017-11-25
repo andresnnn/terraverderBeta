@@ -134,15 +134,11 @@ var base_url = "<?php echo base_url(); ?>";
           </div>
           <div class="box-body">
             <div class="row clearfix">
-
-<!--formulario para cargar a la base los insumos en la tarea-->
           <!-- boton para ver insumos -->
           <div class="col-md-6">
             <div class="form-group">
-              <button type="button" class="btn btn-warning btn-block btn-primary btn-flat " data-toggle="modal" data-target="#myModal2"> <span class="fa fa-eye"></span>Ver insumos utilizados</button>
+              <button type="button" id=modal_ver name=modal_ver class="btn btn-warning btn-block btn-primary btn-flat " data-toggle="modal" data-target="#myModal2"> <span class="fa fa-eye"></span>Ver insumos utilizados</button>
               <span class="text-danger"><?php echo form_error('idInsumo');?></span>
-               <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
-              <span id="estadoT" class="text-danger"></span><br>
               <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
             </div>
           </div>
@@ -272,6 +268,10 @@ integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
 crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
+function consultaInsumoTarea(idTarea){}
+
+
+
 function stockMax(id){
     var $valor =  document.getElementById('canti'+id).value;
     var $valorMax= document.getElementById('canti'+id).max;
