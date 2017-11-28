@@ -37,10 +37,13 @@ class Insumos extends Admin_Controller {
 /*consulta de insumos*/
 public function search_keyword(){
   $keyword=$_POST['keyword'];
+  if(isset($keyword)and !empty($keyword)){
   /* insumos consulta*/
-  $this->data['insumos'] = $this->Insumos_model->get_all_insumo_search($query);
+  $this->data['result'] = $this->Insumos_model->get_all_insumo_search($keyword);
   /* Load Template */
   $this->template->admin_render('admin/insumos/index', $this->data);
+}
+
 }
 
     /* crear */

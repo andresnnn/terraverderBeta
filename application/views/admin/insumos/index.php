@@ -15,12 +15,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title"><?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                        <form action="<?php echo site_url('common/insumos');?>" method = "post">
+                          <input type="text" name = "keyword" />
+                          <input type="submit" value = "Search" />
+                        </form>
                     </div>
                     <div>
-                      <form action="<?php echo site_url('common/insumos');?>" method = "post">
-                        <input type="text" name = "keyword" />
-                        <input type="submit" value = "Search" />
-                      </form>
+
                     <div>
             </div>
             <div class="box-body">
