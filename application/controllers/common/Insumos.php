@@ -34,6 +34,15 @@ class Insumos extends Admin_Controller {
           //  $this->load->view('admin/insumos/index',$data);
         }
     }
+/*consulta de insumos*/
+public function search_keyword(){
+  $keyword=$_POST['keyword'];
+  /* insumos consulta*/
+  $this->data['insumos'] = $this->Insumos_model->get_all_insumo_search($query);
+  /* Load Template */
+  $this->template->admin_render('admin/insumos/index', $this->data);
+}
+
     /* crear */
     public function crear()
     {
@@ -150,7 +159,7 @@ class Insumos extends Admin_Controller {
       $this->template->admin_render('admin/insumos/profile', $this->data);
 
   }
-  
+
   /**
    * DESACTIVA UN INSUMO, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN INSUMO, SE MUESTRA SU INFORMACIÓN
    * @param  [type] $idInsumo COMO ÚNICO PARAMETRO DE ENTRADA

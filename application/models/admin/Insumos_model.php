@@ -27,6 +27,15 @@ class Insumos_model extends CI_Model
         $this->db->order_by('idInsumo', 'asc');
         return $this->db->get('insumo')->result_array();
     }
+    /* get insumo consulta search */
+    function get_all_insumo_search($search)
+    {
+      $query = "SELECT *
+                FROM insumo
+                WHERE insumo.nombreInsumo like'%".$search."%'"
+          ;
+      return $this->db->query($query)->result_array();
+    }
 
     /*
      * function to add new insumo
@@ -91,8 +100,8 @@ class Insumos_model extends CI_Model
      */
     function insumos_faltos ()
     {
-      $query = "SELECT * 
-                FROM insumo 
+      $query = "SELECT *
+                FROM insumo
                 WHERE insumo.cantidad <= insumo.puntoDePedido";
       return $this->db->query($query)->result_array();
     }
@@ -103,8 +112,8 @@ class Insumos_model extends CI_Model
      */
     function insumos_cantidad ()
     {
-      $query = "SELECT * 
-                FROM insumo 
+      $query = "SELECT *
+                FROM insumo
                 WHERE insumo.cantidad <= insumo.puntoDePedido";
       return $this->db->query($query)->num_rows();
     }
