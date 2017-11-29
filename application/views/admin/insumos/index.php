@@ -15,8 +15,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                  <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title"><?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                        <form action="<?php echo site_url('common/insumos');?>" method = "post">
+                          <input type="text" name = "keyword" />
+                          <input type="submit" value = "Search" />
+                        </form>
                     </div>
+                    <div>
 
+                    <div>
             </div>
             <div class="box-body">
                 <table class="table table-striped">
@@ -35,7 +41,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<td><?php echo $i['cantidad']; ?></td>
 						<td><?php echo $i['puntoDePedido']; ?></td>
                         <td title="El estado determina, el poder utilizar o no, determinado insumoi en otros módulos">
-                        <?php 
+                        <?php
                         if ($i['active'] == 1) {
                             echo "<a href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
                         }else{

@@ -134,15 +134,11 @@ var base_url = "<?php echo base_url(); ?>";
           </div>
           <div class="box-body">
             <div class="row clearfix">
-
-<!--formulario para cargar a la base los insumos en la tarea-->
           <!-- boton para ver insumos -->
           <div class="col-md-6">
             <div class="form-group">
-              <button type="button" class="btn btn-warning btn-block btn-primary btn-flat " data-toggle="modal" data-target="#myModal2"> <span class="fa fa-eye"></span>Ver insumos utilizados</button>
+              <button type="button" id=modal_ver name=modal_ver class="btn btn-warning btn-block btn-primary btn-flat " data-toggle="modal" data-target="#myModal2"> <span class="fa fa-eye"></span>Ver insumos utilizados</button>
               <span class="text-danger"><?php echo form_error('idInsumo');?></span>
-               <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
-              <span id="estadoT" class="text-danger"></span><br>
               <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
             </div>
           </div>
@@ -227,21 +223,19 @@ var base_url = "<?php echo base_url(); ?>";
                     <div></div>
                         <th>Nombre</th>
                         <th>Cantidad Utilizada</th>
-                        <th>Cantidad Nueva Utilizada</th>
+                        <th> Stock del Insumo <th>
                         <th>Acciones</th>
                     </tr>
                     <?php foreach($insumosTarea as $i){ ?>
                       <div id="insumosSeleccionados">
-                            <tr id="<?php echo 'fila'.$i['idInsumo'];?>">
+                            <tr id="<?php echo 'filaBorrar'.$i['idInsumo'];?>">
                                 <td id="nombreInsumo"><?php echo $i['nombreInsumo']; ?></td>
-                                <td > <input readonly id="<?php echo 'canti'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
-                                <td > <input  id="<?php echo 'cantiNueva'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
+                                <td > <input readonly type="number" id="<?php echo 'cantBorrar'.$i['idInsumo'];?>" value="<?php echo $i['cantidadUtilizado']; ?>" /> </td>
+                                <td > <input readonly type="number" id="<?php echo  'stockBorrar'.$i['idInsumo'];?>" value="<?php echo $i['cantidad']; ?>" /> </td>
                                 <td class="boton">
-                                    <button onClick="javascript:editarInsumoTarea(<?php echo $i['idInsumo'];?>);" class="btn btn-info btn-xs"  data-dismiss="modal"> <span class="fa fa-pencil"></span> Editar</button>
                                     <button onClick="javascript:borrarInsumoTarea(<?php echo $i['idInsumo'];?>);" class="btn btn-danger btn-xs"  data-dismiss="modal"> <span class="fa fa-trash"></span> Borrar</button>
                                 </td>
                             </tr>
-
                       </div>
                     <?php } ?>
                 </table>
@@ -274,6 +268,10 @@ integrity="sha256-ivk71nXhz9nsyFDoYoGf2sbjrR9ddh+XDkCcfZxjvcM="
 crossorigin="anonymous"></script>
 <!-- script modal -->
 <script>
+function consultaInsumoTarea(idTarea){}
+
+
+
 function stockMax(id){
     var $valor =  document.getElementById('canti'+id).value;
     var $valorMax= document.getElementById('canti'+id).max;
@@ -293,7 +291,19 @@ function stockMax(id){
     alert("La cantidad requerida debe ser mayor a cero");
   }
 }
-function borrarInsumoTarea(idInsumo) {}
+function borrarInsumoTarea(idInsumo) {
+  var confirmacion = confirm("¿Esta seguro de borrar el insumo de la tarea?");
+  if (confirmacion == true){
+var idTarea =  $('#idTarea').val();
+var cantidad = parseInt($('#cantBorrar'+idInsumo).val());
+var actualStock = parseInt($('#stockBorrar'+idInsumo).val());
+var nuevoStock =parseInt(cantidad+actualStock);
+$.post(base_url+'common/umbraculos/borrarInsumoTarea', {
+  idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
+}, function(response,status){
+alert("Borrado Correctamente"); } );
+}
+}
 
 function cargarDatos(idInsumo) {
   var idTarea =  $('#idTarea').val();
@@ -304,28 +314,13 @@ function cargarDatos(idInsumo) {
     nuevoStock=0;
     cantidad = nuevoStock;
     }
-
     $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
       cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
     }, function(response,status){
-    alert("hola"); } );
+    alert("Agregado Correctamente"); } );
     }
 
 
-$('form.jsform').on('submit', function(form){
-  var cantidad =  $('#cantRequerida').val();
-  var idInsumo =  $('#idInsumoBD').val();
-  var idTarea =  $('#idTarea').val();
-  var nuevoStock = $('#nuevoStock').val();
 
-
-    form.preventDefault();
-
-
-    $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
-      cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
-    }, function(response,status){
-    alert("hola"); } );
-  });
 
 </script>

@@ -131,13 +131,18 @@ class Tareas_model extends CI_Model
         return $this->db->query($query)->result_array();
       }
       //agrego nuevo elemento en insumo/tarea
-
       function add_insumoTarea($idTarea,$idInsumo,$cantidad)
   {
       $query="INSERT INTO `insumo/tarea`(`idInsumo`, `idTarea`, `cantidadUtilizado`) VALUES (".$idInsumo.",".$idTarea.",".$cantidad.")";
       $this->db->query($query);
-
   }
+
+
+//borro elemento en insumo/tarea
+function delete_insumoTarea($idTarea,$idInsumo)
+{
+return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$idTarea));
+}
   /** nueva cantidad **/
   function update_cantidad($idInsumo,$nuevoStock)
   {
@@ -147,7 +152,7 @@ class Tareas_model extends CI_Model
   }
 
   /** existe insumo en tarea **/
-  function existe_insumo_tarea($idTarea,$idInsumo)
+  function no_existe_insumo_tarea($idTarea,$idInsumo)
   {
     //consulta de tareas en el umbraculo y en la misma planta con la misma fecha ingresada
     $vector = $this->db->get_where('insumo/tarea',array('idTarea'=>$idTarea,'idInsumo'=>$idInsumo))->row_array();
@@ -223,7 +228,7 @@ class Tareas_model extends CI_Model
      */
     function insumos_tarea($idTarea)
     {
-      $query= "SELECT `insumo/tarea`.`idTarea`,`insumo/tarea`.`cantidadUtilizado`,insumo.nombreInsumo,insumo.descripcionInsumo,insumo.idInsumo
+      $query= "SELECT `insumo/tarea`.`idTarea`,`insumo/tarea`.`cantidadUtilizado`,insumo.nombreInsumo,insumo.descripcionInsumo,insumo.idInsumo, insumo.cantidad
                 FROM `insumo/tarea`
                 JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
                 WHERE `insumo/tarea`.`idTarea`=".$idTarea;

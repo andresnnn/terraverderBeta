@@ -118,3 +118,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>
+<script>
+$(document).ready(function(){
+    $('#form_create').validate({
+
+        submitHandler : function(_form)
+          {
+            var form = $(_form);
+            alert("envio");
+            return false;
+          }
+
+    });
+});
+</script>

@@ -21,27 +21,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                       <?php echo form_open('common/insumos/crear',array('class' => 'form-horizontal', 'id')); ?>
 
                       <div class="form-group">
-                  		<label for="nombreInsumo" class="col-md-3 control-label">NombreInsumo</label>
+                  		<label for="nombreInsumo" class="col-md-3 control-label">Nombre del Insumo: </label>
                   		<div class="col-md-8">
                   			<input type="text" name="nombreInsumo" value="<?php echo $this->input->post('nombreInsumo'); ?>" class="form-control" id="nombreInsumo" />
                   		</div>
                   	</div>
 	<div class="form-group">
-		<label for="descripcionInsumo" class="col-md-3 control-label">DescripcionInsumo</label>
+		<label for="descripcionInsumo" class="col-md-3 control-label">Descripcion del Insumo: </label>
 		<div class="col-md-8">
 			<input type="text" name="descripcionInsumo" value="<?php echo $this->input->post('descripcionInsumo'); ?>" class="form-control" id="descripcionInsumo" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="cantidad" class="col-md-3 control-label">Cantidad</label>
+		<label for="cantidad" class="col-md-3 control-label">Cantidad: </label>
 		<div class="col-md-8">
 			<input type="number" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
 		</div>
 	</div>
 	<div class="form-group">
-		<label for="puntoDePedido" class="col-md-3 control-label">PuntoDePedido</label>
+		<label for="puntoDePedido" class="col-md-3 control-label">Punto de Pedido: </label>
 		<div class="col-md-8">
-			<input type="text" name="puntoDePedido" value="<?php echo $this->input->post('puntoDePedido'); ?>" class="form-control" id="puntoDePedido" />
+			<input type="number" name="puntoDePedido" value="<?php echo $this->input->post('puntoDePedido'); ?>" class="form-control" id="puntoDePedido" />
 		</div>
 	</div>
 
