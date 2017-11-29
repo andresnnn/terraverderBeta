@@ -36,15 +36,31 @@ class Insumos extends Admin_Controller {
     }
 /*consulta de insumos*/
 public function search_keyword(){
-  $keyword=$_POST['keyword'];
-  if(isset($keyword)and !empty($keyword)){
-  /* insumos consulta*/
-  $this->data['result'] = $this->Insumos_model->get_all_insumo_search($keyword);
-  /* Load Template */
-  $this->template->admin_render('admin/insumos/index', $this->data);
-}
+    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+    {
+        redirect('auth/login', 'refresh');
+    }
+    else
+    {
+      $this->data['breadcrumb'] = $this->breadcrumbs->show();
 
-}
+    $keyword=$_POST['keyword'];
+    if(isset($keyword)and !empty($keyword)){
+    /* insumos consulta*/
+    $this->data['insumo'] = $this->Insumos_model->get_all_insumo_search($keyword);
+    /* Load Template */
+
+      }
+      else {
+        /* insumos consulta*/
+        $this->data['insumo'] = $this->Insumos_model->get_all_insumo();
+
+
+      }
+        /* Load Template */
+      $this->template->admin_render('admin/insumos/index', $this->data);
+    }
+ }
 
     /* crear */
     public function crear()
