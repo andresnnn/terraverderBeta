@@ -6,7 +6,6 @@ class Umbraculos extends Admin_Controller {
     public function __construct()
     {
         parent::__construct();
-
                 /* Load :: Common */
         $this->lang->load('admin/umbraculos');
         /* Title Page :: Common */
@@ -17,7 +16,6 @@ class Umbraculos extends Admin_Controller {
         $this->load->model('common/Plantas_model');
         $this->load->model('common/Umbraculoplantas_model');
         $this->load->model('common/Tareas_model');
-
     }
 
 
@@ -33,6 +31,8 @@ class Umbraculos extends Admin_Controller {
         {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
+            /*defino existe umbraculo con elemento como false*/
+            $this->data['existe_elemento_umbraculo']=false;
             /* CARGO EL LISTADO DE UMBRACULOS*/
             $this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos();
             $this->load->model('common/plantas_model');
@@ -94,6 +94,36 @@ class Umbraculos extends Admin_Controller {
         }
     }
 
+
+/* remove umbraculo con validacion si existe elementos*/
+    function remove($idUmbraculo)
+    {
+        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+        {
+            redirect('auth/login', 'refresh');
+        }
+        else
+        {
+            /* Breadcrumbs */
+            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+            /* CARGO EL LISTADO DE UMBRACULOS*/
+            $this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos();
+            $existe = $this->Umbraculos_model->existe_elemento_umbraculo($idUmbraculo);
+              if (!($existe)) {
+              $this->data['existe_elemento_umbraculo']= false;
+              $this->Umbraculos_model->remove($idUmbraculo);
+                }
+                else {
+                  $this->data['existe_elemento_umbraculo']= true;
+
+                }
+                $this->load->model('common/plantas_model');
+                redirect('common/umbraculos/index/'.$idUmbraculo);
+                $this->template->admin_render('admin/umbraculos/index', $this->data);
+            }
+        }
+
+
     /*EDITAR UN UMBRÁCULO*/
 
     function editar($idUmbraculo)
@@ -104,7 +134,6 @@ class Umbraculos extends Admin_Controller {
         }
         else
         {
-
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
                 // check if the umbraculos exists before trying to edit it

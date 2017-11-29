@@ -2,17 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 ?>
-
+<script type="text/javascript">
+var base_url = "<?php echo base_url(); ?>";
+</script>
             <div class="content-wrapper">
                 <section class="content-header">
                     <?php echo $pagetitle; ?>
                     <?php echo $breadcrumb; ?>
-
                 </section>
 
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
+                          <input type="hidden" id="existe_elemento_umbraculo" name="existe_elemento_umbraculo" value="<?php echo $existe_elemento_umbraculo?>" />
                              <div class="box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><?php echo anchor('common/umbraculos/crear', '<i class="fa fa-plus"></i> '. lang('umbraculos_create_umbraculo'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
@@ -40,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <b>Acciones: </b><br>
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
+                                            <button  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
                                             <!-- <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> --><br><br>
                                         </div>
                                     </div>
@@ -58,7 +60,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <p>¿Está seguro de querer eliminar el umbráculo seleccionado?</p>
                           </div>
                           <div class="modal-footer">
-                            <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
+                            <a onclick="javascript:borrarUmbraculo(<?php echo $u['idUmbraculo'];?>);"  href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
                             <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
                           </div>
                         </div>
@@ -67,9 +69,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     <?php } ?>
                 </table>
-
-
                          </div>
                     </div>
                 </section>
             </div>
+            <script>
+            function borrarUmbraculo(idUmbraculo){
+              $.post(base_url+'common/umbraculos/remove', {
+                idUmbraculo:idUmbraculo
+              }, function(response,status){
+               } );
+
+            var existe_elemento_umbraculo =document.getElementById('existe_elemento_umbraculo').value;
+            if(existe_elemento_umbraculo){
+              alert("No se puede borrar un umbraculo con plantas o tareas");
+            }
+            else {
+              alert("el elemento fue borrado correctamente");
+            }
+            }
+            </script>
