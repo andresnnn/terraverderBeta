@@ -115,8 +115,10 @@ class Umbraculos extends Admin_Controller {
                 }
                 else {
                   $this->data['existe_elemento_umbraculo']= true;
+
                 }
                 $this->load->model('common/plantas_model');
+                redirect('common/umbraculos/index/'.$idUmbraculo);
                 $this->template->admin_render('admin/umbraculos/index', $this->data);
             }
         }
