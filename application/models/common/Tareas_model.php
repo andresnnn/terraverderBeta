@@ -27,7 +27,7 @@ class Tareas_model extends CI_Model
      */
     function ver_detalles_tarea($idTarea)
     {
-      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo, tarea.horaAtencion
+      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo
               FROM tarea
               JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
               JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
@@ -201,6 +201,24 @@ class Tareas_model extends CI_Model
     }
 
 
+    /*listar tareas segun el estado de la misma*/
+    function listar_tareas_estado($param)
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE t.idEstado=".$param."
+                    ORDER BY t.fechaCreacion DESC";
+        return $this->db->query($query)->result_array();
+    }
+    /**/
+    
     function listar_tareas()
     {
         $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador

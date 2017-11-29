@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
 ?>
+
 
             <div class="content-wrapper">
                 <section class="content-header">
@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
                     <table class="table table-striped table-hover" >
-
+           
                     <?php foreach($umbraculos as $u){ ?>
                     <tr>
                     <div class="row">

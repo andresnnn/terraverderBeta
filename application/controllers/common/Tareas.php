@@ -33,14 +33,89 @@ class Tareas extends Admin_Controller{
 
         // $data['_view'] = 'tareas/index';
         // $this->load->view('layouts/main',$data);
-
+                
+                
+                /*$estado=$_POST['idEstado'];
+                $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado($estado);*/
                 $this->data['tarea'] = $this->Tareas_model->listar_tareas();
                 /* Load Template */
                 $this->template->admin_render('admin/tareas/index', $this->data);
 
             }
     }
+    
+    function indexNoIniciada()
+    {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                // $data['tarea'] = $this->Tareas_model->get_all_tarea();
 
+        // $data['_view'] = 'tareas/index';
+        // $this->load->view('layouts/main',$data);
+                
+                
+                /*$estado=$_POST['idEstado'];*/
+                $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado('1');
+                /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+                /* Load Template */
+                $this->template->admin_render('admin/tareas/index', $this->data);
+
+            }
+    }
+    
+    function indexCompleta()
+    {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                // $data['tarea'] = $this->Tareas_model->get_all_tarea();
+
+        // $data['_view'] = 'tareas/index';
+        // $this->load->view('layouts/main',$data);
+                
+                
+                /*$estado=$_POST['idEstado'];*/
+                $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado('2');
+                /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+                /* Load Template */
+                $this->template->admin_render('admin/tareas/index', $this->data);
+
+            }
+    }
+    
+    
+    function indexIncompleta()
+    {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                // $data['tarea'] = $this->Tareas_model->get_all_tarea();
+
+        // $data['_view'] = 'tareas/index';
+        // $this->load->view('layouts/main',$data);
+                
+                
+                /*$estado=$_POST['idEstado'];*/
+                $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado('3');
+                /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+                /* Load Template */
+                $this->template->admin_render('admin/tareas/index', $this->data);
+
+            }
+    }
     /*
      AGREGAR TAREA DENTRO DE UMBRACULO
      */
