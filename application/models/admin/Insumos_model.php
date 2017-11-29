@@ -30,11 +30,12 @@ class Insumos_model extends CI_Model
     /* get insumo consulta search */
     function get_all_insumo_search($search)
     {
-      $query = "SELECT *
-                FROM insumo
-                WHERE insumo.nombreInsumo like'%".$search."%'"
-          ;
-      return $this->db->query($query)->result_array();
+      $this->db->like('nombreInsumo',$search);
+      $this->db->or_like('descripcionInsumo',$search);
+      $this->db->or_like('cantidad',$search);
+      $this->db->or_like('puntoDePedido',$search);
+      $query  =   $this->db->get('insumo');
+      return $query->result_array();
     }
 
     /*
