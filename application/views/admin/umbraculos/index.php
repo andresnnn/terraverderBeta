@@ -7,12 +7,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <section class="content-header">
                     <?php echo $pagetitle; ?>
                     <?php echo $breadcrumb; ?>
-
                 </section>
 
                 <section class="content">
                     <div class="row">
                         <div class="col-md-12">
+                          <input type="hidden" id="existe_elemento_umbraculo" name="existe_elemento_umbraculo" value="<?php echo $existe_elemento_umbraculo?>" />
                              <div class="box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><?php echo anchor('common/umbraculos/crear', '<i class="fa fa-plus"></i> '. lang('umbraculos_create_umbraculo'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
@@ -67,9 +67,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     <?php } ?>
                 </table>
-
-
                          </div>
                     </div>
                 </section>
             </div>
+            <script>
+            var existe_elemento_umbraculo =document.getElementById('existe_elemento_umbraculo').value;
+            if(existe_elemento_umbraculo){
+              alert("No se puede borrar un umbraculo con plantas o tareas");
+            }
+            else {
+              alert("el elemento fue borrado correctamente");
+            }
+            </script>
