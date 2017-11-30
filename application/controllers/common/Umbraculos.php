@@ -216,6 +216,82 @@ class Umbraculos extends Admin_Controller {
 
                 }
             }
+    /*estas funciones permiten ver tareas por estados en los umbraculos*/
+     public function verTareasCompletas($idUmbraculo)
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+
+
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+                    /* Data */
+                    $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
+
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                    $this->data['tareas_en_umbraculo'] = $this->Tareas_model->listar_tareas_umbraculo_estado($idUmbraculo,'2');
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
+
+                }
+            }
+    
+    public function verTareasIncompletas($idUmbraculo)
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+
+
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+                    /* Data */
+                    $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
+
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                    $this->data['tareas_en_umbraculo'] = $this->Tareas_model->listar_tareas_umbraculo_estado($idUmbraculo,'3');
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
+
+                }
+            }
+    
+     public function verTareasNoIniciadas($idUmbraculo)
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+
+
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+
+                    /* Data */
+                    $this->data['id'] = $idUmbraculo = (int) $idUmbraculo;
+
+                    $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                    $this->data['tareas_en_umbraculo'] = $this->Tareas_model->listar_tareas_umbraculo_estado($idUmbraculo,'1');
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/umbraculos/umbraculo_tarea/see', $this->data);
+
+                }
+            }
+    /*fin funciones*/
     
     /*esta función permite borrar las tareas de un umbraculo---------*/
     public function borrarTareas($idUmbraculo)
