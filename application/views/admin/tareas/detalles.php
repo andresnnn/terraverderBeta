@@ -118,7 +118,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 	</div>
                                 	<!--FIN CAJA-->
                                 	<div class="col-md-6">
-									<?php if ($t['idEstado'] == 1 || $t['idEstado'] == 3) {
+									<?php if (($t['idEstado'] == 1 || $t['idEstado'] == 3) && $t['active']) {
 
 										echo '<label class="control-label">Atender tarea</label><div class="form-group">';
                                         echo anchor('common/umbraculos/atenderTarea/'.$t['idUmbraculo'].'/'.$t['idTarea'], '<i class="fa fa-sign-language"></i> '.'Atender tarea', array('class' => 'btn btn-primary','title'=>'(?) Atender tarea'));

@@ -86,10 +86,12 @@ function agregarTarea($idUmbraculo)
                 $this->data['existe_tarea_duplicada'] = false;
                 $this->load->library('form_validation');
 
+                $this->form_validation->set_rules('idPlanta','idPlanta','required');
                 $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
                 $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
                 $this->form_validation->set_rules('fechaAtencion','FechaAtencion');
-                $this->form_validation->set_rules('fechaComienzo','FechaComienzo');
+                $this->form_validation->set_rules('fechaComienzo','FechaComienzo','required');
+                $this->form_validation->set_rules('horaComienzo','horaComienzo','required');
                 $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
 
                 if($this->form_validation->run())
@@ -180,5 +182,30 @@ function agregarTarea($idUmbraculo)
                 $this->template->admin_render('admin/tareas/detalles', $this->data);
             }
     }
+/* borrado logico*/
+
+  /**
+   * DESACTIVA UN tarea, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN tarea, SE MUESTRA SU INFORMACIÓN
+   * @param  [type] $idTarea COMO ÚNICO PARAMETRO DE ENTRADA
+   * @return [type]           [description]
+   * @author SAKZEDMK
+   */
+  function borrado_logico($idTarea)
+  {
+    $this->Tareas_model->desactivar_tarea($idTarea);
+    redirect('common/tareas/index');
+  }
+
+  /**
+   * DESACTIVA UN tarea, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN tarea, SE MUESTRA SU INFORMACIÓN
+   * @param  [type] $idTarea COMO ÚNICO PARAMETRO DE ENTRADA
+   * @return [type]           [description]
+   * @author SAKZEDMK
+   */
+  function activado_logico($idTarea)
+  {
+    $this->Tareas_model->activar_tarea($idTarea);
+    redirect('common/tareas/index');
+  }
 
 }

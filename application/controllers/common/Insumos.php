@@ -80,8 +80,8 @@ public function search_keyword(){
 
         		$this->form_validation->set_rules('nombreInsumo','NombreInsumo','max_length[50]|min_length[4]|required');
         		$this->form_validation->set_rules('descripcionInsumo','DescripcionInsumo','max_length[255]|min_length[10]|required');
-        		$this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]');
-        		$this->form_validation->set_rules('puntoDePedido','PuntoDePedido','is_natural');
+        		$this->form_validation->set_rules('cantidad','Cantidad','is_natural|required|less_than[999]','required');
+        		$this->form_validation->set_rules('puntoDePedido','PuntoDePedido','is_natural','required');
 
         		if($this->form_validation->run())
                 {

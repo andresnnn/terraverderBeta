@@ -49,6 +49,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<input type="hidden" name="idEstado" value="<?php echo $estadoDefecto['idEstado']; ?>" class="has-datepicker form-control" id="idEstado" />
 						</div>
 					</div>
+
 					<div class="col-md-6">
 						<label for="idUserCreador" class="control-label">Usuario creador</label>
 						<div class="form-group">
@@ -71,6 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								}
 								?>
 							</select>
+              <span class="text-danger"><?php echo form_error('idPlanta');?></span>
 						</div>
 					</div>
 					<div class="col-md-6">

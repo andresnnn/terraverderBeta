@@ -133,7 +133,7 @@ class Tareas_pla extends Public_controller{
                     $this->template->user_render('public/umbraculos/tareas_umbraculos/add', $this->data);
             }
     }
-   
+
     function selecciona_umbraculo ()
     {
         if ( ! $this->ion_auth->logged_in())
@@ -163,6 +163,30 @@ class Tareas_pla extends Public_controller{
                 $this->template->user_render('public/umbraculos/tareas_umbraculos/detalles', $this->data);
             }
     }
+    /* borrado logico*/
 
+      /**
+       * DESACTIVA UN tarea, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN tarea, SE MUESTRA SU INFORMACIÓN
+       * @param  [type] $idTarea COMO ÚNICO PARAMETRO DE ENTRADA
+       * @return [type]           [description]
+       * @author SAKZEDMK
+       */
+      function borrado_logico($idTarea)
+      {
+        $this->Tareas_model->desactivar_tarea($idTarea);
+        redirect('user/tareas_pla/index');
+      }
+
+      /**
+       * DESACTIVA UN tarea, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN tarea, SE MUESTRA SU INFORMACIÓN
+       * @param  [type] $idTarea COMO ÚNICO PARAMETRO DE ENTRADA
+       * @return [type]           [description]
+       * @author SAKZEDMK
+       */
+      function activado_logico($idTarea)
+      {
+        $this->Tareas_model->activar_tarea($idTarea);
+        redirect('user/tareas_pla/index');
+      }
 
 }
