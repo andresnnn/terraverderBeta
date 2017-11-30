@@ -51,14 +51,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="col-md-6">
                                                     <label for="humedadMax" class="control-label"><span class="text-danger">*</span>Humedad Máx (%)</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="humedadMax" value="<?php echo ($this->input->post('humedadMax') ? $this->input->post('humedadMax') : $especie['humedadMax']); ?>" class="form-control" id="humedadMax" />
+                                                        <input type="number" min="0" max="100" name="humedadMax" value="<?php echo $this->input->post('humedadMax'); ?>" class="form-control" id="humedadMax" />
                                                         <span class="text-danger"><?php echo form_error('humedadMax');?></span>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="humedadMin" class="control-label"><span class="text-danger">*</span>Humedad Mín (%)</label>
                                                     <div class="form-group">
-                                                        <input type="text" name="humedadMin" value="<?php echo ($this->input->post('humedadMin') ? $this->input->post('humedadMin') : $especie['humedadMin']); ?>" class="form-control" id="humedadMin" />
+                                                        <input  type="number" min="0" max="100" name="humedadMin" value="<?php echo $this->input->post('humedadMin'); ?>" class="form-control" id="humedadMin" />
                                                         <span class="text-danger"><?php echo form_error('humedadMin');?></span>
                                                     </div>
                                                 </div>
