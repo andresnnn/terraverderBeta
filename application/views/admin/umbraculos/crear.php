@@ -58,21 +58,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <div class="col-md-6">
                                                             <label for="temperaturaUmbraculo" class="control-label"><span class="text-danger"></span>Temperatura (°)</label>
                                                             <div class="form-group">
-                                                                <input type="text" name="temperaturaUmbraculo" value="<?php echo $this->input->post('temperaturaUmbraculo'); ?>" class="form-control" id="temperaturaUmbraculo" />
+                                                                <input type="number" name="temperaturaUmbraculo" value="<?php echo $this->input->post('temperaturaUmbraculo'); ?>" class="form-control" id="temperaturaUmbraculo" />
                                                                 <span class="text-danger"><?php echo form_error('temperaturaUmbraculo');?></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="luzUmbraculo" class="control-label"><span class="text-danger"></span>Luz (lx)</label>
                                                             <div class="form-group">
-                                                                <input type="text" name="luzUmbraculo" value="<?php echo $this->input->post('luzUmbraculo'); ?>" class="form-control" id="luzUmbraculo" />
+                                                                <input type="number" name="luzUmbraculo" value="<?php echo $this->input->post('luzUmbraculo'); ?>" class="form-control" id="luzUmbraculo" />
                                                                 <span class="text-danger"><?php echo form_error('luzUmbraculo');?></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="humedadUmbraculo" class="control-label"><span class="text-danger"></span>Húmedad (%)</label>
                                                             <div class="form-group">
-                                                                <input max="100" min="0" type="number" name="humedadUmbraculo" value="<?php echo $this->input->post('humedadUmbraculo'); ?>" class="form-control" id="humedadUmbraculo" />
+                                                                <input max="100" min="0" type="number" name="humedadUmbraculo"  onchange="javascript:humedadMaxMin();" value="<?php echo $this->input->post('humedadUmbraculo'); ?>" class="form-control" id="humedadUmbraculo" />
                                                                 <span class="text-danger"><?php echo form_error('humedadUmbraculo');?></span>
                                                             </div>
                                                         </div>
@@ -102,6 +102,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </section>
             </div>
 <script>
+
+function humedadMaxMin(){
+    var $valor =  document.getElementById('humedadUmbraculo').value;
+
+    var $valorMax= document.getElementById('humedadUmbraculo').max;
+    var $valorMin = document.getElementById('humedadUmbraculo').min;
+
+  if ($valor<$valorMin) {
+    document.getElementById('humedadUmbraculo').value= $valorMin;
+    alert("La humedad no debe ser menor a 0%");
+  }
+  else if ($valor>$valorMax) {
+    document.getElementById('humedadUmbraculo').value= $valorMax;
+  alert("La humedad no debe ser mayor a 100%");
+  }
+
+}
 
     function completar()
     {
