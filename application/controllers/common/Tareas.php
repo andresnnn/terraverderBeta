@@ -51,6 +51,7 @@ function agregarTarea($idUmbraculo)
             }
             else
             {
+              $this->data['existe_tarea_duplicada'] = false;
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
                 /* CARGA LA INFORMACION DE LAS PLANTAS DEL UMBRACULO DONDE SE QUIERE CREAR LA TAREA*/
@@ -82,6 +83,7 @@ function agregarTarea($idUmbraculo)
      */
     function add($idUmbraculo)
     {
+                $this->data['existe_tarea_duplicada'] = false;
                 $this->load->library('form_validation');
 
                 $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
@@ -105,7 +107,9 @@ function agregarTarea($idUmbraculo)
                         'horaComienzo' => $this->input->post('horaComienzo'),
                         'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     );
-                    if ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea')))
+                      $this->data['existe_tarea_duplicada'] = ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea')));
+
+                    if (!($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea'))))
                     {
                       /*Se agregar tarea porque no existe*/
                       $tareas_id = $this->Tareas_model->add_tareas($params);
@@ -113,7 +117,6 @@ function agregarTarea($idUmbraculo)
                     }
                     else{
                       /*no se agrega*/
-                      echo "error";
                       redirect('common/umbraculos/ver/'.$this->input->post('idUmbraculo'));
                     }
                 }
