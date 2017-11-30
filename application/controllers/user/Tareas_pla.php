@@ -36,6 +36,50 @@ class Tareas_pla extends Public_controller{
 
             }
     }
+    
+    function indexCompleta()
+    {       if ( ! $this->ion_auth->logged_in())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                 $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado('2');
+                /* Load Template */
+                $this->template->user_render('public/tareas/index', $this->data);
+
+            }
+    }
+    
+    function indexIncompleta()
+    {       if ( ! $this->ion_auth->logged_in())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                 $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado('3');
+                /* Load Template */
+                $this->template->user_render('public/tareas/index', $this->data);
+
+            }
+    }
+    
+     function indexNoIniciada()
+    {       if ( ! $this->ion_auth->logged_in())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                 $this->data['tarea'] = $this->Tareas_model->listar_tareas_estado('1');
+                /* Load Template */
+                $this->template->user_render('public/tareas/index', $this->data);
+
+            }
+    }
+    
+    
    /*
      AGREGAR CARGAR TAREA A BD
      */
