@@ -63,8 +63,8 @@ class Especies extends Admin_Controller{
     		$this->form_validation->set_rules('descripcionCuidados','DescripcionCuidados','max_length[255]|required|min_length[4]');
     		$this->form_validation->set_rules('luzMax','LuzMax','required|is_natural');
     		$this->form_validation->set_rules('luzMin','LuzMin','required|is_natural');
-    		$this->form_validation->set_rules('humedadMax','HumedadMax','required|is_natural');
-    		$this->form_validation->set_rules('humedadMin','HumedadMin','required|is_natural');
+    		$this->form_validation->set_rules('humedadMax','HumedadMax','required|is_natural|max_length[100]|min_length[0]');
+    		$this->form_validation->set_rules('humedadMin','HumedadMin','required|is_natural|max_length[100]|min_length[0]');
     		$this->form_validation->set_rules('temperaturaMax','TemperaturaMax','required|is_natural');
     		$this->form_validation->set_rules('temperaturaMin','TemperaturaMin','is_natural|required');
     		$this->form_validation->set_rules('descripcionSustrato','DescripcionSustrato','max_length[255]');
@@ -119,8 +119,8 @@ class Especies extends Admin_Controller{
         			$this->form_validation->set_rules('descripcionCuidados','DescripcionCuidados','max_length[255]|required|min_length[4]');
         			$this->form_validation->set_rules('luzMax','LuzMax','required|is_natural');
         			$this->form_validation->set_rules('luzMin','LuzMin','required|is_natural');
-        			$this->form_validation->set_rules('humedadMax','HumedadMax','required|is_natural');
-        			$this->form_validation->set_rules('humedadMin','HumedadMin','required|is_natural');
+        			$this->form_validation->set_rules('humedadMax','HumedadMax','required|is_natural|max_length[100]|min_length[0]');
+        			$this->form_validation->set_rules('humedadMin','HumedadMin','required|is_natural|max_length[100]|min_length[0]');
         			$this->form_validation->set_rules('temperaturaMax','TemperaturaMax','required|is_natural');
         			$this->form_validation->set_rules('temperaturaMin','TemperaturaMin','is_natural|required');
         			$this->form_validation->set_rules('descripcionSustrato','DescripcionSustrato','max_length[255]');
