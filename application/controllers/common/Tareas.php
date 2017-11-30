@@ -86,10 +86,12 @@ function agregarTarea($idUmbraculo)
                 $this->data['existe_tarea_duplicada'] = false;
                 $this->load->library('form_validation');
 
+                $this->form_validation->set_rules('idPlanta','idPlanta','required');
                 $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
                 $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
                 $this->form_validation->set_rules('fechaAtencion','FechaAtencion');
-                $this->form_validation->set_rules('fechaComienzo','FechaComienzo');
+                $this->form_validation->set_rules('fechaComienzo','FechaComienzo','required');
+                $this->form_validation->set_rules('horaComienzo','horaComienzo','required');
                 $this->form_validation->set_rules('observacionEspecialista','ObservacionEspecialista','max_length[50]');
 
                 if($this->form_validation->run())
