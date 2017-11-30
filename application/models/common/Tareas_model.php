@@ -109,10 +109,10 @@ class Tareas_model extends CI_Model
       $vector = $this->db->get_where('tarea',array('idUmbraculo'=>$id1,'fechaComienzo'=>$id2,'idPlanta'=>$id3, 'idTipoTarea'=>$id4))->row_array();
 
       if (  ($vector==null)){
-      return true;
+      return false;
       }
       else {
-        return false;}
+        return true;}
       }
 
       /**
