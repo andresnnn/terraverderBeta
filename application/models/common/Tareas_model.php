@@ -27,7 +27,7 @@ class Tareas_model extends CI_Model
      */
     function ver_detalles_tarea($idTarea)
     {
-      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo, tarea.horaAtencion
+      $query="SELECT tarea.*,tipotarea.nombreTipoTarea,tipotarea.descripcionTarea,estado_tarea.idEstado,estado_tarea.nombreEstado,planta.idPlanta,planta.nombrePlanta,planta.nombreCientificoPlanta,CONCAT(creo.first_name,' ',creo.last_name) as Creador, CONCAT(uso.first_name,' ',uso.last_name) as Atendio,umbraculo.idUmbraculo,umbraculo.nombreUmbraculo, tarea.horaAtencion,tarea.active
               FROM tarea
               JOIN umbraculo ON umbraculo.idUmbraculo = tarea.idUmbraculo
               JOIN tipotarea ON tipotarea.idTipoTarea = tarea.idTipoTarea
@@ -192,7 +192,7 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
      */
     function listar_tareas_umbraculo($idUmbraculo)
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador, t.active
         -- , ua.idUserAtencion
         -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
                     FROM tarea t

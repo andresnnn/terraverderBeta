@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <div class="col-md-6">
                                                             <label for="humedadUmbraculo" class="control-label"><span class="text-danger"></span>Húmedad (%)</label>
                                                             <div class="form-group">
-                                                                <input type="text" name="humedadUmbraculo" value="<?php echo $this->input->post('humedadUmbraculo'); ?>" class="form-control" id="humedadUmbraculo" />
+                                                                <input max="100" min="0" type="number" name="humedadUmbraculo" value="<?php echo $this->input->post('humedadUmbraculo'); ?>" class="form-control" id="humedadUmbraculo" />
                                                                 <span class="text-danger"><?php echo form_error('humedadUmbraculo');?></span>
                                                             </div>
                                                         </div>
@@ -95,7 +95,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <div class="box-footer">
                                                         <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
                                                         <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Cancelar</a>
-                                                    </div>  
+                                                    </div>
                                                 <?php echo form_close(); ?>
                          </div>
                     </div>
