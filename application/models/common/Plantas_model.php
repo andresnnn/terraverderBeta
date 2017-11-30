@@ -49,6 +49,50 @@ class Plantas_model extends CI_Model
         return $this->db->query($query)->row_array();
 
     }
+
+        /**
+         * FUNCION QUE RETORNA TODAS LAS PLANTAS COMPATIBLES CON LAS CONDICIONES DE UN DETERMINADO UMBRACULO
+         * @param string $value [description]
+         */
+        public function plantas_compatibles ($hmin,$hmax,$lmin,$lmax,$tmin,$tmax)
+        {
+            $query= "SELECT * 
+                        FROM planta 
+                        JOIN especie ON planta.idEspecie = especie.idEspecie
+                        WHERE  
+                        especie.humedadMin BETWEEN '0' and '".$hmin."'
+                        AND
+                        especie.humedadMax BETWEEN '".$hmin."' and '".$hmax."'
+                        AND
+                        especie.luzMin BETWEEN '0' and '".$lmin."'
+                        AND
+                        especie.luzMax BETWEEN '".$lmin."' and '".$lmax."'
+                        AND 
+                        especie.temperaturaMin BETWEEN '0' and '".$tmin."'
+                        AND
+                        especie.temperaturaMax BETWEEN '".$tmin."' and '".$tmax."'";
+            return $this->db->query($query)->result_array();
+        }
+
+                /**
+         * FUNCION QUE RETORNA TODAS LAS PLANTAS COMPATIBLES CON LAS CONDICIONES DE UN DETERMINADO UMBRACULO
+         * @param string $value [description]
+         */
+        function plantas_compatibles_params ($info_umbraculo)
+        {
+            $query= "SELECT * 
+                        FROM planta 
+                        JOIN especie ON planta.idEspecie = especie.idEspecie
+                        WHERE  
+                        especie.humedadMin BETWEEN '0' AND '".$info_umbraculo['humedadUmbraculo']."'
+                        AND
+                        especie.luzMin BETWEEN '0' AND '".$info_umbraculo['luzUmbraculo']."'
+                        AND
+                        especie.temperaturaMin BETWEEN '0' AND '".$info_umbraculo['temperaturaUmbraculo']."'";
+
+            return $this->db->query($query)->result_array();
+        }
+
     /*
      * Get all plantas
      */
