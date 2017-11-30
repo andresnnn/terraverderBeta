@@ -16,8 +16,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="box-header with-border">
                         <h3 class="box-title"><?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                         <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
-                          <input type="text" name = "keyword" id="keyword" placeholder="Buscador..."/>
-                          <button type="submit"  name="search" id="search"><span class="fa fa-search"></span></button>
+                        <br>
+                            <div class="form-group">
+                        <div class="col-md-8">
+                          <input type="text" name = "keyword" id="keyword" placeholder="Buscar insumo..." class="form-control"/>
+                          
+                          </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>    
+                          </div>
                         </form></div>
                     </div>
 
@@ -28,9 +33,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-body">
                 <table class="table table-striped">
                     <tr>
-						<th>Nombre Insumo</th>
-						<th>Descripcion Insumo</th>
-						<th>Cantidad</th>
+						<th>Nombre</th>
+						<th>Descripción</th>
+						<th>Stock disponible</th>
 						<th>Punto De Pedido</th>
                         <th>Estado</th>
 						<th>Acciones</th>
