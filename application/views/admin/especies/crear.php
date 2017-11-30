@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<label for="humedadMax" class="control-label"><span class="text-danger">*</span>Humedad Máx (%)</label>
 						<div class="form-group">
-							<input type="text" name="humedadMax" value="<?php echo $this->input->post('humedadMax'); ?>" class="form-control" id="humedadMax" />
+							<input type="text" min="0" max="100" name="humedadMax" value="<?php echo $this->input->post('humedadMax'); ?>" class="form-control" id="humedadMax" />
 							<span class="text-danger"><?php echo form_error('humedadMax');?></span>
 						</div>
 					</div>
