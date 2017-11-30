@@ -150,7 +150,7 @@ class Umbraculos extends Admin_Controller {
                     $this->form_validation->set_rules('unidadEspacioTotal_m2','UnidadEspacioTotal M2','required');
                     $this->form_validation->set_rules('temperaturaUmbraculo','TemperaturaUmbraculo','required|max_length[99]');
                     $this->form_validation->set_rules('luzUmbraculo','LuzUmbraculo','required');
-                    $this->form_validation->set_rules('humedadUmbraculo','HumedadUmbraculo','required');
+                    $this->form_validation->set_rules('humedadUmbraculo','HumedadUmbraculo','required|max_length[100]|min_length[0]');
                     $this->form_validation->set_rules('descripcionSustrato','DescripcionSustrato','max_length[50]');
 
                     if($this->form_validation->run())
