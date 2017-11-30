@@ -208,7 +208,7 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
 
     function listar_tareas()
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
         -- , ua.idUserAtencion
         -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
                     FROM tarea t
@@ -300,6 +300,29 @@ function get_users_nombre($idTarea)
 
     return $this->db->query($query)->row_array();
 }
+
+// acctivar o desactivar un estado_tarea
+/**
+* DESACTIVA una tarea QUE NO ESTÉ SIENDO UTILIZADO.
+*/
+  function desactivar_tarea($idTarea)
+  {
+    $query="UPDATE `tarea` SET `active`=0 WHERE idTarea=".$idTarea;
+    $this->db->query($query);
+  }
+
+/**
+* ACTIVA una tarea QUE NO ESTÉ SIENDO UTILIZADO.
+*/
+    function activar_tarea($idTarea)
+    {
+      $query="UPDATE `tarea` SET `active`=1 WHERE idTarea=".$idTarea;
+      $this->db->query($query);
+    }
+
+
+
+
 
 
 }

@@ -182,5 +182,30 @@ function agregarTarea($idUmbraculo)
                 $this->template->admin_render('admin/tareas/detalles', $this->data);
             }
     }
+/* borrado logico*/
+
+  /**
+   * DESACTIVA UN tarea, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN tarea, SE MUESTRA SU INFORMACIÓN
+   * @param  [type] $idTarea COMO ÚNICO PARAMETRO DE ENTRADA
+   * @return [type]           [description]
+   * @author SAKZEDMK
+   */
+  function borrado_logico($idTarea)
+  {
+    $this->Tareas_model->desactivar_tarea($idTarea);
+    redirect('common/tareas/index');
+  }
+
+  /**
+   * DESACTIVA UN tarea, PARA SU UTILIZACIÓN... PERO SI YA ESTÁ UTILIZADO EN ALGÚN tarea, SE MUESTRA SU INFORMACIÓN
+   * @param  [type] $idTarea COMO ÚNICO PARAMETRO DE ENTRADA
+   * @return [type]           [description]
+   * @author SAKZEDMK
+   */
+  function activado_logico($idTarea)
+  {
+    $this->Tareas_model->activar_tarea($idTarea);
+    redirect('common/tareas/index');
+  }
 
 }

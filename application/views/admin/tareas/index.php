@@ -25,6 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                 <th>Fecha Creación</th>
                                                 <th>Fecha Prevista</th>
+                                                <th>Progreso Tarea</th>
                                                 <th>Estado</th>
                                                 <th>Acciones</th>
                                             </tr>
@@ -37,10 +38,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <td><?php echo $t['fechaCreacion']; ?></td>
                                                 <td><?php echo $t['fechaComienzo']; ?></td>
                                                 <td><?php echo $t['nombreEstado']; ?></td>
+                                                <!-- Borrado logico en activo -->
+                                                <td><?php
+                                                if ($t['active'] == 1) {
+                                                    echo "<a href='".site_url('common/tareas/borrado_logico/'.$t['idTarea'])."'><span class='label label-success'>Activo</span></a>";
+                                                }else{
+                                                    echo "<a href='".site_url('common/tareas/activado_logico/'.$t['idTarea'])."'><span class='label label-default'>Inactivo</span></a>";
+                                                }
+                                                ?></td>
 
                                                 <td>
                                                     <a href="<?php echo site_url('common/tareas/ver_detalles/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
                                                 </td>
+
                                             </tr>
                                             <?php } ?>
                                     </table>
