@@ -35,10 +35,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td>
                                                 <!-- BOTON QUE LLAMA AL CONTROLADOR Y CAPTURA LA NUEVA CANTIDAD DE PLANTAS CON SU RESPECTIVO 
                                                 ESPACIO OCUPADO, Y LA ACTUALIZA DENTRO DE LA 'BD' -->
+                                                <a href="<?php echo site_url('common/plantas/ver/'.$u['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver Cuidados</a> 
                                                 <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
-                                                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal">Borrar</button>
-
-
+                                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal">Borrar</button>
                                             </td>
                                         </tr>
                                         <?php } ?>
