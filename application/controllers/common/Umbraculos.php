@@ -318,7 +318,7 @@ class Umbraculos extends Admin_Controller {
             /**
             *ESTA FUNCION AGREGA A LA TABLA 'Insumo/TAREA'
             **/
-            function agregarInsumoTarea()
+            function agregarInsumoTarea() 
             {
               //variables POST
               $cantidad=$_POST['cantidad'];
