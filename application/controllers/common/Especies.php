@@ -42,6 +42,55 @@ class Especies extends Admin_Controller{
             }
         }
 
+
+
+        /*
+         INDEX, LISTAR LAS ESPECIES
+         */
+            public function indexFilter1()
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                    /* CARGO EL LISTADO DE UMBRACULOS*/
+
+                    $this->data['especies'] = $this->Especies_model->get_all_especies_active();
+
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/especies/index', $this->data);
+                }
+            }
+
+
+            /*
+             INDEX, LISTAR LAS ESPECIES
+             */
+                public function indexFilter2()
+                {
+                    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                    {
+                        redirect('auth/login', 'refresh');
+                    }
+                    else
+                    {
+                        /* Breadcrumbs */
+                        $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                        /* CARGO EL LISTADO DE UMBRACULOS*/
+
+                        $this->data['especies'] = $this->Especies_model->get_all_especies_inactive();
+
+
+                        /* Load Template */
+                        $this->template->admin_render('admin/especies/index', $this->data);
+                    }
+                }
+
     /*
      CREAR UNA NUEVA ESPECIE
      */

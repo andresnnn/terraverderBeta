@@ -28,6 +28,27 @@ class Especies_model extends CI_Model
         return $this->db->get('especie')->result_array();
     }
 
+
+    /*
+     * Get all especies
+     */
+    function get_all_especies_active()
+    {
+
+      $query="SELECT* FROM`especie` WHERE `active`=1";
+      return  $this->db->query($query)->result_array();
+
+    }
+
+    /*
+     * Get all especies
+     */
+    function get_all_especies_inactive()
+    {
+      $query="SELECT* FROM`especie` WHERE `active`=0";
+      return  $this->db->query($query)->result_array();
+    }
+
     /*
      * function to add new especie
      */
