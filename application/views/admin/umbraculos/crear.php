@@ -31,28 +31,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <div class="col-md-6">
                                                             <label for="anchoUmbraculo_m" class="control-label"><span class="text-danger"></span>Ancho (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input type="number" step="any" name="anchoUmbraculo_m" value="<?php echo $this->input->post('anchoUmbraculo_m'); ?>" class="form-control" id="anchoUmbraculo_m" />
+                                                                <input min="0"type="number" step="any" name="anchoUmbraculo_m" value="<?php echo $this->input->post('anchoUmbraculo_m'); ?>" class="form-control" id="anchoUmbraculo_m" />
                                                                 <span class="text-danger"><?php echo form_error('anchoUmbraculo_m');?></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="largoUmbraculo_m" class="control-label"><span class="text-danger"></span>Largo (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input type="number" step="any" name="largoUmbraculo_m" onChange="completar();" value="<?php echo $this->input->post('largoUmbraculo_m'); ?>" class="form-control" id="largoUmbraculo_m" />
+                                                                <input min="0" type="number" step="any" name="largoUmbraculo_m" onChange="completar();" value="<?php echo $this->input->post('largoUmbraculo_m'); ?>" class="form-control" id="largoUmbraculo_m" />
                                                                 <span class="text-danger"><?php echo form_error('largoUmbraculo_m');?></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
-                                                            <label for="unidadEspacioTotal_m2" class="control-label"><span class="text-danger"></span>Espacio Total (m<sup>2</sup>)</label>
+                                                            <label for="unidadEspacioTotal_m2" class="control-label"><span class="text-danger" ></span>Espacio Total (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input  type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo $this->input->post('unidadEspacioTotal_m2'); ?>" class="form-control" id="unidadEspacioTotal_m2" />
+                                                                <input  min="0" type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo $this->input->post('unidadEspacioTotal_m2'); ?>" class="form-control" id="unidadEspacioTotal_m2" />
                                                                 <span class="text-danger"><?php echo form_error('unidadEspacioTotal_m2');?></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="unidadEspacioDisponible_m2" class="control-label">Espacio Disponible (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input  type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo $this->input->post('unidadEspacioDisponible_m2'); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
+                                                                <input  min="0" type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo $this->input->post('unidadEspacioDisponible_m2'); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <div class="col-md-6">
                                                             <label for="luzUmbraculo" class="control-label"><span class="text-danger"></span>Luz (lx)</label>
                                                             <div class="form-group">
-                                                                <input type="number" name="luzUmbraculo" value="<?php echo $this->input->post('luzUmbraculo'); ?>" class="form-control" id="luzUmbraculo" />
+                                                                <input min="0" type="number" name="luzUmbraculo" value="<?php echo $this->input->post('luzUmbraculo'); ?>" class="form-control" id="luzUmbraculo" />
                                                                 <span class="text-danger"><?php echo form_error('luzUmbraculo');?></span>
                                                             </div>
                                                         </div>
