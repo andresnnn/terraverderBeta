@@ -19,14 +19,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               							<div class="btn-group">
               								<button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
               								<button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="Desactivados">Desactivados</button>
-                              <button type="button" class="btn btn-default btn-filter" data-target="completas">Tareas completas </button>
+                              <!-- <button type="button" class="btn btn-default btn-filter" data-target="completas">Tareas completas </button> -->
 
-                              <button type="button" class="btn btn-default btn-filter" data-target="incompletas">Tareas incompletas </button>
+                              <button onclick="valorSelect(4)" type="button" class="btn btn-default btn-filter" data-target="incompletas">Tareas incompletas </button>
                               <button type="button" class="btn btn-default btn-filter" onclick="valorSelect(5)">Ordenar por fechas previstas</button>
                               <a href="<?php echo site_url('common/tareas/'); ?>" class="btn btn-default btn-filter">Todos</a>
               							</div>
               						</div>
-                          <div><form action="<?php echo site_url('common/tareas/search_keyword');?>" method = "post">
+                          <!-- <div><form action="<?php echo site_url('common/tareas/search_keyword');?>" method = "post">
                           <br>
                             <div "col-md-2">
 
@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <div class="form-group">
                           <div class="col-md-8">
                             <input type="text" name = "keyword" id="keyword" placeholder="Buscar tarea..." class="form-control"/>
-                            </div>
+                            </div> -->
 
 
 
@@ -95,6 +95,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
         else if (valor==1) {
           window.location.pathname ="<?php echo ('terraverde/common/tareas/indexFilter1'); ?>";
+        }
+
+        else if (valor==2) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/indexFilter2'); ?>";
+        }
+
+        else if (valor==4) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/indexFilter4'); ?>";
         }
 
  }

@@ -81,6 +81,40 @@ class Tareas extends Admin_Controller{
         }
 
 
+        function indexFilter2()
+        {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                    # code...
+                    $this->data['tarea'] = $this->Tareas_model->listar_tareas_inactiva();
+                    /* Load Template */
+                    $this->template->admin_render('admin/tareas/index', $this->data);
+                }
+        }
+
+
+        function indexFilter4()
+        {       if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                    # code...
+                    $this->data['tarea'] = $this->Tareas_model->listar_tareas_incompleta();
+                    /* Load Template */
+                    $this->template->admin_render('admin/tareas/index', $this->data);
+                }
+        }
+
+
     /*consulta de insumos*/
     public function search_keyword(){
         if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())

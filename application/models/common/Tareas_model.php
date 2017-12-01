@@ -260,6 +260,33 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
         return $this->db->query($query)->result_array();
     }
 
+
+    function listar_tareas_inactiva()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE  t.active=0";
+
+
+        return $this->db->query($query)->result_array();
+    }
+
+
+    function listar_tareas_incompleta()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE  t.idEstado=1 OR t.idEstado=3 ";
+        return $this->db->query($query)->result_array();
+    }
     /**
      * Retorna todos los insumos, que se utilizaron en determinada, tarea, a la cual se le observan los detalles.
      * @param  [type] $idTarea Único paramentro de entrada.
