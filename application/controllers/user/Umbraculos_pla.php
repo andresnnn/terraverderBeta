@@ -111,6 +111,7 @@ class Umbraculos_pla extends Public_controller {
                 $this->data['estados'] = $this->Tareas_model->all_estado_tareas();
                 $this->data['tarea'] = $this->Tareas_model->get_tarea_join($idTarea);
                 $this->data['insumos'] = $this->Tareas_model->get_all_insumo();
+                $this->data['insumosTarea'] = $this->Tareas_model->insumos_tarea($idTarea);
               /* libreria formulario*/
                   $this->load->library('form_validation');
                   // $this->load->library('form_validation_insumo_tarea');
@@ -138,7 +139,7 @@ class Umbraculos_pla extends Public_controller {
             }
 
             /**
-            *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
+            *ESTA FUNCION AGREGA A LA TABLA 'Insumo/TAREA'
             **/
             function agregarInsumoTarea()
             {
@@ -147,9 +148,27 @@ class Umbraculos_pla extends Public_controller {
               $idInsumo=$_POST['idInsumo'];
               $idTarea=$_POST['idTarea'];
               $nuevoStock=$_POST['nuevoStock'];
-              if($this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo)){
+              if($this->Tareas_model->no_existe_insumo_tarea($idTarea,$idInsumo)){
               $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
-            $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
+              $this->Tareas_model->add_insumoTarea($idTarea,$idInsumo,$cantidad);}
+            }
+
+            function borrarInsumoTarea()
+            {
+              //variables post
+
+              $idInsumo=$_POST['idInsumo'];
+              $idTarea=$_POST['idTarea'];
+              $nuevoStock=$_POST['nuevoStock'];
+              if(!$this->Tareas_model->no_existe_insumo_tarea($idTarea,$idInsumo)){
+              $this->Tareas_model->update_cantidad($idInsumo,$nuevoStock);
+              $this->Tareas_model->delete_insumoTarea($idTarea,$idInsumo);}
+            }
+
+            function verInsumoTarea($idTarea)
+            {
+              //variables post
+              return $this->Tareas_model->insumos_tarea($idTarea);
             }
             /**
             *ESTA FUNCION AGREGA A LA TABLA 'UMBRACULO/TAREA'
@@ -161,7 +180,7 @@ class Umbraculos_pla extends Public_controller {
               $idInsumo=$_POST['idInsumo'];
               $idTarea=$_POST['idTarea'];
               $nuevoStock=$_POST['nuevoStock'];
-              return $this->Tareas_model->existe_insumo_tarea($idTarea,$idInsumo);
+              return $this->Tareas_model->no_existe_insumo_tarea($idTarea,$idInsumo);
 
             }
 
