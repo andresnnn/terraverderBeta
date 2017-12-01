@@ -212,7 +212,7 @@ class Umbraculos_pla extends Public_controller {
             $this->data['info_umbraculo'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
 
             /* CARGAR INFORMARCION DE LAS PLANTAS REGISTRADAS*/
-            $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies();
+            $this->data['all_plantas'] = $this->plantas_model->obtener_plantas_especies_select($this->data['info_umbraculo']);
 
             /* Load Template */
             $this->template->user_render('public/umbraculos/plantas_umbraculos/add_planta', $this->data);
