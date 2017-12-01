@@ -167,6 +167,8 @@ class Plantas extends Admin_Controller{
     function activado_logico($idPlanta)
     {
 
+          # code...
+
         $this->Plantas_model->activar_planta($idPlanta);
         redirect('common/plantas/index');
     }
