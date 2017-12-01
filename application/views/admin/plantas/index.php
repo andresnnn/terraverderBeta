@@ -18,11 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title"><?php echo anchor('common/plantas/crear', '<i class="fa fa-plus"></i> '. lang('plantas_create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                     <div class="pull-right">
                             <div class="btn-group">
-                              <button type="button" class="btn btn-success btn-filter" data-target="pendiente">Activados</button>
-                              <button type="button" class="btn btn-warning btn-filter" data-target="cancelado">Desactivados</button>
+                              <button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
+              								<button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="cancelado">Desactivados</button>
 
-                              <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Ordenar por unidades de espacio</button>
-                              <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+                              <button type="button" class="btn btn-default btn-filter" onclick="valorSelect(3)" data-target="puntoBajo">Ordenar por unidades de espacio</button>
+                              <a href="<?php echo site_url('common/plantas'); ?>" class="btn btn-default btn-filter">Todos</a>
                             </div>
                           </div>
                           <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
@@ -74,3 +74,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>
+
+
+            <script>
+                        function valorSelect(valor){
+                               if (valor==1) {
+                                 window.location.pathname ="<?php echo ('terraverde/common/plantas/indexFilter1'); ?>";
+                               }
+                               else if (valor==2) {
+                                 window.location.pathname ="<?php echo ('terraverde/common/plantas/indexFilter2'); ?>";
+                               }
+
+                               else if (valor==3) {
+                                 window.location.pathname ="<?php echo ('terraverde/common/plantas/indexFilter3'); ?>";
+                               }
+                        }
+                                   </script>
