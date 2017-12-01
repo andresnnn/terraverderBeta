@@ -221,6 +221,45 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
         return $this->db->query($query)->result_array();
     }
 
+    /* get insumo consulta search */
+    function get_all_tarea_search($search)
+    {
+      $this->db->join('tipotarea','tipotarea.idTipoTarea=tarea.idTipoTarea');
+      $this->db->like('nombreInsumo',$search);
+      $this->db->or_like('descripcionInsumo',$search);
+      $this->db->or_like('cantidad',$search);
+      $this->db->or_like('puntoDePedido',$search);
+      $query  =   $this->db->get('tarea');
+      return $query->result_array();
+    }
+
+    function listar_tareas_fecha_prev()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    ORDER BY t.fechaComienzo DESC";
+
+
+        return $this->db->query($query)->result_array();
+    }
+    function listar_tareas_activa()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    WHERE  t.active=1";
+
+
+        return $this->db->query($query)->result_array();
+    }
+
     /**
      * Retorna todos los insumos, que se utilizaron en determinada, tarea, a la cual se le observan los detalles.
      * @param  [type] $idTarea Único paramentro de entrada.
