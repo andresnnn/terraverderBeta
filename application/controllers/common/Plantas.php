@@ -152,7 +152,9 @@ class Plantas extends Admin_Controller{
      */
     function borrado_logico ($idPlanta)
     {
-        $this->Plantas_model->desactivar_planta($idPlanta);
+       $no_existe = $this->Plantas_model->no_existe_planta_umbraculo($idPlanta);
+       if($no_existe){
+        $this->Plantas_model->desactivar_planta($idPlanta);}
         redirect('common/plantas/index');
     }
 
@@ -164,6 +166,7 @@ class Plantas extends Admin_Controller{
      */
     function activado_logico($idPlanta)
     {
+
         $this->Plantas_model->activar_planta($idPlanta);
         redirect('common/plantas/index');
     }
