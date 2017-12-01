@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							<div class="btn-group">
                 <button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
                 <button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="cancelado">Desactivados</button>
-                <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo" onclick="valorSelect(3)" >Ordenar por punto de pedido bajo</button>
+                <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo" onclick="valorSelect(3)" >Ordenar por cantidad y punto pedido</button>
 								<a href="<?php echo site_url('common/insumos'); ?>" class="btn btn-default btn-filter">Todos</a>
 							</div>
 						</div>
@@ -94,9 +94,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                    }
                    else if (valor==3) {
                      window.location.pathname ="<?php echo ('terraverde/common/insumos/indexFilter3'); ?>";
-                   }
-
-
-
-            }
+                   }    }
                        </script>

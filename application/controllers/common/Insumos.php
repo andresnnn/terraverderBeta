@@ -34,6 +34,65 @@ class Insumos extends Admin_Controller {
           //  $this->load->view('admin/insumos/index',$data);
         }
     }
+
+
+    /** index */
+    	public function indexFilter1()
+        {
+            if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                /* insumos consulta*/
+                $this->data['insumo'] = $this->Insumos_model->get_all_insumo_active();
+                /* Load Template */
+                $this->template->admin_render('admin/insumos/index', $this->data);
+              //  $this->load->view('admin/insumos/index',$data);
+            }
+        }
+
+        /** index */
+        	public function indexFilter2()
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                    /* insumos consulta*/
+                    $this->data['insumo'] = $this->Insumos_model->get_all_insumo_inactive();
+                    /* Load Template */
+                    $this->template->admin_render('admin/insumos/index', $this->data);
+                  //  $this->load->view('admin/insumos/index',$data);
+                }
+            }
+
+
+            /** index */
+            	public function indexFilter3()
+                {
+                    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                    {
+                        redirect('auth/login', 'refresh');
+                    }
+                    else
+                    {
+                        /* Breadcrumbs */
+                        $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                        /* insumos consulta*/
+                        $this->data['insumo'] = $this->Insumos_model->get_all_insumo_punto();
+                        /* Load Template */
+                        $this->template->admin_render('admin/insumos/index', $this->data);
+                      //  $this->load->view('admin/insumos/index',$data);
+                    }
+                }
 /*consulta de insumos*/
 public function search_keyword(){
     if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
