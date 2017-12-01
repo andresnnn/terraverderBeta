@@ -16,6 +16,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              <div class="box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><?php echo anchor('common/plantas/crear', '<i class="fa fa-plus"></i> '. lang('plantas_create'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                    <div class="pull-right">
+                            <div class="btn-group">
+                              <button type="button" class="btn btn-success btn-filter" data-target="pendiente">Activados</button>
+                              <button type="button" class="btn btn-warning btn-filter" data-target="cancelado">Desactivados</button>
+
+                              <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Ordenar por unidades de espacio</button>
+                              <button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+                            </div>
+                          </div>
+                          <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
+                          <br>
+                              <div class="form-group">
+                          <div class="col-md-8">
+                            <input type="text" name = "keyword" id="keyword" placeholder="Buscar plantas..." class="form-control"/>
+
+                            </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>
+                            </div>
+                          </form></div>
                                 </div>
 
                          <div class="box-body">
@@ -32,12 +50,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     <?php foreach($plantas as $p){ ?>
                     <tr>
-                        <td><?php echo $p['nombrePlanta']; ?></td> 
+                        <td><?php echo $p['nombrePlanta']; ?></td>
                         <td><?php echo $p['nombreCientificoPlanta']; ?></td>
                         <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
                         <td><?php echo $p['descripcionPlanta']; ?></td>
                         <td title="El estado determina, el poder utilizar o no, determinada planta en otros módulos">
-                            <?php 
+                            <?php
                                 if ($p['active'] == 1) {
                                     echo "<a href='".site_url('common/plantas/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
                                 }else{
@@ -46,8 +64,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             ?>
                         </td>
                         <td>
-                            <a href="<?php echo site_url('common/plantas/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a> 
-                            <a href="<?php echo site_url('common/plantas/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
+                            <a href="<?php echo site_url('common/plantas/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
+                            <a href="<?php echo site_url('common/plantas/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
                         </td>
                     </tr>
                     <?php } ?>

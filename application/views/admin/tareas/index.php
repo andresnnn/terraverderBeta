@@ -15,6 +15,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              <div class="box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><?php echo anchor('common/tareas/selecciona_umbraculo', '<i class="fa fa-plus"></i> '. 'Crear nueva tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                    <div class="pull-right">
+              							<div class="btn-group">
+              								<button type="button" class="btn btn-success btn-filter" data-target="pendiente">Activados</button>
+              								<button type="button" class="btn btn-warning btn-filter" data-target="cancelado">Desactivados</button>
+                              <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Tareas completas </button>
+                              <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Tareas incompletas </button>
+                              <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Ordenar por fechas previstas</button>
+              								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+              							</div>
+              						</div>
+                          <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
+                          <br>
+                              <div class="form-group">
+                          <div class="col-md-8">
+                            <input type="text" name = "keyword" id="keyword" placeholder="Buscar tarea..." class="form-control"/>
+
+                            </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>
+                            </div>
+                          </form></div>
                                 </div>
                                     <div class="box-body">
                                     <table class="table table-striped table-hover">

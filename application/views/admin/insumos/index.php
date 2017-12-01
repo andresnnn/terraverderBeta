@@ -14,17 +14,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="col-md-12">
                  <div class="box">
                     <div class="box-header with-border">
+                      <div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-success btn-filter" data-target="pendiente">Activados </button>
+								<button type="button" class="btn btn-warning btn-filter" data-target="cancelado">Desactivados</button>
+                <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Ordenar por punto de pedido bajo</button>
+								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+							</div>
+						</div>
                         <h3 class="box-title"><?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                         <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
                         <br>
                             <div class="form-group">
                         <div class="col-md-8">
                           <input type="text" name = "keyword" id="keyword" placeholder="Buscar insumo..." class="form-control"/>
-                          
-                          </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>    
+
+                          </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>
                           </div>
                         </form></div>
                     </div>
+
 
                     <div>
 
