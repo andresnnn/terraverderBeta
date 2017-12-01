@@ -56,10 +56,10 @@ class Plantas_model extends CI_Model
          */
         public function plantas_compatibles ($hmin,$hmax,$lmin,$lmax,$tmin,$tmax)
         {
-            $query= "SELECT * 
-                        FROM planta 
+            $query= "SELECT *
+                        FROM planta
                         JOIN especie ON planta.idEspecie = especie.idEspecie
-                        WHERE  
+                        WHERE
                         especie.humedadMin BETWEEN '0' and '".$hmin."'
                         AND
                         especie.humedadMax BETWEEN '".$hmin."' and '".$hmax."'
@@ -67,7 +67,7 @@ class Plantas_model extends CI_Model
                         especie.luzMin BETWEEN '0' and '".$lmin."'
                         AND
                         especie.luzMax BETWEEN '".$lmin."' and '".$lmax."'
-                        AND 
+                        AND
                         especie.temperaturaMin BETWEEN '0' and '".$tmin."'
                         AND
                         especie.temperaturaMax BETWEEN '".$tmin."' and '".$tmax."'";
@@ -81,11 +81,11 @@ class Plantas_model extends CI_Model
         function plantas_compatibles_params ($info_umbraculo)
         {
 
-            $query="SELECT * 
-                        FROM planta 
+            $query="SELECT *
+                        FROM planta
                         JOIN especie ON planta.idEspecie = especie.idEspecie
-                        WHERE 
-                        especie.temperaturaMin < ".$info_umbraculo['temperaturaUmbraculo']." AND especie.temperaturaMax >".$info_umbraculo['temperaturaUmbraculo']." 
+                        WHERE
+                        especie.temperaturaMin < ".$info_umbraculo['temperaturaUmbraculo']." AND especie.temperaturaMax >".$info_umbraculo['temperaturaUmbraculo']."
                         AND
                         especie.luzMin < ".$info_umbraculo['luzUmbraculo']." AND especie.luzMax > ".$info_umbraculo['luzUmbraculo']."
                         OR
@@ -114,6 +114,33 @@ class Plantas_model extends CI_Model
         $this->db->order_by('idPlanta', 'desc');
         return $this->db->get('planta')->result_array();
     }
+
+    /*
+     * Get all plantas
+     */
+    function get_all_plantas_active()
+    {
+      $query="SELECT* FROM`planta` WHERE `active`=1";
+      return  $this->db->query($query)->result_array();
+
+    }
+    /*
+     * Get all plantas
+     */
+    function get_all_plantas_inactive()
+    {
+      $query="SELECT* FROM`planta` WHERE `active`=0";
+      return  $this->db->query($query)->result_array();
+    }
+    /*
+     * Get all plantas
+     */
+    function get_all_plantas_unidad()
+    {
+        $this->db->order_by('unidadEspacioPlanta_m2', 'asc');
+        return $this->db->get('planta')->result_array();
+    }
+
 
     /*
      * function to add new planta

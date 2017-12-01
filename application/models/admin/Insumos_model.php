@@ -27,6 +27,30 @@ class Insumos_model extends CI_Model
         $this->db->order_by('idInsumo', 'asc');
         return $this->db->get('insumo')->result_array();
     }
+    /*
+     * Get all insumo
+     */
+    function get_all_insumo_active()
+    {
+      $query="SELECT* FROM`insumo` WHERE `active`=1";
+      return  $this->db->query($query)->result_array();
+    }
+    /*
+     * Get all insumo
+     */
+    function get_all_insumo_inactive()
+    {
+      $query="SELECT* FROM`insumo` WHERE `active`=0";
+      return  $this->db->query($query)->result_array();
+    }
+    /*
+     * Get all insumo
+     */
+    function get_all_insumo_punto()
+    {
+      $this->db->order_by('puntoDePedido'-'cantidad', 'asc');
+      return $this->db->get('insumo')->result_array();
+    }
     /* get insumo consulta search */
     function get_all_insumo_search($search)
     {

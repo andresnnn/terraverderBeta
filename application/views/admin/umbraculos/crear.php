@@ -104,17 +104,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script>
 
 function humedadMaxMin(){
-    var $valor =  document.getElementById('humedadUmbraculo').value;
+    var valor =  document.getElementById('humedadUmbraculo').value;
 
-    var $valorMax= document.getElementById('humedadUmbraculo').max;
-    var $valorMin = document.getElementById('humedadUmbraculo').min;
+    var valorMax= document.getElementById('humedadUmbraculo').max;
+    var valorMin = document.getElementById('humedadUmbraculo').min;
 
-  if ($valor<$valorMin) {
-    document.getElementById('humedadUmbraculo').value= $valorMin;
+  if (valor<0) {
+    document.getElementById('humedadUmbraculo').value= valorMin;
     alert("La humedad no debe ser menor a 0%");
   }
-  else if ($valor>$valorMax) {
-    document.getElementById('humedadUmbraculo').value= $valorMax;
+  else if (valor>100) {
+    document.getElementById('humedadUmbraculo').value= valorMax;
   alert("La humedad no debe ser mayor a 100%");
   }
 

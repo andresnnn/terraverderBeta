@@ -41,6 +41,76 @@ class Plantas extends Admin_Controller{
             }
         }
 
+
+        /*
+         INDEX, LISTAR LAS PLANTAS
+         */
+            public function indexFilter1()
+            {
+                if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    /* Breadcrumbs */
+                    $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                    /* CARGO EL LISTADO DE UMBRACULOS*/
+
+                    $this->data['plantas'] = $this->Plantas_model->get_all_plantas_active();
+
+
+                    /* Load Template */
+                    $this->template->admin_render('admin/plantas/index', $this->data);
+                }
+            }
+
+
+            /*
+             INDEX, LISTAR LAS PLANTAS
+             */
+                public function indexFilter2()
+                {
+                    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                    {
+                        redirect('auth/login', 'refresh');
+                    }
+                    else
+                    {
+                        /* Breadcrumbs */
+                        $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                        /* CARGO EL LISTADO DE UMBRACULOS*/
+
+                        $this->data['plantas'] = $this->Plantas_model->get_all_plantas_inactive();
+
+
+                        /* Load Template */
+                        $this->template->admin_render('admin/plantas/index', $this->data);
+                    }
+                }
+                /*
+                 INDEX, LISTAR LAS PLANTAS
+                 */
+                    public function indexFilter3()
+                    {
+                        if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+                        {
+                            redirect('auth/login', 'refresh');
+                        }
+                        else
+                        {
+                            /* Breadcrumbs */
+                            $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                            /* CARGO EL LISTADO DE UMBRACULOS*/
+
+                            $this->data['plantas'] = $this->Plantas_model->get_all_plantas_unidad();
+
+
+                            /* Load Template */
+                            $this->template->admin_render('admin/plantas/index', $this->data);
+                        }
+                    }
+
     /*
      REGISTRAR UNA NUEVA PLANTA AL SISTEMA
      */
@@ -152,7 +222,9 @@ class Plantas extends Admin_Controller{
      */
     function borrado_logico ($idPlanta)
     {
-        $this->Plantas_model->desactivar_planta($idPlanta);
+       $no_existe = $this->Plantas_model->no_existe_planta_umbraculo($idPlanta);
+       if($no_existe){
+        $this->Plantas_model->desactivar_planta($idPlanta);}
         redirect('common/plantas/index');
     }
 
@@ -164,6 +236,9 @@ class Plantas extends Admin_Controller{
      */
     function activado_logico($idPlanta)
     {
+
+          # code...
+
         $this->Plantas_model->activar_planta($idPlanta);
         redirect('common/plantas/index');
     }

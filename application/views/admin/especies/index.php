@@ -16,13 +16,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                              <div class="box">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><?php echo anchor('common/especies/crear', '<i class="fa fa-plus"></i> '. lang('especies_create_umbraculo'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
+                                    <div class="pull-right">
+              							<div class="btn-group">
+              								<button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
+              								<button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="cancelado">Desactivados</button>
+              								<a href="<?php echo site_url('common/especies/'); ?>" class="btn btn-default btn-filter">Todos</a>
+              							</div>
+              						</div>
+                          <!-- <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
+                          <br>
+                              <div class="form-group">
+                          <div class="col-md-8">
+                            <input type="text" name = "keyword" id="keyword" placeholder="Buscar especie..." class="form-control"/>
+
+                            </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>
+                            </div>
+                          </form></div> -->
                                 </div>
 
                          <div class="box-body">
                          <section class="content">
 
 
-                                 
+
 		                <table class="table table-striped table-hover">
 		                    <tr>
 								<th>Nombre</th>
@@ -39,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<td><?php echo $e['descripcionCuidados']; ?></td>
 								<td><?php echo $e['descripcionSustrato']; ?></td>
 								<td>
-									<?php 
+									<?php
 									  if ($e['active'] == 1) {
 									  	echo "<a href='".site_url('common/especies/borrado_logico/'.$e['idEspecie'])."'><span class='label label-success'>Activo</span></a>";
 									  }else{
@@ -58,3 +74,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>
+<script>
+            function valorSelect(valor){
+
+                   if (valor==1) {
+                     window.location.pathname ="<?php echo ('terraverde/common/especies/indexFilter1'); ?>";
+                   }
+
+                   else if (valor==2) {
+                     window.location.pathname ="<?php echo ('terraverde/common/especies/indexFilter2'); ?>";
+                   }
+
+
+
+            }
+                       </script>
