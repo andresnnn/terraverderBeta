@@ -81,7 +81,7 @@
 										</div>
 									</div>
 						            <div class="box-footer">
-						                <a href="<?php echo site_url('common/plantas'); ?>" class="btn btn-default btn-flat">Volver</a>
+						                <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Volver</a>
 						            </div> 			
                          </div>
                     </div>

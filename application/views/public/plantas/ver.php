@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         </div>
                                     </div>
                                     <div class="box-footer">
-                                        <a href="<?php echo site_url('user/plantas_pla'); ?>" class="btn btn-default btn-flat">Volver</a>
+                                        <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Volver</a>
                                     </div>  
                                 </div>
                             </div>

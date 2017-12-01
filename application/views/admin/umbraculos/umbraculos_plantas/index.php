@@ -23,6 +23,7 @@
 						<td>
                             <a href="<?php echo site_url('umbraculo_plantas/edit/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Edit</a> 
                             <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Borrar</button>
+                            <a href="<?php echo site_url('common/plantas/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a> 
                         </td>
                     </tr>
                     <?php } ?>
