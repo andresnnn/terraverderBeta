@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                               <a href="<?php echo site_url('common/plantas'); ?>" class="btn btn-default btn-filter">Todos</a>
                             </div>
                           </div>
-                          <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
+                          <!-- <div><form action="<?php echo site_url('common/insumos/search_keyword');?>" method = "post">
                           <br>
                               <div class="form-group">
                           <div class="col-md-8">
@@ -33,7 +33,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                             </div><button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>
                             </div>
-                          </form></div>
+                          </form></div> -->
                                 </div>
 
                          <div class="box-body">

@@ -16,10 +16,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="box-header with-border">
                       <div class="pull-right">
 							<div class="btn-group">
-								<button type="button" class="btn btn-success btn-filter" data-target="pendiente">Activados </button>
-								<button type="button" class="btn btn-warning btn-filter" data-target="cancelado">Desactivados</button>
-                <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo">Ordenar por punto de pedido bajo</button>
-								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+                <button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
+                <button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="cancelado">Desactivados</button>
+                <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo" onclick="valorSelect(3)" >Ordenar por punto de pedido bajo</button>
+								<a href="<?php echo site_url('common/insumos'); ?>" class="btn btn-default btn-filter">Todos</a>
 							</div>
 						</div>
                         <h3 class="box-title"><?php echo anchor('common/insumos/crear', '<i class="fa fa-plus"></i> '. lang('insumos_create_insumos'), array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
@@ -81,3 +81,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </section>
 </div>
+
+
+<script>
+            function valorSelect(valor){
+
+                   if (valor==1) {
+                     window.location.pathname ="<?php echo ('terraverde/common/insumos/indexFilter1'); ?>";
+                   }
+                   else if (valor==2) {
+                     window.location.pathname ="<?php echo ('terraverde/common/insumos/indexFilter2'); ?>";
+                   }
+                   else if (valor==3) {
+                     window.location.pathname ="<?php echo ('terraverde/common/insumos/indexFilter3'); ?>";
+                   }
+
+
+
+            }
+                       </script>
