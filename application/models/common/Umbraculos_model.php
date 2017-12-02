@@ -69,12 +69,12 @@ class Umbraculos_model extends CI_Model
 
     /* verifica si existe un elemento en el umbraculo como planta o tarea*/
     function existe_elemento_umbraculo($idUmbraculo){
-      $vector = $this->db->get_where('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo))->row_array();
-
-      if (  ($vector==null)){
-      return false;
-      }
-      else {
-        return true;}
+      return $this->db->get_where('umbraculo/planta',array('idUmbraculo'=>$idUmbraculo))->row_array();
+// return $vector;
+      // if (  ($vector==null)){
+      // return false;
+      // }
+      // else {
+      //   return true;}
     }
 }

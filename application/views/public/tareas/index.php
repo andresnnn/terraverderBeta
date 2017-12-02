@@ -21,6 +21,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 echo "</h3>";
                             }
                             ?>
+                            <div class="pull-right">
+                    <div class="btn-group">
+                      <button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
+                      <button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="Desactivados">Desactivados</button>
+                      <!-- <button type="button" class="btn btn-default btn-filter" data-target="completas">Tareas completas </button> -->
+
+                      <button onclick="valorSelect(4)" type="button" class="btn btn-default btn-filter" data-target="incompletas">Tareas incompletas </button>
+                      <button type="button" class="btn btn-default btn-filter" onclick="valorSelect(5)">Ordenar por fechas previstas</button>
+                      <a href="<?php echo site_url('user/tareas_pla/'); ?>" class="btn btn-default btn-filter">Todos</a>
+                    </div>
+                  </div>
                             </div>
                                 <div class="box-body">
                                 <table class="table table-striped table-hover">
@@ -68,3 +79,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
     </section>
 </div>
+<script>
+function valorSelect(valor){
+if(valor==5){
+window.location.pathname ="<?php echo ('terraverde/user/tareas_pla/indexFilter5'); ?>";
+}
+else if (valor==1) {
+window.location.pathname ="<?php echo ('terraverde/user/tareas_pla/indexFilter1'); ?>";
+}
+
+else if (valor==2) {
+window.location.pathname ="<?php echo ('terraverde/user/tareas_pla/indexFilter2'); ?>";
+}
+
+else if (valor==4) {
+window.location.pathname ="<?php echo ('terraverde/user/tareas_pla/indexFilter4'); ?>";
+}
+
+}
+</script>

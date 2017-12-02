@@ -294,9 +294,14 @@ function agregarTarea($idUmbraculo)
    * @return [type]           [description]
    * @author SAKZEDMK
    */
+
+   // borrar si no esta tatendida solamente
   function borrado_logico($idTarea)
   {
+$estaAtendida=$this->Tareas_model->estaAtendida($idTarea);
+if(($estaAtendida)){
     $this->Tareas_model->desactivar_tarea($idTarea);
+    }
     redirect('common/tareas/index');
   }
 

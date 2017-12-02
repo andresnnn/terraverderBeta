@@ -165,6 +165,21 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
       return false;}
     }
 
+
+    function estaAtendida($idTarea)
+    {
+      $query="SELECT * FROM `tarea` WHERE idTarea=".$idTarea." AND idEstado=2";
+      $this->db->query($query);
+      $vector = $this->db->query($query)->result_array();
+
+      if (  ($vector==null)){
+      return true;
+      }
+      else {
+
+        return false;}
+      }
+
       /**
        * Retorna la cantidad de tareas, para el día de la fecha
        * @param  [type] $fecha [description]

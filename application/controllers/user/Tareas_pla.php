@@ -36,6 +36,68 @@ class Tareas_pla extends Public_controller{
 
             }
     }
+
+    /*
+     * Listing of tareas
+     */
+    function indexFilter5()
+    {       if ( ! $this->ion_auth->logged_in())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+              $this->data['tarea'] = $this->Tareas_model->listar_tareas();
+              /* Load Template */
+              $this->template->user_render('public/tareas/index', $this->data);
+
+
+            }
+    }
+            /*
+         * Listing of tareas
+         */
+        function indexFilter1()
+        {       if ( ! $this->ion_auth->logged_in())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                  $this->data['tarea'] = $this->Tareas_model->listar_tareas();
+                  /* Load Template */
+                  $this->template->user_render('public/tareas/index', $this->data);
+                }
+        }
+
+
+        function indexFilter2()
+        {       if ( ! $this->ion_auth->logged_in())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    $this->data['tarea'] = $this->Tareas_model->listar_tareas_inactiva();
+                    /* Load Template */
+                    $this->template->user_render('public/tareas/index', $this->data);
+                }
+        }
+
+
+        function indexFilter4()
+        {       if ( ! $this->ion_auth->logged_in())
+                {
+                    redirect('auth/login', 'refresh');
+                }
+                else
+                {
+                    # code...
+                    $this->data['tarea'] = $this->Tareas_model->listar_tareas_incompleta();
+                    /* Load Template */
+                    $this->template->user_render('public/tareas/index', $this->data);
+                }
+        }
    /*
      AGREGAR CARGAR TAREA A BD
      */

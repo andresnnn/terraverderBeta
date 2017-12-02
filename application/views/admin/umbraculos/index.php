@@ -81,11 +81,13 @@ var base_url = "<?php echo base_url(); ?>";
                } );
 
             var existe_elemento_umbraculo =document.getElementById('existe_elemento_umbraculo').value;
-            if(existe_elemento_umbraculo){
-              alert("No se puede borrar un umbraculo con plantas o tareas");
+            if((existe_elemento_umbraculo==true)){
+              alert("Solo se puede borrar umbraculos sin elementos");
             }
-            else {
-              alert("el elemento fue borrado correctamente");
+            else if (existe_elemento_umbraculo==false) {
+              alert("Recuerda que solo se borran umbraculos sin elementos");
             }
+
+
             }
             </script>
