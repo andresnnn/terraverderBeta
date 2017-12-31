@@ -223,7 +223,7 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
 
     function listar_tareas()
     {
-        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,um.nombreUmbraculo,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
         -- , ua.idUserAtencion
         -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
                     FROM tarea t
@@ -232,7 +232,59 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
                     JOIN users u ON t.idUserCreador = u.id
                     -- JOIN users ua ON t.idUserAtencion = ua.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
-                    ORDER BY t.fechaCreacion DESC";
+                    JOIN umbraculo um ON t.idUmbraculo = um.idUmbraculo
+                    ORDER BY t.fechaCreacion ASC";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function listar_tareas_completas()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,um.nombreUmbraculo,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    JOIN umbraculo um ON t.idUmbraculo = um.idUmbraculo
+                    WHERE  t.idEstado=2
+                    ORDER BY t.fechaCreacion ASC";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function listar_tareas_incompletasPDF()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,um.nombreUmbraculo,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    JOIN umbraculo um ON t.idUmbraculo = um.idUmbraculo
+                    WHERE  t.idEstado=3
+                    ORDER BY t.fechaCreacion ASC";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function listar_tareas_noiniciadasPDF()
+    {
+        $query ="SELECT tt.nombreTipoTarea,et.nombreEstado,et.idEstado,um.nombreUmbraculo,t.fechaCreacion,t.fechaComienzo,p.nombrePlanta,t.idTarea, CONCAT(u.first_name,' ',u.last_name) AS creador,t.active
+        -- , ua.idUserAtencion
+        -- ,CONCAT(ua.first_name,' ',ua.last_name) AS atencion
+                    FROM tarea t
+                    JOIN tipotarea tt ON t.idTipoTarea = tt.idTipoTarea
+                    JOIN estado_tarea et ON t.idEstado= et.idEstado
+                    JOIN users u ON t.idUserCreador = u.id
+                    -- JOIN users ua ON t.idUserAtencion = ua.id
+                    JOIN planta p ON t.idPlanta = p.idPlanta
+                    JOIN umbraculo um ON t.idUmbraculo = um.idUmbraculo
+                    WHERE  t.idEstado=1
+                    ORDER BY t.fechaCreacion ASC";
         return $this->db->query($query)->result_array();
     }
 

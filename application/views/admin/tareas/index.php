@@ -17,6 +17,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <h3 class="box-title"><?php echo anchor('common/tareas/selecciona_umbraculo', '<i class="fa fa-plus"></i> '. 'Crear nueva tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3>
                                     <div class="pull-right">
               							<div class="btn-group">
+                                            <!--boton para generar los pdf-->
+                                            <div class="btn-group">
+                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-pdf-o"></span>  Generar PDF de Tareas <span class="caret"></span></button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li><a onclick="valorSelect(49)">Tareas No Iniciadas</a></li>
+                                                    <li><a onclick="valorSelect(48)">Tareas Incompletas</a></li>
+                                                    <li><a onclick="valorSelect(47)">Tareas Completas</a></li>
+                                                    <li class="divider"></li>
+                                                    <li><a onclick="valorSelect(45)">Todas las Tareas</a></li>
+                                                </ul>
+                                            </div>
+                                            <!--boton para generar los pdf-->
+                                            <!--<button type="button" class="btn btn-success btn-info" onclick="valorSelect(45)" data-target="Activados">Generar PDF de Tareas</button>-->
               								<button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
               								<button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="Desactivados">Desactivados</button>
                               <!-- <button type="button" class="btn btn-default btn-filter" data-target="completas">Tareas completas </button> -->
@@ -75,6 +88,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                 <td>
                                                     <a href="<?php echo site_url('common/tareas/ver_detalles/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
+                                                    <a href="<?php echo site_url('common/tareas/generaTareaPDF/'.$t['idTarea']); ?>" class="btn btn-danger btn-primary"><span class="fa fa-file-pdf-o"></span> PDF Tarea</a>
+                                                    <!--<button type="button" class="btn btn-success btn-danger" onclick="valorSelect(46)" data-target="Activados">PDF Tarea</button>-->
                                                 </td>
 
                                             </tr>
@@ -86,6 +101,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                 </section>
             </div>
+
+
+
 
 
             <script>
@@ -103,6 +121,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         else if (valor==4) {
           window.location.pathname ="<?php echo ('terraverde/common/tareas/indexFilter4'); ?>";
+        }
+     else if (valor==45) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/generaPDF'); ?>";
+        }
+      else if (valor==46) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/generaTareaPDF'); ?>";
+        }
+     else if (valor==47) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/generaPDFcompletas'); ?>";
+        }
+     else if (valor==48) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/generaPDFincompletas'); ?>";
+        }
+     else if (valor==49) {
+          window.location.pathname ="<?php echo ('terraverde/common/tareas/generaPDFnoiniciadas'); ?>";
         }
 
  }

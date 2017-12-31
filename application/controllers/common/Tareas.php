@@ -35,7 +35,12 @@ class Tareas extends Admin_Controller{
                 $this->data['tarea'] = $this->Tareas_model->listar_tareas();
 
                 /* Load Template */
+                
+                
                 $this->template->admin_render('admin/tareas/index', $this->data);
+                
+         
+                
             }
     }
 
@@ -316,5 +321,379 @@ if(($estaAtendida)){
     $this->Tareas_model->activar_tarea($idTarea);
     redirect('common/tareas/index');
   }
+    
+  /*esta funcion genera un pdf de todas las tareas */
+    
+   public function generaPDF()
+  {
+    $this->load->library('pdf');
+    $tarea = $this->Tareas_model->listar_tareas();
+    /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+
+    $this->pdf = new Pdf();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    
+    $this->pdf->SetTitle("Listado general de tareas");
+    $this->pdf->SetLeftMargin(15);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREACION','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PREVISTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREADOR','TBR',0,'C','1');
+    $this->pdf->Ln(7);
+    // La variable $x se utiliza para mostrar un número consecutivo
+    $x = 1;
+    foreach ($tarea as $t) {
+      // se imprime el numero actual y despues se incrementa el valor de $x en uno
+      //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
+      $x++; 
+      // Se imprimen los datos de cada alumno
+      //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
+      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
+      $this->pdf->Cell(25,5,$t['fechaCreacion'],'B',0,'C',0); 
+      $this->pdf->Cell(25,5,$t['fechaComienzo'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['creador'],'BR',0,'C',0);
+      //Se agrega un salto de linea
+      $this->pdf->Ln(5);
+    }
+      $this->pdf->Ln(7);
+      $this->pdf->Cell(57,5,'En total hay '.$x.' tareas creadas en el Vivero.','',0,'C',0);
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("Lista general de tareas.pdf", 'D');
+  }
+  /*esta funcion genera un pdf de todas las tareas */
+    
+    
+     /*esta funcion genera un pdf de todas las tareas completas */
+    
+   public function generaPDFcompletas()
+  {
+    $this->load->library('pdfc');
+    $tarea = $this->Tareas_model->listar_tareas_completas();
+    /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+
+    $this->pdf = new Pdfc();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    $this->pdf->SetTitle("Listado general de tareas completas");
+    $this->pdf->SetLeftMargin(15);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREACION','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PREVISTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREADOR','TBR',0,'C','1');
+    $this->pdf->Ln(7);
+    // La variable $x se utiliza para mostrar un número consecutivo
+    $x = 1;
+    foreach ($tarea as $t) {
+      // se imprime el numero actual y despues se incrementa el valor de $x en uno
+      //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
+      // Se imprimen los datos de cada alumno
+      //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
+      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
+      $this->pdf->Cell(25,5,$t['fechaCreacion'],'B',0,'C',0); 
+      $this->pdf->Cell(25,5,$t['fechaComienzo'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['creador'],'BR',0,'C',0);
+      //Se agrega un salto de linea
+      $this->pdf->Ln(5);
+    }
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("Lista general de tareas completas.pdf", 'D');
+  }
+  /*esta funcion genera un pdf de todas las tareas completas */
+    
+        /*esta funcion genera un pdf de todas las tareas completas */
+    
+   public function generaPDFincompletas()
+  {
+    $this->load->library('pdfi');
+    $tarea = $this->Tareas_model->listar_tareas_incompletasPDF();
+    /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+
+    $this->pdf = new Pdfi();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    $this->pdf->SetTitle("Listado general de tareas incompletas");
+    $this->pdf->SetLeftMargin(15);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREACION','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PREVISTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREADOR','TBR',0,'C','1');
+    $this->pdf->Ln(7);
+    // La variable $x se utiliza para mostrar un número consecutivo
+    $x = 1;
+    foreach ($tarea as $t) {
+      // se imprime el numero actual y despues se incrementa el valor de $x en uno
+      //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
+      // Se imprimen los datos de cada alumno
+      //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
+      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
+      $this->pdf->Cell(25,5,$t['fechaCreacion'],'B',0,'C',0); 
+      $this->pdf->Cell(25,5,$t['fechaComienzo'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['creador'],'BR',0,'C',0);
+      //Se agrega un salto de linea
+      $this->pdf->Ln(5);
+    }
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("Lista general de tareas incompletas.pdf", 'D');
+  }
+  /*esta funcion genera un pdf de todas las tareas incompletas */
+    
+          /*esta funcion genera un pdf de todas las tareas completas */
+    
+   public function generaPDFnoiniciadas()
+  {
+    $this->load->library('pdfna');
+    $tarea = $this->Tareas_model->listar_tareas_noiniciadasPDF();
+    /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+
+    $this->pdf = new Pdfna();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    $this->pdf->SetTitle("Listado general de tareas no iniciadas");
+    $this->pdf->SetLeftMargin(15);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREACION','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PREVISTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREADOR','TBR',0,'C','1');
+    $this->pdf->Ln(7);
+    // La variable $x se utiliza para mostrar un número consecutivo
+    $x = 1;
+    foreach ($tarea as $t) {
+      // se imprime el numero actual y despues se incrementa el valor de $x en uno
+      //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
+      // Se imprimen los datos de cada alumno
+      //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
+      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
+      $this->pdf->Cell(25,5,$t['fechaCreacion'],'B',0,'C',0); 
+      $this->pdf->Cell(25,5,$t['fechaComienzo'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['creador'],'BR',0,'C',0);
+      //Se agrega un salto de linea
+      $this->pdf->Ln(5);
+    }
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("Lista general de tareas no iniciadas.pdf", 'D');
+  }
+  /*esta funcion genera un pdf de todas las tareas no iniciadas */
+    
+    /*esta funcion genera un pdf de una tarea seleccionada */
+    
+   public function generaTareaPDF($idTarea)
+  {
+    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                $tarea = $this->Tareas_model->ver_detalles_tarea($idTarea);
+                //$this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
+                $insumos_tarea = $this->Tareas_model->insumos_tarea($idTarea);
+                //$this->data['insumos_tarea'] = $this->Tareas_model->insumos_tarea($idTarea);
+                //$this->template->admin_render('admin/tareas/detalles', $this->data);
+                $this->load->library('pdfsolo');
+   
+
+    $this->pdf = new Pdfsolo();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    $this->pdf->SetTitle("Detalles de la tarea id");
+    $this->pdf->SetLeftMargin(15);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
+    /*$this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREACION','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PREVISTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,$tarea['nombreTarea'],'TBR',0,'C','1');*/
+    $this->pdf->Ln(5);
+    // La variable $x se utiliza para mostrar un número consecutivo           
+    foreach ($tarea as $t) {
+      $this->pdf->Cell(100,5,'Detalles de la tarea: ','',0,'L',1);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Tipo de tarea: ','',0,'C',0);$this->pdf->Cell(30,5,$t['nombreTipoTarea'],'',0,'L',0);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Descripcion de la tarea: ','',0,'C',0);$this->pdf->Cell(100,5,$t['descripcionTarea'],'',0,'L',0);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Umbraculo: ','',0,'C',0);$this->pdf->Cell(30,5,$t['nombreUmbraculo'],'',0,'L',0);$this->pdf->Ln(10);
+      $this->pdf->Cell(100,5,'Informacion de la planta: ','',0,'L',1);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Nombre: ','',0,'C',0);$this->pdf->Cell(30,5,$t['nombrePlanta'],'',0,'L',0);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Nombre Cientifico: ','',0,'C',0);$this->pdf->Cell(30,5,$t['nombreCientificoPlanta'],'',0,'L',0);$this->pdf->Ln(10);
+      $this->pdf->Cell(100,5,'Otors detalles de la tarea: ','',0,'L',1);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Creador: ','',0,'C',0);$this->pdf->Cell(30,5,$t['Creador'],'',0,'L',0);$this->pdf->Ln(7);
+      $this->pdf->Cell(40,5,'Atendio: ','',0,'C',0);$this->pdf->Cell(30,5,$t['Atendio'],'',0,'L',0);$this->pdf->Ln(7);
+        $this->pdf->Cell(40,5,'Fecha creacion: ','',0,'C',0);$this->pdf->Cell(30,5,$t['fechaCreacion'],'',0,'L',0);$this->pdf->Ln(7);
+        $this->pdf->Cell(40,5,'Fecha prevista: ','',0,'C',0);$this->pdf->Cell(30,5,$t['fechaComienzo'],'',0,'L',0);$this->pdf->Ln(7);
+        $this->pdf->Cell(40,5,'Fecha atencion: ','',0,'C',0);$this->pdf->Cell(30,5,$t['fechaAtencion'],'',0,'L',0);$this->pdf->Ln(7);
+        $this->pdf->Cell(40,5,'Estado de la tarea: ','',0,'C',0);$this->pdf->Cell(30,5,$t['nombreEstado'],'',0,'L',0);$this->pdf->Ln(10);
+        $this->pdf->Cell(100,5,'Insumos utilizados en la tarea: ','',0,'L',1);$this->pdf->Ln(10);
+        $this->pdf->Cell(50,7,'Insumo','TBL',0,'C','1');
+        $this->pdf->Cell(50,7,'Cantidad','TBR',0,'C','1');
+        $this->pdf->Ln(7);
+        foreach ($insumos_tarea as $i) {
+        $this->pdf->Cell(50,5,$i['nombreInsumo'],'BL',0,'C',0);
+        $this->pdf->Cell(50,5,$i['cantidad'],'BR',0,'C',0);
+        $this->pdf->Ln(5);
+        }
+      //Se agrega un salto de linea
+     
+    }
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("List.pdf", 'I');
+            }
+  }
+  /*esta funcion genera un pdf de una tarea seleccionada */
 
 }
