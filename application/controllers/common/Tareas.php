@@ -362,7 +362,7 @@ if(($estaAtendida)){
     $this->pdf->Cell(25,7,'CREADOR','TBR',0,'C','1');
     $this->pdf->Ln(7);
     // La variable $x se utiliza para mostrar un número consecutivo
-    $x = 1;
+    $x = 0;
     foreach ($tarea as $t) {
       // se imprime el numero actual y despues se incrementa el valor de $x en uno
       //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
@@ -691,9 +691,92 @@ if(($estaAtendida)){
      *
      */
       ob_end_clean();
-    $this->pdf->Output("List.pdf", 'I');
+    $this->pdf->Output("Detalles Tarea.pdf", 'I');
             }
   }
   /*esta funcion genera un pdf de una tarea seleccionada */
+    
+      /*esta funcion genera un pdf de las tareas de un umbraculo */
+    
+   public function generaPDFUmbraculo($idUmbraculo)
+  {
+    if ( ! $this->ion_auth->logged_in() OR ! $this->ion_auth->is_admin())
+            {
+                redirect('auth/login', 'refresh');
+            }
+            else
+            {
+                /* Breadcrumbs */
+                $this->data['breadcrumb'] = $this->breadcrumbs->show();
+                $tarea = $this->Tareas_model-> obtener_tareas_umbraculo_pdf($idUmbraculo);
+                //$this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
+                //$insumos_tarea = $this->Tareas_model->insumos_tarea($idTarea);
+                //$this->data['insumos_tarea'] = $this->Tareas_model->insumos_tarea($idTarea);
+                //$this->template->admin_render('admin/tareas/detalles', $this->data);
+                $this->load->library('pdfUmbraculo');
+   
+
+    $this->pdf = new PdfUmbraculo();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    $this->pdf->SetTitle("Tareas del umbraculo id");
+    $this->pdf->SetLeftMargin(30);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    $this->pdf->Ln(6);          
+    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
+    //$this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREACION','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'PREVISTA','TB',0,'C','1');
+    $this->pdf->Cell(25,7,'CREADOR','TBR',0,'C','1');
+    $this->pdf->Ln(7);
+    $x = 0;            
+    // La variable $x se utiliza para mostrar un número consecutivo           
+    foreach ($tarea as $t) {
+      $x++;
+      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
+      //$this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
+      $this->pdf->Cell(25,5,$t['fechaCreacion'],'B',0,'C',0); 
+      $this->pdf->Cell(25,5,$t['fechaComienzo'],'B',0,'C',0);
+      $this->pdf->Cell(25,5,$t['creador'],'BR',0,'C',0);
+      $this->pdf->Ln(5);
+        }
+      $this->pdf->Ln(7);
+      $this->pdf->Cell(57,5,'En total hay '.$x.' tareas creadas en el '.$t['nombreUmbraculo'].'.','',0,'C',0);         
+      //Se agrega un salto de linea
+     
+    }
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("Tareas del Umbraculo.pdf", 'I');
+            
+  }
+  /*esta funcion genera un pdf de un umbraculo seleccionado */
 
 }
