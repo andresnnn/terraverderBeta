@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <div class="col-md-6">
                                                     <label for="idEspecie" class="control-label">Especie</label>
                                                     <div class="form-group">
-                                                        <select name="idEspecie" class="form-control">
+                                                        <select name="idEspecie" class="form-control" required>
                                                             <option value="">Seleccionar especie</option>
                                                             <?php 
                                                             foreach($all_especies as $especie)
