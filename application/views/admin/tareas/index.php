@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               							<div class="btn-group">
                                             <!--boton para generar los pdf-->
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-pdf-o"></span>  Generar PDF de Tareas <span class="caret"></span></button>
+                                                <button type="button" title="Presiona para generar un PDF con las tareas del vivero, podes elejir generar por el estado de las tareas." class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-pdf-o"></span>  Generar PDF de Tareas <span class="caret"></span></button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li><a onclick="valorSelect(49)">Tareas No Iniciadas</a></li>
                                                     <li><a onclick="valorSelect(48)">Tareas Incompletas</a></li>
@@ -88,7 +88,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                                                 <td>
                                                     <a href="<?php echo site_url('common/tareas/ver_detalles/'.$t['idTarea']); ?>" class="btn btn-warning btn-primary"><span class="fa fa-eye"></span> Ver</a>
-                                                    <a href="<?php echo site_url('common/tareas/generaTareaPDF/'.$t['idTarea']); ?>" class="btn btn-danger btn-primary"><span class="fa fa-file-pdf-o"></span> PDF Tarea</a>
+                                                    <a href="<?php echo site_url('common/tareas/generaTareaPDF/'.$t['idTarea']); ?>" class="btn btn-danger btn-primary" title="Presiona para generar un PDF con los detalles de la tarea."><span class="fa fa-file-pdf-o"></span> PDF Tarea</a>
                                                     <!--<button type="button" class="btn btn-success btn-danger" onclick="valorSelect(46)" data-target="Activados">PDF Tarea</button>-->
                                                 </td>
 
