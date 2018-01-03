@@ -143,6 +143,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                     <?php if ($permisos['idGrupo'] == 2) { ?>
                                                     <td><h3 class="box-title"><?php echo anchor('user/Tareas_pla/agregarTarea/'.$id, '<i class="fa fa-plus"></i> '.'Agregar tarea', array('class' => 'btn btn-block btn-primary btn-flat')); ?></h3></td>
                                                     <?php  }?>
+                                                    <td><h3 title="Presiona para generar un PDF con las tareas del umbraculo." class="box-title"><?php echo anchor('user/tareas_pla/generaPDFUmbraculo/'.$id, '<i class="fa fa-file-pdf-o"></i> '.'PDF Tareas del Umbraculo', array('class' => 'btn btn-block btn-danger btn-flat')); ?></h3></td>
                                                 </table>
                                             </div>
                                 </div>
