@@ -599,7 +599,7 @@ class Tareas_pla extends Public_controller{
         $this->pdf->Ln(7);
         foreach ($insumos_tarea as $i) {
         $this->pdf->Cell(50,5,$i['nombreInsumo'],'BL',0,'C',0);
-        $this->pdf->Cell(50,5,$i['cantidad'],'BR',0,'C',0);
+        $this->pdf->Cell(50,5,$i['cantidadUtilizado'],'BR',0,'C',0);
         $this->pdf->Ln(5);
         }
       //Se agrega un salto de linea

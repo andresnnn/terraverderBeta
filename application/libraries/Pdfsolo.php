@@ -10,7 +10,7 @@
         // El encabezado del PDF
         public function Header(){
             $this->Image('assets/logo.png',90,10,20);
-            $this->Image('assets/logox.png',50,130,240);
+            $this->Image('assets/logox.png',0,80,240);
             $this->Ln('25');
             $this->SetFont('Arial','B',20);
             $this->Cell(30);
