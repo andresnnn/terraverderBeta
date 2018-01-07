@@ -56,11 +56,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $p['descripcionPlanta']; ?></td>
                         <td title="El estado determina, el poder utilizar o no, determinada planta en otros módulos">
                             <?php
-                                if ($p['active'] == 1) {
+                                if ($p['pa'] == 1 and $p['ea'] == 1) {
                                     echo "<a href='".site_url('common/plantas/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
-                                }else{
+                                }else if( $p['ea'] == 0 and $p['pa'] == 1){
+                                    echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
+                                }else if( $p['ea'] == 0 and $p['pa'] == 0){
+                                    echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
+                                } else if ($p['pa'] == 0 and $p['ea'] == 1){
                                     echo "<a href='".site_url('common/plantas/activado_logico/'.$p['idPlanta'])."'><span class='label label-default'>Inactivo</span></a>";
                                 }
+                                
                             ?>
                         </td>
                         <td>

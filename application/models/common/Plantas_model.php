@@ -25,6 +25,12 @@ class Plantas_model extends CI_Model
         $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
     }
+    
+    function especiePlanta($idPlanta)
+    {
+        $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin,especie.active FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
+        return $this->db->query($query)->result_array();
+    }
 
     /*ESTA FUNCION ARROJARA COMO RESULTADO UN ARRAY QUE CONTIENE LA INFORMACION
     DE LAS PLANTAS CON LA RESPECTIVA INFORMACIÓN DE SU ESPECIE, PARA REALIZAR LA COMPARACION DE CONDICIONES A LA HORA DE AGREGAR UNA PLANTA ADENTRO*/
@@ -118,18 +124,24 @@ class Plantas_model extends CI_Model
     /*
      * Get all plantas
      */
+    
+    function getPlantasEspecies()
+    {
+      $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie ORDER BY planta.active DESC";
+      return  $this->db->query($query)->result_array();
+    }
+    
     function get_all_plantas_active()
     {
-      $query="SELECT* FROM`planta` WHERE `active`=1";
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE planta.`active`=1 ORDER BY planta.active DESC";
       return  $this->db->query($query)->result_array();
-
     }
     /*
      * Get all plantas
      */
     function get_all_plantas_inactive()
     {
-      $query="SELECT* FROM`planta` WHERE `active`=0";
+      $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE planta.`active`=0 ORDER BY planta.active DESC";
       return  $this->db->query($query)->result_array();
     }
     /*
@@ -137,6 +149,8 @@ class Plantas_model extends CI_Model
      */
     function get_all_plantas_unidad()
     {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie  ORDER BY planta.unidadEspacioPlanta_m2 ASC";
+      return  $this->db->query($query)->result_array();
         $this->db->order_by('unidadEspacioPlanta_m2', 'asc');
         return $this->db->get('planta')->result_array();
     }

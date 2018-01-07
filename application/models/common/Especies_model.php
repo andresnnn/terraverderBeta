@@ -85,6 +85,13 @@ class Especies_model extends CI_Model
         $query="UPDATE `especie` SET `active`=0 WHERE idEspecie=".$idEspecie;
         $this->db->query($query);
       }
+    
+    /*desactiva a la especie y a las plantas pertenecientes a la misma*/
+    function desactivar_especieNueva($idEspecie)
+      {
+        $query="UPDATE `especie` INNER JOIN planta ON `especie`.idEspecie = planta.idEspecie SET `especie`.`active`=0,planta.`active`=0 WHERE `especie`.idEspecie=".$idEspecie;
+        $this->db->query($query);
+      }
 
     /**
     * ACTIVAR UN INSUMO QUE NO ESTÉ SIENDO UTILIZADO.

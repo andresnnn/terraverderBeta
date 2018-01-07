@@ -218,7 +218,7 @@ class Especies extends Admin_Controller{
     {
       $existe_especie_umbraculo= $this->Especies_model->existe_especie_umbraculo($idEspecie);
       if ($existe_especie_umbraculo) {
-        $this->Especies_model->desactivar_especie($idEspecie);
+        $this->Especies_model->desactivar_especieNueva($idEspecie);
     }
   redirect('common/especies/index');}
 
