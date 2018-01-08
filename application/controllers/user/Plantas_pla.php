@@ -32,7 +32,7 @@ class Plantas_pla extends Public_Controller{
             }
             else
             {
-                $this->data['plantas'] = $this->Plantas_model->get_all_plantas();
+                $this->data['plantas'] = $this->Plantas_model->getPlantasEspecies();
                 /* Load Template */
                 $this->template->user_render('public/plantas/index', $this->data);
             }

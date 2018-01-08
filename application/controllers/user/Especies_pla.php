@@ -157,7 +157,7 @@ class Especies_pla extends Public_Controller{
      */
     function borrado_logico ($idEspecie)
     {
-        $this->Especies_model->desactivar_especie($idEspecie);
+        $this->Especies_model->desactivar_especieNueva($idEspecie);
         redirect('user/especies_pla/index');
     }
 

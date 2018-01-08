@@ -33,13 +33,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
                                             <td><?php echo $p['descripcionPlanta']; ?></td>
                                             <td title="El estado determina, el poder utilizar o no, determinada planta en otros módulos">
-                                                <?php 
-                                                    if ($p['active'] == 1) {
-                                                        echo "<a href='".site_url('user/plantas_pla/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
-                                                    }else{
-                                                        echo "<a href='".site_url('user/plantas_pla/activado_logico/'.$p['idPlanta'])."'><span class='label label-default'>Inactivo</span></a>";
-                                                    }
-                                                ?>
+                                                <?php
+                                if ($p['pa'] == 1 and $p['ea'] == 1) {
+                                    echo "<a href='".site_url('user/plantas_pla/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
+                                }else if( $p['ea'] == 0 and $p['pa'] == 1){
+                                    echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
+                                }else if( $p['ea'] == 0 and $p['pa'] == 0){
+                                    echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
+                                } else if ($p['pa'] == 0 and $p['ea'] == 1){
+                                    echo "<a href='".site_url('user/plantas_pla/activado_logico/'.$p['idPlanta'])."'><span class='label label-default'>Inactivo</span></a>";
+                                }
+                                
+                            ?>
                                             </td>
                                             <td>
                                                 <a href="<?php echo site_url('user/plantas_pla/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a> 
