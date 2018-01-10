@@ -122,6 +122,7 @@ class Umbraculos_pla extends Public_controller {
                             /* datos para actualizar */
                   $params = array(
                     'fechaAtencion' => $this->input->post('fechaAtencion'),
+                    'horaAtencion' => $this->input->post('horaAtencion'),
                     'idEstado' => $this->input->post('idEstado'),
                     'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     'idUserAtencion' => $this->input->post('idUserAtencion'),
