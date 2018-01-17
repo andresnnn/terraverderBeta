@@ -59,6 +59,13 @@ class Umbraculoplantas_model extends CI_Model
 
         return $this->db->query($query)->result_array();
     }
+    
+    function ver_plantasEspecies_umbraculo($idUmbraculo)
+    {
+        $query = "SELECT * FROM `umbraculo/planta` JOIN planta ON planta.idPlanta = `umbraculo/planta`.idPlanta JOIN especie ON planta.idEspecie=especie.IdEspecie WHERE `umbraculo/planta`.idUmbraculo=".$idUmbraculo;
+
+        return $this->db->query($query)->result_array();
+    }
 
 
     /*

@@ -138,6 +138,9 @@ class Umbraculos extends Admin_Controller {
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
                 // check if the umbraculos exists before trying to edit it
                 $this->data['umbraculos'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
+                $this->data['plantas'] = $this->Umbraculoplantas_model->ver_plantasEspecies_umbraculo($idUmbraculo);
+                $this->data['plantasComp'] = $this->Umbraculoplantas_model->ver_plantasEspecies_umbraculo($idUmbraculo);
+            
 
                 if(isset($this->data['umbraculos']['idUmbraculo']))
                 {
