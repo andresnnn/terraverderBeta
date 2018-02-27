@@ -16,6 +16,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="box-header with-border">
                       <div class="pull-right">
 							<div class="btn-group">
+                <button type="button"  title="Presiona para generar un PDF con los insumos del vivero." class="btn btn-danger btn-filter" onclick="valorSelect(11)" data-target="pdfInsumos"><span class="fa fa-file-pdf-o"></span>  PDF de Insumos</button>
                 <button type="button" class="btn btn-success btn-filter" onclick="valorSelect(1)" data-target="Activados">Activados</button>
                 <button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="cancelado">Desactivados</button>
                 <button type="button" class="btn btn-default btn-filter" data-target="puntoBajo" onclick="valorSelect(3)" >Ordenar por cantidad y punto pedido</button>
@@ -85,7 +86,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <script>
             function valorSelect(valor){
-
+                   if (valor==11) {
+                     window.location.pathname ="<?php echo ('terraverde/common/insumos/generaPDInsumos'); ?>";
+                   }
                    if (valor==1) {
                      window.location.pathname ="<?php echo ('terraverde/common/insumos/indexFilter1'); ?>";
                    }
