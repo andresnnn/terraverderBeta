@@ -760,7 +760,11 @@ if(($estaAtendida)){
       $this->pdf->Ln(5);
         }
       $this->pdf->Ln(7);
+      if ($x!=0){
       $this->pdf->Cell(57,5,'En total hay '.$x.' tareas creadas en el '.$t['nombreUmbraculo'].'.','',0,'C',0);         
+      }else if ($x==0){
+         $this->pdf->Cell(57,5,'Este umbraculo no posee tareas','',0,'C',0); 
+      }
       //Se agrega un salto de linea
      
     }

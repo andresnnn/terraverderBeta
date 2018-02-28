@@ -216,10 +216,10 @@ class Especies extends Admin_Controller{
      */
     function borrado_logico ($idEspecie)
     {
-      $existe_especie_umbraculo= $this->Especies_model->existe_especie_umbraculo($idEspecie);
-      if ($existe_especie_umbraculo) {
+      //$existe_especie_umbraculo= $this->Especies_model->existe_especie_umbraculo($idEspecie);
+      //if ($existe_especie_umbraculo) {
         $this->Especies_model->desactivar_especieNueva($idEspecie);
-    }
+    //}
   redirect('common/especies/index');}
 
     /**
