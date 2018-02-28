@@ -47,7 +47,7 @@
 					<div class="col-md-6">
 						<label disabled for="unidadEspacioDisponible_m2" class="control-label">Espacio Disponible (m<sup>2</sup>)</label>
 						<div class="form-group">
-							<input disabled type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo ($this->input->post('unidadEspacioDisponible_m2') ? $this->input->post('unidadEspacioDisponible_m2') : $umbraculos['unidadEspacioDisponible_m2']); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
+							<input readonly type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo ($this->input->post('unidadEspacioDisponible_m2') ? $this->input->post('unidadEspacioDisponible_m2') : $umbraculos['unidadEspacioDisponible_m2']); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
 						</div>
 					</div>
 					<div class="col-md-6">
