@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<th>Nombre Científico</th>
 								<th>Cuidados</th>
 								<th>Sustrato</th>
-								<th>Estado</th>
+								<th>Estado<a title="Informacíon sobre el activado y desactivado de especies y plantas" href="#aboutModal" data-toggle="modal" data-target="#myModal" class="btn fa fa-info-circle fa-lg "></a></th>
 								<th>Acciones</th>
 		                    </tr>
 		                    <?php foreach($especies as $e){ ?>
@@ -74,6 +74,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
                 </section>
             </div>
+                        <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                    <h4 class="modal-title" id="myModalLabel">Información sobre el activado / desactivado de especies y plantas</h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    <br>
+                    <h3 class="media-heading">Se pueden desactivar tanto las especies como las plantas, es decir, desactivar no significa borrarlas sino que se bloquea su uso, entonces no se pueden crear plantas de una especie desactivada, etc. Si se desactiva una especie se desactivan automáticamente las plantas pertenecientes a la misma, se mostrara un mensaje de especie desactivada en el modulo de plantas, luego al reactivar la especie quedan desactivadas las plantas, hay que reactivarlas en el modulo de plantas.</h3>
+                    </center>
+                </div>
+                <!--<div class="modal-footer">
+                    <center>
+                    <button type="button" class="btn btn-circle btn-danger" data-dismiss="modal"><span class="glyphicon glyphicon-remove"> Cerrar</span></button>
+                    </center>
+                </div>-->
+            </div>
+        </div>
+    </div>
 <script>
             function valorSelect(valor){
 

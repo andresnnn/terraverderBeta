@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 
-                            <button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>
+                            <!--<button type="submit"  name="search" id="search" class="btn btn-default btn-m"><span class="fa fa-search"></span></button>-->
                             </div>
                           </form></div>
                                 </div>
