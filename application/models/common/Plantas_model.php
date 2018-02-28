@@ -91,11 +91,11 @@ class Plantas_model extends CI_Model
                         FROM planta
                         JOIN especie ON planta.idEspecie = especie.idEspecie
                         WHERE
-                        especie.temperaturaMin < ".$info_umbraculo['temperaturaUmbraculo']." AND especie.temperaturaMax >".$info_umbraculo['temperaturaUmbraculo']."
+                        (especie.temperaturaMin <= ".$info_umbraculo['temperaturaUmbraculo'].") AND (especie.temperaturaMax >=".$info_umbraculo['temperaturaUmbraculo'].")
+                        AND 
+                        (especie.luzMin <= ".$info_umbraculo['luzUmbraculo'].") AND (especie.luzMax >= ".$info_umbraculo['luzUmbraculo'].")
                         AND
-                        especie.luzMin < ".$info_umbraculo['luzUmbraculo']." AND especie.luzMax > ".$info_umbraculo['luzUmbraculo']."
-                        OR
-                        especie.humedadMin < ".$info_umbraculo['humedadUmbraculo']." AND especie.humedadMax > ".$info_umbraculo['humedadUmbraculo'];
+                        (especie.humedadMin <= ".$info_umbraculo['humedadUmbraculo'].") AND (especie.humedadMax >= ".$info_umbraculo['humedadUmbraculo'].")";
 
             return $this->db->query($query)->result_array();
         }
