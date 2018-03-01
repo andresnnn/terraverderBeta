@@ -148,5 +148,66 @@ class Insumos_pla extends Public_Controller {
             $this->Insumos_model->activar_insumo($idInsumo);
             redirect('user/insumos_pla/index');
           }
+      /*esta funcion genera un pdf de todas los insumos */
+   
+   public function generaPDInsumos()
+  {
+    $this->load->library('pdfinsumos');
+    $tarea = $this->Insumos_model->get_all_insumo();
+    /*$this->data['tarea'] = $this->Tareas_model->listar_tareas();*/
+
+    $this->pdf = new Pdfinsumos();
+    // Agregamos una página
+    $this->pdf->AddPage();
+    // Define el alias para el número de página que se imprimirá en el pie
+    $this->pdf->AliasNbPages();
+ 
+    /* Se define el titulo, márgenes izquierdo, derecho y
+     * el color de relleno predeterminado
+     */
+    $this->pdf->SetTitle("Listado general de insumos");
+    $this->pdf->SetLeftMargin(15);
+    $this->pdf->SetRightMargin(15);
+    $this->pdf->SetFillColor(178,255,102);
+ 
+    // Se define el formato de fuente: Arial, negritas, tamaño 9
+    $this->pdf->SetFont('Arial', 'B', 8);
+    /*
+     * TITULOS DE COLUMNAS
+     *
+     * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
+     */
+    //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
+    $this->pdf->Cell(40,7,'NOMBRE','TBL',0,'C','1');
+    $this->pdf->Cell(85,7,'DESCRIPCION','TB',0,'C','1');
+    $this->pdf->Cell(30,7,'CANTIDAD STOCK','TB',0,'C','1');
+    $this->pdf->Cell(30,7,'PUNTO de PEDIDO','TBR',0,'C','1');
+    $this->pdf->Ln(7);
+    // La variable $x se utiliza para mostrar un número consecutivo
+    $x = 1;
+    foreach ($tarea as $t) {
+      // se imprime el numero actual y despues se incrementa el valor de $x en uno
+      //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
+      // Se imprimen los datos de cada alumno
+      //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
+      $this->pdf->Cell(40,5,$t['nombreInsumo'],'BL',0,'C',0);
+      $this->pdf->Cell(85,5,$t['descripcionInsumo'],'B',0,'C',0);
+      $this->pdf->Cell(30,5,$t['cantidad'],'B',0,'C',0);
+      $this->pdf->Cell(30,5,$t['puntoDePedido'],'BR',0,'C',0);    
+      $this->pdf->Ln(5);
+    }
+    /*
+     * Se manda el pdf al navegador
+     *
+     * $this->pdf->Output(nombredelarchivo, destino);
+     *
+     * I = Muestra el pdf en el navegador
+     * D = Envia el pdf para descarga
+     *
+     */
+      ob_end_clean();
+    $this->pdf->Output("Lista general de insumos.pdf", 'D');
+  }
+  /*esta funcion genera un pdf de todos los insumos */
 
 }
