@@ -343,7 +343,7 @@ if(($estaAtendida)){
     $this->pdf->SetTitle("Listado general de tareas");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
@@ -416,7 +416,7 @@ if(($estaAtendida)){
     $this->pdf->SetTitle("Listado general de tareas completas");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
@@ -485,7 +485,7 @@ if(($estaAtendida)){
     $this->pdf->SetTitle("Listado general de tareas incompletas");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
@@ -554,7 +554,7 @@ if(($estaAtendida)){
     $this->pdf->SetTitle("Listado general de tareas no iniciadas");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
@@ -635,7 +635,7 @@ if(($estaAtendida)){
     $this->pdf->SetTitle("Detalles de la tarea id");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
@@ -728,7 +728,7 @@ if(($estaAtendida)){
     $this->pdf->SetTitle("Tareas del umbraculo id");
     $this->pdf->SetLeftMargin(30);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);

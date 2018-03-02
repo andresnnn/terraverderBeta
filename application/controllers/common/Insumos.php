@@ -282,7 +282,7 @@ public function search_keyword(){
     $this->pdf->SetTitle("Listado general de insumos");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);

@@ -45,14 +45,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <div class="col-md-6">
                                                             <label for="unidadEspacioTotal_m2" class="control-label"><span class="text-danger" ></span>Espacio Total (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input  min="0" type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo $this->input->post('unidadEspacioTotal_m2'); ?>" class="form-control" id="unidadEspacioTotal_m2" />
+                                                                <input  readonly min="0" type="number" step="any" name="unidadEspacioTotal_m2" value="<?php echo $this->input->post('unidadEspacioTotal_m2'); ?>" class="form-control" id="unidadEspacioTotal_m2" />
                                                                 <span class="text-danger"><?php echo form_error('unidadEspacioTotal_m2');?></span>
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
                                                             <label for="unidadEspacioDisponible_m2" class="control-label">Espacio Disponible (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input  min="0" type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo $this->input->post('unidadEspacioDisponible_m2'); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
+                                                                <input  readonly min="0" type="number" step="any" name="unidadEspacioDisponible_m2" value="<?php echo $this->input->post('unidadEspacioDisponible_m2'); ?>" class="form-control" id="unidadEspacioDisponible_m2" />
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">

@@ -28,6 +28,12 @@ class Umbraculos_model extends CI_Model
         $this->db->order_by('idUmbraculo', 'desc');
         return $this->db->get('umbraculo')->result_array();
     }
+    
+    function get_all_umbraculos_tareas()
+    {
+        $query="SELECT * FROM umbraculo INNER JOIN tarea ON umbraculo.idUmbraculo=tarea.idUmbraculo";
+        $this->db->query($query);
+    }
 
     /*
      * function to add new umbraculos
@@ -64,6 +70,11 @@ class Umbraculos_model extends CI_Model
     function actualizar_espacio_disponible($idUmbraculo,$newEspacio)
     {
         $query = "UPDATE `umbraculo` SET `unidadEspacioDisponible_m2`=".$newEspacio." WHERE `umbraculo`.`idUmbraculo`=".$idUmbraculo;
+        $this->db->query($query);
+    }
+    
+    function existeTareaSQL($idUmbraculo){
+        $query="SELECT * FROM umbraculo INNER JOIN tarea ON umbraculo.idUmbraculo=tarea.idUmbraculo WHERE umbraculo.idUmbraculo=".$idUmbraculo;
         $this->db->query($query);
     }
 

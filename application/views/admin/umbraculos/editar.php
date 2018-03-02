@@ -86,7 +86,7 @@
 						</div>
 					</div>
                     
-                     <div class="col-md-8">
+                     <div  class="col-md-8">
                          <label for="descripcionUmbraculo" class="control-label"><span class="fa fa-leaf"> </span> Plantas en el Umbraculo (Compatibilidad) </label><a href="#aboutModal" data-toggle="modal" data-target="#myModal" class="btn fa fa-info-circle fa-lg "></a>
 						<div class="box-body">                       
                                     <table  class="table table-responsive table-sm  table-striped table-hover" >
@@ -133,7 +133,7 @@
 				</div>
 			</div>
                                                     <div class="box-footer">
-                                                        <button type="submit" class="btn btn-primary btn-flat">Guardar</button>
+                                                        <button onclick="avisoGuardar();" type="submit" class="btn btn-primary btn-flat">Guardar</button>
                                                         <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Cancelar</a>
                                                     </div> 			
 			<?php echo form_close(); ?>
@@ -208,5 +208,9 @@
                                                     } 
                                                     <?php } ?>
                                                    }
+    function avisoGuardar(){
+        alert('No olvides sacar del umbraculo a las especies de plantas que ya no poseen condiciones aptas para habitar el mismo, las mismas poseen la leyenda de color rojo: Condiciones no aptas.');
+    }
+    window.onload=analizarCondiciones();
  
 </script>

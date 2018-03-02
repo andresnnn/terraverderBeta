@@ -42,8 +42,18 @@ var base_url = "<?php echo base_url(); ?>";
                                             <b>Acciones: </b><br>
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                                            <button  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
+                                            
+                                            <script>
+                                            var existe =document.getElementById('existe_elemento_umbraculo').value;    
+                                            if(existe==false){
+                                            document.write('<button title="Si el umbraculo posee tareas y plantas no podra ser borrado"  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>');}
+                                            else if(existe==true){
+                                            document.write('<button disabled title="Si el umbraculo posee tareas y plantas no podra ser borrado" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>');
+                                            }</script>
+                                            
                                             <!-- <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> --><br><br>
+                                            
+                                            <p style="font-style:italic; font-size:13px;">Presione editar para analizar si existen plantas incompatibles dentro del <?php echo $u['nombreUmbraculo']; ?>.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -90,4 +100,6 @@ var base_url = "<?php echo base_url(); ?>";
 
 
             }
+                
+                
             </script>

@@ -35,6 +35,7 @@ class Umbraculos extends Admin_Controller {
             $this->data['existe_elemento_umbraculo']=false;
             /* CARGO EL LISTADO DE UMBRACULOS*/
             $this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos();
+            //$this->data['umbraculos'] = $this->Umbraculos_model->get_all_umbraculos_tareas();
             $this->load->model('common/plantas_model');
             /* carga plantilla */
             $this->template->admin_render('admin/umbraculos/index', $this->data);
