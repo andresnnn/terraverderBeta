@@ -31,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         <div class="col-md-6">
                                                             <label for="anchoUmbraculo_m" class="control-label"><span class="text-danger"></span>Ancho (m<sup>2</sup>)</label>
                                                             <div class="form-group">
-                                                                <input min="0"type="number" step="any" name="anchoUmbraculo_m" value="<?php echo $this->input->post('anchoUmbraculo_m'); ?>" class="form-control" id="anchoUmbraculo_m" />
+                                                                <input onChange="completar();" min="0"type="number" step="any" name="anchoUmbraculo_m" value="<?php echo $this->input->post('anchoUmbraculo_m'); ?>" class="form-control" id="anchoUmbraculo_m" />
                                                                 <span class="text-danger"><?php echo form_error('anchoUmbraculo_m');?></span>
                                                             </div>
                                                         </div>
@@ -128,5 +128,14 @@ function humedadMaxMin(){
         document.getElementById('unidadEspacioTotal_m2').value= tot.toFixed(3);
         document.getElementById('unidadEspacioDisponible_m2').value=tot.toFixed(3);
 
+    }
+    
+    function es_vacio(){
+        var ancho=document.getElementById('anchoUmbraculo_m').value;
+        if(ancho!=""){
+            document.getElementById('largoUmbraculo_m').removeAttribute('disabled');
+        }else{
+            document.getElementById('largoUmbraculo_m').setAttribute('disabled','disabled');
+        }
     }
 </script>
