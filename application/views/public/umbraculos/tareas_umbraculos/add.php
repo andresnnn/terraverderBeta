@@ -107,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="box-footer" style="text-align: center;">
-                <button type="submit" class="btn btn-primary btn-flat">Agregar</button>
+                <button type="submit" class="btn btn-primary btn-flat">Agregar tarea</button>
                 <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Cancelar</a>
             </div>
             <?php echo form_close(); ?>

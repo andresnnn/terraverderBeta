@@ -29,10 +29,16 @@ class Umbraculos_model extends CI_Model
         return $this->db->get('umbraculo')->result_array();
     }
     
-    function get_all_umbraculos_tareas()
+    function get_all_umbraculos_sin_tareas()
     {
-        $query="SELECT * FROM umbraculo INNER JOIN tarea ON umbraculo.idUmbraculo=tarea.idUmbraculo";
-        $this->db->query($query);
+        $query="SELECT * FROM umbraculo WHERE NOT EXISTS (SELECT * FROM tarea WHERE tarea.idUmbraculo=umbraculo.idUmbraculo) AND NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE `umbraculo/planta`.idUmbraculo=umbraculo.idUmbraculo)";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_umbraculos_con_tareas()
+    {
+        $query="SELECT * FROM umbraculo WHERE EXISTS (SELECT * FROM tarea WHERE tarea.idUmbraculo=umbraculo.idUmbraculo) OR EXISTS (SELECT * FROM `umbraculo/planta` WHERE `umbraculo/planta`.idUmbraculo=umbraculo.idUmbraculo)";
+        return $this->db->query($query)->result_array();
     }
 
     /*
