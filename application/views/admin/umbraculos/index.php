@@ -43,9 +43,13 @@ var base_url = "<?php echo base_url(); ?>";
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
                                             
-                                            <button title="Si el umbraculo no posee tareas ni plantas podra ser borrado"  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
+                                            <!--<button title="Si el umbraculo no posee tareas ni plantas podra ser borrado"  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>-->
                                             
-                                            <!-- <a href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> --><br><br>
+                                             
+                                            <a   class="btn btn-danger btn-xs" onclick='return confirmar()'><span class="fa fa-trash"></span> Borrar</a> <br><br>
+                                             
+                                            
+                                                
                                             
                                             <p style="font-style:italic; font-size:13px;">Presione editar para analizar si existen plantas incompatibles dentro del <?php echo $u['nombreUmbraculo']; ?>.</p>
                                         </div>
@@ -61,7 +65,7 @@ var base_url = "<?php echo base_url(); ?>";
                             <h4 class="modal-title">Atención</h4>
                           </div>
                           <div class="modal-body">
-                            <p>¿Está seguro de querer eliminar el umbráculo seleccionado?</p>
+                            <p>¿Está seguro de querer eliminar el <?php echo $u['nombreUmbraculo']; ?> umbráculo seleccionado?</p>
                           </div>
                           <div class="modal-footer">
                             <a onclick="javascript:borrarUmbraculo(<?php echo $u['idUmbraculo'];?>);"  href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
@@ -153,3 +157,11 @@ var base_url = "<?php echo base_url(); ?>";
                 
                 
             </script>
+                        
+                        <script>
+                            function confirmar(){                        
+                               if(confirm("Realmente queres eliminar el umbraculo ?")){;
+                                  window.location.href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>";}else{
+                                      return false;}
+                                        }
+                       </script>
