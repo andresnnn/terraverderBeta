@@ -23,7 +23,7 @@
             $this->Ln('10');
             $this->SetFont('Arial','I',8);
             $this->Cell(30);
-            $this->Cell(120,10,'Este PDF lista todas los insumos del vivero.',0,0,'C');
+            $this->Cell(120,10,'Este PDF lista todas los insumos del vivero ( los insumos en rojo necesitan reponer stock ).',0,0,'C');
             $this->Ln('5');
             //$hoy = getdate();
             //$d = $hoy[mday];
