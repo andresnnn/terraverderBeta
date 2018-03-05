@@ -36,27 +36,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <!-- BOTON QUE LLAMA AL CONTROLADOR Y CAPTURA LA NUEVA CANTIDAD DE PLANTAS CON SU RESPECTIVO 
                                                 ESPACIO OCUPADO, Y LA ACTUALIZA DENTRO DE LA 'BD' -->
                                                 <a href="<?php echo site_url('common/plantas/ver/'.$u['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver Cuidados</a> 
-                                                <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
-                                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal">Borrar</button>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </table>
-                                    </div>
-                                </div>
-
-
-                                <!--MODAL PARA ACTUALIZAR LA CANTIDAD DE LA PLANTA-->
-                                <div class="container">
+                                                
+                                                <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#s" data-id="<?php echo $u['idPlanta']; ?>"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
+                                                
+                                                
+                                                <!--MODAL PARA ACTUALIZAR LA CANTIDAD DE LA PLANTA-->
+                    
                                   <!-- Modal -->
-                                  <div class="modal fade" id="myModal" role="dialog">
+                                  <div class="modal fade" id="s" role="dialog">
                                     <div style="overflow-x:auto;" class="modal-dialog modal-lg">
                                     
                                       <!-- Modal content-->
                                       <div class="modal-content">
                                         <div class="modal-header">
                                           <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                          <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Actualizar cantidad de planta seleccionada</span></h4>
+                                          <h4 class="modal-title"><span class="fa fa-tencent-weibo"></span> Actualizar cantidad de la planta seleccionada:</h4>
                                         </div>
                                         <div class="modal-body">
 
@@ -105,11 +99,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                       
                                     </div>
                                   </div>
-                                  
-                                </div>
-
-                                                              <!-- Modal -->
-                    <div class="modal fade" id="questionModal" role="dialog">
+                                                
+                                                
+                                                <button id="boton" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#<?php echo $u['idPlanta']; ?>" data-id="<?php echo $u['idPlanta']; ?>">Borrar</button>
+                                                <!-- Modal -->
+                    <div class="modal fade" id="<?php echo $u['idPlanta']; ?>" role="dialog" >
                       <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -117,7 +111,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h4 class="modal-title">Atención</h4>
                           </div>
                           <div class="modal-body">
-                            <p>¿Está seguro de querer quitar la planta del umbráculo?</p>
+                            
+                             
+                                 
+                            <p>¿Está seguro de querer quitar la planta <?php echo $u['nombrePlanta']; ?> del umbráculo ?</p>
+                                 
                           </div>
                           <div class="modal-footer">
                             <!-- ELIMINA UNA PLANTA DENTRO DEL UMBRACULO Y DEBE DE REESTABLECER EL ESPACIO QUE SE DESOCUPA 
@@ -132,6 +130,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                       </div>
                     </div>
+                                                
+                                                
+                                  
+                            
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </table>
+                                    </div>
+                                </div>
+                            
+
+                                
+                                
+
+                                                              
                 </section>
             <div class="box-footer" style="text-align: center;">
                 <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Volver</a>
@@ -232,6 +246,8 @@ function verificarEspacio()
     } 
  
  
-} 
+}
+    
+    
 
 </script>
