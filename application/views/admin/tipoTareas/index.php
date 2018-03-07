@@ -32,16 +32,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   <td>
                     <a href="<?php echo site_url('common/tipotareas/profile/'.$t['idTipoTarea']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                     <a href="<?php echo site_url('common/tipotareas/edit/'.$t['idTipoTarea']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal">Borrar</button>
-                   
-                  </td>
-                  </tr>
-                <?php } ?>
-                </table>
-
-            </div>
-                  <!-- Modal -->
-                    <div class="modal fade" id="myModal" role="dialog">
+                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#<?php echo $t['idTipoTarea']; ?>">Borrar</button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="<?php echo $t['idTipoTarea']; ?>" role="dialog">
                       <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -49,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h4 class="modal-title">Atención</h4>
                           </div>
                           <div class="modal-body">
-                            <p>¿Está seguro de querer eliminar este tipo de tarea?</p>
+                            <p>¿Está seguro de querer eliminar este tipo de tarea: <?php echo $t['nombreTipoTarea']; ?>?</p>
                           </div>
                           <div class="modal-footer">
                             <a href="<?php echo site_url('common/tipotareas/remove/'.$t['idTipoTarea']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
@@ -58,6 +51,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                       </div>
                     </div>
+                  </td>
+                  </tr>
+                <?php } ?>
+                </table>
+
+            </div>
+                  
 
 
              </div>

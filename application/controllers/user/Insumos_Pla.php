@@ -168,7 +168,7 @@ class Insumos_pla extends Public_Controller {
     $this->pdf->SetTitle("Listado general de insumos");
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
-    $this->pdf->SetFillColor(178,255,102);
+    $this->pdf->SetFillColor(143,188,143);
  
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
@@ -190,11 +190,21 @@ class Insumos_pla extends Public_Controller {
       //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
       // Se imprimen los datos de cada alumno
       //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
+        if($t['cantidad']>=$t['puntoDePedido']){
       $this->pdf->Cell(40,5,$t['nombreInsumo'],'BL',0,'C',0);
       $this->pdf->Cell(85,5,$t['descripcionInsumo'],'B',0,'C',0);
       $this->pdf->Cell(30,5,$t['cantidad'],'B',0,'C',0);
       $this->pdf->Cell(30,5,$t['puntoDePedido'],'BR',0,'C',0);    
       $this->pdf->Ln(5);
+        }else{
+            $this->pdf->SetFillColor(255, 160, 122);
+           $this->pdf->Cell(40,5,$t['nombreInsumo'],'TBL',0,'C',1);
+      $this->pdf->Cell(85,5,$t['descripcionInsumo'],'TB',0,'C',1);
+      $this->pdf->Cell(30,5,$t['cantidad'],'TB',0,'C',1);
+      $this->pdf->Cell(30,5,$t['puntoDePedido'],'TBR',0,'C',1);    
+      $this->pdf->Ln(5); 
+        }
+        
     }
     /*
      * Se manda el pdf al navegador
