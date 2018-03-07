@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     <?php foreach($insumo as $i){ ?>
                     <tr>
-                        <?php if($i['cantidad']>=$i['puntoDePedido']){ 
+                        <?php if($i['cantidad'] >= $i['puntoDePedido']){ 
 						echo "<td>".$i['nombreInsumo']."</td>";
                         }else{
                          echo "<td title='Este insumo necesita ser repuesto, ya que paso su punto de pedido.'><span style='color:red;' class='fa fa-warning'></span> ".$i['nombreInsumo']."</td>";

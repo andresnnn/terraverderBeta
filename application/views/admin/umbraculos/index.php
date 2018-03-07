@@ -43,10 +43,29 @@ var base_url = "<?php echo base_url(); ?>";
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
                                             
-                                            <!--<button title="Si el umbraculo no posee tareas ni plantas podra ser borrado"  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>-->
+                                            <button title="Si el umbraculo no posee tareas ni plantas podra ser borrado"  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#<?php echo $u['idUmbraculo'];?>"><span class="fa fa-trash"></span> Borrar</button>
+                                            
+                                            <!-- Modal -->
+                    <div class="modal fade" id="<?php echo $u['idUmbraculo'];?>" role="dialog">
+                      <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Atención</h4>
+                          </div>
+                          <div class="modal-body">
+                            <p>¿Está seguro de querer eliminar el <?php echo $u['nombreUmbraculo']; ?> seleccionado?</p>
+                          </div>
+                          <div class="modal-footer">
+                            <a onclick="javascript:borrarUmbraculo(<?php echo $u['idUmbraculo'];?>);"  href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
+                            <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                                             
                                              
-                                            <a   class="btn btn-danger btn-xs" onclick='return confirmar()'><span class="fa fa-trash"></span> Borrar</a> <br><br>
+                                            <a   class="btn btn-danger btn-xs hidden" onclick='return confirmar()'><span class="fa fa-trash"></span> Borrar</a> <br><br>
                                              
                                             
                                                 
@@ -56,24 +75,7 @@ var base_url = "<?php echo base_url(); ?>";
                                     </div>
                                 </div>
                     </div>
-                                                              <!-- Modal -->
-                    <div class="modal fade" id="questionModal" role="dialog">
-                      <div class="modal-dialog modal-sm">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Atención</h4>
-                          </div>
-                          <div class="modal-body">
-                            <p>¿Está seguro de querer eliminar el <?php echo $u['nombreUmbraculo']; ?> umbráculo seleccionado?</p>
-                          </div>
-                          <div class="modal-footer">
-                            <a onclick="javascript:borrarUmbraculo(<?php echo $u['idUmbraculo'];?>);"  href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>" class="btn btn-danger btn-flat"><span class="fa fa-trash"></span> Borrar</a>
-                            <button type="button" class="btn btn-flat" data-dismiss="modal">Cancelar</button>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                                                              
                     </tr>
                     <?php } ?>
                 </table>
