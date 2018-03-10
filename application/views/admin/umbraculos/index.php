@@ -42,9 +42,9 @@ var base_url = "<?php echo base_url(); ?>";
                                             <b>Acciones: </b><br>
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$u['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$u['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                                            
+
                                             <button title="Si el umbraculo no posee tareas ni plantas podra ser borrado"  type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#<?php echo $u['idUmbraculo'];?>"><span class="fa fa-trash"></span> Borrar</button>
-                                            
+
                                             <!-- Modal -->
                     <div class="modal fade" id="<?php echo $u['idUmbraculo'];?>" role="dialog">
                       <div class="modal-dialog modal-sm">
@@ -63,25 +63,25 @@ var base_url = "<?php echo base_url(); ?>";
                         </div>
                       </div>
                     </div>
-                                            
-                                             
+
+
                                             <a   class="btn btn-danger btn-xs hidden" onclick='return confirmar()'><span class="fa fa-trash"></span> Borrar</a> <br><br>
-                                             
-                                            
-                                                
-                                            
+
+
+
+
                                             <p style="font-style:italic; font-size:13px;">Presione editar para analizar si existen plantas incompatibles dentro del <?php echo $u['nombreUmbraculo']; ?>.</p>
                                         </div>
                                     </div>
                                 </div>
                     </div>
-                                                              
+
                     </tr>
                     <?php } ?>
                 </table>
-                             
-                             
-                             
+
+
+
                 <table class="table table-striped table-hover" >
 
                     <?php foreach($umbraculoscon as $z){ ?>
@@ -100,13 +100,12 @@ var base_url = "<?php echo base_url(); ?>";
                                             <b>Acciones: </b><br>
                                             <a href="<?php echo site_url('common/umbraculos/ver/'.$z['idUmbraculo']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
                                             <a href="<?php echo site_url('common/umbraculos/editar/'.$z['idUmbraculo']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
-                                            
-                                            
-                                            
+
+
+
                                             <button disabled title="Si el umbraculo posee tareas y/o plantas no podra ser borrado" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
                                             
-                                            <!-- <a href="<?php echo site_url('common/umbraculos/remove/'.$z['idUmbraculo']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> --><br><br>
-                                            
+
                                             <p style="font-style:italic; font-size:13px;">Presione editar para analizar si existen plantas incompatibles dentro del <?php echo $z['nombreUmbraculo']; ?>.</p>
                                         </div>
                                     </div>
@@ -133,8 +132,8 @@ var base_url = "<?php echo base_url(); ?>";
                     </tr>
                     <?php } ?>
                 </table>
-                             
-                             
+
+
                          </div>
                     </div>
                 </section>
@@ -156,12 +155,12 @@ var base_url = "<?php echo base_url(); ?>";
 
 
             }
-                
-                
+
+
             </script>
-                        
+
                         <script>
-                            function confirmar(){                        
+                            function confirmar(){
                                if(confirm("Realmente queres eliminar el umbraculo ?")){;
                                   window.location.href="<?php echo site_url('common/umbraculos/remove/'.$u['idUmbraculo']); ?>";}else{
                                       return false;}
