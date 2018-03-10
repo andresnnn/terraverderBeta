@@ -30,7 +30,9 @@ class Tipotareas extends Admin_Controller{
           /* Breadcrumbs */
           $this->data['breadcrumb'] = $this->breadcrumbs->show();
           /* insumos consulta*/
-          $this->data['tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();
+          /*$this->data['tipotarea'] = $this->Tipotareas_model->get_all_tipotarea();*/
+          $this->data['sinTarea'] = $this->Tipotareas_model->get_all_tipoTarea_sin_tareas();
+          $this->data['conTarea'] = $this->Tipotareas_model->get_all_tipoTarea_con_tareas();
           /* Load Template */
           $this->template->admin_render('admin/tipotareas/index', $this->data);
 

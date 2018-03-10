@@ -49,4 +49,16 @@ class Tipotareas_model extends CI_Model
     {
         return $this->db->delete('tipotarea',array('idTipoTarea'=>$idTipoTarea));
     }
+    
+    function get_all_tipoTarea_sin_tareas()
+    {
+        $query="SELECT * FROM tipotarea WHERE NOT EXISTS (SELECT * FROM tarea WHERE tarea.idTipoTarea=tipotarea.idTipoTarea)";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_tipoTarea_con_tareas()
+    {
+        $query="SELECT * FROM tipotarea WHERE EXISTS (SELECT * FROM tarea WHERE tarea.idTipoTarea=tipotarea.idTipoTarea)";
+        return $this->db->query($query)->result_array();
+    }
 }

@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <table class="table table-striped">
                             <tbody>
                                 <tr>
-                                    <th>Id Insumo</th>
+                                    <th>Id del tipo de tarea</th>
                                     <td><?php echo $tipotarea['idTipoTarea']; ?></td>
                                 </tr>
                                 <tr>
