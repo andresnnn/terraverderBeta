@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<th>Estado<a title="Informacíon sobre el activado y desactivado de especies y plantas" href="#aboutModal" data-toggle="modal" data-target="#myModal" class="btn fa fa-info-circle fa-lg "></a></th>
 								<th>Acciones</th>
 		                    </tr>
-		                    <?php foreach($especies as $e){ ?>
+		                    <?php foreach($especiesSin as $e){ ?>
 		                    <tr title="El estado determina, el poder utilizar o no, determinada especie en otros módulos">
 								<td><?php echo $e['nombreEspecie']; ?></td>
 								<td><?php echo $e['nombreCientificoEspecie']; ?></td>
@@ -69,6 +69,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		                        </td>
 		                    </tr>
 		                    <?php } ?>
+                            
+                            <?php foreach($especiesCon as $e){ ?>
+		                    <tr title='Esta especie no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
+								<td><?php echo $e['nombreEspecie']; ?></td>
+								<td><?php echo $e['nombreCientificoEspecie']; ?></td>
+								<td><?php echo $e['descripcionCuidados']; ?></td>
+								<td><?php echo $e['descripcionSustrato']; ?></td>
+								<td>
+									<?php
+									  if ($e['active'] == 1) {
+									  	echo "<a style='pointer-events: none;' href='".site_url('common/especies/borrado_logico/'.$e['idEspecie'])."'><span class='label label-success  btn disabled'>Activo</span></a>";
+									  }else{
+									        echo "<a href='".site_url('common/especies/activado_logico/'.$e['idEspecie'])."'><span class='label label-default'>Inactivo</span></a>";
+									  }
+									?>
+								</td>
+								<td>
+		                            <a href="<?php echo site_url('common/especies/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> <br>
+<!-- 		                           <a href="<?php echo site_url('especies/remove/'.$e['idEspecie']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> -->
+		                        </td>
+		                    </tr>
+		                    <?php } ?>
+                            
 		                </table>
                          </div>
                     </div>
