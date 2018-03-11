@@ -41,8 +41,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="col-md-6">
 						<label for="idPlanta" class="control-label"><span class="text-danger">*</span>Planta</label>
 						<div class="form-group">
-                                <input onChange="habilitarAgregar();" disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>     
-                                <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar planta</button>                       
+                                <input onChange="habilitarAgregar();" disabled class="form-control" type="text" name="nombre" id="nombre" value=""/>
+                                <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Seleccionar planta</button>
                                 <span class="text-danger"><?php echo form_error('idPlanta');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
                                 <span id="estadoT" class="text-danger"></span><br>
                                 <span id="estadoL" class="text-danger"></span><br>
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="box-footer" style="text-align: center;">
                 <button disabled id="bnAdd" type="submit" class="btn btn-primary btn-flat">Agregar</button>
                 <a href="<?php echo site_url('common/umbraculos/ver/'.$id); ?>" class="btn btn-default btn-flat">Cancelar</a>
-            </div>  
+            </div>
             <?php echo form_close(); ?>
                          </div>
                     </div>
@@ -81,7 +81,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   <!-- Modal -->
   <div class="modal fade" id="myModal" role="dialog">
     <div style="overflow-x:auto;" class="modal-dialog modal-lg">
-    
+
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -103,10 +103,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Mín temp.</th>
                         <th>Acciones</th>
                     </tr>
-                    <?php foreach($all_plantas as $p){ ?>
-                        <?php if ($p['active'] == 1 and $p['ea'] == 1): ?>
+                    <?php foreach($all_plantas as $p){
+                         if ($p['active'] == 1): ?>
                             <tr id="<?php echo 'fila'.$p['idPlanta'];?>">
-                                <td id="numero"><?php echo $p['nombrePlanta']; ?></td> 
+                                <td id="numero"><?php echo $p['nombrePlanta']; ?></td>
                                 <td><?php echo $p['nombreEspecie']; ?></td>
                                 <td><?php echo $p['unidadEspacioPlanta_m2']; ?></td>
                                 <td><?php echo $p['luzMax']; ?></td>
@@ -127,10 +127,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="modal-footer">
         </div>
       </div>
-      
+
     </div>
   </div>
-  
+
 </div>
                 </section>
             </div>
@@ -207,7 +207,7 @@ function cargarDatos(id) {
             document.getElementById('estadoL').innerHTML = 'La iluminación del umbráculo, no es la adecuada para esta especie.';
             document.getElementById('bnAdd').disabled=true;
         }
-        /*PARA COMPROBAR QUE LA HUMEDAD DEL UMBRACULO SEA CORRECTA*/   
+        /*PARA COMPROBAR QUE LA HUMEDAD DEL UMBRACULO SEA CORRECTA*/
         var $humU = document.getElementById('humedad').value;
         var $hMx = document.getElementById('hMax').value;
         var $hMn = document.getElementById('hMin').value;
@@ -244,17 +244,17 @@ function cargarDatos(id) {
         }
 
         /*SI LA CANTIDAD INGRESA*/
-            
+
     }
 
     function habilitarAgregar()
     {
-        
-        if (document.getElementById('').value != ' ' && document.getElementById('cantidad').value != ' ') 
+
+        if (document.getElementById('').value != ' ' && document.getElementById('cantidad').value != ' ')
         {
             document.getElementById('bnAdd').disabled=false;
         }
-        
+
     }
 
 
