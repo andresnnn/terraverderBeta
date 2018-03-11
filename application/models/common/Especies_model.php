@@ -98,7 +98,8 @@ class Especies_model extends CI_Model
     */
         function activar_especie($idEspecie)
         {
-          $query="UPDATE `especie` SET `active`=1 WHERE idEspecie=".$idEspecie;
+           $query="UPDATE `especie` INNER JOIN planta ON `especie`.idEspecie = planta.idEspecie SET `especie`.`active`=1,planta.`active`=1 WHERE `especie`.idEspecie=".$idEspecie; 
+          /*$query="UPDATE `especie` SET `active`=1 WHERE idEspecie=".$idEspecie;*/
           $this->db->query($query);
         }
 

@@ -104,7 +104,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Acciones</th>
                     </tr>
                     <?php foreach($all_plantas as $p){ ?>
-                        <?php if ($p['active'] == 1): ?>
+                        <?php if ($p['active'] == 1 and $p['ea'] == 1): ?>
                             <tr id="<?php echo 'fila'.$p['idPlanta'];?>">
                                 <td id="numero"><?php echo $p['nombrePlanta']; ?></td> 
                                 <td><?php echo $p['nombreEspecie']; ?></td>

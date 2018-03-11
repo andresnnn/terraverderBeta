@@ -48,16 +48,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Estado</th>
                         <th>Acciones</th>
                     </tr>
-                    <?php foreach($plantas as $p){ ?>
+                    <?php foreach($plantasCon as $p){ ?>
                     <tr>
                         <td><?php echo $p['nombrePlanta']; ?></td>
                         <td><?php echo $p['nombreCientificoPlanta']; ?></td>
                         <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
                         <td><?php echo $p['descripcionPlanta']; ?></td>
-                        <td title="El estado determina, el poder utilizar o no, determinada planta en otros módulos">
+                        <td title='Esta planta no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
                             <?php
                                 if ($p['pa'] == 1 and $p['ea'] == 1) {
-                                    echo "<a href='".site_url('common/plantas/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
+                                    echo "<a style='pointer-events: none;' href='".site_url('common/plantas/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success btn disabled'>Activo</span></a>";
                                 }else if( $p['ea'] == 0 and $p['pa'] == 1){
                                     echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
                                 }else if( $p['ea'] == 0 and $p['pa'] == 0){
@@ -74,6 +74,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </td>
                     </tr>
                     <?php } ?>
+                    
+                    <?php foreach($plantasSin as $pp){ ?>
+                    <tr>
+                        <td><?php echo $pp['nombrePlanta']; ?></td>
+                        <td><?php echo $pp['nombreCientificoPlanta']; ?></td>
+                        <td><?php echo $pp['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
+                        <td><?php echo $pp['descripcionPlanta']; ?></td>
+                        <td title="El estado determina, el poder utilizar o no, determinada planta en otros módulos">
+                            <?php
+                                if ($pp['pa'] == 1 and $pp['ea'] == 1) {
+                                    echo "<a href='".site_url('common/plantas/borrado_logico/'.$pp['idPlanta'])."'><span class='label label-success'>Activo</span></a>";
+                                }else if( $pp['ea'] == 0 and $pp['pa'] == 1){
+                                    echo "<a><span class='label label-default'>Especie ".$pp['nombreEspecie']." desactivada</span></a>";
+                                }else if( $pp['ea'] == 0 and $pp['pa'] == 0){
+                                    echo "<a><span class='label label-default'>Especie ".$pp['nombreEspecie']." desactivada</span></a>";
+                                } else if ($pp['pa'] == 0 and $pp['ea'] == 1){
+                                    echo "<a href='".site_url('common/plantas/activado_logico/'.$pp['idPlanta'])."'><span class='label label-default'>Inactivo</span></a>";
+                                }
+                                
+                            ?>
+                        </td>
+                        <td>
+                            <a href="<?php echo site_url('common/plantas/ver/'.$pp['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
+                            <a href="<?php echo site_url('common/plantas/editar/'.$pp['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
+                        </td>
+                    </tr>
+                    <?php } ?>
+                    
                 </table>
                          </div>
                     </div>
