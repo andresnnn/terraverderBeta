@@ -320,7 +320,9 @@ class Tareas_pla extends Public_controller{
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Lista general de tareas.pdf", 'D');
+      $nombre ="Lista general de tareas - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'D');
+    /*$this->pdf->Output("Lista general de tareas.pdf", 'D');*/
   }
   /*esta funcion genera un pdf de todas las tareas */
     
@@ -390,7 +392,9 @@ class Tareas_pla extends Public_controller{
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Lista general de tareas completas.pdf", 'D');
+      $nombre ="Lista general de tareas completas - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'D');
+    /*$this->pdf->Output("Lista general de tareas completas.pdf", 'D');*/
   }
   /*esta funcion genera un pdf de todas las tareas completas */
     
@@ -459,7 +463,9 @@ class Tareas_pla extends Public_controller{
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Lista general de tareas incompletas.pdf", 'D');
+      $nombre ="Lista general de tareas incompletas - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'D');
+    /*$this->pdf->Output("Lista general de tareas incompletas.pdf", 'D');*/
   }
   /*esta funcion genera un pdf de todas las tareas incompletas */
     
@@ -528,7 +534,9 @@ class Tareas_pla extends Public_controller{
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Lista general de tareas no iniciadas.pdf", 'D');
+      $nombre ="Lista general de tareas no iniciadas - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'D');
+    /*$this->pdf->Output("Lista general de tareas no iniciadas.pdf", 'D');*/
   }
   /*esta funcion genera un pdf de todas las tareas no iniciadas */
     
@@ -615,7 +623,9 @@ class Tareas_pla extends Public_controller{
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Detalles Tarea.pdf", 'I');
+      $nombre ="Detalles Tarea - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'I');
+    /*$this->pdf->Output("Detalles Tarea.pdf", 'I');*/
             
   }
   /*esta funcion genera un pdf de una tarea seleccionada */
@@ -692,7 +702,9 @@ class Tareas_pla extends Public_controller{
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Tareas del Umbraculo.pdf", 'I');
+      $nombre ="Tareas del Umbraculo - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'I');
+    /*$this->pdf->Output("Tareas del Umbraculo.pdf", 'I');*/
             
   }
   /*esta funcion genera un pdf de un umbraculo seleccionado */
