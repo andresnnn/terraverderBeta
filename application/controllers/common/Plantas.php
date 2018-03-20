@@ -32,8 +32,9 @@ class Plantas extends Admin_Controller{
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
                 /* CARGO EL LISTADO DE UMBRACULOS*/
-
-                $this->data['plantas'] = $this->Plantas_model->getPlantasEspecies();
+                $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_con_umbraculo();
+                $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_sin_umbraculo();
+                /*$this->data['plantas'] = $this->Plantas_model->getPlantasEspecies();*/
 
 
                 /* Load Template */

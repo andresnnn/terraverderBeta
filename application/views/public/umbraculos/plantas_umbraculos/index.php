@@ -37,13 +37,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <!-- BOTON QUE LLAMA AL CONTROLADOR Y CAPTURA LA NUEVA CANTIDAD DE PLANTAS CON SU RESPECTIVO 
                                                 ESPACIO OCUPADO, Y LA ACTUALIZA DENTRO DE LA 'BD' -->
                                                 <button type="button" onClick="crearFormulario(<?php echo $u['cantidad']?>,<?php echo $info_umbraculo['idUmbraculo'];?>,<?php echo $u['idPlanta'];?>,<?php echo $u['unidadEspacioPlanta_m2'];?>,<?php echo $info_umbraculo['unidadEspacioDisponible_m2']?>);" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#myModal"> <span class="fa fa-refresh"> </span> Actualizar Cantidad</button>
-                                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal">Borrar</button>
-                                            </td>
-                                        </tr>
-                                        <?php } ?>
-                                    </table>
-                                                                                                  <!-- Modal -->
-                    <div class="modal fade" id="questionModal" role="dialog">
+                                                <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#<?php echo $u['idPlanta'];?>">Borrar</button>
+                                                
+                                                <!-- Modal -->
+                    <div class="modal fade" id="<?php echo $u['idPlanta'];?>" role="dialog">
                       <div class="modal-dialog modal-sm">
                         <div class="modal-content">
                           <div class="modal-header">
@@ -51,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <h4 class="modal-title">Atención</h4>
                           </div>
                           <div class="modal-body">
-                            <p>¿Está seguro de querer quitar la planta del umbráculo?</p>
+                            <p>¿Está seguro de querer quitar la planta <?php echo $u['nombrePlanta'];?> del umbráculo?</p>
                           </div>
                           <div class="modal-footer">
                             
@@ -67,6 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                       </div>
                     </div>
+                                                
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                    </table>
+                                                                                                  
                                     </div>
                                 <!--MODAL PARA ACTUALIZAR LA CANTIDAD DE LA PLANTA-->
                                 <div class="container">

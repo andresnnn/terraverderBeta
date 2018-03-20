@@ -98,7 +98,8 @@ class Especies_model extends CI_Model
     */
         function activar_especie($idEspecie)
         {
-          $query="UPDATE `especie` SET `active`=1 WHERE idEspecie=".$idEspecie;
+           $query="UPDATE `especie` INNER JOIN planta ON `especie`.idEspecie = planta.idEspecie SET `especie`.`active`=1,planta.`active`=1 WHERE `especie`.idEspecie=".$idEspecie; 
+          /*$query="UPDATE `especie` SET `active`=1 WHERE idEspecie=".$idEspecie;*/
           $this->db->query($query);
         }
 
@@ -116,4 +117,16 @@ class Especies_model extends CI_Model
           }
           return $existe;
           }
+    
+    function get_all_especies_sin_umbraculo()
+    {
+        $query="SELECT * FROM especie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie)";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_especies_con_umbraculo()
+    {
+        $query="SELECT * FROM especie WHERE EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie)";
+        return $this->db->query($query)->result_array();
+    }
 }

@@ -87,7 +87,7 @@ class Plantas_model extends CI_Model
         function plantas_compatibles_params ($info_umbraculo)
         {
 
-            $query="SELECT *
+            $query="SELECT *,planta.active AS ea
                         FROM planta
                         JOIN especie ON planta.idEspecie = especie.idEspecie
                         WHERE
@@ -201,4 +201,16 @@ class Plantas_model extends CI_Model
           $query="UPDATE `planta` SET `active`=1 WHERE `planta`.`idPlanta`=".$idPlanta;
           $this->db->query($query);
         }
+    function get_all_plantas_sin_umbraculo()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_con_umbraculo()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
+        return $this->db->query($query)->result_array();
+    }
+    
 }

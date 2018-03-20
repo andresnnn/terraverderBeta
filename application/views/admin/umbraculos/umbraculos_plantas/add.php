@@ -239,7 +239,7 @@ function cargarDatos(id) {
             document.getElementById('nuevoEspacioDisponible').value = $eppDisponible - $eppCT;
             document.getElementById('estadoEPP').innerHTML = '';
             document.getElementById('bnAdd').disabled=false;
-            $eppDisponible=-$eppCT;
+            $eppDisponible=$eppDisponible-$eppCT;
             /*ESTE SERÍA EL VALOR CON EL CUAL ACTUALIZO EN LA BD, SOBRE ESE UMBRÁCULO*/
         }
 

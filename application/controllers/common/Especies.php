@@ -34,8 +34,9 @@ class Especies extends Admin_Controller{
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
                 /* CARGO EL LISTADO DE UMBRACULOS*/
 
-                $this->data['especies'] = $this->Especies_model->get_all_especies();
-
+                /*$this->data['especies'] = $this->Especies_model->get_all_especies();*/
+                $this->data['especiesCon'] = $this->Especies_model->get_all_especies_con_umbraculo();
+                $this->data['especiesSin'] = $this->Especies_model->get_all_especies_sin_umbraculo();
 
                 /* Load Template */
                 $this->template->admin_render('admin/especies/index', $this->data);

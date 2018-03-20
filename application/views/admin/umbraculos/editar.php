@@ -133,9 +133,10 @@
 				</div>
 			</div>
                                                     <div class="box-footer">
-                                                        <button onclick="avisoGuardar();" type="submit" class="btn btn-primary btn-flat">Guardar</button>
-                                                        <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat">Cancelar</a>
-                                                    </div>
+                                                        <button onclick="avisoGuardar();" type="submit" class="btn btn-primary btn-flat" >Guardar</button>
+                                                        
+                                                        <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat" >Cancelar</a>
+                                                    </div> 			
 			<?php echo form_close(); ?>
                          </div>
                     </div>
@@ -145,7 +146,7 @@
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header bg-green">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
                     <h4 class="modal-title" id="myModalLabel">Compatibilidad de las plantas al editar umbraculo</h4>
                     </div>
@@ -158,7 +159,32 @@
 
             </div>
         </div>
+    </div>  
+                
+               <!-- Modal -->
+    <div class="modal" id="myModalexit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    
+                    <h4 class="modal-title" id="myModalLabel">Compatibilidad de las plantas al editar umbraculo</h4>
+                    </div>
+                <div class="modal-body">
+                    <center>
+                    <br>
+                    <h3 class="media-heading">No olvides sacar del umbraculo a las especies de plantas que ya no poseen condiciones aptas para habitar el mismo, las mismas poseen la leyenda de color rojo: Condiciones no aptas.</h3>
+                    </center>
+                </div>
+                <div class="modal-footer">
+                    <center>
+                        <button  type="submit" class="btn btn-primary btn-flat" >Guardar</button>
+                        <a href="<?php echo site_url('common/umbraculos'); ?>" class="btn btn-default btn-flat" >Cancelar</a>
+                    </center>
+                </div>
+            </div>
+        </div>
     </div>
+                
 <script>
 
     function completar()
