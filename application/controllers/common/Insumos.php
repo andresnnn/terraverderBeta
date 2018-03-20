@@ -330,7 +330,9 @@ public function search_keyword(){
      *
      */
       ob_end_clean();
-    $this->pdf->Output("Lista general de insumos.pdf", 'D');
+      $nombre ="Lista general de insumos - ".date("d/m/Y") . ".pdf";
+      $this->pdf->Output($nombre, 'D');
+    /*$this->pdf->Output("Lista general de insumos.pdf", 'D');*/
   }
   /*esta funcion genera un pdf de todos los insumos */
     

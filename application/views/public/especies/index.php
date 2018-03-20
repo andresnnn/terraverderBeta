@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
-                                        <?php foreach($especies as $e){ ?>
+                                        <?php foreach($especiesSin as $e){ ?>
                                         <tr title="El estado determina, el poder utilizar o no, determinada especie en otros módulos">
                                             <td><?php echo $e['nombreEspecie']; ?></td>
                                             <td><?php echo $e['nombreCientificoEspecie']; ?></td>
@@ -45,7 +45,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <a href="<?php echo site_url('user/especies_pla/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> <br>
                                             </td>
                                         </tr>
+                                        <?php } ?><?php foreach($especiesCon as $e){ ?>
+                                        <tr title='Esta especie no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
+                                            <td><?php echo $e['nombreEspecie']; ?></td>
+                                            <td><?php echo $e['nombreCientificoEspecie']; ?></td>
+                                            <td><?php echo $e['descripcionCuidados']; ?></td>
+                                            <td><?php echo $e['descripcionSustrato']; ?></td>
+                                            <td>
+                                                <?php 
+                                                  if ($e['active'] == 1) {
+                                                    echo "<a style='pointer-events: none;' href='".site_url('user/especies_pla/borrado_logico/'.$e['idEspecie'])."'><span class='label label-success btn disabled'>Activo</span></a>";
+                                                  }else{
+                                                        echo "<a href='".site_url('user/especies_pla/activado_logico/'.$e['idEspecie'])."'><span class='label label-default'>Inactivo</span></a>";
+                                                  }
+                                                ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo site_url('user/especies_pla/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> <br>
+                                            </td>
+                                        </tr>
                                         <?php } ?>
+                                        
                                     </table>
                                     <!-- FIN CONTENIDO-->
                                 </div>

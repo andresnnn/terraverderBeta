@@ -26,7 +26,33 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <th>Estado</th>
                                             <th>Acciones</th>
                                         </tr>
-                                        <?php foreach($plantas as $p){ ?>
+                                        <?php foreach($plantasCon as $p){ ?>
+                                        <tr>
+                                            <td><?php echo $p['nombrePlanta']; ?></td> 
+                                            <td><?php echo $p['nombreCientificoPlanta']; ?></td>
+                                            <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
+                                            <td><?php echo $p['descripcionPlanta']; ?></td>
+                                            <td title='Esta planta no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
+                                                <?php
+                                if ($p['pa'] == 1 and $p['ea'] == 1) {
+                                    echo "<a style='pointer-events: none;' href='".site_url('user/plantas_pla/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success btn disabled'>Activo</span></a>";
+                                }else if( $p['ea'] == 0 and $p['pa'] == 1){
+                                    echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
+                                }else if( $p['ea'] == 0 and $p['pa'] == 0){
+                                    echo "<a><span class='label label-default'>Especie ".$p['nombreEspecie']." desactivada</span></a>";
+                                } else if ($p['pa'] == 0 and $p['ea'] == 1){
+                                    echo "<a href='".site_url('user/plantas_pla/activado_logico/'.$p['idPlanta'])."'><span class='label label-default'>Inactivo</span></a>";
+                                }
+                                
+                            ?>
+                                            </td>
+                                            <td>
+                                                <a href="<?php echo site_url('user/plantas_pla/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a> 
+                                                <a href="<?php echo site_url('user/plantas_pla/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
+                                            </td>
+                                        </tr>
+                                        <?php } ?>
+                                        <?php foreach($plantasSin as $p){ ?>
                                         <tr>
                                             <td><?php echo $p['nombrePlanta']; ?></td> 
                                             <td><?php echo $p['nombreCientificoPlanta']; ?></td>

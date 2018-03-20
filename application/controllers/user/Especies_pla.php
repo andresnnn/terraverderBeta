@@ -34,8 +34,9 @@ class Especies_pla extends Public_Controller{
             else
             {
                 /* CARGO EL LISTADO DE especies*/
-                $this->data['especies'] = $this->Especies_model->get_all_especies();
-
+                /*$this->data['especies'] = $this->Especies_model->get_all_especies();*/
+                $this->data['especiesCon'] = $this->Especies_model->get_all_especies_con_umbraculo();
+                $this->data['especiesSin'] = $this->Especies_model->get_all_especies_sin_umbraculo();
 
                 /* Load Template */
                 $this->template->user_render('public/especies/index', $this->data);
