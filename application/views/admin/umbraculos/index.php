@@ -104,7 +104,7 @@ var base_url = "<?php echo base_url(); ?>";
 
 
                                             <button disabled title="Si el umbraculo posee tareas y/o plantas no podra ser borrado" type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#questionModal"><span class="fa fa-trash"></span> Borrar</button>
-                                            
+
 
                                             <p style="font-style:italic; font-size:13px;">Presione editar para analizar si existen plantas incompatibles dentro del <?php echo $z['nombreUmbraculo']; ?>.</p>
                                         </div>
@@ -146,12 +146,7 @@ var base_url = "<?php echo base_url(); ?>";
                } );
 
             var existe_elemento_umbraculo =document.getElementById('existe_elemento_umbraculo').value;
-            if((existe_elemento_umbraculo==true)){
-              alert("Solo se puede borrar umbraculos sin elementos");
-            }
-            else if (existe_elemento_umbraculo==false) {
-              alert("Recuerda que solo se borran los umbraculos sin plantas y sin tareas.");
-            }
+
 
 
             }
