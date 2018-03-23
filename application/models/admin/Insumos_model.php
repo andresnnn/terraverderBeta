@@ -28,7 +28,22 @@ class Insumos_model extends CI_Model
         return $this->db->get('insumo')->result_array();
     }
     /*
-     * Get all insumo
+     * Get all insumo en tarea
+     */
+     function get_ids_insumos_tarea()
+     {
+       $query= "SELECT insumo.*, `insumo/tarea`.idInsumo
+                 FROM `insumo/tarea`
+                 left JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
+UNION
+SELECT insumo.*, `insumo/tarea`.idInsumo
+                 FROM `insumo/tarea`
+                  RIGHT JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
+ORDER BY `nombreInsumo` ASC";
+       return $this->db->query($query)->result_array();
+     }
+    /*
+     * Get all insumo activo
      */
     function get_all_insumo_active()
     {
@@ -36,7 +51,7 @@ class Insumos_model extends CI_Model
       return  $this->db->query($query)->result_array();
     }
     /*
-     * Get all insumo
+     * Get all insumo inactivo
      */
     function get_all_insumo_inactive()
     {
