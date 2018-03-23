@@ -52,19 +52,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </tr>
                     <?php foreach($insumo as $i){ ?>
                     <tr>
-                        <?php if($i['cantidad'] >= $i['puntoDePedido']){ 
+                        <?php if($i['cantidad'] >= $i['puntoDePedido']){
 						echo "<td>".$i['nombreInsumo']."</td>";
                         }else{
-                         echo "<td title='Este insumo necesita ser repuesto, ya que paso su punto de pedido.'><span style='color:red;' class='fa fa-warning'></span> ".$i['nombreInsumo']."</td>";
+                         echo "<td title='Se necesita reponer el insumo, punto de pedido excedido.'><span style='color:red;' class='fa fa-warning'></span> ".$i['nombreInsumo']."</td>";
                         }?>
-                
+
 						<td><?php echo $i['descripcionInsumo']; ?></td>
 						<td><?php echo $i['cantidad']; ?></td>
 						<td><?php echo $i['puntoDePedido']; ?></td>
-                        <td title="El estado determina, el poder utilizar o no, determinado insumoi en otros módulos">
+                        <td title="El estado activo habilita el uso de insumo en otros módulos y el estado inactivo inhabilita el uso">
                         <?php
                         if ($i['active'] == 1) {
+                          if ($i['idInsumoTarea']==null) {
                             echo "<a href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
+                              }
+                              else {
+                                echo "<a style='pointer-events: none;' href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
+                              }
                         }else{
                             echo "<a href='".site_url('common/insumos/activado_logico/'.$i['idInsumo'])."'><span class='label label-default'>Inactivo</span></a>";
                         }

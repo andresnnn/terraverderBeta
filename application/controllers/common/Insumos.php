@@ -28,7 +28,7 @@ class Insumos extends Admin_Controller {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
             /* insumos consulta*/
-            $this->data['insumo'] = $this->Insumos_model->get_all_insumo();
+            $this->data['insumo'] = $this->Insumos_model->get_ids_insumos_tarea();
             /* Load Template */
             $this->template->admin_render('admin/insumos/index', $this->data);
           //  $this->load->view('admin/insumos/index',$data);
@@ -261,9 +261,9 @@ public function search_keyword(){
     $this->Insumos_model->activar_insumo($idInsumo);
     redirect('common/insumos/index');
   }
-    
+
     /*esta funcion genera un pdf de todas los insumos */
-   
+
    public function generaPDInsumos()
   {
     $this->load->library('pdfinsumos');
@@ -275,7 +275,7 @@ public function search_keyword(){
     $this->pdf->AddPage();
     // Define el alias para el número de página que se imprimirá en el pie
     $this->pdf->AliasNbPages();
- 
+
     /* Se define el titulo, márgenes izquierdo, derecho y
      * el color de relleno predeterminado
      */
@@ -283,7 +283,7 @@ public function search_keyword(){
     $this->pdf->SetLeftMargin(15);
     $this->pdf->SetRightMargin(15);
     $this->pdf->SetFillColor(143,188,143);
- 
+
     // Se define el formato de fuente: Arial, negritas, tamaño 9
     $this->pdf->SetFont('Arial', 'B', 8);
     /*
@@ -308,17 +308,17 @@ public function search_keyword(){
       $this->pdf->Cell(40,5,$t['nombreInsumo'],'BL',0,'C',0);
       $this->pdf->Cell(85,5,$t['descripcionInsumo'],'B',0,'C',0);
       $this->pdf->Cell(30,5,$t['cantidad'],'B',0,'C',0);
-      $this->pdf->Cell(30,5,$t['puntoDePedido'],'BR',0,'C',0);    
+      $this->pdf->Cell(30,5,$t['puntoDePedido'],'BR',0,'C',0);
       $this->pdf->Ln(5);
         }else{
             $this->pdf->SetFillColor(255, 160, 122);
            $this->pdf->Cell(40,5,$t['nombreInsumo'],'TBL',0,'C',1);
       $this->pdf->Cell(85,5,$t['descripcionInsumo'],'TB',0,'C',1);
       $this->pdf->Cell(30,5,$t['cantidad'],'TB',0,'C',1);
-      $this->pdf->Cell(30,5,$t['puntoDePedido'],'TBR',0,'C',1);    
-      $this->pdf->Ln(5); 
+      $this->pdf->Cell(30,5,$t['puntoDePedido'],'TBR',0,'C',1);
+      $this->pdf->Ln(5);
         }
-        
+
     }
     /*
      * Se manda el pdf al navegador
@@ -335,7 +335,7 @@ public function search_keyword(){
     /*$this->pdf->Output("Lista general de insumos.pdf", 'D');*/
   }
   /*esta funcion genera un pdf de todos los insumos */
-    
-   
+
+
 
   }

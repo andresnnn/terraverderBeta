@@ -32,14 +32,14 @@ class Insumos_model extends CI_Model
      */
      function get_ids_insumos_tarea()
      {
-       $query= "SELECT insumo.*, `insumo/tarea`.idInsumo
+       $query= "SELECT insumo.*, `insumo/tarea`.idInsumo as idInsumoTarea
                  FROM `insumo/tarea`
                  left JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
-UNION
-SELECT insumo.*, `insumo/tarea`.idInsumo
+                 UNION
+                 SELECT insumo.*, `insumo/tarea`.idInsumo as idInsumoTarea
                  FROM `insumo/tarea`
                   RIGHT JOIN insumo ON insumo.idInsumo = `insumo/tarea`.`idInsumo`
-ORDER BY `nombreInsumo` ASC";
+                  ORDER BY `nombreInsumo` ASC";
        return $this->db->query($query)->result_array();
      }
     /*
