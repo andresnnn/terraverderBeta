@@ -65,7 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <th>Fecha Creación</th>
                                                 <th>Fecha Prevista</th>
                                                 <th>Progreso Tarea</th>
-                                                <th>Estado</th>
+                                                <th>Estado<a title="El estado define el activado o desactivado de tareas no iniciadas" href="#aboutModal" data-toggle="modal" data-target="#myModal" class="btn fa fa-info-circle fa-lg "></a></th>
                                                 <th>Acciones</th>
                                             </tr>
                                             <?php foreach($tarea as $t){ ?>
@@ -80,7 +80,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <!-- Borrado logico en activo -->
                                                 <td><?php
                                                 if ($t['active'] == 1) {
+                                                  if ($t['idEstado'] == 1) {
                                                     echo "<a href='".site_url('common/tareas/borrado_logico/'.$t['idTarea'])."'><span class='label label-success'>Activo</span></a>";
+                                                  }
+                                                    else{
+                                                      echo "<a style='pointer-events: none;' href='".site_url('common/tareas/borrado_logico/'.$t['idTarea'])."'><span class='label label-success'>Activo</span></a>";
+                                                    }
                                                 }else{
                                                     echo "<a href='".site_url('common/tareas/activado_logico/'.$t['idTarea'])."'><span class='label label-default'>Inactivo</span></a>";
                                                 }
