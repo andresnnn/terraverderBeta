@@ -301,7 +301,8 @@ var nuevoStock =parseInt(cantidad+actualStock);
 $.post(base_url+'common/umbraculos/borrarInsumoTarea', {
   idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
 }, function(response,status){
-alert("Borrado Correctamente"); } );
+alert("Borrado Correctamente");
+  location.reload() } );
 }
 }
 
@@ -317,7 +318,8 @@ function cargarDatos(idInsumo) {
     $.post(base_url+'common/umbraculos/agregarInsumoTarea', {
       cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
     }, function(response,status){
-    alert("Agregado Correctamente"); } );
+    alert("Agregado Correctamente");
+  location.reload() } );
     }
 
 
