@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <th>Nombre Científico</th>
                                             <th>Unidades Espacio</th>
                                             <th>Descripción</th>
-                                            <th>Estado</th>
+                        <th>Estado<a title="El estado define el activado o desactivado de plantas" href="#aboutModal" data-toggle="modal" data-target="#myModal" class="btn fa fa-info-circle fa-lg "></a></th>
                                             <th>Acciones</th>
                                         </tr>
                                         <?php foreach($plantasCon as $p){ ?>
@@ -48,7 +48,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </td>
                                             <td>
                                                 <a href="<?php echo site_url('user/plantas_pla/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a> 
-                                                <a href="<?php echo site_url('user/plantas_pla/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
+                                                <a style='pointer-events: none;' href="<?php echo site_url('user/plantas_pla/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> 
                                             </td>
                                         </tr>
                                         <?php } ?>

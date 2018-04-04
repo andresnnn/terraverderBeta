@@ -295,7 +295,8 @@ var base_url = "<?php echo base_url(); ?>";
                                     $.post(base_url+'user/umbraculos_pla/borrarInsumoTarea', {
                                       idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
                                     }, function(response,status){
-                                    alert("Borrado Correctamente"); } );
+                                    alert("Borrado Correctamente");
+                                    location.reload() } );
                                     }
                                     }
 
@@ -311,7 +312,8 @@ var base_url = "<?php echo base_url(); ?>";
                                         $.post(base_url+'user/umbraculos_pla/agregarInsumoTarea', {
                                           cantidad:cantidad, idInsumo:idInsumo, idTarea:idTarea, nuevoStock:nuevoStock
                                         }, function(response,status){
-                                        alert("Agregado Correctamente"); } );
+                                        alert("Agregado Correctamente");
+                                        location.reload() } );
                                         }
 
 

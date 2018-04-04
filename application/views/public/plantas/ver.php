@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             <div class="col-md-12">
                                                 <label for="nombrePlanta" class="control-label">Unidades de espacio que ocupa m<sup>2</sup></label>
                                                 <div class="form-group">
-                                                    <p><?php echo ($detalles['unidadEspacioPlanta_m2']*0.00001); ?> m<sup>2</sup></p>
+                                                    <p><?php echo ($detalles['unidadEspacioPlanta_m2']*0.0001); ?> m<sup>2</sup></p>
 
                                                 </div>
                                             </div>
