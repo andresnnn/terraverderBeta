@@ -27,8 +27,8 @@ class Insumos extends Admin_Controller {
         {
             /* Breadcrumbs */
             $this->data['breadcrumb'] = $this->breadcrumbs->show();
-            /* insumos consulta*/
-            $this->data['insumo'] = $this->Insumos_model->get_ids_insumos_tarea();
+            /* listado de insumos e indicador si se utiliza en tarea*/
+            $this->data['insumo'] = $this->Insumos_model->get_all_insumo();
             /* Load Template */
             $this->template->admin_render('admin/insumos/index', $this->data);
           //  $this->load->view('admin/insumos/index',$data);

@@ -28,7 +28,7 @@ class Insumos_model extends CI_Model
         return $this->db->get('insumo')->result_array();
     }
     /*
-     * Get all insumo en tarea
+     * Get all insumo en tarea + flag
      */
      function get_ids_insumos_tarea()
      {

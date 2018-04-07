@@ -64,12 +64,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td title="El estado activo habilita el uso de insumo en otros módulos y el estado inactivo inhabilita el uso">
                         <?php
                         if ($i['active'] == 1) {
-                          if ($i['idInsumoTarea']==null) {
+                          // if ($i['idInsumoTarea']==null) {
                             echo "<a href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
-                              }
-                              else {
-                                echo "<a style='pointer-events: none;' href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
-                              }
+                              // }
+                              // else {
+                              //   echo "<a style='pointer-events: none;' href='".site_url('common/insumos/borrado_logico/'.$i['idInsumo'])."'><span class='label label-success'>Activo</span></a>";
+                              // }
                         }else{
                             echo "<a href='".site_url('common/insumos/activado_logico/'.$i['idInsumo'])."'><span class='label label-default'>Inactivo</span></a>";
                         }
