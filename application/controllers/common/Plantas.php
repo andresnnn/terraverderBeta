@@ -31,9 +31,9 @@ class Plantas extends Admin_Controller{
             {
                 /* Breadcrumbs */
                 $this->data['breadcrumb'] = $this->breadcrumbs->show();
-                /* CARGO EL LISTADO DE UMBRACULOS*/
-                $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_con_umbraculo();
-                $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_sin_umbraculo();
+                /* CARGO EL LISTADO DE plantas dentro y fuera del UMBRACULO*/
+                $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_en_umbraculo();
+                $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_no_en_umbraculo();
                 /*$this->data['plantas'] = $this->Plantas_model->getPlantasEspecies();*/
 
 
@@ -56,9 +56,10 @@ class Plantas extends Admin_Controller{
                 {
                     /* Breadcrumbs */
                     $this->data['breadcrumb'] = $this->breadcrumbs->show();
-                    /* CARGO EL LISTADO DE UMBRACULOS*/
+                    /* CARGO EL LISTADO DE plantas dentro y fuera del UMBRACULO*/
+                    $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_active_en_umb();
+                    $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_active_no_en_umb();
 
-                    $this->data['plantas'] = $this->Plantas_model->get_all_plantas_active();
 
 
                     /* Load Template */
@@ -80,11 +81,9 @@ class Plantas extends Admin_Controller{
                     {
                         /* Breadcrumbs */
                         $this->data['breadcrumb'] = $this->breadcrumbs->show();
-                        /* CARGO EL LISTADO DE UMBRACULOS*/
-
-                        $this->data['plantas'] = $this->Plantas_model->get_all_plantas_inactive();
-
-
+                        /* CARGO EL LISTADO DE plantas dentro y fuera del UMBRACULO*/
+                        $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_inactive_en_umb();
+                        $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_inactive_no_en_umb();
                         /* Load Template */
                         $this->template->admin_render('admin/plantas/index', $this->data);
                     }
@@ -102,7 +101,10 @@ class Plantas extends Admin_Controller{
                         {
                             /* Breadcrumbs */
                             $this->data['breadcrumb'] = $this->breadcrumbs->show();
-                            /* CARGO EL LISTADO DE UMBRACULOS*/
+                            /* CARGO EL LISTADO DE plantas dentro y fuera del UMBRACULO*/
+                            $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_unidad_en_umb();
+                            $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_unidad_no_en_umb();
+
 
                             $this->data['plantas'] = $this->Plantas_model->get_all_plantas_unidad();
 

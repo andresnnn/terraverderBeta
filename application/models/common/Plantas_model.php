@@ -25,7 +25,7 @@ class Plantas_model extends CI_Model
         $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
         return $this->db->query($query)->result_array();
     }
-    
+
     function especiePlanta($idPlanta)
     {
         $query = "SELECT especie.luzMax,especie.luzMin,especie.humedadMax,especie.humedadMax,especie.temperaturaMax,especie.temperaturaMin,especie.active FROM `planta` JOIN especie ON planta.idEspecie=especie.idEspecie";
@@ -92,7 +92,7 @@ class Plantas_model extends CI_Model
                         JOIN especie ON planta.idEspecie = especie.idEspecie
                         WHERE
                         (especie.temperaturaMin <= ".$info_umbraculo['temperaturaUmbraculo'].") AND (especie.temperaturaMax >=".$info_umbraculo['temperaturaUmbraculo'].")
-                        AND 
+                        AND
                         (especie.luzMin <= ".$info_umbraculo['luzUmbraculo'].") AND (especie.luzMax >= ".$info_umbraculo['luzUmbraculo'].")
                         AND
                         (especie.humedadMin <= ".$info_umbraculo['humedadUmbraculo'].") AND (especie.humedadMax >= ".$info_umbraculo['humedadUmbraculo'].")";
@@ -124,20 +124,70 @@ class Plantas_model extends CI_Model
     /*
      * Get all plantas
      */
-    
+
     function getPlantasEspecies()
     {
       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie ORDER BY planta.active DESC";
       return  $this->db->query($query)->result_array();
     }
-    
+    /* todas las plantas fuera y dentro del umbraculo*/
+    function get_all_plantas_no_en_umbraculo()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
+        return $this->db->query($query)->result_array();
+    }
+
+    function get_all_plantas_en_umbraculo()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
+        return $this->db->query($query)->result_array();
+    }
+    /*todas las plantas fuera y dentro del umbraculo activas*/
+
+    function get_all_plantas_active_en_umb()
+    {
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE (planta.`active`=1) AND EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.active DESC";
+      return  $this->db->query($query)->result_array();
+    }
+    function get_all_plantas_active_no_en_umb()
+    {
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE (planta.`active`=1) AND NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.active DESC";
+      return  $this->db->query($query)->result_array();
+    }
+
+    /*todas las plantas fuera y dentro del umbraculo inactivas*/
+
+    function get_all_plantas_inactive_en_umb()
+    {
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE (planta.`active`=0) AND EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.active DESC";
+      return  $this->db->query($query)->result_array();
+    }
+    function get_all_plantas_inactive_no_en_umb()
+    {
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE (planta.`active`=0) AND NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.active DESC";
+      return  $this->db->query($query)->result_array();
+    }
+    /*todas las plantas fuera y dentro del umbraculo ordenads por unidad*/
+
+    function get_all_plantas_unidad_en_umb()
+    {
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE  EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.unidadEspacioPlanta_m2 ASC";
+      return  $this->db->query($query)->result_array();
+    }
+    function get_all_plantas_unidad_no_en_umb()
+    {
+       $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE  NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.unidadEspacioPlanta_m2 ASC";
+      return  $this->db->query($query)->result_array();
+    }
+    /* plantas activas*/
+
     function get_all_plantas_active()
     {
        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM `planta` JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE planta.`active`=1 ORDER BY planta.active DESC";
       return  $this->db->query($query)->result_array();
     }
     /*
-     * Get all plantas
+     * Get all plantas inactivas
      */
     function get_all_plantas_inactive()
     {
@@ -201,16 +251,6 @@ class Plantas_model extends CI_Model
           $query="UPDATE `planta` SET `active`=1 WHERE `planta`.`idPlanta`=".$idPlanta;
           $this->db->query($query);
         }
-    function get_all_plantas_sin_umbraculo()
-    {
-        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
-        return $this->db->query($query)->result_array();
-    }
-    
-    function get_all_plantas_con_umbraculo()
-    {
-        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
-        return $this->db->query($query)->result_array();
-    }
-    
+
+
 }
