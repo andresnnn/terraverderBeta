@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-6">
                         <label for="idPlanta" class="control-label">Planta</label>
                         <div class="form-group">
-                            <select name="idPlanta" class="form-control">
+                            <select  name="idPlanta" class="form-control">
                                 <option value="">Seleccionar planta</option>
                                 <?php
                                 foreach($umbraculo_plantas as $plantum)
@@ -107,7 +107,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="box-footer" style="text-align: center;">
-                <button type="submit" class="btn btn-primary btn-flat">Agregar tarea</button>
+                <button type="submit" class="btn btn-primary btn-flat" onclick="javascript:agregarTarea(<?php echo $id;?>);">Agregar</button>
+                
                 <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Cancelar</a>
             </div>
             <?php echo form_close(); ?>
@@ -122,3 +123,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <a href="<?=$_SERVER['HTTP_REFERER'] ?>" class="btn btn-default btn-flat">Volver</a>
             </div>
             </div>
+
+<script>
+function agregarTarea(idUmbraculo){
+  var existe_duplicada =  $('#existe_duplicada').val();
+if(existe_duplicada){
+
+  alert("No se puede agregar tarea del mismo tipo en el mismo día");
+}
+
+}
+</script>

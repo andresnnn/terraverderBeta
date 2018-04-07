@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                             </td>
                                         </tr>
                                         <?php } ?><?php foreach($especiesCon as $e){ ?>
-                                        <tr title='Esta especie no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
+                                        <tr title='Esta especie no se puede desactivar ni editar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
                                             <td><?php echo $e['nombreEspecie']; ?></td>
                                             <td><?php echo $e['nombreCientificoEspecie']; ?></td>
                                             <td><?php echo $e['descripcionCuidados']; ?></td>
@@ -61,7 +61,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 ?>
                                             </td>
                                             <td>
-                                                <a href="<?php echo site_url('user/especies_pla/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> <br>
+                                                <a style='pointer-events: none;' href="<?php echo site_url('user/especies_pla/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs disabled"><span class="fa fa-pencil"></span> Editar</a> <br>
                                             </td>
                                         </tr>
                                         <?php } ?>

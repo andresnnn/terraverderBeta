@@ -6,7 +6,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
             <footer style="width: 100%; " class="main-footer">
                 
-                <div style="text-align: center;"><strong>Terra Verde © 2017 </strong> All rights reserved.</div>
+                <div style="text-align: center;"><strong>Terra Verde © 2018 </strong> All rights reserved.</div>
                 
             </footer>
 

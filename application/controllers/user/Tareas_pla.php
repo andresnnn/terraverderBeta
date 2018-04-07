@@ -103,8 +103,8 @@ class Tareas_pla extends Public_controller{
      */
     function add($idUmbraculo)
     {
+                $this->data['existe_tarea_duplicada'] = false;
                 $this->load->library('form_validation');
-
                 $this->form_validation->set_rules('idTipoTarea','IdTipoTarea','required');
                 $this->form_validation->set_rules('fechaCreacion','FechaCreacion','required');
                 $this->form_validation->set_rules('fechaAtencion','FechaAtencion');
@@ -126,7 +126,8 @@ class Tareas_pla extends Public_controller{
                         'horaComienzo' => $this->input->post('horaComienzo'),
                         'observacionEspecialista' => $this->input->post('observacionEspecialista'),
                     );
-                    if ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea')))
+                    $this->data['existe_tarea_duplicada'] = ($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea')));
+                    if (!($this->Tareas_model->comprobar_existencia_tarea( $this->input->post('idUmbraculo'),$this->input->post('fechaComienzo'), $this->input->post('idPlanta'),$this->input->post('idTipoTarea'))))
                     {
                       $tareas_id = $this->Tareas_model->add_tareas($params);
                       redirect('user/umbraculos_pla/ver/'.$this->input->post('idUmbraculo'));

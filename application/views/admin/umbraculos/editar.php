@@ -153,7 +153,7 @@
                 <div class="modal-body">
                     <center>
                     <br>
-                    <h3 class="media-heading">A medida que se van cambiando las condiciones del umbraculo (luz,humedad y/o temperatura) se iran indicando las plantas, que se encuentran en el umbraculo, que cumplen las condiciones para quedarse en el umbraculo y las que deberan ser mudadas del mismo. Se mostrara la siguiente informacion:<br><br><span class='fa fa-leaf label label-success'>Planta x condiciones aptas</span><br><br><span class='fa fa-leaf label label-danger'>Planta x condiciones no aptas</span></h3>
+                    <h5 class="media-heading">A medida que se van cambiando las condiciones del umbraculo (luz,humedad y/o temperatura) se iran indicando las plantas, que se encuentran en el umbraculo, que cumplen las condiciones para quedarse en el umbraculo y las que deberan ser mudadas del mismo. Se mostrara la siguiente informacion:<br><br><span class='fa fa-leaf label label-success'>Planta x condiciones aptas</span><br><br><span class='fa fa-leaf label label-danger'>Planta x condiciones no aptas</span></h5>
                     </center>
                 </div>
                 <!--<div class="modal-footer">
@@ -176,7 +176,7 @@
                 <div class="modal-body">
                     <center>
                     <br>
-                    <h3 class="media-heading">No olvides sacar del umbraculo a las especies de plantas que ya no poseen condiciones aptas para habitar el mismo, las mismas poseen la leyenda de color rojo: Condiciones no aptas.</h3>
+                    <h5 class="media-heading">No olvides sacar del umbraculo a las especies de plantas que ya no poseen condiciones aptas para habitar el mismo, las mismas poseen la leyenda de color rojo: Condiciones no aptas.</h5>
                     </center>
                 </div>
                 <div class="modal-footer">

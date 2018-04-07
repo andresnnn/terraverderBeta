@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td><?php echo $p['nombreCientificoPlanta']; ?></td>
                         <td><?php echo $p['unidadEspacioPlanta_m2']; ?>cm<sup>2</sup></td>
                         <td><?php echo $p['descripcionPlanta']; ?></td>
-                        <td title='Esta planta no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
+                        <td title='Esta planta no se puede desactivar ni editar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
                             <?php
                                 if ($p['pa'] == 1 and $p['ea'] == 1) {
                                     echo "<a style='pointer-events: none;' href='".site_url('common/plantas/borrado_logico/'.$p['idPlanta'])."'><span class='label label-success btn disabled'>Activo</span></a>";
@@ -70,7 +70,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </td>
                         <td>
                             <a href="<?php echo site_url('common/plantas/ver/'.$p['idPlanta']); ?>" class="btn btn-warning btn-xs"><span class="fa fa-eye"></span> Ver</a>
-                            <a href="<?php echo site_url('common/plantas/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a>
+                            <a style='pointer-events: none;' href="<?php echo site_url('common/plantas/editar/'.$p['idPlanta']); ?>" class="btn btn-info btn-xs disabled"><span class="fa fa-pencil"></span> Editar</a>
                         </td>
                     </tr>
                     <?php } ?>

@@ -71,7 +71,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		                    <?php } ?>
                             
                             <?php foreach($especiesCon as $e){ ?>
-		                    <tr title='Esta especie no se puede desactivar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
+		                    <tr title='Esta especie no se puede desactivar ni editar ya que una o mas plantas de la misma se encuentra en un umbraculo'>
 								<td><?php echo $e['nombreEspecie']; ?></td>
 								<td><?php echo $e['nombreCientificoEspecie']; ?></td>
 								<td><?php echo $e['descripcionCuidados']; ?></td>
@@ -86,7 +86,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 									?>
 								</td>
 								<td>
-		                            <a href="<?php echo site_url('common/especies/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs"><span class="fa fa-pencil"></span> Editar</a> <br>
+		                            <a style='pointer-events: none;' href="<?php echo site_url('common/especies/editar/'.$e['idEspecie']); ?>" class="btn btn-info btn-xs disabled"><span class="fa fa-pencil "></span> Editar</a> <br>
 <!-- 		                           <a href="<?php echo site_url('especies/remove/'.$e['idEspecie']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> -->
 		                        </td>
 		                    </tr>
@@ -108,7 +108,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="modal-body">
                     <center>
                     <br>
-                    <h3 class="media-heading">Se pueden desactivar tanto las especies como las plantas, es decir, desactivar no significa borrarlas sino que se bloquea su uso, entonces no se pueden crear plantas de una especie desactivada, etc. Si se desactiva una especie se desactivan automáticamente las plantas pertenecientes a la misma, se mostrara un mensaje de especie desactivada en el modulo de plantas, luego al reactivar la especie quedan desactivadas las plantas, hay que reactivarlas en el modulo de plantas.<br><br> ! Las especies, que mediante una planta, esten en un umbraculo no se podran desactivar ¡</h3>
+                    <h5 class="media-heading">Se pueden desactivar tanto las especies como las plantas, es decir, desactivar no significa borrarlas sino que se bloquea su uso, entonces no se pueden crear plantas de una especie desactivada, etc. Si se desactiva una especie se desactivan automáticamente las plantas pertenecientes a la misma, se mostrara un mensaje de especie desactivada en el modulo de plantas, luego al reactivar la especie quedan desactivadas las plantas, hay que reactivarlas en el modulo de plantas.<br><br> ! Las especies, que mediante una planta, esten en un umbraculo no se podran desactivar ¡</h5>
                     </center>
                 </div>
                 <!--<div class="modal-footer">

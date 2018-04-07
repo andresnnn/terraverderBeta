@@ -18,11 +18,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     <table class="table table-striped">
                                         <tbody>
                                             <tr>
-                                                <th>Id Insumo</th>
+                                                <th>Id Tarea</th>
                                                 <td><?php echo $tipotarea['idTipoTarea']; ?></td>
                                             </tr>
                                             <tr>
-                                                <th>Nombre Insumo</th>
+                                                <th>Nombre Tarea</th>
                                                 <td><?php echo $tipotarea['nombreTipoTarea']; ?></td>
                                             </tr>
                                             <tr>
