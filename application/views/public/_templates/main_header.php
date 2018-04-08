@@ -112,10 +112,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <li><a class="logout" href="<?php echo site_url('auth/login'); ?>">Salir</a></li>
                             <?php  
                                         if ($permisos['idGrupo'] == 2) {
-                                            echo '<li><a href="'.base_url('upload/manual_planificador.pdf').'" target="_blank">Manual Planificador <span class="fa fa-file-pdf-o"></span> </a></li>';
+                                            echo '<li><a href="'.base_url('upload/manual_planificador1.pdf').'" target="_blank">Manual Planificador <span class="fa fa-file-pdf-o"></span> </a></li>';
                                         }
                                        else if ($permisos['idGrupo'] == 3) {
-                                            echo '<li><a href="'.base_url('upload/manual_especialista.pdf').'" target="_blank">Manual Especialista <span class="fa fa-file-pdf-o"> </span></a></li>';
+                                            echo '<li><a href="'.base_url('upload/manual_especialista1.pdf').'" target="_blank">Manual Especialista <span class="fa fa-file-pdf-o"> </span></a></li>';
                                         }
                             ?>
                         </ul>
