@@ -15,7 +15,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <h3 class="control-sidebar-heading">Ayuda</h3>
                         <ul class="control-sidebar-menu">
                             <li>
-                                <a href="<?php echo base_url('upload/manual_usuarios.pdf'); ?>" target="_blank">
+                                <a href="<?php echo base_url('upload/manual_usuario.pdf'); ?>" target="_blank">
                                     Ver manual de uso
                                 </a>
                             </li>
