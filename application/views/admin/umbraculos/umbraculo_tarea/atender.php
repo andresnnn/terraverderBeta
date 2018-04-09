@@ -53,6 +53,41 @@ var base_url = "<?php echo base_url(); ?>";
               </div>
               <!-- fin info tarea -->
 
+              <!-- insumos utilizados en la tarea -->
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="box box-info">
+                      <div class="box-header with-border">
+                            <h3 class="box-title">Insumos utilizados en la tarea</h3>
+                        </div>
+                        <div class="box-body">
+                          <div class="row clearfix">
+                        <!-- boton para ver insumos -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <button type="button" id=modal_ver name=modal_ver class="btn btn-warning btn-block btn-primary btn-flat " data-toggle="modal" data-target="#myModal2"> <span class="fa fa-eye"></span>Ver insumos utilizados</button>
+                            <span class="text-danger"><?php echo form_error('idInsumo');?></span>
+                            <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
+                          </div>
+                        </div>
+                        <!-- fin boton -->
+                        <!-- boton seleccionar insumo -->
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Agregar Insumo Utilizado </button>
+                            <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
+                            <span id="estadoT" class="text-danger"></span><br>
+                            <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
+                          </div>
+                        </div>
+                        <!-- fin boton seleccionar insumo -->
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              </div>
+              <!-- fin insumos utilizados -->
+
 <!-- atencion de la tarea -->
   <div class="row">
     <div class="col-md-12">
@@ -124,41 +159,6 @@ var base_url = "<?php echo base_url(); ?>";
 </div>
 <!-- fin atender tarea -->
 
-
-<!-- insumos utilizados en la tarea -->
-<div class="row">
-  <div class="col-md-12">
-    <div class="box box-info">
-        <div class="box-header with-border">
-              <h3 class="box-title">Insumos utilizados en la tarea</h3>
-          </div>
-          <div class="box-body">
-            <div class="row clearfix">
-          <!-- boton para ver insumos -->
-          <div class="col-md-6">
-            <div class="form-group">
-              <button type="button" id=modal_ver name=modal_ver class="btn btn-warning btn-block btn-primary btn-flat " data-toggle="modal" data-target="#myModal2"> <span class="fa fa-eye"></span>Ver insumos utilizados</button>
-              <span class="text-danger"><?php echo form_error('idInsumo');?></span>
-              <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
-            </div>
-          </div>
-          <!-- fin boton -->
-          <!-- boton seleccionar insumo -->
-          <div class="col-md-6">
-            <div class="form-group">
-              <button type="button" class="btn btn-block btn-primary btn-flat'" data-toggle="modal" data-target="#myModal"> <span class="fa fa-plus"></span>Agregar Insumo Utilizado </button>
-              <span class="text-danger"><?php echo form_error('idInsumo');?></span> <!-- ESTE SERIA EL CAMPO DONDE INFORMARIA EL ERROR-->
-              <span id="estadoT" class="text-danger"></span><br>
-              <input type="hidden" min="0" name="idInsumo" value="<?php echo $this->input->post('idInsumo'); ?>" class="form-control" id="idInsumo" />
-            </div>
-          </div>
-          <!-- fin boton seleccionar insumo -->
-        </div>
-      </div>
-    </div>
-</div>
-</div>
-<!-- fin insumos utilizados -->
 
 <!-- modal seleccionar insumos para agregar-->
 <div class="container">
