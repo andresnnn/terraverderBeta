@@ -253,4 +253,17 @@ class Plantas_model extends CI_Model
         }
 
 
+            function get_all_plantas_sin_umbraculo()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_con_umbraculo()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)";
+        return $this->db->query($query)->result_array();
+    }
+
+
 }

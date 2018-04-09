@@ -70,7 +70,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 		                    </tr>
 		                    <?php } ?>
 
-                            <?php foreach($especiesCon as $e){ ?>
+                            <?php 
+
+                            foreach($especiesCon as $e){ ?>
 		                    <tr title='Las acciones de inactivar o editar estan deshabilitados porque la especie esta asociada a una planta dentro de un Umbraculo'>
 								<td><?php echo $e['nombreEspecie']; ?></td>
 								<td><?php echo $e['nombreCientificoEspecie']; ?></td>
@@ -90,7 +92,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- 		                           <a href="<?php echo site_url('especies/remove/'.$e['idEspecie']); ?>" class="btn btn-danger btn-xs"><span class="fa fa-trash"></span> Borrar</a> -->
 		                        </td>
 		                    </tr>
-		                    <?php } ?>
+		                    <?php }
+
+
+                         ?>
 
 		                </table>
                          </div>
