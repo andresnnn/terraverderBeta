@@ -213,4 +213,40 @@ class Plantas_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
     
+    function get_all_plantas_sin_umbraculoFilter()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)AND `planta`.active=1";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_con_umbraculoFilter()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)AND `planta`.active=1";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_sin_umbraculoFilter1()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)AND `planta`.active=0";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_con_umbraculoFilter1()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta)AND `planta`.active=0";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_sin_umbraculoFilter2()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.unidadEspacioPlanta_m2 ASC";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_plantas_con_umbraculoFilter2()
+    {
+        $query="SELECT *,`planta`.active AS pa,especie.active AS ea FROM planta JOIN especie ON `planta`.idEspecie=especie.idEspecie WHERE EXISTS (SELECT * FROM `umbraculo/planta` WHERE planta.idPlanta=`umbraculo/planta`.idPlanta) ORDER BY planta.unidadEspacioPlanta_m2 ASC";
+        return $this->db->query($query)->result_array();
+    }
+    
 }

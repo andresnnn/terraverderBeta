@@ -58,7 +58,8 @@ class Plantas extends Admin_Controller{
                     $this->data['breadcrumb'] = $this->breadcrumbs->show();
                     /* CARGO EL LISTADO DE UMBRACULOS*/
 
-                    $this->data['plantas'] = $this->Plantas_model->get_all_plantas_active();
+                    $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_con_umbraculoFilter();
+                    $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_sin_umbraculoFilter();
 
 
                     /* Load Template */
@@ -82,7 +83,8 @@ class Plantas extends Admin_Controller{
                         $this->data['breadcrumb'] = $this->breadcrumbs->show();
                         /* CARGO EL LISTADO DE UMBRACULOS*/
 
-                        $this->data['plantas'] = $this->Plantas_model->get_all_plantas_inactive();
+                        $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_con_umbraculoFilter1();
+                        $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_sin_umbraculoFilter1();
 
 
                         /* Load Template */
@@ -104,8 +106,8 @@ class Plantas extends Admin_Controller{
                             $this->data['breadcrumb'] = $this->breadcrumbs->show();
                             /* CARGO EL LISTADO DE UMBRACULOS*/
 
-                            $this->data['plantas'] = $this->Plantas_model->get_all_plantas_unidad();
-
+                            $this->data['plantasCon'] = $this->Plantas_model->get_all_plantas_con_umbraculoFilter2();
+                            $this->data['plantasSin'] = $this->Plantas_model->get_all_plantas_sin_umbraculoFilter2();
 
                             /* Load Template */
                             $this->template->admin_render('admin/plantas/index', $this->data);
