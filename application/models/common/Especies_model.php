@@ -124,6 +124,30 @@ class Especies_model extends CI_Model
         return $this->db->query($query)->result_array();
     }
     
+    function get_all_especies_sin_umbraculoFilter()
+    {
+        $query="SELECT * FROM especie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie )AND  active=1";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_especies_con_umbraculoFilter()
+    {
+        $query="SELECT * FROM especie WHERE  EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie )AND active=1";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_especies_sin_umbraculoFilter1()
+    {
+        $query="SELECT * FROM especie WHERE NOT EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie )AND  active=0";
+        return $this->db->query($query)->result_array();
+    }
+    
+    function get_all_especies_con_umbraculoFilter1()
+    {
+        $query="SELECT * FROM especie WHERE  EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie )AND active=0";
+        return $this->db->query($query)->result_array();
+    }
+    
     function get_all_especies_con_umbraculo()
     {
         $query="SELECT * FROM especie WHERE EXISTS (SELECT * FROM `umbraculo/planta` INNER JOIN planta ON `umbraculo/planta`.idPlanta=planta.idPlanta WHERE planta.idEspecie=especie.idEspecie)";

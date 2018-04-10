@@ -60,8 +60,8 @@ class Especies extends Admin_Controller{
                     $this->data['breadcrumb'] = $this->breadcrumbs->show();
                     /* CARGO EL LISTADO DE UMBRACULOS*/
 
-                    $this->data['especies'] = $this->Especies_model->get_all_especies_active();
-
+                    $this->data['especiesCon'] = $this->Especies_model->get_all_especies_con_umbraculoFilter();
+                    $this->data['especiesSin'] = $this->Especies_model->get_all_especies_sin_umbraculoFilter();
 
                     /* Load Template */
                     $this->template->admin_render('admin/especies/index', $this->data);
@@ -84,7 +84,8 @@ class Especies extends Admin_Controller{
                         $this->data['breadcrumb'] = $this->breadcrumbs->show();
                         /* CARGO EL LISTADO DE UMBRACULOS*/
 
-                        $this->data['especies'] = $this->Especies_model->get_all_especies_inactive();
+                        $this->data['especiesCon'] = $this->Especies_model->get_all_especies_con_umbraculoFilter1();
+                        $this->data['especiesSin'] = $this->Especies_model->get_all_especies_sin_umbraculoFilter1();
 
 
                         /* Load Template */
