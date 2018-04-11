@@ -25,10 +25,10 @@
             $this->Cell(30);
             $this->Cell(120,10,'Este PDF lista todas las tareas del vivero,ordenadas por la fecha de creacion.',0,0,'C');
             $this->Ln('5');
-            $hoy = getdate();
-            $d = $hoy[mday];
-            $m = $hoy[mon];
-            $y = $hoy[year]; 
+            //$hoy = getdate();
+            //$d = $hoy[mday];
+            //$m = $hoy[mon];
+            //$y = $hoy[year]; 
             //$this->Cell(180,10,'PDF generado el dia '."$d-$m-$y".' .',0,0,'C');
             $this->Ln(15);
        }

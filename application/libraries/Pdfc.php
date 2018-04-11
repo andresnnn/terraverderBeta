@@ -29,7 +29,7 @@
             $d = $hoy[mday];
             $m = $hoy[mon];
             $y = $hoy[year]; 
-            $this->Cell(180,10,'PDF generado el dia '."$d-$m-$y".' .',0,0,'C');
+            //$this->Cell(180,10,'PDF generado el dia '."$d-$m-$y".' .',0,0,'C');
             $this->Ln(15);
        }
        // El pie del pdf
