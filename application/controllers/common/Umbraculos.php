@@ -142,7 +142,7 @@ class Umbraculos extends Admin_Controller {
                 $this->data['umbraculos'] = $this->Umbraculos_model->get_umbraculos($idUmbraculo);
                 $this->data['plantas'] = $this->Umbraculoplantas_model->ver_plantasEspecies_umbraculo($idUmbraculo);
                 $this->data['plantasComp'] = $this->Umbraculoplantas_model->ver_plantasEspecies_umbraculo($idUmbraculo);
-            
+
 
                 if(isset($this->data['umbraculos']['idUmbraculo']))
                 {
@@ -265,6 +265,7 @@ class Umbraculos extends Admin_Controller {
                             /* Breadcrumbs */
                             $this->data['breadcrumb'] = $this->breadcrumbs->show();
                              $this->data['idUmbraculo'] = $idUmbraculo = (int) $idUmbraculo;
+                             $this->data['insumos_tarea'] = $this->Tareas_model->insumos_tarea($idTarea);
                             $this->data['tarea'] = $this->Tareas_model->ver_detalles_tarea($idTarea);
                             $this->template->admin_render('admin/umbraculos/umbraculo_tarea/detalles', $this->data);
                         }
@@ -324,7 +325,7 @@ class Umbraculos extends Admin_Controller {
             /**
             *ESTA FUNCION AGREGA A LA TABLA 'Insumo/TAREA'
             **/
-            function agregarInsumoTarea() 
+            function agregarInsumoTarea()
             {
               //variables POST
               $cantidad=$_POST['cantidad'];

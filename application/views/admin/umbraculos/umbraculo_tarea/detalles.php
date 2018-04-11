@@ -133,6 +133,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 	<?php } ?>
                                 	</div>
                                 	<!--FIN CAJA-->
+                                  <!--CAJA CON TABLA DE INSUMOS UTILIZADOS-->
+<div class="col-md-6">
+<label class="control-label">Insumos utilizados</label>
+<table class="table table-striped table-hover">
+      <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Cantidad Utilizada</th>
+      </tr>
+      <?php foreach($insumos_tarea as $it){ ?>
+      <tr>
+          <td><?php echo $it['nombreInsumo']; ?></td>
+          <td><?php echo $it['descripcionInsumo']; ?></td>
+          <td><?php echo $it['cantidadUtilizado']; ?></td>
+      </tr>
+      <?php } ?>
+</table>
+</div>
+<!--FIN DE CAJA INSUMOS-->
                               </div>
                             </div>
                             </div>
