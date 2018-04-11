@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 								<div class="form-group">
 									<label for="cantidad" class="col-md-3 control-label">Cantidad</label>
 									<div class="col-md-8">
-										<input type="number" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
+										<input type="number" min="0" name="cantidad" value="<?php echo $this->input->post('cantidad'); ?>" class="form-control" id="cantidad" />
 									</div>
 								</div>
 								<div class="form-group">
