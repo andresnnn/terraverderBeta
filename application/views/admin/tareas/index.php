@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 <button type="button" title="Presiona para generar un PDF con las tareas del vivero, podes elejir generar por el estado de las tareas." class="btn btn-danger dropdown-toggle" data-toggle="dropdown"><span class="fa fa-file-pdf-o"></span>  Generar PDF de Tareas <span class="caret"></span></button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li><a onclick="valorSelect(49)">Tareas No Iniciadas</a></li>
-                                                    <li><a onclick="valorSelect(48)">Tareas Incompletas</a></li>
+                                                    <li><a onclick="valorSelect(48)">Tareas Pendientes</a></li>
                                                     <li><a onclick="valorSelect(47)">Tareas Completas</a></li>
                                                     <li class="divider"></li>
                                                     <li><a onclick="valorSelect(45)">Todas las Tareas</a></li>
