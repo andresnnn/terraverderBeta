@@ -279,7 +279,7 @@ return $this->db->delete('insumo/tarea',array('idInsumo'=>$idInsumo,'idTarea'=>$
                     -- JOIN users ua ON t.idUserAtencion = ua.id
                     JOIN planta p ON t.idPlanta = p.idPlanta
                     JOIN umbraculo um ON t.idUmbraculo = um.idUmbraculo
-                    WHERE  t.idEstado=3
+                    WHERE  t.idEstado=3 OR t.idEstado=1
                     ORDER BY t.fechaCreacion ASC";
         return $this->db->query($query)->result_array();
     }

@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               								<button type="button" class="btn btn-warning btn-filter" onclick="valorSelect(2)" data-target="Desactivados">Desactivados</button>
                               <!-- <button type="button" class="btn btn-default btn-filter" data-target="completas">Tareas completas </button> -->
 
-                              <button onclick="valorSelect(4)" type="button" class="btn btn-default btn-filter" data-target="incompletas">Tareas incompletas </button>
+                              <button onclick="valorSelect(4)" type="button" class="btn btn-default btn-filter" data-target="incompletas">Tareas Pendientes </button>
                               <button type="button" class="btn btn-default btn-filter" onclick="valorSelect(5)">Ordenar por fechas previstas</button>
                               <a href="<?php echo site_url('common/tareas/'); ?>" class="btn btn-default btn-filter">Todos</a>
               							</div>
