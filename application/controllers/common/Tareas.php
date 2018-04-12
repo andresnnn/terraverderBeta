@@ -353,7 +353,7 @@ if(($estaAtendida)){
      * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
      */
     //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
-    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(40,7,'TAREA','TBL',0,'C','1');
     $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
     $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
     $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
@@ -369,7 +369,7 @@ if(($estaAtendida)){
       $x++; 
       // Se imprimen los datos de cada alumno
       //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
-      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(40,5,$t['nombreTipoTarea'],'BL',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
@@ -428,7 +428,7 @@ if(($estaAtendida)){
      * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
      */
     //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
-    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(40,7,'TAREA','TBL',0,'C','1');
     $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
     $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
     $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
@@ -443,7 +443,7 @@ if(($estaAtendida)){
       //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
       // Se imprimen los datos de cada alumno
       //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
-      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(40,5,$t['nombreTipoTarea'],'BL',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
@@ -499,7 +499,7 @@ if(($estaAtendida)){
      * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
      */
     //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
-    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(40,7,'TAREA','TBL',0,'C','1');
     $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
     $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
     $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
@@ -514,7 +514,7 @@ if(($estaAtendida)){
       //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
       // Se imprimen los datos de cada alumno
       //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
-      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(40,5,$t['nombreTipoTarea'],'BL',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    
@@ -570,7 +570,7 @@ if(($estaAtendida)){
      * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
      */
     //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
-    $this->pdf->Cell(25,7,'TAREA','TBL',0,'C','1');
+    $this->pdf->Cell(40,7,'TAREA','TBL',0,'C','1');
     $this->pdf->Cell(25,7,'ESTADO','TB',0,'C','1');
     $this->pdf->Cell(25,7,'PLANTA','TB',0,'C','1');
     $this->pdf->Cell(25,7,'UMBRACULO','TB',0,'C','1');
@@ -585,7 +585,7 @@ if(($estaAtendida)){
       //$this->pdf->Cell(15,5,$x++,'BL',0,'C',0);
       // Se imprimen los datos de cada alumno
       //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
-      $this->pdf->Cell(25,5,$t['nombreTipoTarea'],'BL',0,'C',0);
+      $this->pdf->Cell(40,5,$t['nombreTipoTarea'],'BL',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreEstado'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombrePlanta'],'B',0,'C',0);
       $this->pdf->Cell(25,5,$t['nombreUmbraculo'],'B',0,'C',0);    

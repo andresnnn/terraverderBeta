@@ -292,7 +292,7 @@ public function search_keyword(){
      * $this->pdf->Cell(Ancho, Alto,texto,borde,posición,alineación,relleno);
      */
     //$this->pdf->Cell(15,7,'n','TBL',0,'C','1');
-    $this->pdf->Cell(40,7,'NOMBRE','TBL',0,'C','1');
+    $this->pdf->Cell(45,7,'NOMBRE','TBL',0,'C','1');
     $this->pdf->Cell(85,7,'DESCRIPCION','TB',0,'C','1');
     $this->pdf->Cell(30,7,'CANTIDAD STOCK','TB',0,'C','1');
     $this->pdf->Cell(30,7,'PUNTO de PEDIDO','TBR',0,'C','1');
@@ -305,15 +305,15 @@ public function search_keyword(){
       // Se imprimen los datos de cada alumno
       //$this->pdf->Cell(25,5,$t->observacionEspecialista,'B',0,'L',0);
         if($t['cantidad']>=$t['puntoDePedido']){
-      $this->pdf->Cell(40,5,$t['nombreInsumo'],'BL',0,'C',0);
-      $this->pdf->Cell(85,5,$t['descripcionInsumo'],'B',0,'C',0);
+      $this->pdf->Cell(45,5,substr($t['nombreInsumo'],0,25),'BL',0,'C',0);
+      $this->pdf->Cell(85,5,substr($t['descripcionInsumo'],0,45),'B',0,'C',0);
       $this->pdf->Cell(30,5,$t['cantidad'],'B',0,'C',0);
       $this->pdf->Cell(30,5,$t['puntoDePedido'],'BR',0,'C',0);
       $this->pdf->Ln(5);
         }else{
             $this->pdf->SetFillColor(255, 160, 122);
-           $this->pdf->Cell(40,5,$t['nombreInsumo'],'TBL',0,'C',1);
-      $this->pdf->Cell(85,5,$t['descripcionInsumo'],'TB',0,'C',1);
+           $this->pdf->Cell(45,5,substr($t['nombreInsumo'],0,25),'TBL',0,'C',1);
+      $this->pdf->Cell(85,5,substr($t['descripcionInsumo'],0,45),'TB',0,'C',1);
       $this->pdf->Cell(30,5,$t['cantidad'],'TB',0,'C',1);
       $this->pdf->Cell(30,5,$t['puntoDePedido'],'TBR',0,'C',1);
       $this->pdf->Ln(5);
