@@ -207,7 +207,7 @@ function verificarEspacio()
      SI EL ESPACIO QUE OCUPA EL CJTO DE PLANTAS ES MAYOR QUE EL DISPONIBLE Y SE QUIEREN AÑADIR PLANTAS
      SE MUESTRA ERROR, Y DESHABILITA EL BOTON 'Agregar'
      */
-    if (espacioTotal > disponibleActual && canti <= cantiActual)
+    else if (espacioTotal > (disponibleActual && canti <= cantiActual))
     {
         document.getElementById('msjError').innerHTML = "";
         document.getElementById('guardar').disabled=false;
@@ -221,7 +221,7 @@ function verificarEspacio()
     SI HAY ESPACIO DISPONIBLE, Y LA SE AÑADEN PLANTAS.
       SE RESTA ESPACIO DISPONIBLE EN EL UMBRÁCULO
      */
-    if (espacioTotal < disponibleActual && canti > cantiActual)
+    else if (espacioTotal < (disponibleActual && canti > cantiActual))
     {
         var ocupado = parseFloat(disponibleActual) - parseFloat(espacioTotal);
         document.getElementById('dipoActualizada').value = ocupado.toFixed(4);
